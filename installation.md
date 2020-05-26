@@ -1,10 +1,10 @@
 ---
-layout: page
-title: "iDAAS-Connect Installation"
+layout: default
+title: "Installation"
 permalink: /installation
 ---
-
-iDAAS Connectors for Inboud Data Processing
+## Overview
+iDAAS-Connectors provides a set of connectors for inboud data processing.
 
 Powered by [Apache Camel](https://camel.apache.org/)
 
