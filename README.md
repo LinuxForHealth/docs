@@ -1,2 +1,2 @@
 # docs
-iDAA-Connect documentation
+iDAAS-Connect documentation
