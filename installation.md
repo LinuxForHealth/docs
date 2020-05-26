@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "iDAAS-Connect Installation"
-permalink: /docs/installation.md
+permalink: /installation
 ---
 
 iDAAS Connectors for Inboud Data Processing
