@@ -31,7 +31,7 @@ GEM
     ffi (1.12.2)
     forwardable-extended (2.6.0)
     gemoji (3.0.1)
-    github-pages (206)
+    github-pages (205)
       github-pages-health-check (= 1.16.1)
       jekyll (= 3.8.7)
       jekyll-avatar (= 0.7.0)
@@ -72,7 +72,7 @@ GEM
       mercenary (~> 0.3)
       minima (= 2.5.1)
       nokogiri (>= 1.10.4, < 2.0)
-      rouge (= 3.19.0)
+      rouge (= 3.13.0)
       terminal-table (~> 1.4)
     github-pages-health-check (1.16.1)
       addressable (~> 2.3)
@@ -215,7 +215,7 @@ GEM
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
-    rouge (3.19.0)
+    rouge (3.13.0)
     ruby-enum (0.8.0)
       i18n
     rubyzip (2.3.0)
@@ -245,8 +245,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  github-pages (~> 206)
-  jekyll (~> 3.8.7)
+  github-pages (~> 205)
   jekyll-feed (~> 0.6)
   minima (~> 2.0)
   tzinfo (~> 1.2)
