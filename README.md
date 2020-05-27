@@ -25,8 +25,10 @@ This builds the site from the files in the 'source' directory and places the bui
 
 4. Checkout a branch, push the new site to the idaas-connect/docs repo & merge the changes to master.  The changes will automatically appear on `https://idaas-connect.github.io/docs` after a few seconds.  You may need to reload the pages in your browser to see changes.
 
+### References
+
+Sphinx uses [reStructuredText markup](https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#rst-directives).
+
 ### Connect
 
-View the iDAAS-Connect docs at `https://idaas-connect.github.io/docs`.
-
-Check out the iDAAS-Connect repo on [Github](https://github.com/RedHat-Healthcare/iDAAS-Connect).
+View the iDAAS-Connect docs: `https://idaas-connect.github.io/docs`.
