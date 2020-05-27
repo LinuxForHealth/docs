@@ -5,7 +5,7 @@ Installation
 Pre-requisites
 ==============
 - Java 1.8
-- [Gradle](https://gradle.org/) 6.x
+- `Gradle 6.x <https://gradle.org/>`_
 
 ====================================
 Starting the Development Environment
@@ -13,26 +13,23 @@ Starting the Development Environment
 The development environment provides additional systems and integration targets via a [Docker Compose configuration](docker-compose.yml).
 
 Systems include:
-- [Kafdrop](https://github.com/obsidiandynamics/kafdrop) - A Kafka Cluster Viewer
+- `Kafdrop <https://github.com/obsidiandynamics/kafdrop/>`_ - A Kafka Cluster Viewer
 - Kafka - For real time streaming and messaging
 
 Additional systems will be added to support the MVP as needed.
 
-To start the docker compose stack
-``
-docker-compose up -d
-``
+To start the docker compose stack::
 
-To tail current processing logs
-``
-docker-compose logs -f 
-``
+    docker-compose up -d
 
-For additional Docker Compose commands, please refer to the [Official Documentation](https://docs.docker.com/compose/reference/overview/)
+To tail current processing logs::
 
-To access Kafdrop, the Kafka Cluster View, browser to http://localhost:9000
+    docker-compose logs -f 
 
-To start the iDAAS Connect application
-``
-./gradlew clean run
-``
+For additional Docker Compose commands, please refer to the `Official Documentation <https://docs.docker.com/compose/reference/overview/>`_
+
+To access Kafdrop, the Kafka Cluster View, browse to http://localhost:9000
+
+To start the iDAAS Connect application::
+
+    ./gradlew clean run

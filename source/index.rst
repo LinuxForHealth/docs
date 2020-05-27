@@ -6,14 +6,11 @@
 What is iDAAS-Connect?
 **********************
 
+iDAAS-Connect is the Intelligent Data As A Service platform, a comprehensive healthcare data transformation and analytics solution designed to provide world-class integration and insights.
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
    about.rst
    installation.rst
-
-======================
-What is iDAAS-Connect?
-======================
-iDAAS-Connect is the Intelligent Data As A Service platform, a comprehensive healthcare data transformation and analytics solution designed to provide world-class security and insights.

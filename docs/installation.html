@@ -116,7 +116,7 @@
 
       <div class="wy-nav-content">
         
-        <div class="rst-content">
+        <div class="rst-content style-external-links">
         
           
 
@@ -165,30 +165,30 @@
 <h2>Pre-requisites<a class="headerlink" href="#pre-requisites" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Java 1.8</p></li>
-<li><p>[Gradle](<a class="reference external" href="https://gradle.org/">https://gradle.org/</a>) 6.x</p></li>
+<li><p><a class="reference external" href="https://gradle.org/">Gradle 6.x</a></p></li>
 </ul>
 </div>
 <div class="section" id="starting-the-development-environment">
 <h2>Starting the Development Environment<a class="headerlink" href="#starting-the-development-environment" title="Permalink to this headline">¶</a></h2>
 <p>The development environment provides additional systems and integration targets via a [Docker Compose configuration](docker-compose.yml).</p>
 <p>Systems include:
-- [Kafdrop](<a class="reference external" href="https://github.com/obsidiandynamics/kafdrop">https://github.com/obsidiandynamics/kafdrop</a>) - A Kafka Cluster Viewer
+- <a class="reference external" href="https://github.com/obsidiandynamics/kafdrop/">Kafdrop</a> - A Kafka Cluster Viewer
 - Kafka - For real time streaming and messaging</p>
 <p>Additional systems will be added to support the MVP as needed.</p>
-<p>To start the docker compose stack
-``
-docker-compose up -d
-``</p>
-<p>To tail current processing logs
-``
-docker-compose logs -f
-``</p>
-<p>For additional Docker Compose commands, please refer to the [Official Documentation](<a class="reference external" href="https://docs.docker.com/compose/reference/overview/">https://docs.docker.com/compose/reference/overview/</a>)</p>
-<p>To access Kafdrop, the Kafka Cluster View, browser to <a class="reference external" href="http://localhost:9000">http://localhost:9000</a></p>
-<p>To start the iDAAS Connect application
-``
-./gradlew clean run
-``</p>
+<p>To start the docker compose stack:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">up</span> <span class="o">-</span><span class="n">d</span>
+</pre></div>
+</div>
+<p>To tail current processing logs:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">logs</span> <span class="o">-</span><span class="n">f</span>
+</pre></div>
+</div>
+<p>For additional Docker Compose commands, please refer to the <a class="reference external" href="https://docs.docker.com/compose/reference/overview/">Official Documentation</a></p>
+<p>To access Kafdrop, the Kafka Cluster View, browse to <a class="reference external" href="http://localhost:9000">http://localhost:9000</a></p>
+<p>To start the iDAAS Connect application:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">gradlew</span> <span class="n">clean</span> <span class="n">run</span>
+</pre></div>
+</div>
 </div>
 </div>
 

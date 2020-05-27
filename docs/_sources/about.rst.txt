@@ -1,6 +1,6 @@
 Overview
 ********
 
-iDAAS-Connect is the Intelligent Data As A Service platform, a comprehensive healthcare data transformation and analytics solution designed to provide world-class security and insights.
+iDAAS-Connect is the Intelligent Data As A Service platform, a comprehensive healthcare data transformation and analytics solution designed to provide world-class integration and insights.
 
-Powered by [Apache Camel](https://camel.apache.org/)
+Powered by `Apache Camel <https://camel.apache.org/>`_
