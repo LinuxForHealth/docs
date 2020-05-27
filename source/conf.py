@@ -18,6 +18,7 @@ import sphinx_rtd_theme
 
 # -- Project information -----------------------------------------------------
 
+version = 'master'
 project = 'iDAAS-Connect'
 copyright = '2020, the iDAAS-Connect team'
 author = 'the iDAAS-Connect team'
@@ -61,12 +62,12 @@ html_css_files = [
 
 # Sphinx Read the Docs theme options
 html_theme_options = {
-    'canonical_url': '',
+    'canonical_url': 'https://idaas-connect.github.io/docs/',
     'logo_only': False,
     'display_version': True,
     'prev_next_buttons_location': 'bottom',
     'style_external_links': False,
-    'style_nav_header_background': 'white',
+    'style_nav_header_background': '0x4380B4',
     # Toc options
     'collapse_navigation': True,
     'sticky_navigation': True,
