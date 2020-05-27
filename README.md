@@ -27,7 +27,9 @@ This builds the site from the files in the 'source' directory and places the bui
 
 ### References
 
-Sphinx uses [reStructuredText markup](https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#rst-directives).
+[reStructuredText markup](https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#rst-directives)
+[Sphinx quickstart](https://www.sphinx-doc.org/en/master/usage/quickstart.html)
+[sphinx_rtd_theme config options](https://sphinx-rtd-theme.readthedocs.io/en/latest/configuring.html)
 
 ### Connect
 
