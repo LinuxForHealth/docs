@@ -10,7 +10,7 @@ Starting the Development Environment
 ====================================
 The development environment provides additional systems and integration targets via a `Docker Compose configuration <https://github.com/idaas-connect/iDAAS-Connect/docker-compose.yml>`_.
 
-Systems include:
+Included Systems
 
 * `Kafdrop <https://github.com/obsidiandynamics/kafdrop/>`_ - A Kafka Cluster Viewer
 * Kafka - For real time streaming and messaging
