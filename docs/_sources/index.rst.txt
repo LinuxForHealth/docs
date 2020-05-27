@@ -3,8 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to iDAAS-Connect's documentation!
-=========================================
+What is iDAAS-Connect?
+**********************
 
 .. toctree::
    :maxdepth: 2
@@ -13,9 +13,7 @@ Welcome to iDAAS-Connect's documentation!
    about.rst
    installation.rst
 
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+======================
+What is iDAAS-Connect?
+======================
+iDAAS-Connect is the Intelligent Data As A Service platform, a comprehensive healthcare data transformation and analytics solution designed to provide world-class security and insights.
