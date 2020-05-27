@@ -6,7 +6,7 @@ Powered by [Apache Camel](https://camel.apache.org/)
 
 ### Build
 
-1. To build the idaas-connect.github.io site, first install `sphninx` and the `sphinx_rtd_theme` theme.
+1. To build the idaas-connect.github.io site, first install `sphinx` and the `sphinx_rtd_theme` theme.
 ```
 pip install sphinx sphinx_rtd_theme
 ```
