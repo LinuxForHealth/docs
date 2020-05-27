@@ -23,7 +23,7 @@ sphinx-build -b html source docs
 ```
 This builds the site from the files in the 'source' directory and places the built site in a 'docs' subdirectory of the idaas-connect/docs repo, which the repo is configured to use as the site folder.
 
-4. Checkout a branch, push the new site to the idaas-connect/docs repo & merge the changes to master.  The changes will automatically appear on `https://idaas-connect.github.io/docs` after a few seconds.  You may need to reload the pages in your browser to see changes.
+4. Checkout a branch, push the new site to the idaas-connect/docs repo & merge the changes to master.  The changes will automatically appear on [https://idaas-connect.github.io/docs](https://idaas-connect.github.io/docs) after a few seconds.  You may need to reload the pages in your browser to see changes.
 
 ### References
 
@@ -33,4 +33,5 @@ This builds the site from the files in the 'source' directory and places the bui
 
 ### Connect
 
-View the iDAAS-Connect docs: `https://idaas-connect.github.io/docs`.
+View the iDAAS-Connect docs: [https://idaas-connect.github.io/docs](https://idaas-connect.github.io/docs)  
+Check out the iDAAS-Connect source: [https://github.com/idaas-connect/iDAAS-Connect](https://github.com/idaas-connect/iDAAS-Connect)
