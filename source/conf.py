@@ -19,9 +19,9 @@ import sphinx_rtd_theme
 # -- Project information -----------------------------------------------------
 
 version = 'master'
-project = 'iDAAS-Connect'
-copyright = '2020, the iDAAS-Connect team'
-author = 'the iDAAS-Connect team'
+project = 'iDAAS'
+copyright = '2020, the iDAAS team'
+author = 'the iDAAS team'
 
 
 # -- General configuration ---------------------------------------------------
