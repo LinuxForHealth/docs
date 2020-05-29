@@ -6,7 +6,7 @@ Powered by [Apache Camel](https://camel.apache.org/)
 
 ### Build
 
-1. Clone the this repo.
+1. Clone the this repo and `cd docs`.
 ```
 git clone https://github.com/idaas-connect/docs
 ```
