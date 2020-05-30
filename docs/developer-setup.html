@@ -8,14 +8,14 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Installation &mdash; iDAAS  documentation</title>
+  <title>Developer Setup &mdash; iDAAS  documentation</title>
   
 
   
   
   
   
-    <link rel="canonical" href="https://idaas-connect.github.io/docs/installation.html"/>
+    <link rel="canonical" href="https://idaas-connect.github.io/docs/developer-setup.html"/>
   
 
   
@@ -39,6 +39,7 @@
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Route Configuration" href="route-configuration.html" />
     <link rel="prev" title="Overview" href="about.html" /> 
 </head>
 
@@ -90,11 +91,14 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="about.html">Overview</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Developer Setup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#starting-the-development-environment">Starting the Development Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-development-environment">The Development Environment</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="route-configuration.html">Route Configuration</a></li>
 </ul>
 
             
@@ -140,13 +144,13 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Installation</li>
+      <li>Developer Setup</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/installation.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/developer-setup.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -159,8 +163,22 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="installation">
-<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="developer-setup">
+<h1>Developer Setup<a class="headerlink" href="#developer-setup" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>iDAAS Connect provides an opinionated implementation of <a class="reference external" href="https://camel.apache.org/manual/latest/routes.html">Camel Routing</a>, focused
+on standard data and messaging formats. iDAAS Connect data processing routes are dynamically built from application.properties
+configurations.</p>
+<p>An iDAAS Connect data processing route consists of:</p>
+<ul class="simple">
+<li><p>A consumer endpoint which receives inbound data</p></li>
+<li><p>Optional “components” used to transform, filter, or route data</p></li>
+<li><p>Error handling and auditing</p></li>
+<li><p>A Kafka based producer endpoint, used to store data messages</p></li>
+<li><p>Additional optional producer endpoints to support “multi-cast” routes when needed</p></li>
+</ul>
+</div>
 <div class="section" id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -168,19 +186,25 @@
 <li><p><a class="reference external" href="https://gradle.org/">Gradle 6.x</a></p></li>
 </ul>
 </div>
-<div class="section" id="starting-the-development-environment">
-<h2>Starting the Development Environment<a class="headerlink" href="#starting-the-development-environment" title="Permalink to this headline">¶</a></h2>
-<p>The development environment provides additional systems and integration targets via a <a class="reference external" href="https://github.com/idaas-connect/iDAAS-Connect/docker-compose.yml">Docker Compose configuration</a>.</p>
-<p>Included Systems</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://github.com/obsidiandynamics/kafdrop/">Kafdrop</a> - A Kafka Cluster Viewer</p></li>
-<li><p>Kafka - For real time streaming and messaging</p></li>
-</ul>
-<p>Additional systems will be added as needed.</p>
-<p>Clone the iDAAS-Connect project:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">idaas</span><span class="o">-</span><span class="n">connect</span><span class="o">/</span><span class="n">iDAAS</span><span class="o">-</span><span class="n">Connect</span>
+<div class="section" id="getting-started">
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<p>Clone and build the project:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># clone the repo and confirm the build</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">idaas</span><span class="o">-</span><span class="n">connect</span><span class="o">/</span><span class="n">idaas</span><span class="o">-</span><span class="n">connect</span>
+<span class="n">cd</span> <span class="n">idaas</span><span class="o">-</span><span class="n">connect</span>
+<span class="o">./</span><span class="n">gradlew</span> <span class="n">build</span>
 </pre></div>
 </div>
+<p>The Test Summary is available within the project’s build directory in <em>./build/reports/tests/test/index.html</em></p>
+</div>
+<div class="section" id="the-development-environment">
+<h2>The Development Environment<a class="headerlink" href="#the-development-environment" title="Permalink to this headline">¶</a></h2>
+<p>The development environment provides additional systems and integration targets via a Docker Compose configuration (docker-compose.yml).</p>
+<p>Systems include:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/obsidiandynamics/kafdrop">Kafdrop</a> - A Kafka Cluster Viewer</p></li>
+<li><p><a class="reference external" href="https://kafka.apache.org/">Kafka</a> - For real time streaming and messaging</p></li>
+</ul>
 <p>To start the docker compose stack:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">up</span> <span class="o">-</span><span class="n">d</span>
 </pre></div>
@@ -192,7 +216,11 @@
 <p>For additional Docker Compose commands, please refer to the <a class="reference external" href="https://docs.docker.com/compose/reference/overview/">Official Documentation</a></p>
 <p>To access Kafdrop, the Kafka Cluster View, browse to <a class="reference external" href="http://localhost:9000">http://localhost:9000</a></p>
 <p>To start the iDAAS Connect application:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">gradlew</span> <span class="n">clean</span> <span class="n">run</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">gradlew</span> <span class="n">run</span>
+</pre></div>
+</div>
+<p>To list all available Gradle tasks:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">gradlew</span> <span class="n">tasks</span>
 </pre></div>
 </div>
 </div>
@@ -205,6 +233,8 @@
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="route-configuration.html" class="btn btn-neutral float-right" title="Route Configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="about.html" class="btn btn-neutral float-left" title="Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
