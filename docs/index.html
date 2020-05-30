@@ -164,6 +164,37 @@
 <li><p>Kafka and NATS for world-class data streaming and messaging.</p></li>
 <li><p>Standard data formats, including HL7 FHIR R4, HL7 MLLP and EDI, with easy extensiblity to support any format.</p></li>
 </ul>
+<div class="section" id="idaas-platform-components">
+<h2>iDAAS Platform Components<a class="headerlink" href="#idaas-platform-components" title="Permalink to this headline">¶</a></h2>
+<p>The iDAAS Platform provides healthcare data connectivity and routing, dynamic extensibility, custom events and data-driven insights via the components described below.</p>
+<div class="section" id="idaas-connect">
+<h3>iDAAS Connect<a class="headerlink" href="#idaas-connect" title="Permalink to this headline">¶</a></h3>
+<p>iDAAS Connect focuses on receiving data in industry standard formats and routing that data to consumers that provide transformation, insights and downstream connectivity.  The following iDAAS Connect packages are supported:</p>
+<ul class="simple">
+<li><p>iDAAS Connect Clinical Industry Standards: Supports clinical integration standards including HL7v2 and FHIR. The HL7v2 capability supports versions 2.1 to 2.8 of the following message types: ADT (Admissions), ORM (Orders), ORU (Results), SCH (Schedules), PHA (Pharmacy), MFN (Master File Notifications), MDM (Medical Document Management) and VXU (Vaccinations). The FHIR capability includes many of the commonly used Clinical Resources.</p></li>
+<li><p>iDAAS Connect Financial Industry Standards: Supports financial integration standards via FHIR Financial Resources.</p></li>
+<li><p>iDAAS Connect Third Party : Allows iDAAS to receive data from almost two dozens connectors, including JDBC, Kafka, FTP/sFTP and sFTP, AS400, HTTP(s), REST and many more.</p></li>
+</ul>
+</div>
+<div class="section" id="idaas-data-hub">
+<h3>iDAAS Data Hub<a class="headerlink" href="#idaas-data-hub" title="Permalink to this headline">¶</a></h3>
+<p>iDAAS Data Hub is the iDAAS platform data store, designed to ensure message-defined resources have data driven insights from any iDAAS platform activity. Data enablement in the iDAAS platform focuses on sending detailed events to iDAAS Data Hub for any platform activities, specifically via a transaction event consisting of a rich set of data attributes:</p>
+<ul class="simple">
+<li><p>The current iDAAS action</p></li>
+<li><p>The current iDAAS component</p></li>
+<li><p>The date and time of the action</p></li>
+<li><p>The current component data</p></li>
+<li><p>Additional attributes, including: sending application, transactions processed, transactions generated, processing times and response times.</p></li>
+</ul>
+</div>
+<div class="section" id="additional-capabilities">
+<h3>Additional Capabilities<a class="headerlink" href="#additional-capabilities" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Ability to add iDAAS capabilities dynamically, without the need to restart the platform.</p></li>
+<li><p>Ability to extend or enhance the platform’s ability to process data via custom events.</p></li>
+<li><p>User Interface for accesing iDAAS Data Hub.</p></li>
+<li><p>APIs built from the data tier within iDAAS Data Hub.</p></li>
+</ul>
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
@@ -174,6 +205,8 @@
 </ul>
 </li>
 </ul>
+</div>
+</div>
 </div>
 </div>
 
