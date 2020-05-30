@@ -1,0 +1,281 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Route Configuration &mdash; iDAAS  documentation</title>
+  
+
+  
+  
+  
+  
+    <link rel="canonical" href="https://idaas-connect.github.io/docs/route-configuration.html"/>
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="https://assets.readthedocs.org/static/css/readthedocs-doc-embed.css" type="text/css" />
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Developer Setup" href="developer-setup.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: 0x4380B4" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> iDAAS
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                master
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer-setup.html">Developer Setup</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Route Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#properties-based-configuration">Properties based configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#idaas-connect-component-format">iDAAS-Connect Component Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#idaas-connect-consumer-format">iDAAS-Connect Consumer Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#idaas-connect-producer-format">iDAAS-Connect Producer Format</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">iDAAS</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Route Configuration</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/route-configuration.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="route-configuration">
+<h1>Route Configuration<a class="headerlink" href="#route-configuration" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="properties-based-configuration">
+<h2>Properties based configuration<a class="headerlink" href="#properties-based-configuration" title="Permalink to this headline">¶</a></h2>
+<p>iDAAS-Connect data processing routes are configured in the application.properties file.
+Properties related to iDAAS-Connect routes use the prefix, <strong>idaas.connect</strong>.
+<strong>idaas.connect</strong> properties support iDAAS components, iDAAS consumers, and additional iDAAS producers.</p>
+</div>
+<div class="section" id="idaas-connect-component-format">
+<h2>iDAAS-Connect Component Format<a class="headerlink" href="#idaas-connect-component-format" title="Permalink to this headline">¶</a></h2>
+<p>Component properties format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">idaas</span><span class="o">.</span><span class="n">connect</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="p">[</span><span class="n">component</span> <span class="n">name</span><span class="p">]</span><span class="o">=</span><span class="p">[</span><span class="n">component</span> <span class="n">class</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>A “component” is a custom data processor used in message processing. Available components include components within the Camel
+framework, and it’s supported libraries, or components authored within iDAAS-Connect.</p>
+<p>HL7 Encoder/Decoder Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">idaas</span><span class="o">.</span><span class="n">connect</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">hl7decoder</span><span class="o">=</span><span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">camel</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">hl7</span><span class="o">.</span><span class="n">HL7MLLPNettyDecoderFactory</span>
+<span class="n">idaas</span><span class="o">.</span><span class="n">connect</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">hl7encoder</span><span class="o">=</span><span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">camel</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">hl7</span><span class="o">.</span><span class="n">HL7MLLPNettyEncoderFactory</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="idaas-connect-consumer-format">
+<h2>iDAAS-Connect Consumer Format<a class="headerlink" href="#idaas-connect-consumer-format" title="Permalink to this headline">¶</a></h2>
+<p>Consumer properties format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">idaas</span><span class="o">.</span><span class="n">connect</span><span class="o">.</span><span class="n">consumer</span><span class="o">.</span><span class="p">[</span><span class="n">route</span> <span class="nb">id</span><span class="p">]</span><span class="o">.</span><span class="p">[</span><span class="n">scheme</span><span class="o">|</span><span class="n">context</span><span class="o">|</span><span class="n">option</span><span class="p">]</span><span class="o">=</span><span class="p">[</span><span class="n">scheme</span><span class="o">|</span><span class="n">context</span><span class="o">|</span><span class="n">option</span> <span class="n">value</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The route id is the logical name for the iDAAS-Connect data processing route, which includes the consumer, optional processors,
+and producer(s).</p>
+<p>The scheme, context, and option “fields” are used to build the consumer’s URI.
+Consumer URI format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[scheme]://[context]?[option1=value&amp;option2=value]
+</pre></div>
+</div>
+<p>Options are “optional”, and are separated using <cite>&amp;</cite>. If options are not included the <cite>?</cite> separator is excluded.</p>
+<p>HL7-MLLP consumer properties example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">idaas</span><span class="o">.</span><span class="n">connect</span><span class="o">.</span><span class="n">consumer</span><span class="o">.</span><span class="n">hl7</span><span class="o">-</span><span class="n">mllp</span><span class="o">.</span><span class="n">scheme</span><span class="o">=</span><span class="n">netty</span><span class="p">:</span><span class="n">tcp</span>
+<span class="n">idaas</span><span class="o">.</span><span class="n">connect</span><span class="o">.</span><span class="n">consumer</span><span class="o">.</span><span class="n">hl7</span><span class="o">-</span><span class="n">mllp</span><span class="o">.</span><span class="n">context</span><span class="o">=</span><span class="n">localhost</span><span class="p">:</span><span class="mi">2575</span>
+<span class="n">idaas</span><span class="o">.</span><span class="n">connect</span><span class="o">.</span><span class="n">consumer</span><span class="o">.</span><span class="n">hl7</span><span class="o">-</span><span class="n">mllp</span><span class="o">.</span><span class="n">options</span><span class="o">=</span><span class="n">sync</span><span class="o">=</span><span class="n">true</span><span class="p">,</span><span class="n">encoders</span><span class="o">=</span><span class="c1">#hl7encoder,decoders=#hl7decoder</span>
+</pre></div>
+</div>
+<p>The generated consumer URI is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>netty:tcp://localhost:2575?sync=true&amp;encoders=#hl7encoder&amp;decoders=#hl7decoder
+</pre></div>
+</div>
+</div>
+<div class="section" id="idaas-connect-producer-format">
+<h2>iDAAS-Connect Producer Format<a class="headerlink" href="#idaas-connect-producer-format" title="Permalink to this headline">¶</a></h2>
+<p>iDAAS-Connect provides a single Kafka producer, used to store incoming data messages. Additional producers may be included
+in the application.properties file and included in the data route.</p>
+<p>Producer properties format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">idaas</span><span class="o">.</span><span class="n">connect</span><span class="o">.</span><span class="n">producer</span><span class="o">.</span><span class="p">[</span><span class="n">route</span> <span class="nb">id</span><span class="p">]</span><span class="o">.</span><span class="p">[</span><span class="n">producer</span> <span class="n">number</span><span class="p">][</span><span class="n">scheme</span><span class="o">|</span><span class="n">context</span><span class="o">|</span><span class="n">option</span><span class="p">]</span><span class="o">=</span><span class="p">[</span><span class="n">scheme</span><span class="o">|</span><span class="n">context</span><span class="o">|</span><span class="n">option</span> <span class="n">value</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The route id is used to associate the producer with a configured consumer.
+The <cite>producer number</cite> is a numeric identifier used to associate the property configurations for the producer URI.</p>
+<p>HL7-MLLP producer properties example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">idaas</span><span class="o">.</span><span class="n">connect</span><span class="o">.</span><span class="n">producer</span><span class="o">.</span><span class="n">hl7</span><span class="o">-</span><span class="n">mllp</span><span class="o">.</span><span class="mf">0.</span><span class="n">scheme</span><span class="o">=</span><span class="n">stub</span>
+<span class="n">idaas</span><span class="o">.</span><span class="n">connect</span><span class="o">.</span><span class="n">producer</span><span class="o">.</span><span class="n">hl7</span><span class="o">-</span><span class="n">mllp</span><span class="o">.</span><span class="mf">0.</span><span class="n">context</span><span class="o">=</span><span class="n">hl7</span><span class="o">-</span><span class="n">stub</span>
+</pre></div>
+</div>
+<p>The generated producer URI is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stub</span><span class="p">:</span><span class="o">//</span><span class="n">hl7</span><span class="o">-</span><span class="n">stub</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="developer-setup.html" class="btn btn-neutral float-left" title="Developer Setup" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, the iDAAS team
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
