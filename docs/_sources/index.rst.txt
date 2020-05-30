@@ -48,6 +48,5 @@ Additional Capabilities
    :maxdepth: 2
    :caption: Contents:
 
-   about.rst
    developer-setup.rst
    route-configuration.rst
