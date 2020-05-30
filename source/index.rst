@@ -49,6 +49,5 @@ Additional Capabilities
    :caption: Contents:
 
    about.rst
-   installation.rst
    developer-setup.rst
    route-configuration.rst
