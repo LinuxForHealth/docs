@@ -50,3 +50,5 @@ Additional Capabilities
 
    about.rst
    installation.rst
+   developer-setup.rst
+   route-configuration.rst
