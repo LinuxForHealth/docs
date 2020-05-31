@@ -1,0 +1,284 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Quick Start Tutorial &mdash; iDAAS  documentation</title>
+  
+
+  
+  
+  
+  
+    <link rel="canonical" href="https://idaas-connect.github.io/docs/quickstart.html"/>
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="https://assets.readthedocs.org/static/css/readthedocs-doc-embed.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Route Configuration" href="route-configuration.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: 0x4380B4" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> iDAAS
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                master
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Installation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="developer-setup.html">Developer Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="route-configuration.html">Route Configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Quick Start Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#steps">Steps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#install-the-hl7-client">Install the HL7 Client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-the-nats-subscriber">Install the NATS Subscriber</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#send-an-hl7-message-to-idaas">Send an HL7 Message to iDAAS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">iDAAS</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Quick Start Tutorial</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/quickstart.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="quick-start-tutorial">
+<h1>Quick Start Tutorial<a class="headerlink" href="#quick-start-tutorial" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>This tutorial provides a working example of a typical iDAAS route: data ingress via HL7 mllp, transformation to json, storage via a kafka topic and notification of the storage via NATS.</p>
+</div>
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="./developer-setup.html">Developer Setup</a></p></li>
+<li><p><a class="reference external" href="https://nodejs.org/en/download/package-manager/#macos">Node.js</a></p></li>
+</ul>
+</div>
+<div class="section" id="steps">
+<h2>Steps<a class="headerlink" href="#steps" title="Permalink to this headline">¶</a></h2>
+<p>Once you have completed the Developer Setup listed in the Prerequisites, follow these steps to see iDAAS in action.</p>
+<div class="section" id="install-the-hl7-client">
+<h3>Install the HL7 Client<a class="headerlink" href="#install-the-hl7-client" title="Permalink to this headline">¶</a></h3>
+<p># Clone the Python HL7 client:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="nd">@github</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="n">johnpaulett</span><span class="o">/</span><span class="n">python</span><span class="o">-</span><span class="n">hl7</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+<p># Install the Python HL7 client:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">python</span><span class="o">-</span><span class="n">hl7</span>
+<span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">venv</span> <span class="n">venv</span>
+<span class="n">source</span> <span class="n">venv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
+<span class="n">python3</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
+<span class="n">pip</span> <span class="nb">list</span>
+</pre></div>
+</div>
+<p># Confirm the install of the Python HL7 client:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="nb">list</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="install-the-nats-subscriber">
+<h3>Install the NATS Subscriber<a class="headerlink" href="#install-the-nats-subscriber" title="Permalink to this headline">¶</a></h3>
+<p># In a new console window, cd to the iDAAS NATS directory in the idaas-connect repo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">idaas</span><span class="o">-</span><span class="n">connect</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">resources</span><span class="o">/</span><span class="n">nats</span>
+</pre></div>
+</div>
+<p># Install the modules needed by nats-subscriber.js:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">npm</span> <span class="n">i</span>
+</pre></div>
+</div>
+<p># Run the subscriber:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">node</span> <span class="n">nats</span><span class="o">-</span><span class="n">subscriber</span>
+</pre></div>
+</div>
+<p>The NATS subscriber will run indefinitely. Ctrl-Cn to exit.</p>
+</div>
+<div class="section" id="send-an-hl7-message-to-idaas">
+<h3>Send an HL7 Message to iDAAS<a class="headerlink" href="#send-an-hl7-message-to-idaas" title="Permalink to this headline">¶</a></h3>
+<p># cd to the iDAAS tutorial directory:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">idaas</span><span class="o">-</span><span class="n">connect</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">tutorials</span><span class="o">/</span><span class="n">end</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">end</span>
+</pre></div>
+</div>
+<p># Send an HL7 Message to iDAAS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mllp_send</span> <span class="o">--</span><span class="n">file</span> <span class="n">ADT_A01</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">loose</span> <span class="o">--</span><span class="n">port</span> <span class="mi">2575</span> <span class="n">localhost</span>
+</pre></div>
+</div>
+<p>You should see the message echoed back out in the hl7 client terminal.  You should also see the message in the NATS subscriber window, indicating the message was received by iDAAS and stored in the kafka topic.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="route-configuration.html" class="btn btn-neutral float-left" title="Route Configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, the iDAAS team
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
