@@ -34,13 +34,11 @@ Consumer properties format::
     idaas.connect.consumer.[route id].[scheme|context|option]=[scheme|context|option value]
 
 The route id is the logical name for the iDAAS-Connect data processing route.
-
 The scheme, context, and option "fields" are used to generate a URI for the consumer in the underlying Camel framework::
 
    [scheme]://[context]?[option1=value&option2=value]
 
 Options are "optional", and are separated using `&`. If options are not included the `?` separator is excluded.
-
 The generated consumer URI is::
 
     netty:tcp://localhost:2575?sync=true&encoders=#hl7encoder&decoders=#hl7decoder
@@ -60,9 +58,7 @@ Producer properties format::
     idaas.connect.producer.[route id].[producer number][scheme|context|option]=[scheme|context|option value]
 
 The route id is used to associate the producer with a configured consumer.
-
 The `producer number` is a numeric identifier used to associate the property configurations for the producer URI.
-
 The generated producer URI utilized within the Camel framework is::
 
     stub://hl7-stub
