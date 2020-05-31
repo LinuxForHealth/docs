@@ -7,6 +7,18 @@ iDAAS-Connect data processing routes are configured in the application.propertie
 Properties related to iDAAS-Connect routes use the prefix, **idaas.connect**.
 **idaas.connect** properties support iDAAS components, iDAAS consumers, and additional iDAAS producers.
 
+The properties file configurations provide a convenient means of specifying an iDAAS-Connect data processing route, which is later transformed
+into a Camel Endpoint URI. The Camel Endpoint URI has the general form::
+
+    [scheme][scheme separator][context]?[options]
+
+The `scheme` maps to the underlying Camel component used to implement the endpoint. 
+The `scheme separator` simply separates the `scheme` from the `context`. Typical scheme separators include `:`, `://`, etc.
+The `context` is the working area for the component. The context varies per component. For example a networking service utilizes a hostname and
+port, while a file component uses a directory, etc.
+The `options` configure the endpoint's behavior. Please refer to the `Camel Component Documentation <https://camel.apache.org/components/latest/index.html>`_
+for a list of available components and configuration options.
+
 iDAAS-Connect Component Format
 ==============================
 HL7 Encoder/Decoder example::
@@ -25,7 +37,7 @@ iDAAS-Connect Consumer Format
 ==============================
 HL7-MLLP consumer properties example::
 
-    idaas.connect.consumer.hl7-mllp.scheme=netty:tcp
+    idaas.connect.consumer.hl7-mllp.scheme=netty:tcp://
     idaas.connect.consumer.hl7-mllp.context=localhost:2575
     idaas.connect.consumer.hl7-mllp.options=sync=true,encoders=#hl7encoder,decoders=#hl7decoder
 
@@ -36,9 +48,11 @@ Consumer properties format::
 The route id is the logical name for the iDAAS-Connect data processing route.
 The scheme, context, and option "fields" are used to generate a URI for the consumer in the underlying Camel framework::
 
-   [scheme]://[context]?[option1=value&option2=value]
+   [scheme][context]?[option1=value&option2=value]
 
-Options are "optional", and are separated using `&`. If options are not included the `?` separator is excluded.
+Options are "optional", and are usually separated using `&`. If options are not included the `?` separator is excluded. Please refer to 
+the Camel Documentation to verify that you are using the correct option separator.
+
 The generated consumer URI is::
 
     netty:tcp://localhost:2575?sync=true&encoders=#hl7encoder&decoders=#hl7decoder
@@ -50,7 +64,7 @@ in the application.properties file and included in the data route.
 
 HL7-MLLP producer properties example::
 
-    idaas.connect.producer.hl7-mllp.0.scheme=stub
+    idaas.connect.producer.hl7-mllp.0.scheme=stub://
     idaas.connect.producer.hl7-mllp.0.context=hl7-stub
 
 Producer properties format::
