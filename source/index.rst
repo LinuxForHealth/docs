@@ -6,7 +6,11 @@
 What is iDAAS?
 **************
 
-Healthcare integration has been a challenge for decades. iDAAS is the Intelligent Data As A Service platform, designed to integrate any healthcare data, in any format, and provide new insights on that data.  In addition to comprehensive transformation and insights, iDAAS enables downstream services to securely receive and operate on healthcare data, effectively bridging the disparate systems that comprise the healthcare industry.
+.. image:: images/LinuxforHealthcare.png
+   :width: 600
+   :alt: Linux for Healthcare
+
+iDaaS is already being called Linux For Healthcare (LFH) by industry leaders in the field.  While the project is in its nascent stages, industry leaders have already forked the code and committed additonal features. The goal is to be become the reference for a trusted interoperable transactional development system for data, deployment, and machine learning within the healthcare industry.  As the project evolves the initial companies who have committed to develop on iDaaS will be providing APIs and build recipes that support iDaaS deployment from embedded device, fully distributed agent-based, multi-tenant multi cloud and LinuxOne distributions.  We hope you join our journey in making the Linux For Healthcare.
 
 iDAAS is built on:
 
@@ -14,39 +18,20 @@ iDAAS is built on:
 * Kafka and NATS for world-class data streaming and messaging.
 * Standard data formats, including HL7 FHIR R4, HL7 MLLP and EDI, with easy extensiblity to support any format.
 
-iDAAS Platform Components
-=========================
-The iDAAS Platform provides healthcare data connectivity and routing, dynamic extensibility, custom events and data-driven insights via the components described below.
+iDAAS provides data connectivity and routing, dynamic extensibility, custom events and data-driven insights for clinical data standards, including HL7v2 and FHIR R4, and a variety of standard inputs, including JDBC, Kafka, FTP/sFTP and sFTP, AS400, HTTP(s) and REST.
 
-iDAAS Connect
--------------
-iDAAS Connect focuses on receiving data in industry standard formats and routing that data to consumers that provide transformation, insights and downstream connectivity.  The following iDAAS Connect packages are supported:
-
-* iDAAS Connect Clinical Industry Standards: Supports clinical integration standards including HL7v2 and FHIR. The HL7v2 capability supports versions 2.1 to 2.8 of the following message types: ADT (Admissions), ORM (Orders), ORU (Results), SCH (Schedules), PHA (Pharmacy), MFN (Master File Notifications), MDM (Medical Document Management) and VXU (Vaccinations). The FHIR capability includes many of the commonly used Clinical Resources.
-* iDAAS Connect Financial Industry Standards: Supports financial integration standards via FHIR Financial Resources. 
-* iDAAS Connect Third Party : Allows iDAAS to receive data from almost two dozens connectors, including JDBC, Kafka, FTP/sFTP and sFTP, AS400, HTTP(s), REST and many more.
-
-iDAAS Data Hub
---------------
-iDAAS Data Hub is the iDAAS platform data store, designed to ensure message-defined resources have data driven insights from any iDAAS platform activity. Data enablement in the iDAAS platform focuses on sending detailed events to iDAAS Data Hub for any platform activities, specifically via a transaction event consisting of a rich set of data attributes:
-
-* The current iDAAS action
-* The current iDAAS component
-* The date and time of the action
-* The current component data
-* Additional attributes, including: sending application, transactions processed, transactions generated, processing times and response times.
-
-Additional Capabilities
------------------------
-* Ability to add iDAAS capabilities dynamically, without the need to restart the platform.
-* Ability to extend or enhance the platform's ability to process data via custom events.
-* User Interface for accesing iDAAS Data Hub.
-* APIs built from the data tier within iDAAS Data Hub.
+You can get started by visiting our `developer setup page <./developer-setup.html>`_ and visit us on `Github <https://github.com/idaas-connect/idaas-connect>`_.
 
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+   :maxdepth: 3
+   :caption: Installation:
 
-   developer-setup.rst
+   developer-setup.rst  
    route-configuration.rst
+
+.. toctree::
+   :maxdepth: 3
+   :caption: Tutorials:
+
+   end-to-end.rst
