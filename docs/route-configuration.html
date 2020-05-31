@@ -170,38 +170,36 @@ Properties related to iDAAS-Connect routes use the prefix, <strong>idaas.connect
 </div>
 <div class="section" id="idaas-connect-component-format">
 <h2>iDAAS-Connect Component Format<a class="headerlink" href="#idaas-connect-component-format" title="Permalink to this headline">¶</a></h2>
+<p>HL7 Encoder/Decoder example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">idaas</span><span class="o">.</span><span class="n">connect</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">hl7decoder</span><span class="o">=</span><span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">camel</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">hl7</span><span class="o">.</span><span class="n">HL7MLLPNettyDecoderFactory</span>
+<span class="n">idaas</span><span class="o">.</span><span class="n">connect</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">hl7encoder</span><span class="o">=</span><span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">camel</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">hl7</span><span class="o">.</span><span class="n">HL7MLLPNettyEncoderFactory</span>
+</pre></div>
+</div>
 <p>Component properties format:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">idaas</span><span class="o">.</span><span class="n">connect</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="p">[</span><span class="n">component</span> <span class="n">name</span><span class="p">]</span><span class="o">=</span><span class="p">[</span><span class="n">component</span> <span class="n">class</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>A “component” is a custom data processor used in message processing. Available components include components within the Camel
 framework, and it’s supported libraries, or components authored within iDAAS-Connect.</p>
-<p>HL7 Encoder/Decoder Example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">idaas</span><span class="o">.</span><span class="n">connect</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">hl7decoder</span><span class="o">=</span><span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">camel</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">hl7</span><span class="o">.</span><span class="n">HL7MLLPNettyDecoderFactory</span>
-<span class="n">idaas</span><span class="o">.</span><span class="n">connect</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">hl7encoder</span><span class="o">=</span><span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">camel</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">hl7</span><span class="o">.</span><span class="n">HL7MLLPNettyEncoderFactory</span>
-</pre></div>
-</div>
 </div>
 <div class="section" id="idaas-connect-consumer-format">
 <h2>iDAAS-Connect Consumer Format<a class="headerlink" href="#idaas-connect-consumer-format" title="Permalink to this headline">¶</a></h2>
-<p>Consumer properties format:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">idaas</span><span class="o">.</span><span class="n">connect</span><span class="o">.</span><span class="n">consumer</span><span class="o">.</span><span class="p">[</span><span class="n">route</span> <span class="nb">id</span><span class="p">]</span><span class="o">.</span><span class="p">[</span><span class="n">scheme</span><span class="o">|</span><span class="n">context</span><span class="o">|</span><span class="n">option</span><span class="p">]</span><span class="o">=</span><span class="p">[</span><span class="n">scheme</span><span class="o">|</span><span class="n">context</span><span class="o">|</span><span class="n">option</span> <span class="n">value</span><span class="p">]</span>
-</pre></div>
-</div>
-<p>The route id is the logical name for the iDAAS-Connect data processing route, which includes the consumer, optional processors,
-and producer(s).</p>
-<p>The scheme, context, and option “fields” are used to build the consumer’s URI.
-Consumer URI format:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[scheme]://[context]?[option1=value&amp;option2=value]
-</pre></div>
-</div>
-<p>Options are “optional”, and are separated using <cite>&amp;</cite>. If options are not included the <cite>?</cite> separator is excluded.</p>
 <p>HL7-MLLP consumer properties example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">idaas</span><span class="o">.</span><span class="n">connect</span><span class="o">.</span><span class="n">consumer</span><span class="o">.</span><span class="n">hl7</span><span class="o">-</span><span class="n">mllp</span><span class="o">.</span><span class="n">scheme</span><span class="o">=</span><span class="n">netty</span><span class="p">:</span><span class="n">tcp</span>
 <span class="n">idaas</span><span class="o">.</span><span class="n">connect</span><span class="o">.</span><span class="n">consumer</span><span class="o">.</span><span class="n">hl7</span><span class="o">-</span><span class="n">mllp</span><span class="o">.</span><span class="n">context</span><span class="o">=</span><span class="n">localhost</span><span class="p">:</span><span class="mi">2575</span>
 <span class="n">idaas</span><span class="o">.</span><span class="n">connect</span><span class="o">.</span><span class="n">consumer</span><span class="o">.</span><span class="n">hl7</span><span class="o">-</span><span class="n">mllp</span><span class="o">.</span><span class="n">options</span><span class="o">=</span><span class="n">sync</span><span class="o">=</span><span class="n">true</span><span class="p">,</span><span class="n">encoders</span><span class="o">=</span><span class="c1">#hl7encoder,decoders=#hl7decoder</span>
 </pre></div>
 </div>
+<p>Consumer properties format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">idaas</span><span class="o">.</span><span class="n">connect</span><span class="o">.</span><span class="n">consumer</span><span class="o">.</span><span class="p">[</span><span class="n">route</span> <span class="nb">id</span><span class="p">]</span><span class="o">.</span><span class="p">[</span><span class="n">scheme</span><span class="o">|</span><span class="n">context</span><span class="o">|</span><span class="n">option</span><span class="p">]</span><span class="o">=</span><span class="p">[</span><span class="n">scheme</span><span class="o">|</span><span class="n">context</span><span class="o">|</span><span class="n">option</span> <span class="n">value</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The route id is the logical name for the iDAAS-Connect data processing route.</p>
+<p>The scheme, context, and option “fields” are used to generate a URI for the consumer in the underlying Camel framework:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[scheme]://[context]?[option1=value&amp;option2=value]
+</pre></div>
+</div>
+<p>Options are “optional”, and are separated using <cite>&amp;</cite>. If options are not included the <cite>?</cite> separator is excluded.</p>
 <p>The generated consumer URI is:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>netty:tcp://localhost:2575?sync=true&amp;encoders=#hl7encoder&amp;decoders=#hl7decoder
 </pre></div>
@@ -211,18 +209,18 @@ Consumer URI format:</p>
 <h2>iDAAS-Connect Producer Format<a class="headerlink" href="#idaas-connect-producer-format" title="Permalink to this headline">¶</a></h2>
 <p>iDAAS-Connect provides a single Kafka producer, used to store incoming data messages. Additional producers may be included
 in the application.properties file and included in the data route.</p>
-<p>Producer properties format:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">idaas</span><span class="o">.</span><span class="n">connect</span><span class="o">.</span><span class="n">producer</span><span class="o">.</span><span class="p">[</span><span class="n">route</span> <span class="nb">id</span><span class="p">]</span><span class="o">.</span><span class="p">[</span><span class="n">producer</span> <span class="n">number</span><span class="p">][</span><span class="n">scheme</span><span class="o">|</span><span class="n">context</span><span class="o">|</span><span class="n">option</span><span class="p">]</span><span class="o">=</span><span class="p">[</span><span class="n">scheme</span><span class="o">|</span><span class="n">context</span><span class="o">|</span><span class="n">option</span> <span class="n">value</span><span class="p">]</span>
-</pre></div>
-</div>
-<p>The route id is used to associate the producer with a configured consumer.
-The <cite>producer number</cite> is a numeric identifier used to associate the property configurations for the producer URI.</p>
 <p>HL7-MLLP producer properties example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">idaas</span><span class="o">.</span><span class="n">connect</span><span class="o">.</span><span class="n">producer</span><span class="o">.</span><span class="n">hl7</span><span class="o">-</span><span class="n">mllp</span><span class="o">.</span><span class="mf">0.</span><span class="n">scheme</span><span class="o">=</span><span class="n">stub</span>
 <span class="n">idaas</span><span class="o">.</span><span class="n">connect</span><span class="o">.</span><span class="n">producer</span><span class="o">.</span><span class="n">hl7</span><span class="o">-</span><span class="n">mllp</span><span class="o">.</span><span class="mf">0.</span><span class="n">context</span><span class="o">=</span><span class="n">hl7</span><span class="o">-</span><span class="n">stub</span>
 </pre></div>
 </div>
-<p>The generated producer URI is:</p>
+<p>Producer properties format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">idaas</span><span class="o">.</span><span class="n">connect</span><span class="o">.</span><span class="n">producer</span><span class="o">.</span><span class="p">[</span><span class="n">route</span> <span class="nb">id</span><span class="p">]</span><span class="o">.</span><span class="p">[</span><span class="n">producer</span> <span class="n">number</span><span class="p">][</span><span class="n">scheme</span><span class="o">|</span><span class="n">context</span><span class="o">|</span><span class="n">option</span><span class="p">]</span><span class="o">=</span><span class="p">[</span><span class="n">scheme</span><span class="o">|</span><span class="n">context</span><span class="o">|</span><span class="n">option</span> <span class="n">value</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The route id is used to associate the producer with a configured consumer.</p>
+<p>The <cite>producer number</cite> is a numeric identifier used to associate the property configurations for the producer URI.</p>
+<p>The generated producer URI utilized within the Camel framework is:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stub</span><span class="p">:</span><span class="o">//</span><span class="n">hl7</span><span class="o">-</span><span class="n">stub</span>
 </pre></div>
 </div>
