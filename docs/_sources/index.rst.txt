@@ -34,4 +34,4 @@ You can get started by visiting our `developer setup page <./developer-setup.htm
    :maxdepth: 3
    :caption: Tutorials:
 
-   end-to-end.rst
+   quickstart.rst

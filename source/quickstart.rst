@@ -1,12 +1,12 @@
-End-to-End Tutorial
-*******************
+Quick Start Tutorial
+********************
 
 Overview
 ========
-This End-to-End tutorial provides a working example of a typical iDAAS route: data ingress via HL7 mllp, transformation to json, storage via a kafka topic and notification of the storage via NATS.
+This tutorial provides a working example of a typical iDAAS route: data ingress via HL7 mllp, transformation to json, storage via a kafka topic and notification of the storage via NATS.
 
 Prerequisites
-==============
+=============
 * `Developer Setup <./developer-setup.html>`_
 * `Node.js <https://nodejs.org/en/download/package-manager/#macos>`_
 
