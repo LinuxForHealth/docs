@@ -86,10 +86,14 @@
               
             
             
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+              <p class="caption"><span class="caption-text">Installation:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="developer-setup.html">Developer Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="route-configuration.html">Route Configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="end-to-end.html">End-to-End Tutorial</a></li>
 </ul>
 
             
@@ -156,46 +160,18 @@
             
   <div class="section" id="what-is-idaas">
 <h1>What is iDAAS?<a class="headerlink" href="#what-is-idaas" title="Permalink to this headline">¶</a></h1>
-<p>Healthcare integration has been a challenge for decades. iDAAS is the Intelligent Data As A Service platform, designed to integrate any healthcare data, in any format, and provide new insights on that data.  In addition to comprehensive transformation and insights, iDAAS enables downstream services to securely receive and operate on healthcare data, effectively bridging the disparate systems that comprise the healthcare industry.</p>
+<a class="reference internal image-reference" href="_images/LinuxforHealthcare.png"><img alt="Linux for Healthcare" src="_images/LinuxforHealthcare.png" style="width: 600px;" /></a>
+<p>iDaaS is already being called Linux For Healthcare (LFH) by industry leaders in the field.  While the project is in its nascent stages, industry leaders have already forked the code and committed additonal features. The goal is to be become the reference for a trusted interoperable transactional development system for data, deployment, and machine learning within the healthcare industry.  As the project evolves the initial companies who have committed to develop on iDaaS will be providing APIs and build recipes that support iDaaS deployment from embedded device, fully distributed agent-based, multi-tenant multi cloud and LinuxOne distributions.  We hope you join our journey in making the Linux For Healthcare.</p>
 <p>iDAAS is built on:</p>
 <ul class="simple">
 <li><p>Apache Camel for integration, supported by one of the most active development communities.</p></li>
 <li><p>Kafka and NATS for world-class data streaming and messaging.</p></li>
 <li><p>Standard data formats, including HL7 FHIR R4, HL7 MLLP and EDI, with easy extensiblity to support any format.</p></li>
 </ul>
-<div class="section" id="idaas-platform-components">
-<h2>iDAAS Platform Components<a class="headerlink" href="#idaas-platform-components" title="Permalink to this headline">¶</a></h2>
-<p>The iDAAS Platform provides healthcare data connectivity and routing, dynamic extensibility, custom events and data-driven insights via the components described below.</p>
-<div class="section" id="idaas-connect">
-<h3>iDAAS Connect<a class="headerlink" href="#idaas-connect" title="Permalink to this headline">¶</a></h3>
-<p>iDAAS Connect focuses on receiving data in industry standard formats and routing that data to consumers that provide transformation, insights and downstream connectivity.  The following iDAAS Connect packages are supported:</p>
-<ul class="simple">
-<li><p>iDAAS Connect Clinical Industry Standards: Supports clinical integration standards including HL7v2 and FHIR. The HL7v2 capability supports versions 2.1 to 2.8 of the following message types: ADT (Admissions), ORM (Orders), ORU (Results), SCH (Schedules), PHA (Pharmacy), MFN (Master File Notifications), MDM (Medical Document Management) and VXU (Vaccinations). The FHIR capability includes many of the commonly used Clinical Resources.</p></li>
-<li><p>iDAAS Connect Financial Industry Standards: Supports financial integration standards via FHIR Financial Resources.</p></li>
-<li><p>iDAAS Connect Third Party : Allows iDAAS to receive data from almost two dozens connectors, including JDBC, Kafka, FTP/sFTP and sFTP, AS400, HTTP(s), REST and many more.</p></li>
-</ul>
-</div>
-<div class="section" id="idaas-data-hub">
-<h3>iDAAS Data Hub<a class="headerlink" href="#idaas-data-hub" title="Permalink to this headline">¶</a></h3>
-<p>iDAAS Data Hub is the iDAAS platform data store, designed to ensure message-defined resources have data driven insights from any iDAAS platform activity. Data enablement in the iDAAS platform focuses on sending detailed events to iDAAS Data Hub for any platform activities, specifically via a transaction event consisting of a rich set of data attributes:</p>
-<ul class="simple">
-<li><p>The current iDAAS action</p></li>
-<li><p>The current iDAAS component</p></li>
-<li><p>The date and time of the action</p></li>
-<li><p>The current component data</p></li>
-<li><p>Additional attributes, including: sending application, transactions processed, transactions generated, processing times and response times.</p></li>
-</ul>
-</div>
-<div class="section" id="additional-capabilities">
-<h3>Additional Capabilities<a class="headerlink" href="#additional-capabilities" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p>Ability to add iDAAS capabilities dynamically, without the need to restart the platform.</p></li>
-<li><p>Ability to extend or enhance the platform’s ability to process data via custom events.</p></li>
-<li><p>User Interface for accesing iDAAS Data Hub.</p></li>
-<li><p>APIs built from the data tier within iDAAS Data Hub.</p></li>
-</ul>
+<p>iDAAS provides data connectivity and routing, dynamic extensibility, custom events and data-driven insights for clinical data standards, including HL7v2 and FHIR R4, and a variety of standard inputs, including JDBC, Kafka, FTP/sFTP and sFTP, AS400, HTTP(s) and REST.</p>
+<p>You can get started by visiting our <a class="reference external" href="./developer-setup.html">developer setup page</a> and visit us on <a class="reference external" href="https://github.com/idaas-connect/idaas-connect">Github</a>.</p>
 <div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Contents:</span></p>
+<p class="caption"><span class="caption-text">Installation:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="developer-setup.html">Developer Setup</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="developer-setup.html#overview">Overview</a></li>
@@ -213,7 +189,21 @@
 </li>
 </ul>
 </div>
-</div>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Tutorials:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="end-to-end.html">End-to-End Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="end-to-end.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="end-to-end.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="end-to-end.html#steps">Steps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="end-to-end.html#install-the-hl7-client">Install the HL7 Client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="end-to-end.html#install-the-nats-subscriber">Install the NATS Subscriber</a></li>
+<li class="toctree-l3"><a class="reference internal" href="end-to-end.html#send-an-hl7-message-to-idaas">Send an HL7 Message to iDAAS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 </div>
 </div>
 
