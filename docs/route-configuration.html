@@ -174,15 +174,15 @@ Properties related to iDAAS-Connect routes use the prefix, <strong>idaas.connect
 <strong>idaas.connect</strong> properties support iDAAS components, iDAAS consumers, and additional iDAAS producers.</p>
 <p>The properties file configurations provide a convenient means of specifying an iDAAS-Connect data processing route, which is later transformed
 into a Camel Endpoint URI. The Camel Endpoint URI has the general form:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[scheme][scheme separator][context]?[options]
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[scheme][context]?[options]
 </pre></div>
 </div>
-<p>The <cite>scheme</cite> maps to the underlying Camel component used to implement the endpoint.
-The <cite>scheme separator</cite> simply separates the <cite>scheme</cite> from the <cite>context</cite>. Typical scheme separators include <cite>:</cite>, <cite>://</cite>, etc.
-The <cite>context</cite> is the working area for the component. The context varies per component. For example a networking service utilizes a hostname and
+<p>Each component is parsed literally.</p>
+<p>The <strong>scheme</strong> maps to the underlying Camel component used to implement the endpoint, including the scheme separator (<strong>:</strong>, <strong>://</strong>, etc)
+The <strong>context</strong> is the working area for the component, which varies per component. For example a networking service utilizes a hostname and
 port, while a file component uses a directory, etc.
-The <cite>options</cite> configure the endpoint’s behavior. Please refer to the <a class="reference external" href="https://camel.apache.org/components/latest/index.html">Camel Component Documentation</a>
-for a list of available components and configuration options.</p>
+The <strong>options</strong> configure the endpoint’s behavior. Please refer to the <a class="reference external" href="https://camel.apache.org/components/latest/index.html">Camel Component Documentation</a>
+for a list of available components and configuration options. If options are used, iDAAS-Connect, will append a <cite>?</cite> to the route.</p>
 </div>
 <div class="section" id="idaas-connect-component-format">
 <h2>iDAAS-Connect Component Format<a class="headerlink" href="#idaas-connect-component-format" title="Permalink to this headline">¶</a></h2>
@@ -195,15 +195,15 @@ for a list of available components and configuration options.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">idaas</span><span class="o">.</span><span class="n">connect</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="p">[</span><span class="n">component</span> <span class="n">name</span><span class="p">]</span><span class="o">=</span><span class="p">[</span><span class="n">component</span> <span class="n">class</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>A “component” is a custom data processor used in message processing. Available components include components within the Camel
-framework, and it’s supported libraries, or components authored within iDAAS-Connect.</p>
+<p>A “component” is a Java Bean utilized  in message processing. Available components include components within the Camel
+framework, or components authored within iDAAS-Connect.</p>
 </div>
 <div class="section" id="idaas-connect-consumer-format">
 <h2>iDAAS-Connect Consumer Format<a class="headerlink" href="#idaas-connect-consumer-format" title="Permalink to this headline">¶</a></h2>
 <p>HL7-MLLP consumer properties example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">idaas</span><span class="o">.</span><span class="n">connect</span><span class="o">.</span><span class="n">consumer</span><span class="o">.</span><span class="n">hl7</span><span class="o">-</span><span class="n">mllp</span><span class="o">.</span><span class="n">scheme</span><span class="o">=</span><span class="n">netty</span><span class="p">:</span><span class="n">tcp</span><span class="p">:</span><span class="o">//</span>
 <span class="n">idaas</span><span class="o">.</span><span class="n">connect</span><span class="o">.</span><span class="n">consumer</span><span class="o">.</span><span class="n">hl7</span><span class="o">-</span><span class="n">mllp</span><span class="o">.</span><span class="n">context</span><span class="o">=</span><span class="n">localhost</span><span class="p">:</span><span class="mi">2575</span>
-<span class="n">idaas</span><span class="o">.</span><span class="n">connect</span><span class="o">.</span><span class="n">consumer</span><span class="o">.</span><span class="n">hl7</span><span class="o">-</span><span class="n">mllp</span><span class="o">.</span><span class="n">options</span><span class="o">=</span><span class="n">sync</span><span class="o">=</span><span class="n">true</span><span class="p">,</span><span class="n">encoders</span><span class="o">=</span><span class="c1">#hl7encoder,decoders=#hl7decoder</span>
+<span class="n">idaas</span><span class="o">.</span><span class="n">connect</span><span class="o">.</span><span class="n">consumer</span><span class="o">.</span><span class="n">hl7</span><span class="o">-</span><span class="n">mllp</span><span class="o">.</span><span class="n">options</span><span class="o">=</span><span class="n">sync</span><span class="o">=</span><span class="n">true</span><span class="o">&amp;</span><span class="n">encoders</span><span class="o">=</span><span class="c1">#hl7encoder&amp;decoders=#hl7decoder</span>
 </pre></div>
 </div>
 <p>Consumer properties format:</p>
@@ -215,7 +215,7 @@ The scheme, context, and option “fields” are used to generate a URI for the 
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[scheme][context]?[option1=value&amp;option2=value]
 </pre></div>
 </div>
-<p>Options are “optional”, and are usually separated using <cite>&amp;</cite>. If options are not included the <cite>?</cite> separator is excluded. Please refer to
+<p>Options are “optional”, and are usually separated using <strong>&amp;</strong>. If options are not included the <strong>?</strong> separator is excluded. Please refer to
 the Camel Documentation to verify that you are using the correct option separator.</p>
 <p>The generated consumer URI is:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>netty:tcp://localhost:2575?sync=true&amp;encoders=#hl7encoder&amp;decoders=#hl7decoder
@@ -236,7 +236,7 @@ in the application.properties file and included in the data route.</p>
 </pre></div>
 </div>
 <p>The route id is used to associate the producer with a configured consumer.
-The <cite>producer number</cite> is a numeric identifier used to associate the property configurations for the producer URI.
+The <strong>producer number</strong> is a numeric identifier used to associate the property configurations for the producer URI.
 The generated producer URI utilized within the Camel framework is:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stub</span><span class="p">:</span><span class="o">//</span><span class="n">hl7</span><span class="o">-</span><span class="n">stub</span>
 </pre></div>
