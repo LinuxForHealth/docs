@@ -98,8 +98,11 @@
 <li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#tutorial-steps">Tutorial Steps</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#install-and-run-the-nats-server">Install and run the NATS Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configure-idaas-to-use-nats">Configure iDAAS to Use NATS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#install-and-run-the-nats-subscriber">Install and run the NATS Subscriber</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#install-the-hl7-client-and-send-a-message-to-idaas">Install the HL7 Client and send a Message to iDAAS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-the-hl7-client">Install the HL7 Client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#send-a-message-to-idaas">Send a Message to iDAAS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#clean-up">Clean up</a></li>
 </ul>
 </li>
 </ul>
@@ -197,6 +200,17 @@
 </div>
 <p>This will run the NATS Server in the background.</p>
 </div>
+<div class="section" id="configure-idaas-to-use-nats">
+<h3>Configure iDAAS to Use NATS<a class="headerlink" href="#configure-idaas-to-use-nats" title="Permalink to this headline">¶</a></h3>
+<p>From the same directory, update the iDAAS config to use NATS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">copy</span><span class="o">-</span><span class="n">cfg</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>In the console window where you are running iDAAS from the Developer Setup step, stop iDAAS via &lt;Ctrl&gt;-C, then restart iDAAS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">gradlew</span> <span class="n">run</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="install-and-run-the-nats-subscriber">
 <h3>Install and run the NATS Subscriber<a class="headerlink" href="#install-and-run-the-nats-subscriber" title="Permalink to this headline">¶</a></h3>
 <p>In the same directory, install the modules needed by nats-subscriber.js:</p>
@@ -208,9 +222,9 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="install-the-hl7-client-and-send-a-message-to-idaas">
-<h3>Install the HL7 Client and send a Message to iDAAS<a class="headerlink" href="#install-the-hl7-client-and-send-a-message-to-idaas" title="Permalink to this headline">¶</a></h3>
-<p>Clone the Python HL7 client:</p>
+<div class="section" id="install-the-hl7-client">
+<h3>Install the HL7 Client<a class="headerlink" href="#install-the-hl7-client" title="Permalink to this headline">¶</a></h3>
+<p>In a new console window, clone the Python HL7 client:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">johnpaulett</span><span class="o">/</span><span class="n">python</span><span class="o">-</span><span class="n">hl7</span><span class="o">.</span><span class="n">git</span>
 </pre></div>
 </div>
@@ -221,6 +235,9 @@
 <span class="n">python3</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="send-a-message-to-idaas">
+<h3>Send a Message to iDAAS<a class="headerlink" href="#send-a-message-to-idaas" title="Permalink to this headline">¶</a></h3>
 <p>cd to the iDAAS test resources directory in the idaas-connect repo:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">idaas</span><span class="o">-</span><span class="n">connect</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">resources</span><span class="o">/</span><span class="n">nats</span>
 </pre></div>
@@ -229,7 +246,23 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mllp_send</span> <span class="o">--</span><span class="n">file</span> <span class="n">ADT_A01</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">loose</span> <span class="o">--</span><span class="n">port</span> <span class="mi">2575</span> <span class="n">localhost</span>
 </pre></div>
 </div>
-<p>You should see the message echoed in the hl7 client terminal.  You should also see the message in the NATS subscriber window, indicating the message was received and processed by iDAAS before sending to NATS.</p>
+<p>You should see the message echoed in the hl7 client terminal.  You should also see the message in the NATS subscriber console window, indicating the message was received and processed by iDAAS before sending to NATS.</p>
+</div>
+<div class="section" id="clean-up">
+<h3>Clean up<a class="headerlink" href="#clean-up" title="Permalink to this headline">¶</a></h3>
+<p>From the same directory, restore the original iDAAS configuration:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">restore</span><span class="o">-</span><span class="n">cfg</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>In the NATS subscriber console window, stop the subscriber via &lt;Ctrl-C&gt;, then stop the NATS server:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">down</span>
+</pre></div>
+</div>
+<p>In the iDAAS console window, stop iDAAS via &lt;Ctrl&gt;-C, then restart iDAAS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">gradlew</span> <span class="n">run</span>
+</pre></div>
+</div>
+<p>Note: Failure to run restore-cfg.sh will cause iDAAS to not start when NATS is not running.</p>
 </div>
 </div>
 </div>
