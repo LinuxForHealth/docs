@@ -15,7 +15,7 @@ Tutorial Steps
 ==============
 Once you have completed the Prerequisites, follow these steps to see iDAAS in action.
 
-Install and run the NATS Server
+Install and Run the NATS Server
 -------------------------------
 In a new console window, cd to the iDAAS NATS directory in the idaas-connect repo (cloned during the Prerequisite Developer Setup)::
 
@@ -33,11 +33,11 @@ From the same directory, update the iDAAS config to use NATS::
 
    ./copy-cfg.sh
 
-In the console window where you are running iDAAS from the Developer Setup step, stop iDAAS via <Ctrl>-C, then restart iDAAS::
+In the console window where you are running iDAAS from the Developer Setup step, stop iDAAS via Ctrl-C, then restart iDAAS::
 
    ./gradlew run
 
-Install and run the NATS Subscriber
+Install and Run the NATS Subscriber
 -----------------------------------
 In the same directory, install the modules needed by nats-subscriber.js::
 
@@ -72,17 +72,17 @@ Send an HL7 Message to iDAAS::
 
 You should see the message echoed in the hl7 client terminal.  You should also see the message in the NATS subscriber console window, indicating the message was received and processed by iDAAS before sending to NATS.
 
-Clean up
+Clean Up
 --------
 From the same directory, restore the original iDAAS configuration::
 
    ./restore-cfg.sh
 
-In the NATS subscriber console window, stop the subscriber via <Ctrl-C>, then stop the NATS server::
+In the NATS subscriber console window, stop the subscriber via Ctrl-C, then stop the NATS server::
 
    docker-compose down
 
-In the iDAAS console window, stop iDAAS via <Ctrl>-C, then restart iDAAS::
+In the iDAAS console window, stop iDAAS via Ctrl-C, then restart iDAAS::
 
    ./gradlew run
 

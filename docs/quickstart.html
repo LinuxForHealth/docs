@@ -97,12 +97,12 @@
 <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#install-and-run-the-nats-server">Install and run the NATS Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-and-run-the-nats-server">Install and Run the NATS Server</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#configure-idaas-to-use-nats">Configure iDAAS to Use NATS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#install-and-run-the-nats-subscriber">Install and run the NATS Subscriber</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-and-run-the-nats-subscriber">Install and Run the NATS Subscriber</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#install-the-hl7-client">Install the HL7 Client</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#send-a-message-to-idaas">Send a Message to iDAAS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#clean-up">Clean up</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#clean-up">Clean Up</a></li>
 </ul>
 </li>
 </ul>
@@ -189,7 +189,7 @@
 <h2>Tutorial Steps<a class="headerlink" href="#tutorial-steps" title="Permalink to this headline">¶</a></h2>
 <p>Once you have completed the Prerequisites, follow these steps to see iDAAS in action.</p>
 <div class="section" id="install-and-run-the-nats-server">
-<h3>Install and run the NATS Server<a class="headerlink" href="#install-and-run-the-nats-server" title="Permalink to this headline">¶</a></h3>
+<h3>Install and Run the NATS Server<a class="headerlink" href="#install-and-run-the-nats-server" title="Permalink to this headline">¶</a></h3>
 <p>In a new console window, cd to the iDAAS NATS directory in the idaas-connect repo (cloned during the Prerequisite Developer Setup):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">idaas</span><span class="o">-</span><span class="n">connect</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">resources</span><span class="o">/</span><span class="n">nats</span>
 </pre></div>
@@ -206,13 +206,13 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">copy</span><span class="o">-</span><span class="n">cfg</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
-<p>In the console window where you are running iDAAS from the Developer Setup step, stop iDAAS via &lt;Ctrl&gt;-C, then restart iDAAS:</p>
+<p>In the console window where you are running iDAAS from the Developer Setup step, stop iDAAS via Ctrl-C, then restart iDAAS:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">gradlew</span> <span class="n">run</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="install-and-run-the-nats-subscriber">
-<h3>Install and run the NATS Subscriber<a class="headerlink" href="#install-and-run-the-nats-subscriber" title="Permalink to this headline">¶</a></h3>
+<h3>Install and Run the NATS Subscriber<a class="headerlink" href="#install-and-run-the-nats-subscriber" title="Permalink to this headline">¶</a></h3>
 <p>In the same directory, install the modules needed by nats-subscriber.js:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">npm</span> <span class="n">i</span>
 </pre></div>
@@ -249,16 +249,16 @@
 <p>You should see the message echoed in the hl7 client terminal.  You should also see the message in the NATS subscriber console window, indicating the message was received and processed by iDAAS before sending to NATS.</p>
 </div>
 <div class="section" id="clean-up">
-<h3>Clean up<a class="headerlink" href="#clean-up" title="Permalink to this headline">¶</a></h3>
+<h3>Clean Up<a class="headerlink" href="#clean-up" title="Permalink to this headline">¶</a></h3>
 <p>From the same directory, restore the original iDAAS configuration:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">restore</span><span class="o">-</span><span class="n">cfg</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
-<p>In the NATS subscriber console window, stop the subscriber via &lt;Ctrl-C&gt;, then stop the NATS server:</p>
+<p>In the NATS subscriber console window, stop the subscriber via Ctrl-C, then stop the NATS server:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">down</span>
 </pre></div>
 </div>
-<p>In the iDAAS console window, stop iDAAS via &lt;Ctrl&gt;-C, then restart iDAAS:</p>
+<p>In the iDAAS console window, stop iDAAS via Ctrl-C, then restart iDAAS:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">gradlew</span> <span class="n">run</span>
 </pre></div>
 </div>
