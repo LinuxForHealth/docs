@@ -1,6 +1,8 @@
 Quick Start Tutorial
 ********************
 
+Note: This tutorial is in progress.  It works as is, but does not yet include Kafka in the route.  Further, we will be changing the way we use NATS, to be automatically triggered upon storage of the message in the Kafka topic.
+
 Overview
 ========
 This tutorial provides a working example of a typical iDAAS route: data ingress via HL7 mllp, storage via a kafka topic and notification via NATS.
