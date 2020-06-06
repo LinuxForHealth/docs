@@ -28,7 +28,7 @@ You can get started by visiting our `developer setup page <./developer-setup.htm
    :caption: Installation:
 
    developer-setup.rst  
-   route-configuration.rst
+   application-configuration.rst
 
 .. toctree::
    :maxdepth: 3
