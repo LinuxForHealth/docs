@@ -220,12 +220,15 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mllp_send</span> <span class="o">--</span><span class="n">file</span> <span class="n">ADT_A01</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">loose</span> <span class="o">--</span><span class="n">port</span> <span class="mi">2575</span> <span class="n">localhost</span>
 </pre></div>
 </div>
-<p>You should see the message echoed in the HL7 client terminal.</p>
-<p>You should also see the message in the nats-subscriber terminal window, indicating the message was stored in Kafka.  The message received by the NATS subscriber indicates the topic, partition and offset of the message in Kafka, which could used for downstream application integration.</p>
+<p>You should see the message echoed in the HL7 client console window.</p>
+<p>You should also see the message in the nats-subscriber console window, indicating the message was stored in Kafka.  The message received by the NATS subscriber indicates the topic, partition and offset of the message in Kafka, which could used for downstream application integration:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;metadata&quot;</span><span class="p">:[{}],</span><span class="s2">&quot;results&quot;</span><span class="p">:[{</span><span class="s2">&quot;partition&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;offset&quot;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="s2">&quot;topic&quot;</span><span class="p">:</span><span class="s2">&quot;HL7v2_ADT&quot;</span><span class="p">}],</span><span class="s2">&quot;timestamp&quot;</span><span class="p">:</span><span class="mi">200105231927</span><span class="p">}</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="view-the-message-in-the-kafdrop-console-optional">
 <h3>View the Message in the Kafdrop Console (Optional)<a class="headerlink" href="#view-the-message-in-the-kafdrop-console-optional" title="Permalink to this headline">¶</a></h3>
-<p>You can optionally view the message in Kafka, via the Kafdrop Kafka client.  In your browser, naviaget to:</p>
+<p>You can optionally view the message in Kafka, via the Kafdrop Kafka client.  In your browser, navigate to:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">9000</span><span class="o">/</span>
 </pre></div>
 </div>

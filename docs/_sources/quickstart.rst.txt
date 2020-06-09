@@ -47,13 +47,15 @@ Send an HL7 message to iDAAS::
 
    mllp_send --file ADT_A01.txt --loose --port 2575 localhost
 
-You should see the message echoed in the HL7 client terminal. 
+You should see the message echoed in the HL7 client console window. 
 
-You should also see the message in the nats-subscriber terminal window, indicating the message was stored in Kafka.  The message received by the NATS subscriber indicates the topic, partition and offset of the message in Kafka, which could used for downstream application integration.
+You should also see the message in the nats-subscriber console window, indicating the message was stored in Kafka.  The message received by the NATS subscriber indicates the topic, partition and offset of the message in Kafka, which could used for downstream application integration::
+
+   {"metadata":[{}],"results":[{"partition":0,"offset":5,"topic":"HL7v2_ADT"}],"timestamp":200105231927}
 
 View the Message in the Kafdrop Console (Optional)
 --------------------------------------------------
-You can optionally view the message in Kafka, via the Kafdrop Kafka client.  In your browser, naviaget to::
+You can optionally view the message in Kafka, via the Kafdrop Kafka client.  In your browser, navigate to::
 
    http://localhost:9000/
 
