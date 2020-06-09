@@ -45,7 +45,7 @@ Endpoint properties are typically used to provide URIs for processing routes loc
 
 HL7-V2-MLLP endpoint properties example::
 
-idaas.connect.endpoint.hl7_v2_mllp.baseUri=netty:tcp://localhost:2575
-idaas.connect.endpoint.hl7_v2_mllp.options=sync=true&encoders=#hl7encoder&decoders=#hl7decoder
+   idaas.connect.endpoint.hl7_v2_mllp.baseUri=netty:tcp://localhost:2575
+   idaas.connect.endpoint.hl7_v2_mllp.options=sync=true&encoders=#hl7encoder&decoders=#hl7decoder
 
 
