@@ -97,9 +97,10 @@
 <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#start-the-nats-subscriber">Start the NATS Subscriber</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#install-the-hl7-client">Install the HL7 Client</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#send-a-message-to-idaas">Send a Message to iDAAS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#view-the-message-in-the-kafdrop-console">View the Message in the Kafdrop Console</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#view-the-message-in-the-kafdrop-console-optional">View the Message in the Kafdrop Console (Optional)</a></li>
 </ul>
 </li>
 </ul>
@@ -170,7 +171,6 @@
             
   <div class="section" id="quick-start-tutorial">
 <h1>Quick Start Tutorial<a class="headerlink" href="#quick-start-tutorial" title="Permalink to this headline">¶</a></h1>
-<p>Note: This tutorial is in progress.  It works as is, but does not yet include notification via NATS, which will be automatically triggered upon storage of the message in the Kafka topic.</p>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <p>This tutorial provides a working example of a typical iDAAS route: data ingress via HL7 mllp, storage via a Kafka topic and notification via NATS.</p>
@@ -179,11 +179,23 @@
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="./developer-setup.html">Developer Setup</a></p></li>
+<li><p><a class="reference external" href="https://nodejs.org/en/download/package-manager/#macos">Install Node.js</a></p></li>
 </ul>
 </div>
 <div class="section" id="tutorial-steps">
 <h2>Tutorial Steps<a class="headerlink" href="#tutorial-steps" title="Permalink to this headline">¶</a></h2>
 <p>Once you have completed the Prerequisites, follow these steps to see iDAAS in action.</p>
+<div class="section" id="start-the-nats-subscriber">
+<h3>Start the NATS Subscriber<a class="headerlink" href="#start-the-nats-subscriber" title="Permalink to this headline">¶</a></h3>
+<p>In a new console window, cd to the idaas-connect NATS test directory in the idaas-connect repo (cloned during the Developer Setup Prerequisite):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">idaas</span><span class="o">-</span><span class="n">connect</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">resources</span><span class="o">/</span><span class="n">nats</span>
+</pre></div>
+</div>
+<p>Run the subscriber:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">node</span> <span class="n">nats</span><span class="o">-</span><span class="n">subscriber</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="install-the-hl7-client">
 <h3>Install the HL7 Client<a class="headerlink" href="#install-the-hl7-client" title="Permalink to this headline">¶</a></h3>
 <p>In a new console window, clone the Python HL7 client:</p>
@@ -200,24 +212,25 @@
 </div>
 <div class="section" id="send-a-message-to-idaas">
 <h3>Send a Message to iDAAS<a class="headerlink" href="#send-a-message-to-idaas" title="Permalink to this headline">¶</a></h3>
-<p>cd to the iDAAS test resources directory in the idaas-connect repo (cloned during the Developer Setup Prerequisite):</p>
+<p>In the same console window as the previous step, cd to the iDAAS test resources directory:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">idaas</span><span class="o">-</span><span class="n">connect</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">resources</span>
 </pre></div>
 </div>
-<p>Send an HL7 Message to iDAAS:</p>
+<p>Send an HL7 message to iDAAS:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mllp_send</span> <span class="o">--</span><span class="n">file</span> <span class="n">ADT_A01</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">loose</span> <span class="o">--</span><span class="n">port</span> <span class="mi">2575</span> <span class="n">localhost</span>
 </pre></div>
 </div>
 <p>You should see the message echoed in the HL7 client terminal.</p>
+<p>You should also see the message in the nats-subscriber terminal window, indicating the message was stored in Kafka.  The message received by the NATS subscriber indicates the topic, partition and offset of the message in Kafka, which could used for downstream application integration.</p>
 </div>
-<div class="section" id="view-the-message-in-the-kafdrop-console">
-<h3>View the Message in the Kafdrop Console<a class="headerlink" href="#view-the-message-in-the-kafdrop-console" title="Permalink to this headline">¶</a></h3>
-<p>In your browser, navigate to the Kafdrop Kafka client:</p>
+<div class="section" id="view-the-message-in-the-kafdrop-console-optional">
+<h3>View the Message in the Kafdrop Console (Optional)<a class="headerlink" href="#view-the-message-in-the-kafdrop-console-optional" title="Permalink to this headline">¶</a></h3>
+<p>You can optionally view the message in Kafka, via the Kafdrop Kafka client.  In your browser, naviaget to:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">9000</span><span class="o">/</span>
 </pre></div>
 </div>
 <p>Scoll down and click on the ‘HL7v2_ADT’ topic.</p>
-<p>Click ‘View Messages’, then click ‘View Messages’ again on the next page.  You should see the body of the HL7v2 message you just sent to iDAAS, indicating that the message was sent to the correct Kafka topic.</p>
+<p>Click ‘View Messages’, then click ‘View Messages’ again on the next page.  You should see the body of the HL7v2 message you just sent to iDAAS.</p>
 </div>
 </div>
 </div>

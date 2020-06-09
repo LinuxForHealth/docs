@@ -1,8 +1,6 @@
 Quick Start Tutorial
 ********************
 
-Note: This tutorial is in progress.  It works as is, but does not yet include notification via NATS, which will be automatically triggered upon storage of the message in the Kafka topic.
-
 Overview
 ========
 This tutorial provides a working example of a typical iDAAS route: data ingress via HL7 mllp, storage via a Kafka topic and notification via NATS.
@@ -10,10 +8,21 @@ This tutorial provides a working example of a typical iDAAS route: data ingress 
 Prerequisites
 =============
 * `Developer Setup <./developer-setup.html>`_
+* `Install Node.js <https://nodejs.org/en/download/package-manager/#macos>`_
 
 Tutorial Steps
 ==============
 Once you have completed the Prerequisites, follow these steps to see iDAAS in action.
+
+Start the NATS Subscriber
+-------------------------
+In a new console window, cd to the idaas-connect NATS test directory in the idaas-connect repo (cloned during the Developer Setup Prerequisite)::
+
+   cd idaas-connect/src/test/resources/nats
+
+Run the subscriber::
+
+   node nats-subscriber
 
 Install the HL7 Client
 ----------------------
@@ -30,22 +39,24 @@ Install the Python HL7 client::
 
 Send a Message to iDAAS
 -----------------------
-cd to the iDAAS test resources directory in the idaas-connect repo (cloned during the Developer Setup Prerequisite)::
+In the same console window as the previous step, cd to the iDAAS test resources directory::
 
    cd idaas-connect/src/test/resources
 
-Send an HL7 Message to iDAAS::
+Send an HL7 message to iDAAS::
 
    mllp_send --file ADT_A01.txt --loose --port 2575 localhost
 
-You should see the message echoed in the HL7 client terminal.  
+You should see the message echoed in the HL7 client terminal. 
 
-View the Message in the Kafdrop Console
----------------------------------------
-In your browser, navigate to the Kafdrop Kafka client::
+You should also see the message in the nats-subscriber terminal window, indicating the message was stored in Kafka.  The message received by the NATS subscriber indicates the topic, partition and offset of the message in Kafka, which could used for downstream application integration.
+
+View the Message in the Kafdrop Console (Optional)
+--------------------------------------------------
+You can optionally view the message in Kafka, via the Kafdrop Kafka client.  In your browser, naviaget to::
 
    http://localhost:9000/
 
 Scoll down and click on the 'HL7v2_ADT' topic.
 
-Click 'View Messages', then click 'View Messages' again on the next page.  You should see the body of the HL7v2 message you just sent to iDAAS, indicating that the message was sent to the correct Kafka topic.
+Click 'View Messages', then click 'View Messages' again on the next page.  You should see the body of the HL7v2 message you just sent to iDAAS.
