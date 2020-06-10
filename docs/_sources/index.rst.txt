@@ -34,4 +34,5 @@ You can get started by visiting our `developer setup page <./developer-setup.htm
    :maxdepth: 3
    :caption: Tutorials:
 
-   quickstart.rst
+   tutorials/quickstart.rst
+   tutorials/fhir-r4.rst
