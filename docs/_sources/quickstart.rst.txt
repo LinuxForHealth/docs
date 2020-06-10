@@ -39,9 +39,9 @@ Install the Python HL7 client::
 
 Send a Message to iDAAS
 -----------------------
-In the same console window as the previous step, cd to the iDAAS test resources directory::
+In the same console window as the previous step, cd to the iDAAS test messages directory::
 
-   cd idaas-connect/src/test/resources
+   cd idaas-connect/src/test/resources/messages
 
 Send an HL7 message to iDAAS::
 
