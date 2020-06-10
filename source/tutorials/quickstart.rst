@@ -49,7 +49,7 @@ Send an HL7 message to iDAAS::
 
 You should see the message echoed in the HL7 client console window. 
 
-You should also see the message in the nats-subscriber console window, indicating the message was stored in Kafka.  The message received by the NATS subscriber indicates the topic, partition and offset of the message in Kafka, which could used for downstream application integration::
+You should also see the message in the nats-subscriber console window, indicating the message was stored in Kafka.  The message received by the NATS subscriber indicates the topic, partition and offset of the message in Kafka, which could be used for downstream application integration::
 
    {"metadata":["HL7v2_ADT-0@7"],"results":[{"partition":0,"offset":7,"topic":"HL7v2_ADT"}],"timestamp":200105231927}
 
