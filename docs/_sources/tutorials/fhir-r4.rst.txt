@@ -29,7 +29,7 @@ Send a FHIR R4 Message to Linux for Health
 ------------------------------------------
 Open Postman and import this collection by clicking 'Import' -> 'Import File' -> 'Choose Files'::
 
-   linux-for-health/src/test/resources/tutorials/Linux for Health FHIR R4 Tutorial.postma_collection.json
+   connect/src/test/resources/tutorials/Linux for Health FHIR R4 Tutorial.postma_collection.json
 
 Click on the collection in the left navigation area and select the 'Create a patient resource', then click 'Send'.
 
