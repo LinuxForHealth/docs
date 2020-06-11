@@ -3,11 +3,11 @@ Developer Setup
 
 Overview
 ========
-iDAAS Connect provides an opinionated implementation of `Camel Routing <https://camel.apache.org/manual/latest/routes.html>`_, focused
-on standard data and messaging formats. iDAAS Connect data processing routes are dynamically built from application.properties
+Linux for Health provides an opinionated implementation of `Camel Routing <https://camel.apache.org/manual/latest/routes.html>`_, focused
+on standard data and messaging formats. Linux for Health data processing routes are dynamically built from application.properties
 configurations.
 
-An iDAAS Connect data processing route consists of:
+An Linux for Health data processing route consists of:
 
 * A consumer endpoint which receives inbound data
 * Optional "components" used to transform, filter, or route data
@@ -25,7 +25,7 @@ Getting Started
 Clone and build the project::
 
     # clone the repo and confirm the build
-    git clone https://github.com/idaas-connect/idaas-connect
+    git clone https://github.com/linuxforhealth/connect.git
     cd idaas-connect
     ./gradlew build
 
@@ -52,7 +52,7 @@ For additional Docker Compose commands, please refer to the `Official Documentat
 
 To access Kafdrop, the Kafka Cluster View, browse to http://localhost:9000
 
-To start the iDAAS Connect application::
+To start the Linux for Health application::
 
     ./gradlew run
 

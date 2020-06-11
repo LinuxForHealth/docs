@@ -3,7 +3,7 @@ Quick Start Tutorial
 
 Overview
 ========
-This tutorial provides a working example of a typical iDAAS route: data ingress via HL7 mllp, storage via a Kafka topic and notification via NATS.
+This tutorial provides a working example of a typical Linux for Health route: data ingress via HL7 mllp, storage via a Kafka topic and notification via NATS.
 
 Prerequisites
 =============
@@ -12,13 +12,13 @@ Prerequisites
 
 Tutorial Steps
 ==============
-Once you have completed the Prerequisites, follow these steps to see iDAAS in action.
+Once you have completed the Prerequisites, follow these steps to see Linux for Health in action.
 
 Start the NATS Subscriber
 -------------------------
-In a new console window, cd to the idaas-connect NATS test directory in the idaas-connect repo (cloned during the Developer Setup Prerequisite)::
+In a new console window, cd to the NATS test directory in the Linux for Health connect repo (cloned during the Developer Setup Prerequisite)::
 
-   cd idaas-connect/src/test/resources/nats
+   cd connect/src/test/resources/nats
 
 Run the subscriber::
 
@@ -37,13 +37,13 @@ Install the Python HL7 client::
    source venv/bin/activate
    python3 setup.py install
 
-Send a Message to iDAAS
------------------------
-In the same console window as the previous step, cd to the iDAAS test messages directory::
+Send a Message to Linux for Health
+----------------------------------
+In the same console window as the previous step, cd to the test messages directory in the Linux for Health connect repo::
 
-   cd idaas-connect/src/test/resources/messages
+   cd connect/src/test/resources/messages
 
-Send an HL7 message to iDAAS::
+Send an HL7 message to Linux for Health::
 
    mllp_send --file ADT_A01.txt --loose --port 2575 localhost
 
@@ -61,4 +61,4 @@ You can optionally view the message in Kafka, via the Kafdrop Kafka client.  In 
 
 Scoll down and click on the 'HL7v2_ADT' topic.
 
-Click 'View Messages', then click 'View Messages' again on the next page.  You should see the body of the HL7v2 message you just sent to iDAAS.
+Click 'View Messages', then click 'View Messages' again on the next page.  You should see the body of the HL7v2 message you just sent to Linux for Health.
