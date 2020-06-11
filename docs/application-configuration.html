@@ -8,14 +8,14 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Application Configuration &mdash; iDAAS  documentation</title>
+  <title>Application Configuration &mdash; Linux for Health  documentation</title>
   
 
   
   
   
   
-    <link rel="canonical" href="https://idaas-connect.github.io/docs/application-configuration.html"/>
+    <link rel="canonical" href="https://linuxforhealth.github.io/docs/application-configuration.html"/>
   
 
   
@@ -53,7 +53,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home"> iDAAS
+            <a href="index.html" class="icon icon-home"> Linux for Health
           
 
           
@@ -92,8 +92,8 @@
 <li class="toctree-l1"><a class="reference internal" href="developer-setup.html">Developer Setup</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Application Configuration</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#properties-based-configuration">Properties based configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#idaas-connect-component-format">iDAAS-Connect Component Format</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#idaas-connect-endpoint-format">iDAAS-Connect Endpoint Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#linux-for-health-component-format">Linux for Health Component Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#linux-for-health-endpoint-format">Linux for Health Endpoint Format</a></li>
 </ul>
 </li>
 </ul>
@@ -115,7 +115,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">iDAAS</a>
+          <a href="index.html">Linux for Health</a>
         
       </nav>
 
@@ -169,18 +169,18 @@
 <h1>Application Configuration<a class="headerlink" href="#application-configuration" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="properties-based-configuration">
 <h2>Properties based configuration<a class="headerlink" href="#properties-based-configuration" title="Permalink to this headline">¶</a></h2>
-<p>iDAAS-Connect application settings are configured in an application.properties file stored within the project under <em>src/main/resources</em>.
-iDAAS-Connect settings are stored within the following namespaces:</p>
+<p>Linux for Health application settings are configured in an application.properties file stored within the project under <em>src/main/resources</em>.
+Linux for Health settings are stored within the following namespaces:</p>
 <ul class="simple">
 <li><p>idaas.connect.component</p></li>
 <li><p>idaas.connect.endpoint</p></li>
 </ul>
 <p>The component namespace specifies Java beans used to enrich route processing. These beans are loaded into the Camel Registry at startup,
 and may be used within a processing route or embeedded within a route component’s options.</p>
-<p>The endpoint namespace specifies connection parameters for iDAAS endpoint URIs.</p>
+<p>The endpoint namespace specifies connection parameters for Linux for Health endpoint URIs.</p>
 </div>
-<div class="section" id="idaas-connect-component-format">
-<h2>iDAAS-Connect Component Format<a class="headerlink" href="#idaas-connect-component-format" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="linux-for-health-component-format">
+<h2>Linux for Health Component Format<a class="headerlink" href="#linux-for-health-component-format" title="Permalink to this headline">¶</a></h2>
 <p>Component properties format:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">idaas</span><span class="o">.</span><span class="n">connect</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="p">[</span><span class="n">component</span> <span class="n">name</span><span class="p">]</span><span class="o">=</span><span class="p">[</span><span class="n">component</span> <span class="n">class</span><span class="p">]</span>
 </pre></div>
@@ -194,16 +194,14 @@ to Camel Registry.</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="idaas-connect-endpoint-format">
-<h2>iDAAS-Connect Endpoint Format<a class="headerlink" href="#idaas-connect-endpoint-format" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="linux-for-health-endpoint-format">
+<h2>Linux for Health Endpoint Format<a class="headerlink" href="#linux-for-health-endpoint-format" title="Permalink to this headline">¶</a></h2>
 <p>Endpoint properties format:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">idaas</span><span class="o">.</span><span class="n">connect</span><span class="o">.</span><span class="n">endpoint</span><span class="o">.</span><span class="p">[</span><span class="n">endpoint</span> <span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">baseUri</span><span class="o">=</span><span class="p">[</span><span class="n">scheme</span><span class="p">][</span><span class="n">context</span><span class="p">]</span>
 <span class="n">idaas</span><span class="o">.</span><span class="n">connect</span><span class="o">.</span><span class="n">endpoint</span><span class="o">.</span><span class="p">[</span><span class="n">endpoint</span> <span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="n">options</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>Endpoint properties are used to convey connection information and provide the convenience of supporting separate properties for the
-baseUri and options. The baseUri typically includes the endpoint scheme (protocol or component) and context. Options are <em>&amp;</em> separated which
-configure an endpoint’s processing route.</p>
+<p>Endpoint properties are used to convey connection information and provide the convenience of supporting separate properties for the baseUri and options. The baseUri typically includes the endpoint scheme (protocol or component) and context. Options are <em>&amp;</em> separated which configure an endpoint’s processing route.</p>
 <p>Endpoint properties are typically used to provide URIs for processing routes located within the <em>src/main/java/com/redhat/idaas/connect/routes</em>.</p>
 <p>HL7-V2-MLLP endpoint properties example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">idaas</span><span class="o">.</span><span class="n">connect</span><span class="o">.</span><span class="n">endpoint</span><span class="o">.</span><span class="n">hl7_v2_mllp</span><span class="o">.</span><span class="n">baseUri</span><span class="o">=</span><span class="n">netty</span><span class="p">:</span><span class="n">tcp</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">2575</span>
@@ -233,7 +231,7 @@ configure an endpoint’s processing route.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2020, the iDAAS team
+        &copy; Copyright 2020, IBM
 
     </p>
   </div>

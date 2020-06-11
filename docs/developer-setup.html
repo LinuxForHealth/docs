@@ -8,14 +8,14 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Developer Setup &mdash; iDAAS  documentation</title>
+  <title>Developer Setup &mdash; Linux for Health  documentation</title>
   
 
   
   
   
   
-    <link rel="canonical" href="https://idaas-connect.github.io/docs/developer-setup.html"/>
+    <link rel="canonical" href="https://linuxforhealth.github.io/docs/developer-setup.html"/>
   
 
   
@@ -39,7 +39,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Application Configuration" href="application-configuration.html" />
-    <link rel="prev" title="What is iDAAS?" href="index.html" /> 
+    <link rel="prev" title="What is Linux for Health?" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -53,7 +53,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home"> iDAAS
+            <a href="index.html" class="icon icon-home"> Linux for Health
           
 
           
@@ -116,7 +116,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">iDAAS</a>
+          <a href="index.html">Linux for Health</a>
         
       </nav>
 
@@ -170,10 +170,10 @@
 <h1>Developer Setup<a class="headerlink" href="#developer-setup" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>iDAAS Connect provides an opinionated implementation of <a class="reference external" href="https://camel.apache.org/manual/latest/routes.html">Camel Routing</a>, focused
-on standard data and messaging formats. iDAAS Connect data processing routes are dynamically built from application.properties
+<p>Linux for Health provides an opinionated implementation of <a class="reference external" href="https://camel.apache.org/manual/latest/routes.html">Camel Routing</a>, focused
+on standard data and messaging formats. Linux for Health data processing routes are dynamically built from application.properties
 configurations.</p>
-<p>An iDAAS Connect data processing route consists of:</p>
+<p>An Linux for Health data processing route consists of:</p>
 <ul class="simple">
 <li><p>A consumer endpoint which receives inbound data</p></li>
 <li><p>Optional “components” used to transform, filter, or route data</p></li>
@@ -193,7 +193,7 @@ configurations.</p>
 <h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
 <p>Clone and build the project:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># clone the repo and confirm the build</span>
-<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">idaas</span><span class="o">-</span><span class="n">connect</span><span class="o">/</span><span class="n">idaas</span><span class="o">-</span><span class="n">connect</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">linuxforhealth</span><span class="o">/</span><span class="n">connect</span><span class="o">.</span><span class="n">git</span>
 <span class="n">cd</span> <span class="n">idaas</span><span class="o">-</span><span class="n">connect</span>
 <span class="o">./</span><span class="n">gradlew</span> <span class="n">build</span>
 </pre></div>
@@ -218,7 +218,7 @@ configurations.</p>
 </div>
 <p>For additional Docker Compose commands, please refer to the <a class="reference external" href="https://docs.docker.com/compose/reference/overview/">Official Documentation</a></p>
 <p>To access Kafdrop, the Kafka Cluster View, browse to <a class="reference external" href="http://localhost:9000">http://localhost:9000</a></p>
-<p>To start the iDAAS Connect application:</p>
+<p>To start the Linux for Health application:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">gradlew</span> <span class="n">run</span>
 </pre></div>
 </div>
@@ -240,7 +240,7 @@ configurations.</p>
         <a href="application-configuration.html" class="btn btn-neutral float-right" title="Application Configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral float-left" title="What is iDAAS?" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="What is Linux for Health?" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -249,7 +249,7 @@ configurations.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2020, the iDAAS team
+        &copy; Copyright 2020, IBM
 
     </p>
   </div>

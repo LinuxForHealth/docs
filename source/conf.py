@@ -19,9 +19,9 @@ import sphinx_rtd_theme
 # -- Project information -----------------------------------------------------
 
 version = 'master'
-project = 'iDAAS'
-copyright = '2020, the iDAAS team'
-author = 'the iDAAS team'
+project = 'Linux for Health'
+copyright = '2020, IBM'
+author = 'the Linux for Health team'
 
 
 # -- General configuration ---------------------------------------------------
@@ -62,7 +62,7 @@ html_css_files = [
 
 # Sphinx Read the Docs theme options
 html_theme_options = {
-    'canonical_url': 'https://idaas-connect.github.io/docs/',
+    'canonical_url': 'https://linuxforhealth.github.io/docs/',
     'logo_only': False,
     'display_version': True,
     'prev_next_buttons_location': 'bottom',
