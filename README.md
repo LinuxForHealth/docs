@@ -39,4 +39,4 @@ This builds the site from the files in the 'source' directory and places the bui
 ### Connect
 
 View the Linux for Health docs: [https://linuxforhealth.github.io/docs](https://linuxforhealth.github.io/docs)  
-Check out the Linux for Health source: [https://github.com/linuxforhealth/linux-for-health](https://github.com/linuxforhealth/linux-for-health)
+Check out the Linux for Health source: [https://github.com/linuxforhealth/connect](https://github.com/linuxforhealth/connect)
