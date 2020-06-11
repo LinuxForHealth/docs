@@ -3,7 +3,7 @@ FHIR R4 Tutorial
 
 Overview
 ========
-This tutorial provides a working example of a typical iDAAS FHIR R4 route: data ingress via FHIR R4, storage via a Kafka topic and notification via NATS.
+This tutorial provides a working example of a typical Linux for Health FHIR R4 route: data ingress via FHIR R4, storage via a Kafka topic and notification via NATS.
 
 Prerequisites
 =============
@@ -13,23 +13,23 @@ Prerequisites
 
 Tutorial Steps
 ==============
-Once you have completed the Prerequisites, follow these steps to see iDAAS in action using FHIR R4 resources.
+Once you have completed the Prerequisites, follow these steps to see Linux for Health in action using FHIR R4 resources.
 
 Start the NATS Subscriber
 -------------------------
-In a new console window, cd to the idaas-connect NATS test directory in the idaas-connect repo (cloned during the Developer Setup Prerequisite)::
+In a new console window, cd to the NATS test directory in the Linux for Health connect repo (cloned during the Developer Setup Prerequisite)::
 
-   cd idaas-connect/src/test/resources/nats
+   cd connect/src/test/resources/nats
 
 Run the subscriber::
 
    node nats-subscriber
 
-Send a FHIR R4 Message to iDAAS 
--------------------------------
+Send a FHIR R4 Message to Linux for Health 
+------------------------------------------
 Open Postman and import this collection by clicking 'Import' -> 'Import File' -> 'Choose Files'::
 
-   idaas-connect/src/test/resources/tutorials/Linux for Health FHIR R4 Tutorial.postma_collection.json
+   linux-for-health/src/test/resources/tutorials/Linux for Health FHIR R4 Tutorial.postma_collection.json
 
 Click on the collection in the left navigation area and select the 'Create a patient resource', then click 'Send'.
 
@@ -45,4 +45,4 @@ You can optionally view the message in Kafka, via the Kafdrop Kafka client.  In 
 
 Scoll down and click on the 'FHIR_R4_PATIENT' topic.
 
-Click 'View Messages', then click 'View Messages' again on the next page.  You should see the body of the FHIR R4 message you just sent to iDAAS.
+Click 'View Messages', then click 'View Messages' again on the next page.  You should see the body of the FHIR R4 message you just sent to Linux for Health.

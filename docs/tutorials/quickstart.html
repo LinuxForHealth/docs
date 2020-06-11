@@ -8,14 +8,14 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Quick Start Tutorial &mdash; iDAAS  documentation</title>
+  <title>Quick Start Tutorial &mdash; Linux for Health  documentation</title>
   
 
   
   
   
   
-    <link rel="canonical" href="https://idaas-connect.github.io/docs/tutorials/quickstart.html"/>
+    <link rel="canonical" href="https://linuxforhealth.github.io/docs/tutorials/quickstart.html"/>
   
 
   
@@ -53,7 +53,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> iDAAS
+            <a href="../index.html" class="icon icon-home"> Linux for Health
           
 
           
@@ -100,7 +100,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#tutorial-steps">Tutorial Steps</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#start-the-nats-subscriber">Start the NATS Subscriber</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#install-the-hl7-client">Install the HL7 Client</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#send-a-message-to-idaas">Send a Message to iDAAS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#send-a-message-to-linux-for-health">Send a Message to Linux for Health</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#view-the-message-in-the-kafdrop-console-optional">View the Message in the Kafdrop Console (Optional)</a></li>
 </ul>
 </li>
@@ -121,7 +121,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">iDAAS</a>
+          <a href="../index.html">Linux for Health</a>
         
       </nav>
 
@@ -175,7 +175,7 @@
 <h1>Quick Start Tutorial<a class="headerlink" href="#quick-start-tutorial" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>This tutorial provides a working example of a typical iDAAS route: data ingress via HL7 mllp, storage via a Kafka topic and notification via NATS.</p>
+<p>This tutorial provides a working example of a typical Linux for Health route: data ingress via HL7 mllp, storage via a Kafka topic and notification via NATS.</p>
 </div>
 <div class="section" id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
@@ -186,11 +186,11 @@
 </div>
 <div class="section" id="tutorial-steps">
 <h2>Tutorial Steps<a class="headerlink" href="#tutorial-steps" title="Permalink to this headline">¶</a></h2>
-<p>Once you have completed the Prerequisites, follow these steps to see iDAAS in action.</p>
+<p>Once you have completed the Prerequisites, follow these steps to see Linux for Health in action.</p>
 <div class="section" id="start-the-nats-subscriber">
 <h3>Start the NATS Subscriber<a class="headerlink" href="#start-the-nats-subscriber" title="Permalink to this headline">¶</a></h3>
-<p>In a new console window, cd to the idaas-connect NATS test directory in the idaas-connect repo (cloned during the Developer Setup Prerequisite):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">idaas</span><span class="o">-</span><span class="n">connect</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">resources</span><span class="o">/</span><span class="n">nats</span>
+<p>In a new console window, cd to the NATS test directory in the Linux for Health connect repo (cloned during the Developer Setup Prerequisite):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">connect</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">resources</span><span class="o">/</span><span class="n">nats</span>
 </pre></div>
 </div>
 <p>Run the subscriber:</p>
@@ -212,13 +212,13 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="send-a-message-to-idaas">
-<h3>Send a Message to iDAAS<a class="headerlink" href="#send-a-message-to-idaas" title="Permalink to this headline">¶</a></h3>
-<p>In the same console window as the previous step, cd to the iDAAS test messages directory:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">idaas</span><span class="o">-</span><span class="n">connect</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">resources</span><span class="o">/</span><span class="n">messages</span>
+<div class="section" id="send-a-message-to-linux-for-health">
+<h3>Send a Message to Linux for Health<a class="headerlink" href="#send-a-message-to-linux-for-health" title="Permalink to this headline">¶</a></h3>
+<p>In the same console window as the previous step, cd to the test messages directory in the Linux for Health connect repo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">connect</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">resources</span><span class="o">/</span><span class="n">messages</span>
 </pre></div>
 </div>
-<p>Send an HL7 message to iDAAS:</p>
+<p>Send an HL7 message to Linux for Health:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mllp_send</span> <span class="o">--</span><span class="n">file</span> <span class="n">ADT_A01</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">loose</span> <span class="o">--</span><span class="n">port</span> <span class="mi">2575</span> <span class="n">localhost</span>
 </pre></div>
 </div>
@@ -235,7 +235,7 @@
 </pre></div>
 </div>
 <p>Scoll down and click on the ‘HL7v2_ADT’ topic.</p>
-<p>Click ‘View Messages’, then click ‘View Messages’ again on the next page.  You should see the body of the HL7v2 message you just sent to iDAAS.</p>
+<p>Click ‘View Messages’, then click ‘View Messages’ again on the next page.  You should see the body of the HL7v2 message you just sent to Linux for Health.</p>
 </div>
 </div>
 </div>
@@ -260,7 +260,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2020, the iDAAS team
+        &copy; Copyright 2020, IBM
 
     </p>
   </div>
