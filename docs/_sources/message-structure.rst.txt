@@ -12,7 +12,7 @@ The following JSON message structure is used throughout Linux for Health::
             'uuid': string,
             'routeUrl': string,
             'dataFormat': string,
-            'status': success | error, optional
+            'status': string, optional
             'dataStoreUrl': string, optional
             'dataRecordLocation': string[], optional
         }, 
@@ -34,7 +34,7 @@ The message consists of two primary keys: 'meta' for describing information abou
 +--------------------+-----------+------------------------------------------------------------------+
 | dataFormat         | string    | The format of the data sent as the message payload.              |
 +--------------------+-----------+------------------------------------------------------------------+
-| status             | string    | Optional result success indicator.                               |
+| status             | string    | Optional result success indicator: "success" | "error".          |
 +--------------------+-----------+------------------------------------------------------------------+
 | dataStoreUrl       | string    | Optional url of the data store.                                  |
 +--------------------+-----------+------------------------------------------------------------------+
