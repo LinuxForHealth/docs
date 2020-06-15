@@ -21,7 +21,7 @@ The following JSON message structure is used throughout Linux for Health::
 
 Description
 ===========
-The message consists of two primary keys: 'meta' for describing information about a transaction and 'data' to contain the transaction payload.  The table below further describes each attribute.
+The message consists of two top-level keys: 'meta' for describing information about a transaction and 'data' to contain the transaction payload.  The table below further describes each attribute.
 
 +--------------------+-----------+------------------------------------------------------------------+
 | Attribute          | Type      | Description                                                      |
