@@ -1,0 +1,324 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Message Structure &mdash; Linux for Health  documentation</title>
+  
+
+  
+  
+  
+  
+    <link rel="canonical" href="https://linuxforhealth.github.io/docs/message-structure.html"/>
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="https://assets.readthedocs.org/static/css/readthedocs-doc-embed.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Quick Start Tutorial" href="tutorials/quickstart.html" />
+    <link rel="prev" title="Application Configuration" href="application-configuration.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: 0x4380B4" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Linux for Health
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                master
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Installation:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="developer-setup.html">Developer Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="application-configuration.html">Application Configuration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Message Structure</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/quickstart.html">Quick Start Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/fhir-r4.html">FHIR R4 Tutorial</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Linux for Health</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Message Structure</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/message-structure.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="message-structure">
+<h1>Message Structure<a class="headerlink" href="#message-structure" title="Permalink to this headline">¶</a></h1>
+<p>This section describes the message structure used by Linux for Health route processing and shows typical examples.</p>
+<div class="section" id="structure">
+<h2>Structure<a class="headerlink" href="#structure" title="Permalink to this headline">¶</a></h2>
+<p>The following JSON message structure is used throughout Linux for Health:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s1">&#39;meta&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;routeId&#39;</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span>
+        <span class="s1">&#39;uuid&#39;</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span>
+        <span class="s1">&#39;routeUrl&#39;</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span>
+        <span class="s1">&#39;dataFormat&#39;</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span>
+        <span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="n">success</span> <span class="o">|</span> <span class="n">error</span><span class="p">,</span> <span class="n">optional</span>
+        <span class="s1">&#39;dataStoreUrl&#39;</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span> <span class="n">optional</span>
+        <span class="s1">&#39;dataRecordLocation&#39;</span><span class="p">:</span> <span class="n">string</span><span class="p">[],</span> <span class="n">optional</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span> <span class="n">optional</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>The message consists of two primary keys: ‘meta’ for describing information about a transaction and ‘data’ to contain the transaction payload.  The table below further describes each attribute.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 4%" />
+<col style="width: 6%" />
+<col style="width: 4%" />
+<col style="width: 64%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute</p></th>
+<th class="head" colspan="2"><p>Type</p></th>
+<th class="head" colspan="2"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>routeId</p></td>
+<td colspan="2"><p>string</p></td>
+<td colspan="2"><p>The identifier assigned to the route during route construction.</p></td>
+</tr>
+<tr class="row-odd"><td><p>uuid</p></td>
+<td colspan="2"><p>string</p></td>
+<td colspan="2"><p>The message uuid assigned during route invocation.</p></td>
+</tr>
+<tr class="row-even"><td colspan="5"><p>routeUrl           | string    | The url for the route associated with the message.</p></td>
+</tr>
+<tr class="row-odd"><td colspan="5"><p>dataFormat         | string    | The format of the data sent as the message payload.</p></td>
+</tr>
+<tr class="row-even"><td colspan="5"><p>status             | string    | Optional result success indicator.</p></td>
+</tr>
+<tr class="row-odd"><td colspan="5"><p>dataStoreUrl       | string    | Optional url of the data store.</p></td>
+</tr>
+<tr class="row-even"><td colspan="5"><p>dataRecordLocation | string    | Optional location of data stored successfully in the data store.</p></td>
+</tr>
+<tr class="row-odd"><td colspan="5"><p>data               | object    | Optional data payload or error message.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<p>Successful route processing notification:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+   <span class="s2">&quot;meta&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;routeId&quot;</span><span class="p">:</span><span class="s2">&quot;fhir-r4-rest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;uuid&quot;</span><span class="p">:</span><span class="s2">&quot;ID-MBP-2-attlocal-net-1592167260404-1-1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;routeUrl&quot;</span><span class="p">:</span><span class="s2">&quot;http://0.0.0.0:8080/fhir/r4&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;dataFormat&quot;</span><span class="p">:</span><span class="s2">&quot;fhir-r4&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;dataStoreUrl&quot;</span><span class="p">:</span><span class="s2">&quot;kafka:FHIR_R4_PATIENT?brokers=localhost:9092&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;dataRecordLocation&quot;</span><span class="p">:[</span><span class="s2">&quot;FHIR_R4_PATIENT-0@5&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;status&quot;</span><span class="p">:</span><span class="s2">&quot;success&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Notification of error caused by unavailable storage service:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;meta&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;routeId&quot;</span><span class="p">:</span> <span class="s2">&quot;fhir-r4-rest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;ID-MBP-2-attlocal-net-1592229483323-1-1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;routeUrl&quot;</span><span class="p">:</span> <span class="s2">&quot;http://0.0.0.0:8080/fhir/r4&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;dataFormat&quot;</span><span class="p">:</span> <span class="s2">&quot;fhir-r4&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;error&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="s2">&quot;Topic FHIR_R4_PATIENT not present in metadata after 60000 ms.&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Internal message sent to the storage service:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;meta&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;routeId&quot;</span><span class="p">:</span> <span class="s2">&quot;hl7-v2-mllp&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;routeUrl&quot;</span><span class="p">:</span> <span class="s2">&quot;netty:tcp://localhost:2575?sync=true&amp;encoders=#hl7encoder&amp;decoders=#hl7decoder&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;dataFormat&quot;</span><span class="p">:</span> <span class="s2">&quot;hl7-v2&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;ID-Caroles-MBP-2-attlocal-net-1592229483323-2-1&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="s2">&quot;MSH|^~</span><span class="se">\\</span><span class="s2">&amp;|system1|W|system2|UHN|200105231927||ADT^A01^ADT_A01|22139243|P|2.4</span><span class="se">\r</span><span class="s2">EVN|A01|200105231927</span><span class="se">\r</span><span class="s2">PID||9999999999|2216506||Duck^Donald^^^MR.^MR.||19720227|M|||123 Foo ST.^^TORONTO^ON^M6G 3E6^CA^H~123 Foo ST.^^TORONTO^ON^M6G 3E6^CA^M|1811|(416)111-1111||E^ENGLISH|S|PATIENT DID NOT INDICATE|211004554</span><span class="se">\r</span><span class="s2">PV1|||ZFAST TRACK^WAITING^13|E^EMERGENCY||369^6^13^U EM EMERGENCY DEPARTMENT^ZFAST TRACK WAITING^FT WAIT 13^FTWAIT13^FT WAITING^FTWAIT13|^MOUSE^MICKEY^M^^DR.^MD|||SUR||||||||I|211004554||||||||||||||||||||W|||||200105231927</span><span class="se">\r</span><span class="s2">PV2||F|^R/O APPENDICIAL ABSCESS</span><span class="se">\r</span><span class="s2">IN1|1||001001|OHIP|||||||||||||||^^^^^^M|||||||||||||||||||||||||^^^^^^M</span><span class="se">\r</span><span class="s2">&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="tutorials/quickstart.html" class="btn btn-neutral float-right" title="Quick Start Tutorial" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="application-configuration.html" class="btn btn-neutral float-left" title="Application Configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, IBM
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
