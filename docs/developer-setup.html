@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,6 +11,11 @@
   
 
   
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="https://assets.readthedocs.org/static/css/readthedocs-doc-embed.css" type="text/css" />
+
+  
   
   
   
@@ -19,7 +23,9 @@
   
 
   
-  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -31,11 +37,6 @@
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="https://assets.readthedocs.org/static/css/readthedocs-doc-embed.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Application Configuration" href="application-configuration.html" />
@@ -53,7 +54,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home"> Linux for Health
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> Linux for Health
           
 
           
@@ -80,6 +81,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -107,6 +109,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -145,7 +148,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="index.html">Docs</a> &raquo;</li>
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>Developer Setup</li>
     
@@ -194,7 +197,7 @@ configurations.</p>
 <p>Clone and build the project:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># clone the repo and confirm the build</span>
 <span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">linuxforhealth</span><span class="o">/</span><span class="n">connect</span><span class="o">.</span><span class="n">git</span>
-<span class="n">cd</span> <span class="n">idaas</span><span class="o">-</span><span class="n">connect</span>
+<span class="n">cd</span> <span class="n">connect</span>
 <span class="o">./</span><span class="n">gradlew</span> <span class="n">build</span>
 </pre></div>
 </div>
@@ -206,22 +209,38 @@ configurations.</p>
 <p>Systems include:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/obsidiandynamics/kafdrop">Kafdrop</a> - A Kafka Cluster Viewer</p></li>
-<li><p><a class="reference external" href="https://kafka.apache.org/">Kafka</a> - For real time streaming and messaging</p></li>
+<li><p><a class="reference external" href="https://kafka.apache.org/">Kafka</a> - For data storage</p></li>
+<li><p><a class="reference external" href="https://nats.io/">Nats</a> - For real time event streaming and messaging</p></li>
 </ul>
-<p>To start the docker compose stack:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">up</span> <span class="o">-</span><span class="n">d</span>
+<p>Additionally, the development environment can also support the “full stack” including the Linux for Health application, to support end-to-end
+testing. The docker compose configurations are stored in the project’s <a class="reference external" href="https://github.com/LinuxForHealth/connect/tree/master/container-support/compose">compose</a>
+directory.</p>
+<p>To run the Linux for Health connect application “locally” with supporting services:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># navigate to the compose configuration directory</span>
+<span class="n">cd</span> <span class="n">container</span><span class="o">-</span><span class="n">support</span><span class="o">/</span><span class="n">compose</span>
+<span class="c1"># start up supporting services</span>
+<span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">up</span> <span class="o">-</span><span class="n">d</span>
+<span class="c1"># review logs to ensure that services are available</span>
+<span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">logs</span> <span class="o">-</span><span class="n">f</span>
+<span class="c1"># return to the project root directory</span>
+<span class="n">cd</span> <span class="o">../../</span>
+<span class="c1"># launch the application</span>
+<span class="o">./</span><span class="n">gradlew</span> <span class="n">run</span>
 </pre></div>
 </div>
-<p>To tail current processing logs:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">logs</span> <span class="o">-</span><span class="n">f</span>
+<p>To run the entire Linux for Health application stack within a docker compose configuration:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># navigate to the compose configuration directory</span>
+<span class="n">cd</span> <span class="n">container</span><span class="o">-</span><span class="n">support</span><span class="o">/</span><span class="n">compose</span>
+<span class="c1"># enable the override file to support the local Linux for Health container</span>
+<span class="n">mv</span> <span class="n">docker</span><span class="o">-</span><span class="n">compose</span><span class="o">.</span><span class="n">override</span><span class="o">.</span><span class="n">disabled</span> <span class="n">docker</span><span class="o">-</span><span class="n">compose</span><span class="o">.</span><span class="n">override</span><span class="o">.</span><span class="n">yml</span>
+<span class="c1"># start up supporting services</span>
+<span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">up</span> <span class="o">-</span><span class="n">d</span>
+<span class="c1"># review logs to ensure that the Linux for Health service is available</span>
+<span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">logs</span> <span class="o">-</span><span class="n">f</span> <span class="n">lfh</span>
 </pre></div>
 </div>
 <p>For additional Docker Compose commands, please refer to the <a class="reference external" href="https://docs.docker.com/compose/reference/overview/">Official Documentation</a></p>
 <p>To access Kafdrop, the Kafka Cluster View, browse to <a class="reference external" href="http://localhost:9000">http://localhost:9000</a></p>
-<p>To start the Linux for Health application:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">gradlew</span> <span class="n">run</span>
-</pre></div>
-</div>
 <p>To list all available Gradle tasks:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">gradlew</span> <span class="n">tasks</span>
 </pre></div>
@@ -249,11 +268,19 @@ configurations.</p>
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2020, IBM
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -264,7 +291,6 @@ configurations.</p>
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

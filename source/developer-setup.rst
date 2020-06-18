@@ -26,7 +26,7 @@ Clone and build the project::
 
     # clone the repo and confirm the build
     git clone https://github.com/linuxforhealth/connect.git
-    cd idaas-connect
+    cd connect
     ./gradlew build
 
 The Test Summary is available within the project's build directory in *./build/reports/tests/test/index.html*
@@ -38,23 +38,42 @@ The development environment provides additional systems and integration targets 
 Systems include:
 
 * `Kafdrop <https://github.com/obsidiandynamics/kafdrop>`_ - A Kafka Cluster Viewer
-* `Kafka <https://kafka.apache.org/>`_ - For real time streaming and messaging
+* `Kafka <https://kafka.apache.org/>`_ - For data storage
+* `Nats <https://nats.io/>`_ - For real time event streaming and messaging
 
-To start the docker compose stack::
+Additionally, the development environment can also support the "full stack" including the Linux for Health application, to support end-to-end
+testing. The docker compose configurations are stored in the project's `compose <https://github.com/LinuxForHealth/connect/tree/master/container-support/compose>`_
+directory.
 
+To run the Linux for Health connect application "locally" with supporting services::
+
+    # navigate to the compose configuration directory
+    cd container-support/compose
+    # start up supporting services
     docker-compose up -d
+    # review logs to ensure that services are available
+    docker-compose logs -f
+    # return to the project root directory
+    cd ../../
+    # launch the application
+    ./gradlew run
 
-To tail current processing logs::
+To run the entire Linux for Health application stack within a docker compose configuration::
 
-    docker-compose logs -f 
+    # navigate to the compose configuration directory
+    cd container-support/compose
+    # enable the override file to support the local Linux for Health container
+    mv docker-compose.override.disabled docker-compose.override.yml
+    # start up supporting services
+    docker-compose up -d
+    # review logs to ensure that the Linux for Health service is available
+    docker-compose logs -f lfh
+    # after testing is complete "disable" the override file
+    mv docker-compose.override.yml docker-compose.override.disabled
 
 For additional Docker Compose commands, please refer to the `Official Documentation <https://docs.docker.com/compose/reference/overview/>`_
 
 To access Kafdrop, the Kafka Cluster View, browse to http://localhost:9000
-
-To start the Linux for Health application::
-
-    ./gradlew run
 
 To list all available Gradle tasks::
 
