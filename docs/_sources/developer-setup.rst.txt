@@ -68,6 +68,8 @@ To run the entire Linux for Health application stack within a docker compose con
     docker-compose up -d
     # review logs to ensure that the Linux for Health service is available
     docker-compose logs -f lfh
+    # after testing is complete "disable" the override file
+    mv docker-compose.override.yml docker-compose.override.disabled
 
 For additional Docker Compose commands, please refer to the `Official Documentation <https://docs.docker.com/compose/reference/overview/>`_
 
