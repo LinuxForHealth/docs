@@ -1,6 +1,6 @@
 Message Structure
 *****************
-This section describes the message structure used by Linux for Health route processing and shows typical examples.  
+This section describes the message structure used by Linux for Health and shows typical examples.  
 
 Structure
 =========
@@ -22,10 +22,10 @@ The following JSON message structure is used throughout Linux for Health::
 
 Description
 ===========
-The message consists of two top-level keys: 'meta' for describing information about a transaction and 'data' to contain the transaction payload.  The table below further describes each attribute.
+The message consists of two top-level keys: 'meta' for describing information about a transaction and 'data' to contain the transaction payload.  The table below further describes each key.
 
 +--------------------+-----------+---------------------------------------------------------------------+
-| Attribute          | Type      | Description                                                         |
+| Key                | Type      | Description                                                         |
 +====================+===========+=====================================================================+
 | routeId            | string    | The identifier assigned to the route during route construction.     |
 +--------------------+-----------+---------------------------------------------------------------------+
