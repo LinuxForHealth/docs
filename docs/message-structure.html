@@ -178,8 +178,9 @@
         <span class="s1">&#39;uuid&#39;</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span>
         <span class="s1">&#39;routeUrl&#39;</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span>
         <span class="s1">&#39;dataFormat&#39;</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span>
+        <span class="s1">&#39;timestamp&#39;</span><span class="p">:</span> <span class="n">long</span><span class="p">,</span>
+        <span class="s1">&#39;dataStoreUrl&#39;</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span>
         <span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span> <span class="n">optional</span>
-        <span class="s1">&#39;dataStoreUrl&#39;</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span> <span class="n">optional</span>
         <span class="s1">&#39;dataRecordLocation&#39;</span><span class="p">:</span> <span class="n">string</span><span class="p">[],</span> <span class="n">optional</span>
     <span class="p">},</span>
     <span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span> <span class="n">optional</span>
@@ -192,9 +193,9 @@
 <p>The message consists of two top-level keys: ‘meta’ for describing information about a transaction and ‘data’ to contain the transaction payload.  The table below further describes each attribute.</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 21%" />
+<col style="width: 20%" />
 <col style="width: 11%" />
-<col style="width: 68%" />
+<col style="width: 69%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Attribute</p></th>
@@ -219,21 +220,25 @@
 <td><p>string</p></td>
 <td><p>The format of the data sent as the message payload.</p></td>
 </tr>
+<tr class="row-even"><td><p>timestamp</p></td>
+<td><p>long</p></td>
+<td><p>The timestamp in seconds since the epoch.</p></td>
+</tr>
+<tr class="row-odd"><td><p>dataStoreUrl</p></td>
+<td><p>string</p></td>
+<td><p>The url of the data store.</p></td>
+</tr>
 <tr class="row-even"><td><p>status</p></td>
 <td><p>string</p></td>
 <td><p>Optional result success indicator: “success” | “error”.</p></td>
 </tr>
-<tr class="row-odd"><td><p>dataStoreUrl</p></td>
-<td><p>string</p></td>
-<td><p>Optional url of the data store.</p></td>
+<tr class="row-odd"><td><p>dataRecordLocation</p></td>
+<td><p>string[]</p></td>
+<td><p>Optional location(s) of data stored successfully in the data store.</p></td>
 </tr>
-<tr class="row-even"><td><p>dataRecordLocation</p></td>
-<td><p>string</p></td>
-<td><p>Optional location of data stored successfully in the data store.</p></td>
-</tr>
-<tr class="row-odd"><td><p>data</p></td>
+<tr class="row-even"><td><p>data</p></td>
 <td><p>object</p></td>
-<td><p>Optional data payload or error message.</p></td>
+<td><p>Optional data payload: byte[] or error message.</p></td>
 </tr>
 </tbody>
 </table>
@@ -243,13 +248,14 @@
 <p>Successful route processing notification:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
    <span class="s2">&quot;meta&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;routeId&quot;</span><span class="p">:</span><span class="s2">&quot;fhir-r4-rest&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;uuid&quot;</span><span class="p">:</span><span class="s2">&quot;ID-MBP-2-attlocal-net-1592167260404-1-1&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;routeUrl&quot;</span><span class="p">:</span><span class="s2">&quot;http://0.0.0.0:8080/fhir/r4&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;dataFormat&quot;</span><span class="p">:</span><span class="s2">&quot;fhir-r4&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;dataStoreUrl&quot;</span><span class="p">:</span><span class="s2">&quot;kafka:FHIR_R4_PATIENT?brokers=localhost:9092&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;dataRecordLocation&quot;</span><span class="p">:[</span><span class="s2">&quot;FHIR_R4_PATIENT-0@5&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;status&quot;</span><span class="p">:</span><span class="s2">&quot;success&quot;</span>
+        <span class="s2">&quot;routeId&quot;</span><span class="p">:</span> <span class="s2">&quot;fhir-r4-rest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;ab2385c6-ebb8-4ddd-a4b2-fc37c61761d4&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;routeUrl&quot;</span><span class="p">:</span> <span class="s2">&quot;http://0.0.0.0:8080/fhir/r4&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;dataFormat&quot;</span><span class="p">:</span> <span class="s2">&quot;fhir-r4&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="mi">1592574430</span><span class="p">,</span>
+        <span class="s2">&quot;dataStoreUrl&quot;</span><span class="p">:</span> <span class="s2">&quot;kafka:FHIR_R4_PATIENT?brokers=localhost:9092&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;dataRecordLocation&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;FHIR_R4_PATIENT-0@5&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -258,9 +264,11 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;meta&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s2">&quot;routeId&quot;</span><span class="p">:</span> <span class="s2">&quot;fhir-r4-rest&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;ID-MBP-2-attlocal-net-1592229483323-1-1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;ab2385c6-ebb8-4ddd-a4b2-fc37c61761d4&quot;</span><span class="p">,</span>
         <span class="s2">&quot;routeUrl&quot;</span><span class="p">:</span> <span class="s2">&quot;http://0.0.0.0:8080/fhir/r4&quot;</span><span class="p">,</span>
         <span class="s2">&quot;dataFormat&quot;</span><span class="p">:</span> <span class="s2">&quot;fhir-r4&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="mi">1592574430</span><span class="p">,</span>
+        <span class="s2">&quot;dataStoreUrl&quot;</span><span class="p">:</span> <span class="s2">&quot;kafka:FHIR_R4_PATIENT?brokers=localhost:9092&quot;</span><span class="p">,</span>
         <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;error&quot;</span>
     <span class="p">},</span>
     <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="s2">&quot;Topic FHIR_R4_PATIENT not present in metadata after 60000 ms.&quot;</span>
@@ -271,9 +279,11 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;meta&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s2">&quot;routeId&quot;</span><span class="p">:</span> <span class="s2">&quot;hl7-v2-mllp&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;ID-Caroles-MBP-2-attlocal-net-1592229483323-2-1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;ab2385c6-ebb8-4ddd-a4b2-fc37c61761d4&quot;</span><span class="p">,</span>
         <span class="s2">&quot;routeUrl&quot;</span><span class="p">:</span> <span class="s2">&quot;netty:tcp://localhost:2575?sync=true&amp;encoders=#hl7encoder&amp;decoders=#hl7decoder&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;dataFormat&quot;</span><span class="p">:</span> <span class="s2">&quot;hl7-v2&quot;</span>
+        <span class="s2">&quot;dataFormat&quot;</span><span class="p">:</span> <span class="s2">&quot;hl7-v2&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="mi">1592574430</span><span class="p">,</span>
+        <span class="s2">&quot;dataStoreUrl&quot;</span><span class="p">:</span> <span class="s2">&quot;kafka:HL7v2_ADT?brokers=localhost:9092&quot;</span>
     <span class="p">},</span>
     <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="s2">&quot;MSH|^~</span><span class="se">\\</span><span class="s2">&amp;|system1|W|system2|UHN|200105231927||ADT^A01^ADT_A01|22139243|P|2.4</span><span class="se">\r</span><span class="s2">EVN|A01|200105231927</span><span class="se">\r</span><span class="s2">PID||9999999999|2216506||Duck^Donald^^^MR.^MR.||19720227|M|||123 Foo ST.^^TORONTO^ON^M6G 3E6^CA^H~123 Foo ST.^^TORONTO^ON^M6G 3E6^CA^M|1811|(416)111-1111||E^ENGLISH|S|PATIENT DID NOT INDICATE|211004554</span><span class="se">\r</span><span class="s2">PV1|||ZFAST TRACK^WAITING^13|E^EMERGENCY||369^6^13^U EM EMERGENCY DEPARTMENT^ZFAST TRACK WAITING^FT WAIT 13^FTWAIT13^FT WAITING^FTWAIT13|^MOUSE^MICKEY^M^^DR.^MD|||SUR||||||||I|211004554||||||||||||||||||||W|||||200105231927</span><span class="se">\r</span><span class="s2">PV2||F|^R/O APPENDICIAL ABSCESS</span><span class="se">\r</span><span class="s2">IN1|1||001001|OHIP|||||||||||||||^^^^^^M|||||||||||||||||||||||||^^^^^^M</span><span class="se">\r</span><span class="s2">&quot;</span>
 <span class="p">}</span>
