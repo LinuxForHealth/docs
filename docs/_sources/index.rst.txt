@@ -29,6 +29,7 @@ You can get started by visiting our `developer setup page <./developer-setup.htm
 
    developer-setup.rst  
    application-configuration.rst
+   message-structure.rst
 
 .. toctree::
    :maxdepth: 3
