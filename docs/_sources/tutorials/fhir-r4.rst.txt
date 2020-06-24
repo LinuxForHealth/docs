@@ -7,7 +7,7 @@ This tutorial provides a working example of a typical Linux for Health FHIR R4 r
 
 Prerequisites
 =============
-* `Developer Setup <./developer-setup.html>`_
+* `Developer Setup <../developer-setup.html>`_
 * `Install Node.js <https://nodejs.org/en/download/package-manager/#macos>`_
 * `Install Postman <https://www.postman.com/downloads>`_
 

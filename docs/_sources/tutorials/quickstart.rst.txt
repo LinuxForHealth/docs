@@ -7,7 +7,7 @@ This tutorial provides a working example of a typical Linux for Health route: da
 
 Prerequisites
 =============
-* `Developer Setup <./developer-setup.html>`_
+* `Developer Setup <../developer-setup.html>`_
 * `Install Node.js <https://nodejs.org/en/download/package-manager/#macos>`_
 
 Tutorial Steps
