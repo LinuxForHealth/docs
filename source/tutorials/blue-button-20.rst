@@ -34,14 +34,14 @@ Open Postman and import this collection by clicking 'Import' -> 'Import File' ->
 
    connect/src/test/resources/postman/Linux for Health Blue Button Tutorial.postman_collection.json
 
-Click on the collection in the left navigation area and select the 'Authorize Linux for Health', then click 'Send'.
+Click on the collection in the left navigation area and select 'Authorize Linux for Health', then click 'Send'.
 
 This operation opens your default browser on MacOS and takes you to the Blue Button 2.0 Sandbox environment login.  Use these credentials to follow this tutorial, although there are 30K possible sample users to choose from::
 
    Username: BBUser02153
    Password: PW02153!
 
-Select 'Share all of your data' and click 'Allow'.  You can also elect to not share personal information, but this will give you a 403 Unauthorized result when you query for the Patient FHIR resource for this account.
+Select 'Share all of your data' and click 'Allow'.  You can also elect to not share personal information, but this will give you a 403 Unauthorized result when you query for the Patient FHIR resources for this account.
 
 From your browser window, copy the resulting 'access_token' and save it for the next step.
 

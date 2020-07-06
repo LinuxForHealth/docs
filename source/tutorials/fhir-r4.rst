@@ -31,7 +31,7 @@ Open Postman and import this collection by clicking 'Import' -> 'Import File' ->
 
    connect/src/test/resources/postman/Linux for Health FHIR R4 Tutorial.postman_collection.json
 
-Click on the collection in the left navigation area and select the 'Create a patient resource', then click 'Send'.
+Click on the collection in the left navigation area and select 'Create a patient resource', then click 'Send'.
 
 You should see the JSON result below in the Postman window::
 
