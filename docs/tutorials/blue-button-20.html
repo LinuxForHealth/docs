@@ -8,14 +8,14 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>FHIR R4 Tutorial &mdash; Linux for Health  documentation</title>
+  <title>Blue Button 2.0 Tutorial &mdash; Linux for Health  documentation</title>
   
 
   
   
   
   
-    <link rel="canonical" href="https://linuxforhealth.github.io/docs/tutorials/fhir-r4.html"/>
+    <link rel="canonical" href="https://linuxforhealth.github.io/docs/tutorials/blue-button-20.html"/>
   
 
   
@@ -38,8 +38,7 @@
   <link rel="stylesheet" href="https://assets.readthedocs.org/static/css/readthedocs-doc-embed.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Blue Button 2.0 Tutorial" href="blue-button-20.html" />
-    <link rel="prev" title="Quick Start Tutorial" href="quickstart.html" /> 
+    <link rel="prev" title="FHIR R4 Tutorial" href="fhir-r4.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -96,18 +95,20 @@
 <p class="caption"><span class="caption-text">Tutorials:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start Tutorial</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">FHIR R4 Tutorial</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="fhir-r4.html">FHIR R4 Tutorial</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Blue Button 2.0 Tutorial</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#tutorial-steps">Tutorial Steps</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#start-the-nats-subscriber">Start the NATS Subscriber</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#send-a-fhir-r4-message-to-linux-for-health">Send a FHIR R4 Message to Linux for Health</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#authorize-linux-for-health-to-use-the-blue-button-2-0-api">Authorize Linux for Health to use the Blue Button 2.0 API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configure-postman-for-blue-button-access">Configure Postman for Blue Button Access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#send-a-blue-button-query-to-linux-for-health">Send a Blue Button Query to Linux for Health</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#view-the-message-in-the-kafdrop-console-optional">View the Message in the Kafdrop Console (Optional)</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="blue-button-20.html">Blue Button 2.0 Tutorial</a></li>
 </ul>
 
             
@@ -153,13 +154,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>FHIR R4 Tutorial</li>
+      <li>Blue Button 2.0 Tutorial</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/tutorials/fhir-r4.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/tutorials/blue-button-20.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -172,15 +173,17 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="fhir-r4-tutorial">
-<h1>FHIR R4 Tutorial<a class="headerlink" href="#fhir-r4-tutorial" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="blue-button-2-0-tutorial">
+<h1>Blue Button 2.0 Tutorial<a class="headerlink" href="#blue-button-2-0-tutorial" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>This tutorial provides a working example of a typical Linux for Health FHIR R4 route: data ingress via FHIR R4, storage via a Kafka topic and notification via NATS.</p>
+<p>This tutorial provides instructions for using Linux for Health with <a class="reference external" href="https://bluebutton.cms.gov/developers/#blue-button-implementation-guide">Blue Button 2.0</a>, the CMS API that gives 53 million Medicare beneficiaries access to four years of Medicare Part A, B and D information.  The Blue Button 2.0 route in Linux for Health uses the Blue Button 2.0 Sandbox environment, which includes sample Medicare information for mock beneficiaries.  The route converts the results from FHIR R3 to R4, plus it includes standard steps of storage via a Kafka topic and notification via NATS.</p>
+<p>Note: FHIR R3 to R4 conversion is performed for Patient and Coverage resources, but R3-&gt;R4 conversion is not yet possible for the ExplanationOfBenefit resource (not implemented in org.hl7.fhir.convertors).</p>
 </div>
 <div class="section" id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
+<li><p>MacOS (required for the browser launch to log in to the Blue Button Sandbox environment during authorization)</p></li>
 <li><p><a class="reference external" href="../developer-setup.html">Developer Setup</a></p></li>
 <li><p><a class="reference external" href="https://nodejs.org/en/download/package-manager/#macos">Install Node.js</a></p></li>
 <li><p><a class="reference external" href="https://www.postman.com/downloads">Install Postman</a></p></li>
@@ -188,7 +191,7 @@
 </div>
 <div class="section" id="tutorial-steps">
 <h2>Tutorial Steps<a class="headerlink" href="#tutorial-steps" title="Permalink to this headline">¶</a></h2>
-<p>Once you have completed the Prerequisites, follow these steps to see Linux for Health in action using FHIR R4 resources.</p>
+<p>Once you have completed the Prerequisites, follow these steps to use Linux for Health to work with Medicare FHIR resources.</p>
 <div class="section" id="start-the-nats-subscriber">
 <h3>Start the NATS Subscriber<a class="headerlink" href="#start-the-nats-subscriber" title="Permalink to this headline">¶</a></h3>
 <p>In a new console window, cd to the NATS test directory in the Linux for Health connect repo (cloned during the Developer Setup Prerequisite):</p>
@@ -200,42 +203,59 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="send-a-fhir-r4-message-to-linux-for-health">
-<h3>Send a FHIR R4 Message to Linux for Health<a class="headerlink" href="#send-a-fhir-r4-message-to-linux-for-health" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="authorize-linux-for-health-to-use-the-blue-button-2-0-api">
+<h3>Authorize Linux for Health to use the Blue Button 2.0 API<a class="headerlink" href="#authorize-linux-for-health-to-use-the-blue-button-2-0-api" title="Permalink to this headline">¶</a></h3>
 <p>Open Postman and import this collection by clicking ‘Import’ -&gt; ‘Import File’ -&gt; ‘Choose Files’:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">connect</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">resources</span><span class="o">/</span><span class="n">postman</span><span class="o">/</span><span class="n">Linux</span> <span class="k">for</span> <span class="n">Health</span> <span class="n">FHIR</span> <span class="n">R4</span> <span class="n">Tutorial</span><span class="o">.</span><span class="n">postman_collection</span><span class="o">.</span><span class="n">json</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">connect</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">resources</span><span class="o">/</span><span class="n">postman</span><span class="o">/</span><span class="n">Linux</span> <span class="k">for</span> <span class="n">Health</span> <span class="n">Blue</span> <span class="n">Button</span> <span class="n">Tutorial</span><span class="o">.</span><span class="n">postman_collection</span><span class="o">.</span><span class="n">json</span>
 </pre></div>
 </div>
-<p>Click on the collection in the left navigation area and select the ‘Create a patient resource’, then click ‘Send’.</p>
-<p>You should see the JSON result below in the Postman window:</p>
+<p>Click on the collection in the left navigation area and select the ‘Authorize Linux for Health’, then click ‘Send’.</p>
+<p>This operation opens your default browser on MacOS and takes you to the Blue Button 2.0 Sandbox environment login.  Use these credentials to follow this tutorial, although there are 30K possible sample users to choose from:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Username: BBUser02153
+Password: PW02153!
+</pre></div>
+</div>
+<p>Select ‘Share all of your data’ and click ‘Allow’.  You can also elect to not share personal information, but this will give you a 403 Unauthorized result when you query for the Patient FHIR resource for this account.</p>
+<p>From your browser window, copy the resulting ‘access_token’ and save it for the next step.</p>
+</div>
+<div class="section" id="configure-postman-for-blue-button-access">
+<h3>Configure Postman for Blue Button Access<a class="headerlink" href="#configure-postman-for-blue-button-access" title="Permalink to this headline">¶</a></h3>
+<p>In Postman, navigate to your Blue Button tutorial collection and click ‘…’ next to the collection name, then click ‘Edit’.</p>
+<p>Click the ‘Authorization’ tab, then paste your new access_token from the previous section in the ‘Token’ field and click ‘Update’.</p>
+<p>You are now ready to query for Medicare data using Linux for Health and the Blue Button 2.0 API.</p>
+</div>
+<div class="section" id="send-a-blue-button-query-to-linux-for-health">
+<h3>Send a Blue Button Query to Linux for Health<a class="headerlink" href="#send-a-blue-button-query-to-linux-for-health" title="Permalink to this headline">¶</a></h3>
+<p>From the Blue Button collection in Postman, select ‘Get patient details’ and click ‘Send’.</p>
+<p>You should see a result similar to:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-   <span class="s2">&quot;meta&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="s2">&quot;routeId&quot;</span><span class="p">:</span> <span class="s2">&quot;fhir-r4-rest&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;bc4e2040-4a33-44ff-ba5d-374787ceed47&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;routeUrl&quot;</span><span class="p">:</span> <span class="s2">&quot;http://0.0.0.0:8080/fhir/r4/Patient&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;dataFormat&quot;</span><span class="p">:</span> <span class="s2">&quot;fhir-r4&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="mi">1594053821</span><span class="p">,</span>
-      <span class="s2">&quot;dataStoreUri&quot;</span><span class="p">:</span> <span class="s2">&quot;kafka:FHIR_R4_PATIENT?brokers=localhost:9092&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;dataRecordLocation&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="s2">&quot;FHIR_R4_PATIENT-0@22&quot;</span>
-      <span class="p">]</span>
+ <span class="s2">&quot;meta&quot;</span><span class="p">:</span> <span class="p">{</span>
+     <span class="s2">&quot;routeId&quot;</span><span class="p">:</span> <span class="s2">&quot;bluebutton-20-rest&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;6735c7ef-3640-434e-9563-2ed38958b21a&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;routeUrl&quot;</span><span class="p">:</span> <span class="s2">&quot;http://0.0.0.0:8080/bluebutton/v1/Patient?-19990000002154&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;dataFormat&quot;</span><span class="p">:</span> <span class="s2">&quot;fhir-r4&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="mi">1594050020</span><span class="p">,</span>
+     <span class="s2">&quot;dataStoreUri&quot;</span><span class="p">:</span> <span class="s2">&quot;kafka:FHIR_R4_PATIENT?brokers=localhost:9092&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;dataRecordLocation&quot;</span><span class="p">:</span> <span class="p">[</span>
+         <span class="s2">&quot;FHIR_R4_PATIENT-0@21&quot;</span>
+     <span class="p">]</span>
    <span class="p">}</span>
 <span class="p">}</span>
-
-<span class="n">You</span> <span class="n">should</span> <span class="n">also</span> <span class="n">see</span> <span class="n">a</span> <span class="n">NATS</span> <span class="n">notification</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">nats</span><span class="o">-</span><span class="n">subscriber</span> <span class="n">console</span> <span class="n">window</span><span class="p">,</span> <span class="n">indicating</span> <span class="n">the</span> <span class="n">message</span> <span class="n">was</span> <span class="n">stored</span> <span class="ow">in</span> <span class="n">Kafka</span><span class="o">.</span>  <span class="n">The</span> <span class="n">message</span> <span class="n">received</span> <span class="n">by</span> <span class="n">the</span> <span class="n">NATS</span> <span class="n">subscriber</span> <span class="n">indicates</span> <span class="n">the</span> <span class="n">topic</span><span class="p">,</span> <span class="n">partition</span> <span class="ow">and</span> <span class="n">offset</span> <span class="n">of</span> <span class="n">the</span> <span class="n">message</span> <span class="ow">in</span> <span class="n">Kafka</span><span class="p">,</span> <span class="n">which</span> <span class="n">could</span> <span class="n">be</span> <span class="n">used</span> <span class="k">for</span> <span class="n">downstream</span> <span class="n">application</span> <span class="n">integration</span><span class="o">.</span>
 </pre></div>
 </div>
+<p>The result indicates the topic, partition and offset of the message in Kafka.  ‘Get EOB details’ and ‘Get coverage details’ queries from the Postman collection provide similar results for ExplanationofBenefit and Coverage resources.</p>
+<p>You should also see a NATS notification in the nats-subscriber console window.  The message received by the NATS subscriber indicates the topic, partition and offset of the message in Kafka, which could be used for downstream application integration.</p>
 </div>
 <div class="section" id="view-the-message-in-the-kafdrop-console-optional">
 <h3>View the Message in the Kafdrop Console (Optional)<a class="headerlink" href="#view-the-message-in-the-kafdrop-console-optional" title="Permalink to this headline">¶</a></h3>
-<p>You can optionally view the message in Kafka, via the Kafdrop Kafka client.  In your browser, navigate to:</p>
+<p>You can optionally view the message contents in Kafka, via the Kafdrop Kafka client.  In your browser, navigate to:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">9000</span><span class="o">/</span>
 </pre></div>
 </div>
 <p>Scoll down and click on the ‘FHIR_R4_PATIENT’ topic.</p>
 <p>Click ‘View Messages’, then click ‘View Messages’ again on the next page.  This will take you to a list of all messages for the topic.</p>
-<p>Navigate to the message at the offset indicated in the query results.  For example, from <a class="reference external" href="mailto:'FHIR_R4_PATIENT-0&#37;&#52;&#48;22">‘FHIR_R4_PATIENT-0<span>&#64;</span>22</a>’ in the result, we know the message is at offset ‘22’ in the ‘FHIR_R4_PATIENT’ topic.  At your result offset, you should see the FHIR patient resource you just sent to Linux for Health.</p>
+<p>Navigate to the message at the offset indicated in the query results.  For example, from <a class="reference external" href="mailto:'FHIR_R4_PATIENT-0&#37;&#52;&#48;21">‘FHIR_R4_PATIENT-0<span>&#64;</span>21</a>’ in the result, we know the message is at offset ‘21’ in the ‘FHIR_R4_PATIENT’ topic.  At your result offset, you should see the bundle of Blue Button FHIR patient resources you just requested from Linux for Health.</p>
 </div>
 </div>
 </div>
@@ -248,10 +268,8 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="blue-button-20.html" class="btn btn-neutral float-right" title="Blue Button 2.0 Tutorial" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-      
-        <a href="quickstart.html" class="btn btn-neutral float-left" title="Quick Start Tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="fhir-r4.html" class="btn btn-neutral float-left" title="FHIR R4 Tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -47,11 +47,13 @@ Send an HL7 message to Linux for Health::
 
    mllp_send --file ADT_A01.txt --loose --port 2575 localhost
 
-You should see the message echoed in the HL7 client console window. 
+You should see the message echoed in the HL7 client console window::
 
-You should also see the message in the nats-subscriber console window, indicating the message was stored in Kafka.  The message received by the NATS subscriber indicates the topic, partition and offset of the message in Kafka, which could be used for downstream application integration::
+   {"meta":{"routeId":"hl7-v2-mllp","uuid":"838e1e9d-aa3d-47b0-8857-2c75ad143a92","routeUrl":"netty:tcp://0.0.0.0:2575?sync=true&encoders=#hl7encoder&decoders=#hl7decoder","dataFormat":"hl7-v2","timestamp":1594054356,"dataStoreUri":"kafka:HL7v2_ADT?brokers=localhost:9092","status":"success","dataRecordLocation":["HL7v2_ADT-0@7"]}}
 
-   {"metadata":["HL7v2_ADT-0@7"],"results":[{"partition":0,"offset":7,"topic":"HL7v2_ADT"}],"timestamp":200105231927}
+The result indicates the topic, partition and offset of the message in Kafka.
+
+You should also see a NATS notification in the nats-subscriber console window.  The message received by the NATS subscriber indicates the topic, partition and offset of the message in Kafka, which could be used for downstream application integration.
 
 View the Message in the Kafdrop Console (Optional)
 --------------------------------------------------
@@ -61,4 +63,6 @@ You can optionally view the message in Kafka, via the Kafdrop Kafka client.  In 
 
 Scoll down and click on the 'HL7v2_ADT' topic.
 
-Click 'View Messages', then click 'View Messages' again on the next page.  You should see the body of the HL7v2 message you just sent to Linux for Health.
+Click 'View Messages', then click 'View Messages' again on the next page. This will take you to a list of all messages for the topic.  
+
+Navigate to the message at the offset indicated in the result.  For example, from 'HL7v2_ADT-0@7' in the result, we know the message is at offset '7' in the 'HL7v2_ADT' topic.  At your result offset, you should see the HL7v2 ADT message sent to Linux for Health.

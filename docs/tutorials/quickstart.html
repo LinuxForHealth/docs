@@ -108,6 +108,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="fhir-r4.html">FHIR R4 Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blue-button-20.html">Blue Button 2.0 Tutorial</a></li>
 </ul>
 
             
@@ -223,11 +224,12 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mllp_send</span> <span class="o">--</span><span class="n">file</span> <span class="n">ADT_A01</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">loose</span> <span class="o">--</span><span class="n">port</span> <span class="mi">2575</span> <span class="n">localhost</span>
 </pre></div>
 </div>
-<p>You should see the message echoed in the HL7 client console window.</p>
-<p>You should also see the message in the nats-subscriber console window, indicating the message was stored in Kafka.  The message received by the NATS subscriber indicates the topic, partition and offset of the message in Kafka, which could be used for downstream application integration:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;metadata&quot;</span><span class="p">:[</span><span class="s2">&quot;HL7v2_ADT-0@7&quot;</span><span class="p">],</span><span class="s2">&quot;results&quot;</span><span class="p">:[{</span><span class="s2">&quot;partition&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;offset&quot;</span><span class="p">:</span><span class="mi">7</span><span class="p">,</span><span class="s2">&quot;topic&quot;</span><span class="p">:</span><span class="s2">&quot;HL7v2_ADT&quot;</span><span class="p">}],</span><span class="s2">&quot;timestamp&quot;</span><span class="p">:</span><span class="mi">200105231927</span><span class="p">}</span>
+<p>You should see the message echoed in the HL7 client console window:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;meta&quot;</span><span class="p">:{</span><span class="s2">&quot;routeId&quot;</span><span class="p">:</span><span class="s2">&quot;hl7-v2-mllp&quot;</span><span class="p">,</span><span class="s2">&quot;uuid&quot;</span><span class="p">:</span><span class="s2">&quot;838e1e9d-aa3d-47b0-8857-2c75ad143a92&quot;</span><span class="p">,</span><span class="s2">&quot;routeUrl&quot;</span><span class="p">:</span><span class="s2">&quot;netty:tcp://0.0.0.0:2575?sync=true&amp;encoders=#hl7encoder&amp;decoders=#hl7decoder&quot;</span><span class="p">,</span><span class="s2">&quot;dataFormat&quot;</span><span class="p">:</span><span class="s2">&quot;hl7-v2&quot;</span><span class="p">,</span><span class="s2">&quot;timestamp&quot;</span><span class="p">:</span><span class="mi">1594054356</span><span class="p">,</span><span class="s2">&quot;dataStoreUri&quot;</span><span class="p">:</span><span class="s2">&quot;kafka:HL7v2_ADT?brokers=localhost:9092&quot;</span><span class="p">,</span><span class="s2">&quot;status&quot;</span><span class="p">:</span><span class="s2">&quot;success&quot;</span><span class="p">,</span><span class="s2">&quot;dataRecordLocation&quot;</span><span class="p">:[</span><span class="s2">&quot;HL7v2_ADT-0@7&quot;</span><span class="p">]}}</span>
 </pre></div>
 </div>
+<p>The result indicates the topic, partition and offset of the message in Kafka.</p>
+<p>You should also see a NATS notification in the nats-subscriber console window.  The message received by the NATS subscriber indicates the topic, partition and offset of the message in Kafka, which could be used for downstream application integration.</p>
 </div>
 <div class="section" id="view-the-message-in-the-kafdrop-console-optional">
 <h3>View the Message in the Kafdrop Console (Optional)<a class="headerlink" href="#view-the-message-in-the-kafdrop-console-optional" title="Permalink to this headline">¶</a></h3>
@@ -236,7 +238,8 @@
 </pre></div>
 </div>
 <p>Scoll down and click on the ‘HL7v2_ADT’ topic.</p>
-<p>Click ‘View Messages’, then click ‘View Messages’ again on the next page.  You should see the body of the HL7v2 message you just sent to Linux for Health.</p>
+<p>Click ‘View Messages’, then click ‘View Messages’ again on the next page. This will take you to a list of all messages for the topic.</p>
+<p>Navigate to the message at the offset indicated in the result.  For example, from ‘HL7v2_ADT-0&#64;7’ in the result, we know the message is at offset ‘7’ in the ‘HL7v2_ADT’ topic.  At your result offset, you should see the HL7v2 ADT message sent to Linux for Health.</p>
 </div>
 </div>
 </div>

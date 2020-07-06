@@ -29,13 +29,28 @@ Send a FHIR R4 Message to Linux for Health
 ------------------------------------------
 Open Postman and import this collection by clicking 'Import' -> 'Import File' -> 'Choose Files'::
 
-   connect/src/test/resources/tutorials/Linux for Health FHIR R4 Tutorial.postma_collection.json
+   connect/src/test/resources/postman/Linux for Health FHIR R4 Tutorial.postman_collection.json
 
 Click on the collection in the left navigation area and select the 'Create a patient resource', then click 'Send'.
 
-You should see the JSON result below in the Postman window.  You should also see a NATS notification in the nats-subscriber console window, indicating the message was stored in Kafka.  The message received by the NATS subscriber indicates the topic, partition and offset of the message in Kafka, which could be used for downstream application integration::
+You should see the JSON result below in the Postman window::
 
-   {"metadata":["FHIR_R4_PATIENT-0@5"],"results":[{"partition":0,"offset":5,"topic":"FHIR_R4_PATIENT","timestamp":1591818224767}]}
+   {
+      "meta": {
+         "routeId": "fhir-r4-rest",
+         "uuid": "bc4e2040-4a33-44ff-ba5d-374787ceed47",
+         "routeUrl": "http://0.0.0.0:8080/fhir/r4/Patient",
+         "dataFormat": "fhir-r4",
+         "timestamp": 1594053821,
+         "dataStoreUri": "kafka:FHIR_R4_PATIENT?brokers=localhost:9092",
+         "status": "success",
+         "dataRecordLocation": [
+               "FHIR_R4_PATIENT-0@22"
+         ]
+      }
+   }
+
+   You should also see a NATS notification in the nats-subscriber console window, indicating the message was stored in Kafka.  The message received by the NATS subscriber indicates the topic, partition and offset of the message in Kafka, which could be used for downstream application integration.
 
 View the Message in the Kafdrop Console (Optional)
 --------------------------------------------------
@@ -45,4 +60,6 @@ You can optionally view the message in Kafka, via the Kafdrop Kafka client.  In 
 
 Scoll down and click on the 'FHIR_R4_PATIENT' topic.
 
-Click 'View Messages', then click 'View Messages' again on the next page.  You should see the body of the FHIR R4 message you just sent to Linux for Health.
+Click 'View Messages', then click 'View Messages' again on the next page.  This will take you to a list of all messages for the topic.  
+
+Navigate to the message at the offset indicated in the query results.  For example, from 'FHIR_R4_PATIENT-0@22' in the result, we know the message is at offset '22' in the 'FHIR_R4_PATIENT' topic.  At your result offset, you should see the FHIR patient resource you just sent to Linux for Health.
