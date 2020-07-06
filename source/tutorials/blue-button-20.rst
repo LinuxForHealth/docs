@@ -9,7 +9,6 @@ Note: FHIR R3 to R4 conversion is performed for Patient and Coverage resources, 
 
 Prerequisites
 =============
-* MacOS (required for the browser launch to log in to the Blue Button Sandbox environment during authorization)
 * `Developer Setup <../developer-setup.html>`_
 * `Install Node.js <https://nodejs.org/en/download/package-manager/#macos>`_
 * `Install Postman <https://www.postman.com/downloads>`_
@@ -36,7 +35,7 @@ Open Postman and import this collection by clicking 'Import' -> 'Import File' ->
 
 Click on the collection in the left navigation area and select 'Authorize Linux for Health', then click 'Send'.
 
-This operation opens your default browser on MacOS and takes you to the Blue Button 2.0 Sandbox environment login.  Use these credentials to follow this tutorial, although there are 30K possible sample users to choose from::
+This operation opens your default browser and takes you to the Blue Button 2.0 Sandbox environment login.  Use these credentials to follow this tutorial, although there are 30K possible sample users to choose from::
 
    Username: BBUser02153
    Password: PW02153!
