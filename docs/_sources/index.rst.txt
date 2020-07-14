@@ -38,3 +38,9 @@ You can get started by visiting our `developer setup page <./developer-setup.htm
    tutorials/quickstart.rst
    tutorials/fhir-r4.rst
    tutorials/blue-button-20.rst
+
+.. toctree::
+   :maxdepth: 3
+   :caption: Developing:
+
+   develop/getting-started.rst
