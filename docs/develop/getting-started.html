@@ -102,10 +102,13 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Extending Linux for Health</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#routes">Routes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#components">Components</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#exchanges">Exchanges</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#processors">Processors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#linux-for-health-constructs">Linux for Health Constructs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#routes">Routes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#components">Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exchanges">Exchanges</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#processors">Processors</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#route-basics">Route Basics</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#the-configure-method">The configure() Method</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#the-route">The Route</a></li>
@@ -188,22 +191,26 @@
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <p>These sections should provide you with enough information to easily extend Linux for Health (LFH) to incorporate routes and components that can perfom new processing functions and connect to new services.  For example, you may want to extend LFH to provide a route that users can call to access a new service.  Or you may need to provide a route and a Camel component to access your service.  The topics below will help you with these design decisions and provide implementation details.</p>
 </div>
+<div class="section" id="linux-for-health-constructs">
+<h2>Linux for Health Constructs<a class="headerlink" href="#linux-for-health-constructs" title="Permalink to this headline">¶</a></h2>
+<p>Linux for Health uses the following constructs to process healthcare information.</p>
 <div class="section" id="routes">
-<h2>Routes<a class="headerlink" href="#routes" title="Permalink to this headline">¶</a></h2>
+<h3>Routes<a class="headerlink" href="#routes" title="Permalink to this headline">¶</a></h3>
 <p>A Linux for Health route is designed to take data in, perform any required operations on that data (e.g. de-serialize, transform), then do something with that data (e.g. store, notify, forward, etc.).  Routes may be defined using standard protocols, such as REST or HTTP, and may use a <a class="reference external" href="https://camel.apache.org/components/latest/dataformats/index.html">known data format</a> such as HL7v2 or FHIR R4.  If you are adding access to a service, you will likely need to add a new route to LFH.</p>
 </div>
 <div class="section" id="components">
-<h2>Components<a class="headerlink" href="#components" title="Permalink to this headline">¶</a></h2>
+<h3>Components<a class="headerlink" href="#components" title="Permalink to this headline">¶</a></h3>
 <p>If access to your service requires the use of a library (e.g. a custom protocol), you may need to also create an Apache Camel component to access the service.  That component would be called from your route and would handle the connection to your service.  Camel contains hundreds of <a class="reference external" href="https://camel.apache.org/components/latest/index.html">components</a> that can serve as <a class="reference external" href="https://github.com/apache/camel/tree/master/components">examples</a>.  However, if a service is accessible via HTTP or REST, you probably don’t need to create a new component.</p>
 <p>If you do need to create a new Camel component, or modify an existing component, consider contributing your changes back to the <a class="reference external" href="https://camel.apache.org/components/latest/dataformats/index.html">Apache Camel project</a> for others to use.</p>
 </div>
 <div class="section" id="exchanges">
-<h2>Exchanges<a class="headerlink" href="#exchanges" title="Permalink to this headline">¶</a></h2>
+<h3>Exchanges<a class="headerlink" href="#exchanges" title="Permalink to this headline">¶</a></h3>
 <p>A Camel <a class="reference external" href="https://www.javadoc.io/doc/org.apache.camel/camel-core/2.21.0/org/apache/camel/Exchange.html">Exchange</a> is a construct that encapsulates the processing of a single incoming message.  The Exchange instance includes all the input data and headers, as well as exchange properties, for that message.  Exchange properties are recommended for storing data needed by downstream steps in a route.</p>
 </div>
 <div class="section" id="processors">
-<h2>Processors<a class="headerlink" href="#processors" title="Permalink to this headline">¶</a></h2>
+<h3>Processors<a class="headerlink" href="#processors" title="Permalink to this headline">¶</a></h3>
 <p>A Linux for Health processor encapsulates code for route message processing and takes the message Exchange instance as input.  Within a processor, you can set headers, properties and the message body itself, all of which flow to the next step in the message processing of the route.  When creating your own route, create a processor instead of performing multiple operations inline in a route.  LFH contains many processors, which you can use as examples for your new processor, in the connect/java/com/linuxforhealth/connect/builder directory of the Linux for Health connect repo (see the  <a class="reference external" href="../developer-setup.html">Developer Setup</a> “Getting Started” step for instructions for cloning and building the repo).</p>
+</div>
 </div>
 <div class="section" id="route-basics">
 <h2>Route Basics<a class="headerlink" href="#route-basics" title="Permalink to this headline">¶</a></h2>

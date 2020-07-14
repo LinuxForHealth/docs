@@ -5,22 +5,26 @@ Overview
 ========
 These sections should provide you with enough information to easily extend Linux for Health (LFH) to incorporate routes and components that can perfom new processing functions and connect to new services.  For example, you may want to extend LFH to provide a route that users can call to access a new service.  Or you may need to provide a route and a Camel component to access your service.  The topics below will help you with these design decisions and provide implementation details.
 
+Linux for Health Constructs
+===========================
+Linux for Health uses the following constructs to process healthcare information.
+
 Routes
-======
+------
 A Linux for Health route is designed to take data in, perform any required operations on that data (e.g. de-serialize, transform), then do something with that data (e.g. store, notify, forward, etc.).  Routes may be defined using standard protocols, such as REST or HTTP, and may use a `known data format <https://camel.apache.org/components/latest/dataformats/index.html>`_ such as HL7v2 or FHIR R4.  If you are adding access to a service, you will likely need to add a new route to LFH.
 
 Components
-==========
+----------
 If access to your service requires the use of a library (e.g. a custom protocol), you may need to also create an Apache Camel component to access the service.  That component would be called from your route and would handle the connection to your service.  Camel contains hundreds of `components <https://camel.apache.org/components/latest/index.html>`_ that can serve as `examples <https://github.com/apache/camel/tree/master/components>`_.  However, if a service is accessible via HTTP or REST, you probably don't need to create a new component.
 
 If you do need to create a new Camel component, or modify an existing component, consider contributing your changes back to the `Apache Camel project <https://camel.apache.org/components/latest/dataformats/index.html>`_ for others to use.
 
 Exchanges
-=========
+---------
 A Camel `Exchange <https://www.javadoc.io/doc/org.apache.camel/camel-core/2.21.0/org/apache/camel/Exchange.html>`_ is a construct that encapsulates the processing of a single incoming message.  The Exchange instance includes all the input data and headers, as well as exchange properties, for that message.  Exchange properties are recommended for storing data needed by downstream steps in a route.
 
 Processors
-==========
+----------
 A Linux for Health processor encapsulates code for route message processing and takes the message Exchange instance as input.  Within a processor, you can set headers, properties and the message body itself, all of which flow to the next step in the message processing of the route.  When creating your own route, create a processor instead of performing multiple operations inline in a route.  LFH contains many processors, which you can use as examples for your new processor, in the connect/java/com/linuxforhealth/connect/builder directory of the Linux for Health connect repo (see the  `Developer Setup <../developer-setup.html>`_ "Getting Started" step for instructions for cloning and building the repo).
 
 Route Basics
