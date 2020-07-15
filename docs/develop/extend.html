@@ -207,13 +207,14 @@
 </div>
 <div class="section" id="processors">
 <h3>Processors<a class="headerlink" href="#processors" title="Permalink to this headline">¶</a></h3>
-<p>A Linux for Health processor encapsulates code for route message processing and takes the message Exchange instance as input.  Within a processor, you can set headers, properties and the message body itself, all of which flow to the next step in the message processing of the route.  When creating your own route, create a processor instead of performing multiple operations inline in a route.  LFH contains many processors that you can use as examples for your new processor in the connect/java/com/linuxforhealth/connect/builder directory of the Linux for Health connect repo (see the <a class="reference external" href="../developer-setup.html">Developer Setup</a> “Getting Started” step for instructions for cloning and building the repo).</p>
+<p>A Linux for Health processor encapsulates code for route message processing and takes the message Exchange instance as input.  Within a processor, you can set headers, properties and the message body itself, all of which flow to the next step in the message processing of the route.  When creating your own route, create a processor instead of performing multiple operations inline in a route.  LFH contains many processors that you can use as examples for your new processor in the connect/java/com/linuxforhealth/connect/processor directory of the Linux for Health connect repo.</p>
 </div>
 </div>
 <div class="section" id="steps-to-extend">
 <h2>Steps to Extend<a class="headerlink" href="#steps-to-extend" title="Permalink to this headline">¶</a></h2>
 <p>Follow the steps below to extend Linux for Health:</p>
 <ol class="arabic simple">
+<li><p>Clone and build the Linux for Health repo. See the <a class="reference external" href="../developer-setup.html">Developer Setup</a> Getting Started step for instructions.</p></li>
 <li><p>Determine if you need a route and component or just a route, based on the discussion above.</p></li>
 <li><p>Create a new component, if needed, by cloning and modifying a Camel component that most closely matches your requirements.  You can find simple Camel components that include only 4 required files as a starting point.</p></li>
 <li><p>Create a new route by cloning and modifying the LFH route that most closely matches your requirements, following the <a class="reference external" href="./route-basics.html">Route Development</a> guidance.  Be sure to include the steps that are required for LFH routes.</p></li>

@@ -25,19 +25,20 @@ A Camel `Exchange <https://www.javadoc.io/doc/org.apache.camel/camel-core/2.21.0
 
 Processors
 ----------
-A Linux for Health processor encapsulates code for route message processing and takes the message Exchange instance as input.  Within a processor, you can set headers, properties and the message body itself, all of which flow to the next step in the message processing of the route.  When creating your own route, create a processor instead of performing multiple operations inline in a route.  LFH contains many processors that you can use as examples for your new processor in the connect/java/com/linuxforhealth/connect/builder directory of the Linux for Health connect repo (see the `Developer Setup <../developer-setup.html>`_ "Getting Started" step for instructions for cloning and building the repo).
+A Linux for Health processor encapsulates code for route message processing and takes the message Exchange instance as input.  Within a processor, you can set headers, properties and the message body itself, all of which flow to the next step in the message processing of the route.  When creating your own route, create a processor instead of performing multiple operations inline in a route.  LFH contains many processors that you can use as examples for your new processor in the connect/java/com/linuxforhealth/connect/processor directory of the Linux for Health connect repo.
 
 Steps to Extend
 ===============
 Follow the steps below to extend Linux for Health:
 
-1. Determine if you need a route and component or just a route, based on the discussion above.
-2. Create a new component, if needed, by cloning and modifying a Camel component that most closely matches your requirements.  You can find simple Camel components that include only 4 required files as a starting point.
-3. Create a new route by cloning and modifying the LFH route that most closely matches your requirements, following the `Route Development <./route-basics.html>`_ guidance.  Be sure to include the steps that are required for LFH routes.
-4. Create new processors to encapsulate the route message processing steps by cloning and modifying the LFH processor that most closely matches your requirements.
-5. Add any new dependencies to the LFH build.gradle file.  Look at any new classes that you use, determine the Java packages they are in and make sure those packages are in the build.gradle file.
-6. Create unit tests and add test services following the guidance in the Testing section below.
-7. Build, test and open a PR to contribute to `Linux for Health <https://github.com/LinuxForHealth/connect/pulls>`_!
+1. Clone and build the Linux for Health repo. See the `Developer Setup <../developer-setup.html>`_ Getting Started step for instructions.
+2. Determine if you need a route and component or just a route, based on the discussion above.
+3. Create a new component, if needed, by cloning and modifying a Camel component that most closely matches your requirements.  You can find simple Camel components that include only 4 required files as a starting point.
+4. Create a new route by cloning and modifying the LFH route that most closely matches your requirements, following the `Route Development <./route-basics.html>`_ guidance.  Be sure to include the steps that are required for LFH routes.
+5. Create new processors to encapsulate the route message processing steps by cloning and modifying the LFH processor that most closely matches your requirements.
+6. Add any new dependencies to the LFH build.gradle file.  Look at any new classes that you use, determine the Java packages they are in and make sure those packages are in the build.gradle file.
+7. Create unit tests and add test services following the guidance in the Testing section below.
+8. Build, test and open a PR to contribute to `Linux for Health <https://github.com/LinuxForHealth/connect/pulls>`_!
 
 Testing
 =======
