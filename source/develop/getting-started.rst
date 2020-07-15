@@ -3,7 +3,7 @@ Extending Linux for Health
 
 Overview
 ========
-These sections should provide you with enough information to easily extend Linux for Health (LFH) to incorporate routes and components that can perfom new processing functions and connect to new services.  For example, you may want to extend LFH to provide a route that users can call to access a new service.  Or you may need to provide a route and a Camel component to access your service.  The topics below will help you with these design decisions and provide implementation details.
+These sections should provide you with enough information to easily extend Linux for Health (LFH) to incorporate routes and components that can perfom new processing functions and connect to new services.  For example, you may want to extend LFH to provide a route that users can call to access a new service.  Or you may need to provide a route and a Camel component to access your service.  You could also provide a new route to take data from one source, transform it if necessary, then send it to another service or data store.  The topics below will help you with these design decisions and provide implementation details.
 
 Linux for Health Constructs
 ===========================
@@ -25,7 +25,7 @@ A Camel `Exchange <https://www.javadoc.io/doc/org.apache.camel/camel-core/2.21.0
 
 Processors
 ----------
-A Linux for Health processor encapsulates code for route message processing and takes the message Exchange instance as input.  Within a processor, you can set headers, properties and the message body itself, all of which flow to the next step in the message processing of the route.  When creating your own route, create a processor instead of performing multiple operations inline in a route.  LFH contains many processors, which you can use as examples for your new processor, in the connect/java/com/linuxforhealth/connect/builder directory of the Linux for Health connect repo (see the  `Developer Setup <../developer-setup.html>`_ "Getting Started" step for instructions for cloning and building the repo).
+A Linux for Health processor encapsulates code for route message processing and takes the message Exchange instance as input.  Within a processor, you can set headers, properties and the message body itself, all of which flow to the next step in the message processing of the route.  When creating your own route, create a processor instead of performing multiple operations inline in a route.  LFH contains many processors that you can use as examples for your new processor in the connect/java/com/linuxforhealth/connect/builder directory of the Linux for Health connect repo (see the `Developer Setup <../developer-setup.html>`_ "Getting Started" step for instructions for cloning and building the repo).
 
 Route Basics
 ============
@@ -52,35 +52,65 @@ The LFH FHIR R4 route configuration method, shown here, defines a simple REST ro
                 .to("direct:storeandnotify");
     }
 
-The configure() Method
-----------------------
-The configure() method contains the following elements:
+configure()
+-----------
+The Linux for Health route builder configure() method contains the route and the following additional elements:
 
-- uriBuilder is an EndpointUriBuilder instance that contains helper methods for creating URIs from properties in the LFH application.properties.  You will add your route URI to the LFH application.properties file and add a method to return that URI in EndpointUriBuilder.java. (required)
++-----------------------------------+---------------------------------------------+----------------------+
+| Step                              | Explanation                                 | Required / Optional  |
++===================================+=============================================+======================+
+| uriBuilder                        | |uriBuilder_def|                            | Required             |
++-----------------------------------+---------------------------------------------+----------------------+
+| fhirBaseUri                       | |baseUri_def|                               | Required             |
++-----------------------------------+---------------------------------------------+----------------------+
+| setFhirR4Metadata                 | |metadata_def|                              | Required             |
++-----------------------------------+---------------------------------------------+----------------------+
+| restConfiguration().host().port() | |restconfig_def|                            | Required             |
++-----------------------------------+---------------------------------------------+----------------------+
 
-- fhirBaseUri is the URI for this route.  You will have your own URI for your route. (required)
+.. |uriBuilder_def| replace:: An EndpointUriBuilder instance that contains helper methods for creating URIs from properties in the LFH application.properties.  You will add your route URI to the LFH application.properties file and access it via a method that you will create for your URL in the LFH EnpointURIBuilder class.
 
-- setFhirR4Metadata is an LFH Processor instance that sets the expected LFH message headers as exchange properties.  This step will vary slightly between routes, so you will likely need to create a specific processor for your route. (required)
+.. |baseUri_def| replace:: The URI for this route.  You will have your own URI for your route.
 
-- restConfiguration().host().port() configures the host and port for this REST route.  The host and port will be the same for all LFH routes. (required)
+.. |metadata_def| replace:: An LFH Processor instance that sets the expected LFH message headers as exchange properties.  This step will vary slightly between routes, so you will likely need to create a specific processor for your route.
 
-The Route
----------
-The route then contains the following steps:
+.. |restconfig_def| replace:: Configures the host and port for this REST route.  The LFH host and port may be the same for all LFH routes.
 
-- rest(fhirBaseUri.getPath()) defines the URL within LFH that will accept REST calls for this route.  This URL is defined in the LFH `applictaion.properties file <../application-configuration.rst>`_ and accessed via a method that you will create for your URL in the LFH EnpointURIBuilder class. (required)
+Route
+-----
+The Linux for Health route contains the following steps:
 
-- post("/{resource}") defines the REST operation supported by this route and the path parameter {resource}.  One route may support multiple REST operations, but in this case only POST is supported. (required)
++-----------------------------------+---------------------------------------------+----------------------+
+| Step                              | Explanation                                 | Required / Optional  |
++===================================+=============================================+======================+
+| rest(fhirBaseUri.getPath())       | |restUri_def|                               | Required             |
++-----------------------------------+---------------------------------------------+----------------------+
+| post("/{resource}")               | |restOp_def|                                | Required             |
++-----------------------------------+---------------------------------------------+----------------------+
+| route()                           | |route_def|                                 | Required             |
++-----------------------------------+---------------------------------------------+----------------------+
+| routeId()                         | |routeId_def|                               | Required             |
++-----------------------------------+---------------------------------------------+----------------------+
+| unmarshal()                       | |unmarshall_def|                            | Optional             |
++-----------------------------------+---------------------------------------------+----------------------+
+| process(setFhirR4Metadata)        | |setMetadata_def|                           | Required             |
++-----------------------------------+---------------------------------------------+----------------------+
+| to("direct:storeandnotify")       | |storeNotify_def|                           | Required             |
++-----------------------------------+---------------------------------------------+----------------------+
 
-- route() embeds a Camel route in the REST processing. (required)
+.. |restUri_def| replace:: Defines the URL within LFH that will accept REST calls for this route.
 
-- routeId() specifies a unique LFH route name for the embedded route. (required)
+.. |restOp_def| replace:: Defines the REST operation supported by this route and the path parameter {resource}.  One route may support multiple REST operations, but in this case only POST is supported.
 
-- unmarshal() de-serializes the input data to FHIR R4 JSON.
+.. |route_def| replace:: Embeds a Camel route in the REST processing.
 
-- process(setFhirR4Metadata) sets the expected LFH message headers as exchange properties.  This step will vary slightly between routes, so you will likely need to create a specific processor for your route. (required)
+.. |routeId_def| replace:: Specifies a unique LFH route name for the embedded route.
 
-- to("direct:storeandnotify") encapsulates the storage of the LFH message properties and message body in Kafka and the notification of that storage via NATS.  Your route should include this step at or near the end. (required)
+.. |unmarshall_def| replace:: De-serializes the input data to FHIR R4 JSON.
+
+.. |setMetadata_def| replace:: Sets the expected LFH message headers as exchange properties.  This step will vary slightly between routes, so you will likely need to create a specific processor for your route.
+
+.. |storeNotify_def| replace:: Encapsulates the storage of the LFH message properties and message body in Kafka and the notification of that storage via NATS.  Your route should include this step at or near the end.
 
 Testing
 =======
