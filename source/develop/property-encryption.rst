@@ -15,7 +15,7 @@ While some Camel instructions will tell you to clone and build all of Camel, the
 
     chmod +x encrypt.sh
 
-3. Run encrypt.sh to encrypt your property, using the LFH password shown (for development only). 
+3. Run encrypt.sh to encrypt your property, using the LFH password shown (for development only).::
 
     ./encrypt.sh input="value to encrypt" password="ultrasecret"
 

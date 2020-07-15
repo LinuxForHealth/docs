@@ -191,10 +191,10 @@
 </pre></div>
 </div>
 </li>
-<li><p>Run encrypt.sh to encrypt your property, using the LFH password shown (for development only).</p>
-<blockquote>
-<div><p>./encrypt.sh input=”value to encrypt” password=”ultrasecret”</p>
-</div></blockquote>
+<li><p>Run encrypt.sh to encrypt your property, using the LFH password shown (for development only).:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">encrypt</span><span class="o">.</span><span class="n">sh</span> <span class="nb">input</span><span class="o">=</span><span class="s2">&quot;value to encrypt&quot;</span> <span class="n">password</span><span class="o">=</span><span class="s2">&quot;ultrasecret&quot;</span>
+</pre></div>
+</div>
 </li>
 </ol>
 <p>For development, using the password used by Linux for Health will allow you to automatically decrypt your password without further configuration in LFH.  For production environmments, LFH will add the ability to set an environment variable containing the encryption password before starting LFH, then you can delete that environment variable after LFH starts.</p>
