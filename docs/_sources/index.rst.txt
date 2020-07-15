@@ -12,6 +12,8 @@ What is Linux for Health?
 
 Linux For Health (LFH) has captured the attention of industry leaders in the field.  While the project is in its nascent stages, industry leaders have already forked the code and committed additonal features. The goal is to be become the reference for a trusted interoperable transactional development system for data, deployment, and machine learning within the healthcare industry.  As the project evolves, the initial companies who have committed to develop on LFH will be providing APIs and build recipes that support LFH deployment from embedded device, fully distributed agent-based, multi-tenant multi cloud and LinuxOne distributions.  We hope you join our journey in making the Linux For Health.
 
+Core to Linux for Health is the concept of a route, or a sequential set of operations on a transaction.  Linux for Health routes are designed to ingest healthcare data, perform any required operations on that data (e.g. de-serialize, transform, enrich), then do something with that data (e.g. store, notify, forward), providing a transformative capability which has the potential to revolutionize the healthcare industry.
+
 Linux for Health is built on:
 
 * Apache Camel for integration, supported by one of the most active development communities.
@@ -38,3 +40,12 @@ You can get started by visiting our `developer setup page <./developer-setup.htm
    tutorials/quickstart.rst
    tutorials/fhir-r4.rst
    tutorials/blue-button-20.rst
+
+.. toctree::
+   :maxdepth: 3
+   :caption: Develop:
+
+   develop/extend.rst
+   develop/build.rst
+   develop/test.rst
+   develop/route-basics.rst

@@ -98,6 +98,13 @@
 <li class="toctree-l1"><a class="reference internal" href="tutorials/fhir-r4.html">FHIR R4 Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorials/blue-button-20.html">Blue Button 2.0 Tutorial</a></li>
 </ul>
+<p class="caption"><span class="caption-text">Develop:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="develop/extend.html">Developing for Linux for Health</a></li>
+<li class="toctree-l1"><a class="reference internal" href="develop/build.html">Building Your Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="develop/test.html">Testing Your Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="develop/route-basics.html">Developing Routes</a></li>
+</ul>
 
             
           
@@ -165,6 +172,7 @@
 <h1>What is Linux for Health?<a class="headerlink" href="#what-is-linux-for-health" title="Permalink to this headline">¶</a></h1>
 <a class="reference internal image-reference" href="_images/LinuxforHealth.png"><img alt="Linux for Health" src="_images/LinuxforHealth.png" style="width: 600px;" /></a>
 <p>Linux For Health (LFH) has captured the attention of industry leaders in the field.  While the project is in its nascent stages, industry leaders have already forked the code and committed additonal features. The goal is to be become the reference for a trusted interoperable transactional development system for data, deployment, and machine learning within the healthcare industry.  As the project evolves, the initial companies who have committed to develop on LFH will be providing APIs and build recipes that support LFH deployment from embedded device, fully distributed agent-based, multi-tenant multi cloud and LinuxOne distributions.  We hope you join our journey in making the Linux For Health.</p>
+<p>Core to Linux for Health is the concept of a route, or a sequential set of operations on a transaction.  Linux for Health routes are designed to ingest healthcare data, perform any required operations on that data (e.g. de-serialize, transform, enrich), then do something with that data (e.g. store, notify, forward), providing a transformative capability which has the potential to revolutionize the healthcare industry.</p>
 <p>Linux for Health is built on:</p>
 <ul class="simple">
 <li><p>Apache Camel for integration, supported by one of the most active development communities.</p></li>
@@ -232,6 +240,44 @@
 <li class="toctree-l3"><a class="reference internal" href="tutorials/blue-button-20.html#configure-postman-for-blue-button-access">Configure Postman for Blue Button Access</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tutorials/blue-button-20.html#send-a-blue-button-query-to-linux-for-health">Send a Blue Button Query to Linux for Health</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tutorials/blue-button-20.html#view-the-message-in-the-kafdrop-console-optional">View the Message in the Kafdrop Console (Optional)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Develop:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="develop/extend.html">Developing for Linux for Health</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="develop/extend.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="develop/extend.html#linux-for-health-constructs">Linux for Health Constructs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="develop/extend.html#routes">Routes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="develop/extend.html#components">Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="develop/extend.html#exchanges">Exchanges</a></li>
+<li class="toctree-l3"><a class="reference internal" href="develop/extend.html#processors">Processors</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="develop/extend.html#steps-to-extend">Steps to Extend</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="develop/build.html">Building Your Code</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="develop/build.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="develop/build.html#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="develop/build.html#build">Build</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="develop/test.html">Testing Your Code</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="develop/test.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="develop/test.html#unit-tests">Unit Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="develop/test.html#test-services">Test Services</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="develop/route-basics.html">Developing Routes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="develop/route-basics.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="develop/route-basics.html#route-basics">Route Basics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="develop/route-basics.html#configure">configure()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="develop/route-basics.html#route">Route</a></li>
 </ul>
 </li>
 </ul>
