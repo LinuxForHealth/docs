@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Extending Linux for Health &mdash; Linux for Health  documentation</title>
+  <title>Developing for Linux for Health &mdash; Linux for Health  documentation</title>
   
 
   
@@ -38,7 +38,7 @@
   <link rel="stylesheet" href="https://assets.readthedocs.org/static/css/readthedocs-doc-embed.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Building Extensions" href="build.html" />
+    <link rel="next" title="Building Your Code" href="build.html" />
     <link rel="prev" title="Blue Button 2.0 Tutorial" href="../tutorials/blue-button-20.html" /> 
 </head>
 
@@ -101,7 +101,7 @@
 </ul>
 <p class="caption"><span class="caption-text">Develop:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Extending Linux for Health</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Developing for Linux for Health</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#linux-for-health-constructs">Linux for Health Constructs</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#routes">Routes</a></li>
@@ -113,8 +113,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#steps-to-extend">Steps to Extend</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="build.html">Building Extensions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="test.html">Testing Extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build.html">Building Your Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="test.html">Testing Your Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="route-basics.html">Developing Routes</a></li>
 </ul>
 
@@ -161,7 +161,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Extending Linux for Health</li>
+      <li>Developing for Linux for Health</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -180,8 +180,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="extending-linux-for-health">
-<h1>Extending Linux for Health<a class="headerlink" href="#extending-linux-for-health" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="developing-for-linux-for-health">
+<h1>Developing for Linux for Health<a class="headerlink" href="#developing-for-linux-for-health" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <p>This discussion should provide you with enough information to easily extend Linux for Health (LFH) to incorporate routes and components that can perfom new processing functions and connect to new services.  For example, you may want to extend LFH to provide a route that users can call to access a new service.  Or you may need to provide a route and a Apache Camel component to access your service.  You could also provide a new route to take data from one source, transform it if necessary, then send it to another service or data store.  The topics below will help you with these design decisions and provide implementation details.</p>
@@ -216,8 +216,8 @@
 <li><p>Create a new component, if needed, by cloning and modifying a Camel component that most closely matches your requirements.  You can find simple Camel components that include only 4 required files as a starting point.</p></li>
 <li><p>Create a new route by cloning and modifying the LFH route that most closely matches your requirements, following the <a class="reference external" href="./route-basics.html">Route Development</a> guidance.  Be sure to include the steps that are required for LFH routes.</p></li>
 <li><p>Create new processors to encapsulate the route message processing steps by cloning and modifying the LFH processor that most closely matches your requirements.</p></li>
-<li><p>Add any new dependencies to the LFH build.gradle file, following the guidance in <a class="reference external" href="./build.html">Building Extensions</a>.</p></li>
-<li><p>Create unit tests and add test services, following the guidance in <a class="reference external" href="./test.html">Testing Extensions</a>.</p></li>
+<li><p>Add any new dependencies to the LFH build.gradle file, following the guidance in <a class="reference external" href="./build.html">Building Your Code</a>.</p></li>
+<li><p>Create unit tests and add test services, following the guidance in <a class="reference external" href="./test.html">Testing Your Code</a>.</p></li>
 <li><p>Build, test, then open a feature issue and a pull request against that feature to contribute your changes to <a class="reference external" href="https://github.com/LinuxForHealth/connect">Linux for Health</a>!</p></li>
 </ol>
 </div>
@@ -231,7 +231,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="build.html" class="btn btn-neutral float-right" title="Building Extensions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="build.html" class="btn btn-neutral float-right" title="Building Your Code" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../tutorials/blue-button-20.html" class="btn btn-neutral float-left" title="Blue Button 2.0 Tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

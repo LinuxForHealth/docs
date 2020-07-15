@@ -1,9 +1,9 @@
-Building Extensions
-*******************
+Building Your Code
+******************
 
 Overview
 ========
-To build Linux for Health (LFH) with your extension, you will first need to add any new dependencies to LFH.
+Once you have created a new Linux for Health component or route (see `Developing for Linux for Health <./extend.html>`_), your next step is to run a build.  To build Linux for Health (LFH) with your code changes, you will first need to add any new dependencies to LFH.
 
 Dependencies
 ============

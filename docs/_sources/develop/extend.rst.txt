@@ -1,5 +1,5 @@
-Extending Linux for Health
-**************************
+Developing for Linux for Health
+*******************************
 
 Overview
 ========
@@ -36,6 +36,6 @@ Follow the steps below to extend Linux for Health:
 3. Create a new component, if needed, by cloning and modifying a Camel component that most closely matches your requirements.  You can find simple Camel components that include only 4 required files as a starting point.
 4. Create a new route by cloning and modifying the LFH route that most closely matches your requirements, following the `Route Development <./route-basics.html>`_ guidance.  Be sure to include the steps that are required for LFH routes.
 5. Create new processors to encapsulate the route message processing steps by cloning and modifying the LFH processor that most closely matches your requirements.
-6. Add any new dependencies to the LFH build.gradle file, following the guidance in `Building Extensions <./build.html>`_.
-7. Create unit tests and add test services, following the guidance in `Testing Extensions <./test.html>`_.
+6. Add any new dependencies to the LFH build.gradle file, following the guidance in `Building Your Code <./build.html>`_.
+7. Create unit tests and add test services, following the guidance in `Testing Your Code <./test.html>`_.
 8. Build, test, then open a feature issue and a pull request against that feature to contribute your changes to `Linux for Health <https://github.com/LinuxForHealth/connect>`_!
