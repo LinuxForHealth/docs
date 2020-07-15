@@ -1,0 +1,276 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Property Encryption &mdash; Linux for Health  documentation</title>
+  
+
+  
+  
+  
+  
+    <link rel="canonical" href="https://linuxforhealth.github.io/docs/develop/property-encryption.html"/>
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Developing Routes" href="route-basics.html" />
+    <link rel="prev" title="Testing Your Code" href="test.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: 0x4380B4" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Linux for Health
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                master
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Installation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developer-setup.html">Developer Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../application-configuration.html">Application Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../message-structure.html">Message Structure</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/quickstart.html">Quick Start Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/fhir-r4.html">FHIR R4 Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/blue-button-20.html">Blue Button 2.0 Tutorial</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Develop:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="extend.html">Developing for Linux for Health</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build.html">Building Your Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="test.html">Testing Your Code</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Property Encryption</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#encryption-using-jasypt">Encryption Using Jasypt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-encrypted-properties">Using Encrypted Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="route-basics.html">Developing Routes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Linux for Health</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Property Encryption</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/develop/property-encryption.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="property-encryption">
+<h1>Property Encryption<a class="headerlink" href="#property-encryption" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>In Linux for Health (LFH), if you need to use properties to store private information (passwords, client ids, secrets, etc.), you can encrypt those in the LFH application.properties file using Jasypt.  The following sections explain how to encrypt your property values and reference those encrypted properties within LFH in a way that Jasypt can decrypt them.</p>
+</div>
+<div class="section" id="encryption-using-jasypt">
+<h2>Encryption Using Jasypt<a class="headerlink" href="#encryption-using-jasypt" title="Permalink to this headline">¶</a></h2>
+<p>While some Camel instructions will tell you to clone and build all of Camel, then use java -jar to run the Camel Jasypt jar, the easiest way to use Jasypt to encrypt your property values is to download it and run the encrypt.sh utility.</p>
+<ol class="arabic">
+<li><p>Download <a class="reference external" href="https://github.com/jasypt/jasypt">Jasypt</a> then unzip it.</p></li>
+<li><p>cd to the Jasypt bin directory and make encrypt.sh executable:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chmod</span> <span class="o">+</span><span class="n">x</span> <span class="n">encrypt</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+</li>
+<li><p>Run encrypt.sh to encrypt your property, using the LFH password shown (for development only).</p>
+<blockquote>
+<div><p>./encrypt.sh input=”value to encrypt” password=”ultrasecret”</p>
+</div></blockquote>
+</li>
+</ol>
+<p>For development, using the password used by Linux for Health will allow you to automatically decrypt your password without further configuration in LFH.  For production environmments, LFH will add the ability to set an environment variable containing the encryption password before starting LFH, then you can delete that environment variable after LFH starts.</p>
+<ol class="arabic" start="4">
+<li><p>Add your encrypted value to your property in the LFH connect/container-support/compose/application.properties:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">property</span><span class="o">=</span><span class="n">ENC</span><span class="p">(</span><span class="n">encrypted_value</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">linuxforhealth</span><span class="o">.</span><span class="n">connect</span><span class="o">.</span><span class="n">endpoint</span><span class="o">.</span><span class="n">myService</span><span class="o">.</span><span class="n">password</span><span class="o">=</span><span class="n">ENC</span><span class="p">(</span><span class="n">lY4mNzx</span><span class="o">+</span><span class="n">VVFQ71k54tt</span><span class="o">/</span><span class="n">KF4OA2PFtEgnLlkMM</span><span class="o">+</span><span class="n">j78nU</span><span class="o">=</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-encrypted-properties">
+<h2>Using Encrypted Properties<a class="headerlink" href="#using-encrypted-properties" title="Permalink to this headline">¶</a></h2>
+<p>To use your Jasypt-encrypted property in a Linux for Health processor, use the SimpleBuilder class:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">String</span> <span class="n">password</span> <span class="o">=</span> <span class="n">SimpleBuilder</span><span class="o">.</span><span class="n">simple</span><span class="p">(</span><span class="s2">&quot;${properties:linuxforhealth.connect.endpoint.myService.password}&quot;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">exchange</span><span class="p">,</span> <span class="n">String</span><span class="o">.</span><span class="n">class</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>To use your encrypted property in a Java DSL route, use the Simple() function:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">setProperty</span><span class="p">(</span><span class="s2">&quot;password&quot;</span><span class="p">,</span> <span class="n">simple</span><span class="p">(</span><span class="s2">&quot;${properties:linuxforhealth.connect.endpoint.myService.password}&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="route-basics.html" class="btn btn-neutral float-right" title="Developing Routes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="test.html" class="btn btn-neutral float-left" title="Testing Your Code" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, IBM
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
