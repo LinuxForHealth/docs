@@ -43,4 +43,5 @@ You can get started by visiting our `developer setup page <./developer-setup.htm
    :maxdepth: 3
    :caption: Developing:
 
-   develop/getting-started.rst
+   develop/extend.rst
+   develop/route-basics.rst

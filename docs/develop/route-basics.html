@@ -1,0 +1,338 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Route Development &mdash; Linux for Health  documentation</title>
+  
+
+  
+  
+  
+  
+    <link rel="canonical" href="https://linuxforhealth.github.io/docs/develop/route-basics.html"/>
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="https://assets.readthedocs.org/static/css/readthedocs-doc-embed.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Extending Linux for Health" href="extend.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: 0x4380B4" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Linux for Health
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                master
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Installation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developer-setup.html">Developer Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../application-configuration.html">Application Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../message-structure.html">Message Structure</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/quickstart.html">Quick Start Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/fhir-r4.html">FHIR R4 Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/blue-button-20.html">Blue Button 2.0 Tutorial</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developing:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="extend.html">Extending Linux for Health</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Route Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#route-basics">Route Basics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#configure">configure()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#route">Route</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Linux for Health</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Route Development</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/develop/route-basics.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="route-development">
+<h1>Route Development<a class="headerlink" href="#route-development" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>Linux for Health (LFH) contains routes for common healthcare protocols and services, such as HL7v2, FHIR R4 and CMS Blue Button 2.0.  Routes are created as RouteBuilder classes in the connect/java/com/linuxforhealth/connect/builder directory of the Linux for Health connect repo.</p>
+</div>
+<div class="section" id="route-basics">
+<h2>Route Basics<a class="headerlink" href="#route-basics" title="Permalink to this headline">¶</a></h2>
+<p>The LFH FHIR R4 route configuration method, shown here, defines a simple REST route that receives FHIR R4 resources and stores them:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@Override</span>
+<span class="n">public</span> <span class="n">void</span> <span class="n">configure</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">EndpointUriBuilder</span> <span class="n">uriBuilder</span> <span class="o">=</span> <span class="n">getEndpointUriBuilder</span><span class="p">();</span>
+    <span class="n">URI</span> <span class="n">fhirBaseUri</span> <span class="o">=</span> <span class="n">URI</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">uriBuilder</span><span class="o">.</span><span class="n">getFhirR4RestUri</span><span class="p">());</span>
+    <span class="n">Processor</span> <span class="n">setFhirR4Metadata</span> <span class="o">=</span> <span class="n">new</span> <span class="n">FhirR4MetadataProcessor</span><span class="p">();</span>
+
+    <span class="n">restConfiguration</span><span class="p">()</span>
+            <span class="o">.</span><span class="n">host</span><span class="p">(</span><span class="n">fhirBaseUri</span><span class="o">.</span><span class="n">getHost</span><span class="p">())</span>
+            <span class="o">.</span><span class="n">port</span><span class="p">(</span><span class="n">fhirBaseUri</span><span class="o">.</span><span class="n">getPort</span><span class="p">());</span>
+
+    <span class="n">rest</span><span class="p">(</span><span class="n">fhirBaseUri</span><span class="o">.</span><span class="n">getPath</span><span class="p">())</span>
+            <span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/</span><span class="si">{resource}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">route</span><span class="p">()</span>
+            <span class="o">.</span><span class="n">routeId</span><span class="p">(</span><span class="s2">&quot;fhir-r4-rest&quot;</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">unmarshal</span><span class="p">()</span><span class="o">.</span><span class="n">fhirJson</span><span class="p">(</span><span class="s2">&quot;R4&quot;</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">setFhirR4Metadata</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;direct:storeandnotify&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="configure">
+<h3>configure()<a class="headerlink" href="#configure" title="Permalink to this headline">¶</a></h3>
+<p>The Linux for Health route builder configure() method contains the route and the following additional elements:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 35%" />
+<col style="width: 45%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Step</p></th>
+<th class="head"><p>Explanation</p></th>
+<th class="head"><p>Required/Optional</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>uriBuilder</p></td>
+<td><p>An EndpointUriBuilder instance that contains helper methods for creating URIs from properties in the LFH application.properties.  You will add your route URI to the LFH application.properties file and access it via a method that you will create for your URL in the LFH EnpointURIBuilder class.</p></td>
+<td><p>Required</p></td>
+</tr>
+<tr class="row-odd"><td><p>fhirBaseUri</p></td>
+<td><p>The URI for this route.  You will have your own URI for your route.</p></td>
+<td><p>Required</p></td>
+</tr>
+<tr class="row-even"><td><p>setFhirR4Metadata</p></td>
+<td><p>An LFH Processor instance that sets the expected LFH message headers as exchange properties.  This step will vary slightly between routes, so you will likely need to create a specific processor for your route.</p></td>
+<td><p>Required</p></td>
+</tr>
+<tr class="row-odd"><td><p>restConfiguration().host().port()</p></td>
+<td><p>Configures the host and port for this REST route.  The LFH host and port may be the same for all LFH routes.</p></td>
+<td><p>Required</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="route">
+<h3>Route<a class="headerlink" href="#route" title="Permalink to this headline">¶</a></h3>
+<p>The Linux for Health route contains the following steps:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 35%" />
+<col style="width: 45%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Step</p></th>
+<th class="head"><p>Explanation</p></th>
+<th class="head"><p>Required/Optional</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>rest(fhirBaseUri.getPath())</p></td>
+<td><p>Defines the URL within LFH that will accept REST calls for this route.</p></td>
+<td><p>Required</p></td>
+</tr>
+<tr class="row-odd"><td><p>post(“/{resource}”)</p></td>
+<td><p>Defines the REST operation supported by this route and the path parameter.  One route may support multiple REST operations, but in this case only POST is supported.</p></td>
+<td><p>Required</p></td>
+</tr>
+<tr class="row-even"><td><p>route()</p></td>
+<td><p>Embeds a Camel route in the REST processing.</p></td>
+<td><p>Required</p></td>
+</tr>
+<tr class="row-odd"><td><p>routeId()</p></td>
+<td><p>Specifies a unique LFH route name for the embedded route.</p></td>
+<td><p>Required</p></td>
+</tr>
+<tr class="row-even"><td><p>unmarshal()</p></td>
+<td><p>De-serializes the input data to FHIR R4 JSON.</p></td>
+<td><p>Optional</p></td>
+</tr>
+<tr class="row-odd"><td><p>process(setFhirR4Metadata)</p></td>
+<td><p>Sets the expected LFH message headers as exchange properties.  This step will vary slightly between routes, so you will likely need to create a specific processor for your route.</p></td>
+<td><p>Required</p></td>
+</tr>
+<tr class="row-even"><td><p>to(“direct:storeandnotify”)</p></td>
+<td><p>Encapsulates the storage of the LFH message properties and message body in Kafka and the notification of that storage via NATS.  Your route should include this step at or near the end.</p></td>
+<td><p>Required</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="extend.html" class="btn btn-neutral float-left" title="Extending Linux for Health" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, IBM
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
