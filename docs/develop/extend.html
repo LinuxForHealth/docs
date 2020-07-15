@@ -187,7 +187,7 @@
 <h1>Extending Linux for Health<a class="headerlink" href="#extending-linux-for-health" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>These sections should provide you with enough information to easily extend Linux for Health (LFH) to incorporate routes and components that can perfom new processing functions and connect to new services.  For example, you may want to extend LFH to provide a route that users can call to access a new service.  Or you may need to provide a route and a Camel component to access your service.  You could also provide a new route to take data from one source, transform it if necessary, then send it to another service or data store.  The topics below will help you with these design decisions and provide implementation details.</p>
+<p>These sections should provide you with enough information to easily extend Linux for Health (LFH) to incorporate routes and components that can perfom new processing functions and connect to new services.  For example, you may want to extend LFH to provide a route that users can call to access a new service.  Or you may need to provide a route and a Apache Camel component to access your service.  You could also provide a new route to take data from one source, transform it if necessary, then send it to another service or data store.  The topics below will help you with these design decisions and provide implementation details.</p>
 </div>
 <div class="section" id="linux-for-health-constructs">
 <h2>Linux for Health Constructs<a class="headerlink" href="#linux-for-health-constructs" title="Permalink to this headline">¶</a></h2>
@@ -198,7 +198,7 @@
 </div>
 <div class="section" id="components">
 <h3>Components<a class="headerlink" href="#components" title="Permalink to this headline">¶</a></h3>
-<p>If access to your service requires the use of a library (e.g. a custom protocol), you may need to also create an Apache Camel component to access the service.  That component would be called from your route and would handle the connection to your service.  Camel contains hundreds of <a class="reference external" href="https://camel.apache.org/components/latest/index.html">components</a> that can serve as <a class="reference external" href="https://github.com/apache/camel/tree/master/components">examples</a>.  However, if a service is accessible via HTTP or REST, you probably don’t need to create a new component.</p>
+<p>If access to your service requires the use of a library (e.g. a custom protocol), you may need to also create a Camel component to access the service.  That component would be called from your route and would handle the connection to your service.  Camel contains hundreds of <a class="reference external" href="https://camel.apache.org/components/latest/index.html">components</a> that can serve as <a class="reference external" href="https://github.com/apache/camel/tree/master/components">examples</a>.  However, if a service is accessible via HTTP or REST, you probably don’t need to create a new component.</p>
 <p>If you do need to create a new Camel component, or modify an existing component, consider contributing your changes back to the <a class="reference external" href="https://camel.apache.org/components/latest/dataformats/index.html">Apache Camel project</a> for others to use.</p>
 </div>
 <div class="section" id="exchanges">
@@ -232,9 +232,9 @@
 <div class="section" id="test-services">
 <h3>Test Services<a class="headerlink" href="#test-services" title="Permalink to this headline">¶</a></h3>
 <p>To test your new route or component, you may need to add one or more services that can be started up with the Linux for Health services. To do this, create a new directory under connect/container-support/compose for your service and add a docker-compose.yml file in that directory.  That docker-compose.yml file can bring up any services you need for testing.  Then, to start the LFH services along with your services, issue the following command from the connect/container-support/compose directory:</p>
-<blockquote>
-<div><p>docker-compose -f ./docker-compose.yml -f ./&lt;your_service&gt;/docker-compose.yml up</p>
-</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="o">-</span><span class="n">f</span> <span class="o">./</span><span class="n">docker</span><span class="o">-</span><span class="n">compose</span><span class="o">.</span><span class="n">yml</span> <span class="o">-</span><span class="n">f</span> <span class="o">./&lt;</span><span class="n">your_service</span><span class="o">&gt;/</span><span class="n">docker</span><span class="o">-</span><span class="n">compose</span><span class="o">.</span><span class="n">yml</span> <span class="n">up</span>
+</pre></div>
+</div>
 <p>In this mode, Ctrl-C will stop all the services when testing is complete.</p>
 </div>
 </div>
