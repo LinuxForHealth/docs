@@ -41,7 +41,7 @@ You can get started by visiting our `developer setup page <./developer-setup.htm
 
 .. toctree::
    :maxdepth: 3
-   :caption: Extend:
+   :caption: Develop:
 
    develop/extend.rst
    develop/build.rst
