@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Route Development &mdash; Linux for Health  documentation</title>
+  <title>Developing Routes &mdash; Linux for Health  documentation</title>
   
 
   
@@ -38,7 +38,7 @@
   <link rel="stylesheet" href="https://assets.readthedocs.org/static/css/readthedocs-doc-embed.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Extending Linux for Health" href="extend.html" /> 
+    <link rel="prev" title="Testing Extensions" href="test.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -98,10 +98,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/fhir-r4.html">FHIR R4 Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/blue-button-20.html">Blue Button 2.0 Tutorial</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Developing:</span></p>
+<p class="caption"><span class="caption-text">Extend:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="extend.html">Extending Linux for Health</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Route Development</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="build.html">Building Extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="test.html">Testing Extensions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Developing Routes</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#route-basics">Route Basics</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#configure">configure()</a></li>
@@ -155,7 +157,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Route Development</li>
+      <li>Developing Routes</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -174,11 +176,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="route-development">
-<h1>Route Development<a class="headerlink" href="#route-development" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="developing-routes">
+<h1>Developing Routes<a class="headerlink" href="#developing-routes" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>Linux for Health (LFH) contains routes for common healthcare protocols and services, such as HL7v2, FHIR R4 and CMS Blue Button 2.0.  Routes are created as RouteBuilder classes in the connect/java/com/linuxforhealth/connect/builder directory of the Linux for Health connect repo.</p>
+<p>Linux for Health (LFH) contains routes for common healthcare data formats, protocols and services, such as FHIR R4, HL7v2 and CMS Blue Button 2.0.  Routes are created as RouteBuilder classes in the connect/java/com/linuxforhealth/connect/builder directory of the Linux for Health connect repo.</p>
 </div>
 <div class="section" id="route-basics">
 <h2>Route Basics<a class="headerlink" href="#route-basics" title="Permalink to this headline">¶</a></h2>
@@ -297,7 +299,7 @@
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="extend.html" class="btn btn-neutral float-left" title="Extending Linux for Health" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="test.html" class="btn btn-neutral float-left" title="Testing Extensions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

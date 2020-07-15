@@ -38,7 +38,7 @@
   <link rel="stylesheet" href="https://assets.readthedocs.org/static/css/readthedocs-doc-embed.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Route Development" href="route-basics.html" />
+    <link rel="next" title="Building Extensions" href="build.html" />
     <link rel="prev" title="Blue Button 2.0 Tutorial" href="../tutorials/blue-button-20.html" /> 
 </head>
 
@@ -99,7 +99,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/fhir-r4.html">FHIR R4 Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/blue-button-20.html">Blue Button 2.0 Tutorial</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Developing:</span></p>
+<p class="caption"><span class="caption-text">Extend:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Extending Linux for Health</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
@@ -111,14 +111,11 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#steps-to-extend">Steps to Extend</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#testing">Testing</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#unit-tests">Unit Tests</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#test-services">Test Services</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="route-basics.html">Route Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build.html">Building Extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="test.html">Testing Extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="route-basics.html">Developing Routes</a></li>
 </ul>
 
             
@@ -187,14 +184,14 @@
 <h1>Extending Linux for Health<a class="headerlink" href="#extending-linux-for-health" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>These sections should provide you with enough information to easily extend Linux for Health (LFH) to incorporate routes and components that can perfom new processing functions and connect to new services.  For example, you may want to extend LFH to provide a route that users can call to access a new service.  Or you may need to provide a route and a Apache Camel component to access your service.  You could also provide a new route to take data from one source, transform it if necessary, then send it to another service or data store.  The topics below will help you with these design decisions and provide implementation details.</p>
+<p>This discussion should provide you with enough information to easily extend Linux for Health (LFH) to incorporate routes and components that can perfom new processing functions and connect to new services.  For example, you may want to extend LFH to provide a route that users can call to access a new service.  Or you may need to provide a route and a Apache Camel component to access your service.  You could also provide a new route to take data from one source, transform it if necessary, then send it to another service or data store.  The topics below will help you with these design decisions and provide implementation details.</p>
 </div>
 <div class="section" id="linux-for-health-constructs">
 <h2>Linux for Health Constructs<a class="headerlink" href="#linux-for-health-constructs" title="Permalink to this headline">¶</a></h2>
 <p>Linux for Health uses the following constructs to process healthcare information.</p>
 <div class="section" id="routes">
 <h3>Routes<a class="headerlink" href="#routes" title="Permalink to this headline">¶</a></h3>
-<p>A Linux for Health route is designed to take data in, perform any required operations on that data (e.g. de-serialize, transform), then do something with that data (e.g. store, notify, forward, etc.).  Routes may be defined using standard protocols, such as REST or HTTP, and may use a <a class="reference external" href="https://camel.apache.org/components/latest/dataformats/index.html">known data format</a> such as HL7v2 or FHIR R4.  If you are adding access to a service, you will likely need to add a new route to LFH.</p>
+<p>A Linux for Health route is designed to ingest healthcare data, perform any required operations on that data (e.g. de-serialize, transform, enrich), then do something with that data (e.g. store, notify, forward).  Routes may be defined using standard protocols, such as REST or HTTP, and may use a <a class="reference external" href="https://camel.apache.org/components/latest/dataformats/index.html">known data format</a> such as HL7v2 or FHIR R4.  If you are adding access to a service, you will likely need to add a new route to LFH.</p>
 </div>
 <div class="section" id="components">
 <h3>Components<a class="headerlink" href="#components" title="Permalink to this headline">¶</a></h3>
@@ -219,25 +216,10 @@
 <li><p>Create a new component, if needed, by cloning and modifying a Camel component that most closely matches your requirements.  You can find simple Camel components that include only 4 required files as a starting point.</p></li>
 <li><p>Create a new route by cloning and modifying the LFH route that most closely matches your requirements, following the <a class="reference external" href="./route-basics.html">Route Development</a> guidance.  Be sure to include the steps that are required for LFH routes.</p></li>
 <li><p>Create new processors to encapsulate the route message processing steps by cloning and modifying the LFH processor that most closely matches your requirements.</p></li>
-<li><p>Add any new dependencies to the LFH build.gradle file.  Look at any new classes that you use, determine the Java packages they are in and make sure those packages are in the build.gradle file.</p></li>
-<li><p>Create unit tests and add test services following the guidance in the Testing section below.</p></li>
-<li><p>Build, test and open a PR to contribute to <a class="reference external" href="https://github.com/LinuxForHealth/connect/pulls">Linux for Health</a>!</p></li>
+<li><p>Add any new dependencies to the LFH build.gradle file, following the guidance in <a class="reference external" href="./build.html">Building Extensions</a>.</p></li>
+<li><p>Create unit tests and add test services, following the guidance in <a class="reference external" href="./test.html">Testing Extensions</a>.</p></li>
+<li><p>Build, test, then open a feature issue and a pull request against that feature to contribute your changes to <a class="reference external" href="https://github.com/LinuxForHealth/connect">Linux for Health</a>!</p></li>
 </ol>
-</div>
-<div class="section" id="testing">
-<h2>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="unit-tests">
-<h3>Unit Tests<a class="headerlink" href="#unit-tests" title="Permalink to this headline">¶</a></h3>
-<p>If you are contributing a new route or component to Linux for Health, create unit tests that follow the examples under connect/src/test.  If you are adding a route to LFH, also add your route to connect/src/test/java/com/linuxforhealth/connect/builder/RouteGenerationTest.java, following the examples in that file. This will ensure that your new route can start up successfully as a part of the build process.</p>
-</div>
-<div class="section" id="test-services">
-<h3>Test Services<a class="headerlink" href="#test-services" title="Permalink to this headline">¶</a></h3>
-<p>To test your new route or component, you may need to add one or more services that can be started up with the Linux for Health services. To do this, create a new directory under connect/container-support/compose for your service and add a docker-compose.yml file in that directory.  That docker-compose.yml file can bring up any services you need for testing.  Then, to start the LFH services along with your services, issue the following command from the connect/container-support/compose directory:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="o">-</span><span class="n">f</span> <span class="o">./</span><span class="n">docker</span><span class="o">-</span><span class="n">compose</span><span class="o">.</span><span class="n">yml</span> <span class="o">-</span><span class="n">f</span> <span class="o">./&lt;</span><span class="n">your_service</span><span class="o">&gt;/</span><span class="n">docker</span><span class="o">-</span><span class="n">compose</span><span class="o">.</span><span class="n">yml</span> <span class="n">up</span>
-</pre></div>
-</div>
-<p>In this mode, Ctrl-C will stop all the services when testing is complete.</p>
-</div>
 </div>
 </div>
 
@@ -249,7 +231,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="route-basics.html" class="btn btn-neutral float-right" title="Route Development" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="build.html" class="btn btn-neutral float-right" title="Building Extensions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../tutorials/blue-button-20.html" class="btn btn-neutral float-left" title="Blue Button 2.0 Tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

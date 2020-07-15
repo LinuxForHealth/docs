@@ -1,9 +1,9 @@
-Route Development
+Developing Routes
 *****************
 
 Overview
 ========
-Linux for Health (LFH) contains routes for common healthcare protocols and services, such as HL7v2, FHIR R4 and CMS Blue Button 2.0.  Routes are created as RouteBuilder classes in the connect/java/com/linuxforhealth/connect/builder directory of the Linux for Health connect repo.
+Linux for Health (LFH) contains routes for common healthcare data formats, protocols and services, such as FHIR R4, HL7v2 and CMS Blue Button 2.0.  Routes are created as RouteBuilder classes in the connect/java/com/linuxforhealth/connect/builder directory of the Linux for Health connect repo.
 
 Route Basics
 ============

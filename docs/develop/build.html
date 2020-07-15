@@ -1,0 +1,271 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Building Extensions &mdash; Linux for Health  documentation</title>
+  
+
+  
+  
+  
+  
+    <link rel="canonical" href="https://linuxforhealth.github.io/docs/develop/build.html"/>
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="https://assets.readthedocs.org/static/css/readthedocs-doc-embed.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Testing Extensions" href="test.html" />
+    <link rel="prev" title="Extending Linux for Health" href="extend.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: 0x4380B4" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Linux for Health
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                master
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Installation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developer-setup.html">Developer Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../application-configuration.html">Application Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../message-structure.html">Message Structure</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/quickstart.html">Quick Start Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/fhir-r4.html">FHIR R4 Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/blue-button-20.html">Blue Button 2.0 Tutorial</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Extend:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="extend.html">Extending Linux for Health</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Building Extensions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#build">Build</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="test.html">Testing Extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="route-basics.html">Developing Routes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Linux for Health</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Building Extensions</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/develop/build.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="building-extensions">
+<h1>Building Extensions<a class="headerlink" href="#building-extensions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>To build Linux for Health (LFH) with your extension, you will first need to add any new dependencies to LFH.</p>
+</div>
+<div class="section" id="dependencies">
+<h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
+<p>To add new dependencies to Linux for Health, first look at any new classes that you use. Determine the Java packages those classes are in and make sure those packages are in the connect/build.gradle file.  If the dependencies do not exist yet in build.gradle, follow the example below to learn how to find the dependency information required by LFH.</p>
+<p>Example:</p>
+<p>A new feature requires the class org.apache.commons.codec.binary.Base64 for base64 encoding.</p>
+<ol class="arabic">
+<li><p>Use your browser to find the javadoc for this class (Search: “org.apache.commons.codec.binary.Base64”).  From that search, we find the <a class="reference external" href="https://www.javadoc.io/doc/commons-codec/commons-codec/1.13/org/apache/commons/codec/binary/Base64.html">javadoc</a>.</p></li>
+<li><p>On that page, we see that the package path for the class is org.apache.commons.codec.binary.</p></li>
+<li><p>Use your browser to search the maven repo for that package (Search: “maven org.apache.commons.codec.binary”). From that search, we find the package information in <a class="reference external" href="https://mvnrepository.com/artifact/commons-codec/commons-codec">Maven Central</a>.</p></li>
+<li><p>On that page, click on the latest version, then click on the Gradle tab and you will see:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">mvnrepository</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">artifact</span><span class="o">/</span><span class="n">commons</span><span class="o">-</span><span class="n">codec</span><span class="o">/</span><span class="n">commons</span><span class="o">-</span><span class="n">codec</span>
+<span class="nb">compile</span> <span class="n">group</span><span class="p">:</span> <span class="s1">&#39;commons-codec&#39;</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="s1">&#39;commons-codec&#39;</span><span class="p">,</span> <span class="n">version</span><span class="p">:</span> <span class="s1">&#39;1.14&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Add a new line to the LFH build.gradle for this dependency. Since this was the first general utility we added, we added a line to the dependencies section.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Java</span> <span class="n">utils</span> <span class="p">(</span><span class="n">base64</span> <span class="n">encoding</span><span class="p">,</span> <span class="n">OS</span> <span class="nb">type</span><span class="p">)</span>
+<span class="n">implementation</span> <span class="n">group</span><span class="p">:</span> <span class="s1">&#39;commons-codec&#39;</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="s1">&#39;commons-codec&#39;</span><span class="p">,</span> <span class="n">version</span><span class="p">:</span> <span class="n">project</span><span class="o">.</span><span class="n">commonsVersion</span>
+</pre></div>
+</div>
+</li>
+<li><p>Add a property in gradle.properties for the package version, which we called “commonsVersion” in this case.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># java util versions</span>
+<span class="n">commonsVersion</span><span class="o">=</span><span class="mf">1.14</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="build">
+<h2>Build<a class="headerlink" href="#build" title="Permalink to this headline">¶</a></h2>
+<p>Once all your dependencies are added, run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">gradlew</span> <span class="n">build</span>
+</pre></div>
+</div>
+<p>in the top-level connect directory of the Linux for Health repo.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="test.html" class="btn btn-neutral float-right" title="Testing Extensions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="extend.html" class="btn btn-neutral float-left" title="Extending Linux for Health" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, IBM
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
