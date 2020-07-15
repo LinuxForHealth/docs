@@ -27,8 +27,8 @@ Processors
 ----------
 A Linux for Health processor encapsulates code for route message processing and takes the message Exchange instance as input.  Within a processor, you can set headers, properties and the message body itself, all of which flow to the next step in the message processing of the route.  When creating your own route, create a processor instead of performing multiple operations inline in a route.  LFH contains many processors that you can use as examples for your new processor in the connect/java/com/linuxforhealth/connect/processor directory of the Linux for Health connect repo.
 
-Steps to Extend
-===============
+Development Steps
+=================
 Follow the steps below to extend Linux for Health:
 
 1. Clone and build the Linux for Health repo. See the `Developer Setup <../developer-setup.html>`_ Getting Started step for instructions.
