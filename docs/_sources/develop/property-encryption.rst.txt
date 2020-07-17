@@ -23,7 +23,7 @@ There are two ways to run Jasypt to encrypt your property values.  You can use t
 
     property=ENC(encrypted_value)
 
-Example::
+   Example::
 
     linuxforhealth.connect.endpoint.myService.password=ENC(lY4mNzx+VVFQ71k54tt/KF4OA2PFtEgnLlkMM+j78nU=)
 
@@ -34,7 +34,7 @@ To use your Jasypt-encrypted property in a Linux for Health processor, use the S
     String password = SimpleBuilder.simple("${properties:linuxforhealth.connect.endpoint.myService.password}") 
             .evaluate(exchange, String.class);
 
-To use your encrypted property in a Java DSL route, use the Simple() function::
+To use your encrypted property in a Java DSL route, use the simple() function::
 
     .setProperty("password", simple("${properties:linuxforhealth.connect.endpoint.myService.password}")
 
@@ -46,4 +46,4 @@ For production environmments, set the JASYPT_ENCRYPTION_PASSWORD environment var
 
     JASYPT_ENCRYPTION_PASSWORD=<your_new_password> ./gradlew run
 
-Note: If you change the LFH master password, the `Blue Button 2.0 tutorial <../tutorials/blue-button-20.html>`_ will no longer work and you will see EncryptionOperationNotPossibleException.  In this case, you could register with Blue Button to get your own client ID and password, then encrypt those with your own master password, replacing the values for linuxforhealth.connect.endpoint.bluebutton_20_rest.clientId and linuxforhealth.connect.endpoint.bluebutton_20_rest.clientSecret with your own.
+Note: If you change the LFH master password, the `Blue Button 2.0 tutorial <../tutorials/blue-button-20.html>`_ will no longer work and you will see EncryptionOperationNotPossibleException.  In this case, you could register with Blue Button to get your own client ID and password, then encrypt those with your own master password, replacing the values for linuxforhealth.connect.endpoint.bluebutton_20_rest.clientId and linuxforhealth.connect.endpoint.bluebutton_20_rest.clientSecret in the LFH application.properties with your own.
