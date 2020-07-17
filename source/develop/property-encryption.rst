@@ -7,21 +7,19 @@ In Linux for Health (LFH), if you need to use properties to store private inform
 
 Encryption Using Jasypt
 =======================
-While some Camel instructions will tell you to clone and build all of Camel, then use java -jar to run the Camel Jasypt jar, the easiest way to use Jasypt to encrypt your property values is to download it and run the encrypt.sh utility.
+There are two ways to run Jasypt to encrypt your property values.  You can use the `Camel Jasypt jar <https://people.apache.org/~dkulp/camel/jasypt.html#>`_ if you want to clone and build Camel, but this can be time-consuming.  You can also download Jasypt and run the encrypt.sh utility via the following instructions.
 
-1. Download `Jasypt <https://github.com/jasypt/jasypt>`_ then unzip it.
+1. Download `Jasypt <https://github.com/jasypt/jasypt>`_ and unzip it.
 
 2. cd to the Jasypt bin directory and make encrypt.sh executable::
 
     chmod +x encrypt.sh
 
-3. Run encrypt.sh to encrypt your property, using the LFH password shown (for development only).::
+3. Run encrypt.sh to encrypt your property, using the LFH password shown (for development only)::
 
     ./encrypt.sh input="value to encrypt" password="ultrasecret"
 
-For development, using the password used by Linux for Health will allow you to automatically decrypt your password without further configuration in LFH.  For production environmments, LFH will add the ability to set an environment variable containing the encryption password before starting LFH, then you can delete that environment variable after LFH starts.
-
-4. Add your encrypted value to your property in the LFH connect/container-support/compose/application.properties::
+4. Add your encrypted value to your property in the LFH connect/container-support/compose/application.properties file::
 
     property=ENC(encrypted_value)
 
@@ -39,3 +37,13 @@ To use your Jasypt-encrypted property in a Linux for Health processor, use the S
 To use your encrypted property in a Java DSL route, use the Simple() function::
 
     .setProperty("password", simple("${properties:linuxforhealth.connect.endpoint.myService.password}")
+
+Changing the Master Password
+============================
+For development, using the Linux for Health master password will allow you to automatically decrypt your properties without further configuration.  
+
+For production environmments, set an environment variable containing your encryption password on LFH startup.::
+
+    JASYPT_ENCRYPTION_PASSWORD=<your_new_password> ./gradlew run
+
+Note: If you change the LFH master password, the `Blue Button 2.0 tutorial <../tutorials/blue-button-20.html>`_ will no longer work and you will see EncryptionOperationNotPossibleException.  In this case, you could register with Blue Button to get your own client ID and password, then encrypt those with your own master password, replacing the values for linuxforhealth.connect.endpoint.bluebutton_20_rest.clientId and linuxforhealth.connect.endpoint.bluebutton_20_rest.clientSecret.
