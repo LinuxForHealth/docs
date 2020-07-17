@@ -23,7 +23,7 @@ There are two ways to run Jasypt to encrypt your property values.  You can use t
 
     property=ENC(encrypted_value)
 
-Example::
+   Example::
 
     linuxforhealth.connect.endpoint.myService.password=ENC(lY4mNzx+VVFQ71k54tt/KF4OA2PFtEgnLlkMM+j78nU=)
 
