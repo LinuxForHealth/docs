@@ -108,6 +108,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#encryption-using-jasypt">Encryption Using Jasypt</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#using-encrypted-properties">Using Encrypted Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#changing-the-master-password">Changing the Master Password</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="route-basics.html">Developing Routes</a></li>
@@ -179,27 +180,24 @@
 <h1>Property Encryption<a class="headerlink" href="#property-encryption" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>In Linux for Health (LFH), if you need to use properties to store private information (passwords, client ids, secrets, etc.), you can encrypt those in the LFH application.properties file using Jasypt.  The following sections explain how to encrypt your property values and reference those encrypted properties within LFH in a way that Jasypt can decrypt them.</p>
+<p>In Linux for Health (LFH), if you need to use properties to store private information (passwords, client ids, secrets, etc.), you can encrypt those using Jasypt.  The following sections explain how to encrypt your property values and reference those encrypted properties within LFH in a way that Jasypt can decrypt them.</p>
 </div>
 <div class="section" id="encryption-using-jasypt">
 <h2>Encryption Using Jasypt<a class="headerlink" href="#encryption-using-jasypt" title="Permalink to this headline">¶</a></h2>
-<p>While some Camel instructions will tell you to clone and build all of Camel, then use java -jar to run the Camel Jasypt jar, the easiest way to use Jasypt to encrypt your property values is to download it and run the encrypt.sh utility.</p>
+<p>There are two ways to run Jasypt to encrypt your property values.  You can use the <a class="reference external" href="https://people.apache.org/~dkulp/camel/jasypt.html#">Camel Jasypt jar</a> if you want to clone and build Camel, but this can be time-consuming.  You can also download Jasypt and run the encrypt.sh utility via the following instructions.</p>
 <ol class="arabic">
-<li><p>Download <a class="reference external" href="https://github.com/jasypt/jasypt">Jasypt</a> then unzip it.</p></li>
+<li><p>Download <a class="reference external" href="https://github.com/jasypt/jasypt">Jasypt</a> and unzip it.</p></li>
 <li><p>cd to the Jasypt bin directory and make encrypt.sh executable:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chmod</span> <span class="o">+</span><span class="n">x</span> <span class="n">encrypt</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
 </li>
-<li><p>Run encrypt.sh to encrypt your property, using the LFH password shown (for development only).:</p>
+<li><p>Run encrypt.sh to encrypt your property, using the LFH password shown (for development only):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">encrypt</span><span class="o">.</span><span class="n">sh</span> <span class="nb">input</span><span class="o">=</span><span class="s2">&quot;value to encrypt&quot;</span> <span class="n">password</span><span class="o">=</span><span class="s2">&quot;ultrasecret&quot;</span>
 </pre></div>
 </div>
 </li>
-</ol>
-<p>For development, using the password used by Linux for Health will allow you to automatically decrypt your password without further configuration in LFH.  For production environmments, LFH will add the ability to set an environment variable containing the encryption password before starting LFH, then you can delete that environment variable after LFH starts.</p>
-<ol class="arabic" start="4">
-<li><p>Add your encrypted value to your property in the LFH connect/container-support/compose/application.properties:</p>
+<li><p>Add your encrypted value to your property in the LFH connect/container-support/compose/application.properties file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">property</span><span class="o">=</span><span class="n">ENC</span><span class="p">(</span><span class="n">encrypted_value</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -221,6 +219,15 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">setProperty</span><span class="p">(</span><span class="s2">&quot;password&quot;</span><span class="p">,</span> <span class="n">simple</span><span class="p">(</span><span class="s2">&quot;${properties:linuxforhealth.connect.endpoint.myService.password}&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="changing-the-master-password">
+<h2>Changing the Master Password<a class="headerlink" href="#changing-the-master-password" title="Permalink to this headline">¶</a></h2>
+<p>For development, using the Linux for Health master password will allow you to automatically decrypt your properties without further configuration.</p>
+<p>For production environmments, set the JASYPT_ENCRYPTION_PASSWORD environment variable to your encryption password on LFH startup.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">JASYPT_ENCRYPTION_PASSWORD</span><span class="o">=&lt;</span><span class="n">your_new_password</span><span class="o">&gt;</span> <span class="o">./</span><span class="n">gradlew</span> <span class="n">run</span>
+</pre></div>
+</div>
+<p>Note: If you change the LFH master password, the <a class="reference external" href="../tutorials/blue-button-20.html">Blue Button 2.0 tutorial</a> will no longer work and you will see EncryptionOperationNotPossibleException.  In this case, you could register with Blue Button to get your own client ID and password, then encrypt those with your own master password, replacing the values for linuxforhealth.connect.endpoint.bluebutton_20_rest.clientId and linuxforhealth.connect.endpoint.bluebutton_20_rest.clientSecret with your own.</p>
 </div>
 </div>
 

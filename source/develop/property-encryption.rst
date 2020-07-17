@@ -3,7 +3,7 @@ Property Encryption
 
 Overview
 ========
-In Linux for Health (LFH), if you need to use properties to store private information (passwords, client ids, secrets, etc.), you can encrypt those in the LFH application.properties file using Jasypt.  The following sections explain how to encrypt your property values and reference those encrypted properties within LFH in a way that Jasypt can decrypt them.
+In Linux for Health (LFH), if you need to use properties to store private information (passwords, client ids, secrets, etc.), you can encrypt those using Jasypt.  The following sections explain how to encrypt your property values and reference those encrypted properties within LFH in a way that Jasypt can decrypt them.
 
 Encryption Using Jasypt
 =======================
@@ -42,8 +42,8 @@ Changing the Master Password
 ============================
 For development, using the Linux for Health master password will allow you to automatically decrypt your properties without further configuration.  
 
-For production environmments, set an environment variable containing your encryption password on LFH startup.::
+For production environmments, set the JASYPT_ENCRYPTION_PASSWORD environment variable to your encryption password on LFH startup.::
 
     JASYPT_ENCRYPTION_PASSWORD=<your_new_password> ./gradlew run
 
-Note: If you change the LFH master password, the `Blue Button 2.0 tutorial <../tutorials/blue-button-20.html>`_ will no longer work and you will see EncryptionOperationNotPossibleException.  In this case, you could register with Blue Button to get your own client ID and password, then encrypt those with your own master password, replacing the values for linuxforhealth.connect.endpoint.bluebutton_20_rest.clientId and linuxforhealth.connect.endpoint.bluebutton_20_rest.clientSecret.
+Note: If you change the LFH master password, the `Blue Button 2.0 tutorial <../tutorials/blue-button-20.html>`_ will no longer work and you will see EncryptionOperationNotPossibleException.  In this case, you could register with Blue Button to get your own client ID and password, then encrypt those with your own master password, replacing the values for linuxforhealth.connect.endpoint.bluebutton_20_rest.clientId and linuxforhealth.connect.endpoint.bluebutton_20_rest.clientSecret with your own.
