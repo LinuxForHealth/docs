@@ -20,6 +20,10 @@ In a new console window, cd to the NATS test directory in the Linux for Health c
 
    cd connect/src/test/resources/nats
 
+Ensure that the NodeJS dependencies are installed::
+
+   npm install
+
 Run the subscriber::
 
    node nats-subscriber
