@@ -35,6 +35,12 @@ You can get started by visiting our `developer setup page <./developer-setup.htm
 
 .. toctree::
    :maxdepth: 3
+   :caption: Routes:
+
+   routes/fhir-r4.rst
+
+.. toctree::
+   :maxdepth: 3
    :caption: Tutorials:
 
    tutorials/quickstart.rst
