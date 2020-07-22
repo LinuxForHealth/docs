@@ -20,6 +20,10 @@ In a new console window, cd to the NATS test directory in the Linux for Health c
 
    cd connect/src/test/resources/nats
 
+Ensure that the NodeJS dependencies are installed::
+
+   npm install
+
 Run the subscriber::
 
    node nats-subscriber
@@ -41,7 +45,7 @@ Send a Message to Linux for Health
 ----------------------------------
 In the same console window as the previous step, cd to the test messages directory in the Linux for Health connect repo::
 
-   cd connect/src/test/resources/messages
+   cd connect/src/test/resources/messages/hl7
 
 Send an HL7 message to Linux for Health::
 
