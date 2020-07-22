@@ -7,7 +7,7 @@ If you are contributing a new route or component to Linux for Health (see `Devel
 
 Unit Tests
 ==========
-Create unit tests that follow the examples under connect/src/test.  If you are adding a route to LFH, also add your route to connect/src/test/java/com/linuxforhealth/connect/builder/RouteGenerationTest.java, following the examples in that file. This will ensure that your new route can start up successfully as a part of the build process.
+Create unit tests that follow the examples under connect/src/test.
 
 Test Services
 =============

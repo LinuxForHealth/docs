@@ -45,7 +45,7 @@ Send a Message to Linux for Health
 ----------------------------------
 In the same console window as the previous step, cd to the test messages directory in the Linux for Health connect repo::
 
-   cd connect/src/test/resources/messages
+   cd connect/src/test/resources/messages/hl7
 
 Send an HL7 message to Linux for Health::
 
