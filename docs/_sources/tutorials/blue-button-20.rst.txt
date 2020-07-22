@@ -31,7 +31,7 @@ Authorize Linux for Health to use the Blue Button 2.0 API
 ---------------------------------------------------------
 Open Postman and import this collection by clicking 'Import' -> 'Import File' -> 'Choose Files'::
 
-   connect/src/test/resources/postman/Linux for Health Blue Button Tutorial.postman_collection.json
+   connect/src/test/resources/messages/postman/Linux for Health Blue Button Tutorial.postman_collection.json
 
 Click on the collection in the left navigation area and select 'Authorize Linux for Health', then click 'Send'.
 
