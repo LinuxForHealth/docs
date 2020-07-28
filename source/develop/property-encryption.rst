@@ -25,18 +25,17 @@ There are two ways to run Jasypt to encrypt your property values.  You can use t
 
    Example::
 
-    linuxforhealth.connect.endpoint.myService.password=ENC(lY4mNzx+VVFQ71k54tt/KF4OA2PFtEgnLlkMM+j78nU=)
+    lfh.connect.my_route.password=ENC(lY4mNzx+VVFQ71k54tt/KF4OA2PFtEgnLlkMM+j78nU=)
 
 Using Encrypted Properties
 ==========================
-To use your Jasypt-encrypted property in a Linux for Health processor, use the SimpleBuilder class::
+To use your Jasypt-encrypted property in a Linux for Health processor, use the CamelContextSupport class::
 
-    String password = SimpleBuilder.simple("${properties:linuxforhealth.connect.endpoint.myService.password}") 
-            .evaluate(exchange, String.class);
+    String password = camelContextSupport.getProperty("lfh.connect.my_route.password");
 
 To use your encrypted property in a Java DSL route, use the simple() function::
 
-    .setProperty("password", simple("${properties:linuxforhealth.connect.endpoint.myService.password}")
+    .setProperty("password", simple("${properties:lfh.connect.my_route.password}")
 
 Changing the Master Password
 ============================

@@ -11,9 +11,9 @@ The LFH FHIR R4 route configuration method, shown here, defines a simple REST ro
 
     @Override
     public void configure() {
-        EndpointUriBuilder uriBuilder = getEndpointUriBuilder();
-        URI fhirBaseUri = URI.create(uriBuilder.getFhirR4RestUri());
-        Processor setFhirR4Metadata = new FhirR4MetadataProcessor();
+
+        CamelContextSupport contextSupport = new CamelContextSupport(getContext());
+        URI fhirBaseUri = URI.create(contextSupport.getProperty("lfh.connect.fhir_r4_rest.uri"));
 
         restConfiguration()
                 .host(fhirBaseUri.getHost())
@@ -22,9 +22,9 @@ The LFH FHIR R4 route configuration method, shown here, defines a simple REST ro
         rest(fhirBaseUri.getPath())
                 .post("/{resource}")
                 .route()
-                .routeId("fhir-r4-rest")
+                .routeId(FHIR_R4_ROUTE_ID)
                 .unmarshal().fhirJson("R4")
-                .process(setFhirR4Metadata)
+                .process(new FhirR4MetadataProcessor())
                 .to("direct:storeandnotify");
     }
 
@@ -35,7 +35,7 @@ The Linux for Health route builder configure() method contains the route and the
 +-----------------------------------+---------------------------------------------+--------------------+
 | Step                              | Explanation                                 | Required/Optional  |
 +===================================+=============================================+====================+
-| uriBuilder                        | |uriBuilder_def|                            | Required           |
+| contextSupport                    | |contextSupport_def|                        | Required           |
 +-----------------------------------+---------------------------------------------+--------------------+
 | fhirBaseUri                       | |baseUri_def|                               | Required           |
 +-----------------------------------+---------------------------------------------+--------------------+
@@ -44,7 +44,7 @@ The Linux for Health route builder configure() method contains the route and the
 | restConfiguration().host().port() | |restconfig_def|                            | Required           |
 +-----------------------------------+---------------------------------------------+--------------------+
 
-.. |uriBuilder_def| replace:: An EndpointUriBuilder instance that contains helper methods for creating URIs from properties in the LFH application.properties.  You will add your route URI to the LFH application.properties file and access it via a method that you will create for your URL in the LFH EnpointURIBuilder class.
+.. |contextSupport_def| replace:: The CamelContextSupport class provides convenience methods for working with the underlying CamelContext, including parsing application.property settings.
 
 .. |baseUri_def| replace:: The URI for this route.  You will have your own URI for your route.
 
