@@ -191,9 +191,9 @@
 <p>The LFH FHIR R4 route configuration method, shown here, defines a simple REST route that receives FHIR R4 resources and stores them:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@Override</span>
 <span class="n">public</span> <span class="n">void</span> <span class="n">configure</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">EndpointUriBuilder</span> <span class="n">uriBuilder</span> <span class="o">=</span> <span class="n">getEndpointUriBuilder</span><span class="p">();</span>
-    <span class="n">URI</span> <span class="n">fhirBaseUri</span> <span class="o">=</span> <span class="n">URI</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">uriBuilder</span><span class="o">.</span><span class="n">getFhirR4RestUri</span><span class="p">());</span>
-    <span class="n">Processor</span> <span class="n">setFhirR4Metadata</span> <span class="o">=</span> <span class="n">new</span> <span class="n">FhirR4MetadataProcessor</span><span class="p">();</span>
+
+    <span class="n">CamelContextSupport</span> <span class="n">contextSupport</span> <span class="o">=</span> <span class="n">new</span> <span class="n">CamelContextSupport</span><span class="p">(</span><span class="n">getContext</span><span class="p">());</span>
+    <span class="n">URI</span> <span class="n">fhirBaseUri</span> <span class="o">=</span> <span class="n">URI</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">contextSupport</span><span class="o">.</span><span class="n">getProperty</span><span class="p">(</span><span class="s2">&quot;lfh.connect.fhir_r4_rest.uri&quot;</span><span class="p">));</span>
 
     <span class="n">restConfiguration</span><span class="p">()</span>
             <span class="o">.</span><span class="n">host</span><span class="p">(</span><span class="n">fhirBaseUri</span><span class="o">.</span><span class="n">getHost</span><span class="p">())</span>
@@ -202,9 +202,9 @@
     <span class="n">rest</span><span class="p">(</span><span class="n">fhirBaseUri</span><span class="o">.</span><span class="n">getPath</span><span class="p">())</span>
             <span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/</span><span class="si">{resource}</span><span class="s2">&quot;</span><span class="p">)</span>
             <span class="o">.</span><span class="n">route</span><span class="p">()</span>
-            <span class="o">.</span><span class="n">routeId</span><span class="p">(</span><span class="s2">&quot;fhir-r4-rest&quot;</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">routeId</span><span class="p">(</span><span class="n">FHIR_R4_ROUTE_ID</span><span class="p">)</span>
             <span class="o">.</span><span class="n">unmarshal</span><span class="p">()</span><span class="o">.</span><span class="n">fhirJson</span><span class="p">(</span><span class="s2">&quot;R4&quot;</span><span class="p">)</span>
-            <span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">setFhirR4Metadata</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">new</span> <span class="n">FhirR4MetadataProcessor</span><span class="p">())</span>
             <span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;direct:storeandnotify&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
@@ -225,8 +225,8 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>uriBuilder</p></td>
-<td><p>An EndpointUriBuilder instance that contains helper methods for creating URIs from properties in the LFH application.properties.  You will add your route URI to the LFH application.properties file and access it via a method that you will create for your URL in the LFH EnpointURIBuilder class.</p></td>
+<tr class="row-even"><td><p>contextSupport</p></td>
+<td><p>The CamelContextSupport class provides convenience methods for working with the underlying CamelContext, including parsing application.property settings.</p></td>
 <td><p>Required</p></td>
 </tr>
 <tr class="row-odd"><td><p>fhirBaseUri</p></td>
