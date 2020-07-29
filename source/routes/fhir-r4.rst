@@ -3,14 +3,16 @@ FHIR R4
 
 Purpose
 ========
-The Linux for Health (LFH) FHIR R4 route allows you to send FHIR R4 data to Linux for Health, store that data as part of the LFH  Longitudinal Patient Record (LPR) and notify listeners of the stored data via NATS, for downstream integration.
+The Linux for Health (LFH) FHIR R4 route allows you to send FHIR R4 data to Linux for Health, store that data as part of the LFH Longitudinal Patient Record (LPR) and notify listeners of the stored data via NATS for downstream integration.
 
 Details
 =======
 +-------------------------+---------------------------------------------------------------------+
-| Parameter               | Description                                                         |
+| Attribute               | Value                                                               |
 +=========================+=====================================================================+
-| URL Property            | linuxforhealth.connect.endpoint.fhir_r4_rest.baseUri                |
+| Route Name              | fhir-r4                                                             |
++-------------------------+---------------------------------------------------------------------+
+| URL Property            | lfh.connect.fhir_r4_rest.uri                                        |
 +-------------------------+---------------------------------------------------------------------+
 | Default URL             | http://0.0.0.0:8080/fhir/r4/{resource}                              |
 +-------------------------+---------------------------------------------------------------------+
@@ -26,11 +28,11 @@ Configuration
 
 Path Parameters
 ---------------
-+--------------------+-----------+--------------------------------------------------------------+
-| Parameter          | Type      | Description                                                  |
-+====================+===========+==============================================================+
-| resource           | Resource  | The FHIR R4 JSON resource to save.                           |
-+--------------------+-----------+--------------------------------------------------------------+
++--------------------+---------------+----------------------------------------------------------+
+| Parameter          | Type          | Description                                              |
++====================+===============+==========================================================+
+| resource           | ResourceType  | The type of the FHIR R4 JSON resource to save.           |
++--------------------+---------------+----------------------------------------------------------+
 
 Query Parameters
 ----------------
@@ -38,7 +40,11 @@ None
 
 Required Headers
 ----------------
-None
++--------------------+---------------------------+
+| Header             | Value                     |
++====================+===========================+
+| Content-Type       | application/json          |
++--------------------+---------------------------+
 
 Configuration Properties
 ------------------------
@@ -46,11 +52,11 @@ None
 
 Calling the Route
 =================
-Using REST (e.g. via curl or Postman), send a FHIR resource to the route URL as the body of a POST message.  See 'connect/test/resources/postman/Linux for Health FHIR R4 Tutorial.postman_collection' for an example of calling this route with a Patient resource from Postman.
+Using REST (e.g. via curl or Postman), send a FHIR resource to the route URL as the body of a POST message.  See the `FHIR R4 Postman collection <https://github.com/LinuxForHealth/connect/blob/master/src/test/resources/messages/postman/Linux%20for%20Health%20FHIR%20R4%20Tutorial.postman_collection.json>`_ for an example of calling this route with a Patient resource.
 
 Results
 =======
-Results are stored in Kafka, viewable via the `Kafdrop viewer <http://localhost:9000/>`_ at the topic, partition and offset shown in the Linux for Health JSON message you recieve upon submitting the FHIR resource.
+Results are stored in Kafka, viewable via the `Kafdrop viewer <http://localhost:9000/>`_ at the topic, partition and offset shown in the Linux for Health JSON message you receive upon submitting the FHIR resource.
 
 See Also
 ========
