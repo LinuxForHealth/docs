@@ -92,5 +92,4 @@ Routes which utilize the REST DSL, such as the FHIR R4 REST route, parse propert
 
 Property Evaluation
 ===================
-Properties are loaded from the classpath using the **application.properties** file. Property settings may be overriden by creating an *override* file
-within **[application working directory]/config/application.properties**
+Properties are loaded from the classpath using the **application.properties** file. Property settings may be overriden by creating an *override* file within **[application working directory]/config/application.properties**
