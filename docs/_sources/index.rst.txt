@@ -38,6 +38,7 @@ You can get started by visiting our `developer setup page <./developer-setup.htm
    :caption: Routes:
 
    routes/fhir-r4.rst
+   routes/direct-storeandnotify.rst
 
 .. toctree::
    :maxdepth: 3
