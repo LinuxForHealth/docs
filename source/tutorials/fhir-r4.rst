@@ -8,26 +8,15 @@ This tutorial provides a working example of a typical Linux for Health FHIR R4 r
 Prerequisites
 =============
 * `Developer Setup <../developer-setup.html>`_
-* `Install Node.js <https://nodejs.org/en/download/package-manager/#macos>`_
 * `Install Postman <https://www.postman.com/downloads>`_
 
 Tutorial Steps
 ==============
 Once you have completed the Prerequisites, follow these steps to see Linux for Health in action using FHIR R4 resources.
 
-Start the NATS Subscriber
--------------------------
-In a new console window, cd to the NATS test directory in the Linux for Health connect repo (cloned during the Developer Setup Prerequisite)::
-
-   cd connect/src/test/resources/nats
-
-Run the subscriber::
-
-   node nats-subscriber
-
 Send a FHIR R4 Message to Linux for Health 
 ------------------------------------------
-Open Postman and import this collection by clicking 'Import' -> 'Import File' -> 'Choose Files'::
+Open Postman and import the FHIR R4 collection by clicking 'Import' -> 'Import File' -> 'Choose Files'::
 
    connect/src/test/resources/messages/postman/Linux for Health FHIR R4 Tutorial.postman_collection.json
 
@@ -50,7 +39,16 @@ You should see the JSON result below in the Postman window::
       }
    }
 
-   You should also see a NATS notification in the nats-subscriber console window, indicating the message was stored in Kafka.  The message received by the NATS subscriber indicates the topic, partition and offset of the message in Kafka, which could be used for downstream application integration.
+The dataRecordLocation value indicates the topic, partition and offset of the message in Kafka.
+
+View the NATS Notification (Optional)
+-------------------------------------
+You should also see a NATS notification in the nats-subscriber service log.  The message received by the NATS subscriber also indicates the topic, partition and offset of the message in Kafka, which could be used for downstream application integration.
+
+To view NATS notifications in a new console window::
+
+   cd connect/container-support/compose
+   docker-compose logs -f nats-subscriber
 
 View the Message in the Kafdrop Console (Optional)
 --------------------------------------------------

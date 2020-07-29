@@ -1,7 +1,8 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   
@@ -11,11 +12,6 @@
   
 
   
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
-
-  
   
   
   
@@ -23,9 +19,7 @@
   
 
   
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -37,6 +31,11 @@
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="FHIR R4 Tutorial" href="fhir-r4.html" />
@@ -54,7 +53,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Linux for Health
+            <a href="../index.html" class="icon icon-home"> Linux for Health
           
 
           
@@ -81,7 +80,6 @@
           
         </div>
 
-        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -101,9 +99,9 @@
 <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#start-the-nats-subscriber">Start the NATS Subscriber</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#install-the-hl7-client">Install the HL7 Client</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#send-a-message-to-linux-for-health">Send a Message to Linux for Health</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#view-the-nats-notification-optional">View the NATS Notification (Optional)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#view-the-message-in-the-kafdrop-console-optional">View the Message in the Kafdrop Console (Optional)</a></li>
 </ul>
 </li>
@@ -124,7 +122,6 @@
             
           
         </div>
-        
       </div>
     </nav>
 
@@ -163,7 +160,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><a href="../index.html">Docs</a> &raquo;</li>
         
       <li>Quick Start Tutorial</li>
     
@@ -194,27 +191,11 @@
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="../developer-setup.html">Developer Setup</a></p></li>
-<li><p><a class="reference external" href="https://nodejs.org/en/download/package-manager/#macos">Install Node.js</a></p></li>
 </ul>
 </div>
 <div class="section" id="tutorial-steps">
 <h2>Tutorial Steps<a class="headerlink" href="#tutorial-steps" title="Permalink to this headline">¶</a></h2>
 <p>Once you have completed the Prerequisites, follow these steps to see Linux for Health in action.</p>
-<div class="section" id="start-the-nats-subscriber">
-<h3>Start the NATS Subscriber<a class="headerlink" href="#start-the-nats-subscriber" title="Permalink to this headline">¶</a></h3>
-<p>In a new console window, cd to the NATS test directory in the Linux for Health connect repo (cloned during the Developer Setup Prerequisite):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">connect</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">resources</span><span class="o">/</span><span class="n">nats</span>
-</pre></div>
-</div>
-<p>Ensure that the NodeJS dependencies are installed:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">npm</span> <span class="n">install</span>
-</pre></div>
-</div>
-<p>Run the subscriber:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">node</span> <span class="n">nats</span><span class="o">-</span><span class="n">subscriber</span>
-</pre></div>
-</div>
-</div>
 <div class="section" id="install-the-hl7-client">
 <h3>Install the HL7 Client<a class="headerlink" href="#install-the-hl7-client" title="Permalink to this headline">¶</a></h3>
 <p>In a new console window, clone the Python HL7 client:</p>
@@ -239,12 +220,20 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mllp_send</span> <span class="o">--</span><span class="n">file</span> <span class="n">ADT_A01</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">loose</span> <span class="o">--</span><span class="n">port</span> <span class="mi">2575</span> <span class="n">localhost</span>
 </pre></div>
 </div>
-<p>You should see the message echoed in the HL7 client console window:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;meta&quot;</span><span class="p">:{</span><span class="s2">&quot;routeId&quot;</span><span class="p">:</span><span class="s2">&quot;hl7-v2-mllp&quot;</span><span class="p">,</span><span class="s2">&quot;uuid&quot;</span><span class="p">:</span><span class="s2">&quot;838e1e9d-aa3d-47b0-8857-2c75ad143a92&quot;</span><span class="p">,</span><span class="s2">&quot;routeUrl&quot;</span><span class="p">:</span><span class="s2">&quot;netty:tcp://0.0.0.0:2575?sync=true&amp;encoders=#hl7encoder&amp;decoders=#hl7decoder&quot;</span><span class="p">,</span><span class="s2">&quot;dataFormat&quot;</span><span class="p">:</span><span class="s2">&quot;hl7-v2&quot;</span><span class="p">,</span><span class="s2">&quot;timestamp&quot;</span><span class="p">:</span><span class="mi">1594054356</span><span class="p">,</span><span class="s2">&quot;dataStoreUri&quot;</span><span class="p">:</span><span class="s2">&quot;kafka:HL7v2_ADT?brokers=localhost:9092&quot;</span><span class="p">,</span><span class="s2">&quot;status&quot;</span><span class="p">:</span><span class="s2">&quot;success&quot;</span><span class="p">,</span><span class="s2">&quot;dataRecordLocation&quot;</span><span class="p">:[</span><span class="s2">&quot;HL7v2_ADT-0@7&quot;</span><span class="p">]}}</span>
+<p>You should see a message echoed in the HL7 client console window, similar to:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;meta&quot;</span><span class="p">:{</span><span class="s2">&quot;routeId&quot;</span><span class="p">:</span><span class="s2">&quot;hl7-v2-mllp&quot;</span><span class="p">,</span><span class="s2">&quot;uuid&quot;</span><span class="p">:</span><span class="s2">&quot;4a49c1b8-c132-40e5-8175-c07dc90637f6&quot;</span><span class="p">,</span><span class="s2">&quot;routeUrl&quot;</span><span class="p">:</span><span class="s2">&quot;netty:tcp://0.0.0.0:2575?sync=true&amp;encoders=#hl7encoder&amp;decoders=#hl7decoder&quot;</span><span class="p">,</span><span class="s2">&quot;dataFormat&quot;</span><span class="p">:</span><span class="s2">&quot;hl7-v2&quot;</span><span class="p">,</span><span class="s2">&quot;timestamp&quot;</span><span class="p">:</span><span class="mi">1596032326</span><span class="p">,</span><span class="s2">&quot;dataStoreUri&quot;</span><span class="p">:</span><span class="s2">&quot;kafka:HL7v2_ADT?brokers=localhost:9092&quot;</span><span class="p">,</span><span class="s2">&quot;status&quot;</span><span class="p">:</span><span class="s2">&quot;success&quot;</span><span class="p">,</span><span class="s2">&quot;dataRecordLocation&quot;</span><span class="p">:[</span><span class="s2">&quot;HL7v2_ADT-0@7&quot;</span><span class="p">]}}</span>
 </pre></div>
 </div>
-<p>The result indicates the topic, partition and offset of the message in Kafka.</p>
-<p>You should also see a NATS notification in the nats-subscriber console window.  The message received by the NATS subscriber indicates the topic, partition and offset of the message in Kafka, which could be used for downstream application integration.</p>
+<p>The dataRecordLocation value indicates the topic, partition and offset of the message in Kafka.</p>
+</div>
+<div class="section" id="view-the-nats-notification-optional">
+<h3>View the NATS Notification (Optional)<a class="headerlink" href="#view-the-nats-notification-optional" title="Permalink to this headline">¶</a></h3>
+<p>You should also see a NATS notification in the nats-subscriber service log.  The message received by the NATS subscriber also indicates the topic, partition and offset of the message in Kafka, which could be used for downstream application integration.</p>
+<p>To view NATS notifications in a new console window:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">connect</span><span class="o">/</span><span class="n">container</span><span class="o">-</span><span class="n">support</span><span class="o">/</span><span class="n">compose</span>
+<span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">logs</span> <span class="o">-</span><span class="n">f</span> <span class="n">nats</span><span class="o">-</span><span class="n">subscriber</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="view-the-message-in-the-kafdrop-console-optional">
 <h3>View the Message in the Kafdrop Console (Optional)<a class="headerlink" href="#view-the-message-in-the-kafdrop-console-optional" title="Permalink to this headline">¶</a></h3>
@@ -279,19 +268,11 @@
 
   <div role="contentinfo">
     <p>
-        
         &copy; Copyright 2020, IBM
 
     </p>
   </div>
-    
-    
-    
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -302,6 +283,7 @@
 
   </div>
   
+
 
   <script type="text/javascript">
       jQuery(function () {

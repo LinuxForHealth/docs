@@ -10,22 +10,11 @@ Note: FHIR R3 to R4 conversion is performed for Patient and Coverage resources, 
 Prerequisites
 =============
 * `Developer Setup <../developer-setup.html>`_
-* `Install Node.js <https://nodejs.org/en/download/package-manager/#macos>`_
 * `Install Postman <https://www.postman.com/downloads>`_
 
 Tutorial Steps
 ==============
 Once you have completed the Prerequisites, follow these steps to use Linux for Health to work with Medicare FHIR resources.
-
-Start the NATS Subscriber
--------------------------
-In a new console window, cd to the NATS test directory in the Linux for Health connect repo (cloned during the Developer Setup Prerequisite)::
-
-   cd connect/src/test/resources/nats
-
-Run the subscriber::
-
-   node nats-subscriber
 
 Authorize Linux for Health to use the Blue Button 2.0 API
 ---------------------------------------------------------
@@ -75,7 +64,14 @@ You should see a result similar to::
 
 The result indicates the topic, partition and offset of the message in Kafka.  'Get EOB details' and 'Get coverage details' queries from the Postman collection provide similar results for ExplanationofBenefit and Coverage resources.
 
-You should also see a NATS notification in the nats-subscriber console window.  The message received by the NATS subscriber indicates the topic, partition and offset of the message in Kafka, which could be used for downstream application integration.
+View the NATS Notification (Optional)
+-------------------------------------
+You should also see a NATS notification in the nats-subscriber service log.  The message received by the NATS subscriber also indicates the topic, partition and offset of the message in Kafka, which could be used for downstream application integration.
+
+To view NATS notifications in a new console window::
+
+   cd connect/container-support/compose
+   docker-compose logs -f nats-subscriber
 
 View the Message in the Kafdrop Console (Optional)
 --------------------------------------------------
