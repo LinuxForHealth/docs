@@ -8,21 +8,10 @@ This tutorial provides a working example of a typical Linux for Health route: da
 Prerequisites
 =============
 * `Developer Setup <../developer-setup.html>`_
-* `Install Node.js <https://nodejs.org/en/download/package-manager/#macos>`_
 
 Tutorial Steps
 ==============
 Once you have completed the Prerequisites, follow these steps to see Linux for Health in action.
-
-Start the NATS Subscriber
--------------------------
-In a new console window, cd to the NATS test directory in the Linux for Health connect repo (cloned during the Developer Setup Prerequisite)::
-
-   cd connect/src/test/resources/nats
-
-Run the subscriber::
-
-   node nats-subscriber
 
 Install the HL7 Client
 ----------------------
@@ -41,19 +30,26 @@ Send a Message to Linux for Health
 ----------------------------------
 In the same console window as the previous step, cd to the test messages directory in the Linux for Health connect repo::
 
-   cd connect/src/test/resources/messages
+   cd connect/src/test/resources/messages/hl7
 
 Send an HL7 message to Linux for Health::
 
    mllp_send --file ADT_A01.txt --loose --port 2575 localhost
 
-You should see the message echoed in the HL7 client console window::
+You should see a message echoed in the HL7 client console window, similar to::
 
-   {"meta":{"routeId":"hl7-v2-mllp","uuid":"838e1e9d-aa3d-47b0-8857-2c75ad143a92","routeUrl":"netty:tcp://0.0.0.0:2575?sync=true&encoders=#hl7encoder&decoders=#hl7decoder","dataFormat":"hl7-v2","timestamp":1594054356,"dataStoreUri":"kafka:HL7v2_ADT?brokers=localhost:9092","status":"success","dataRecordLocation":["HL7v2_ADT-0@7"]}}
+   {"meta":{"routeId":"hl7-v2-mllp","uuid":"4a49c1b8-c132-40e5-8175-c07dc90637f6","routeUrl":"netty:tcp://0.0.0.0:2575?sync=true&encoders=#hl7encoder&decoders=#hl7decoder","dataFormat":"hl7-v2","timestamp":1596032326,"dataStoreUri":"kafka:HL7v2_ADT?brokers=localhost:9092","status":"success","dataRecordLocation":["HL7v2_ADT-0@7"]}}
 
-The result indicates the topic, partition and offset of the message in Kafka.
+The dataRecordLocation value indicates the topic, partition and offset of the message in Kafka.
 
-You should also see a NATS notification in the nats-subscriber console window.  The message received by the NATS subscriber indicates the topic, partition and offset of the message in Kafka, which could be used for downstream application integration.
+View the NATS Notification (Optional)
+-------------------------------------
+You should also see a NATS notification in the nats-subscriber service log.  The message received by the NATS subscriber also indicates the topic, partition and offset of the message in Kafka, which could be used for downstream application integration.
+
+To view NATS notifications in a new console window::
+
+   cd connect/container-support/compose
+   docker-compose logs -f nats-subscriber
 
 View the Message in the Kafdrop Console (Optional)
 --------------------------------------------------
