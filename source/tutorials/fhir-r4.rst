@@ -29,12 +29,13 @@ You should see the JSON result below in the Postman window::
          "routeId": "fhir-r4-rest",
          "uuid": "bc4e2040-4a33-44ff-ba5d-374787ceed47",
          "routeUrl": "http://0.0.0.0:8080/fhir/r4/Patient",
-         "dataFormat": "fhir-r4",
+         "dataFormat": "FHIR-R4",
+         "messageType": "PATIENT",
          "timestamp": 1594053821,
-         "dataStoreUri": "kafka:FHIR_R4_PATIENT?brokers=localhost:9092",
+         "dataStoreUri": "kafka:FHIR-R4_PATIENT?brokers=localhost:9092",
          "status": "success",
          "dataRecordLocation": [
-               "FHIR_R4_PATIENT-0@22"
+               "FHIR-R4_PATIENT-0@22"
          ]
       }
    }
@@ -56,8 +57,8 @@ You can optionally view the message in Kafka, via the Kafdrop Kafka client.  In 
 
    http://localhost:9000/
 
-Scoll down and click on the 'FHIR_R4_PATIENT' topic.
+Scoll down and click on the 'FHIR-R4_PATIENT' topic.
 
 Click 'View Messages', then click 'View Messages' again on the next page.  This will take you to a list of all messages for the topic.  
 
-Navigate to the message at the offset indicated in the query results.  For example, from 'FHIR_R4_PATIENT-0@22' in the result, we know the message is at offset '22' in the 'FHIR_R4_PATIENT' topic.  At your result offset, you should see the FHIR patient resource you just sent to Linux for Health.
+Navigate to the message at the offset indicated in the query results.  For example, from 'FHIR-R4_PATIENT-0@22' in the result, we know the message is at offset '22' in the 'FHIR-R4_PATIENT' topic.  At your result offset, you should see the FHIR patient resource you just sent to Linux for Health.

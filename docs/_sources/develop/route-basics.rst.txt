@@ -3,15 +3,22 @@ Developing Routes
 
 Overview
 ========
-Linux for Health (LFH) contains routes for common healthcare data formats, protocols and services, such as FHIR R4, HL7v2 and CMS Blue Button 2.0.  Routes are created as RouteBuilder classes in the connect/java/com/linuxforhealth/connect/builder directory of the Linux for Health connect repo.
+Linux for Health (LFH) contains routes for common healthcare data formats, protocols and services, such as FHIR R4, HL7v2 and CMS Blue Button 2.0.  LFH routes reside within the connect/java/com/linuxforhealth/connect/builder directory of LFH connect repo. 
 
 Route Basics
 ============
-The LFH FHIR R4 route configuration method, shown here, defines a simple REST route that receives FHIR R4 resources and stores them::
+LFH routes extend the BaseRouteBuilder class. `BaseRouteBuilder<https://github.com/LinuxForHealth/connect/blob/master/src/main/java/com/linuxforhealth/connect/builder/BaseRouteBuilder.java/>`_ is an abstract class which provides property validations, error handling configuration, and a method for defining LFH routes. The LFH FHIR R4 route, shown here, defines a simple REST route that receives FHIR R4 resources and stores them::
+
+    public final static String ROUTE_ID = "fhir-r4-rest";
 
     @Override
-    public void configure() {
+    protected String getRoutePropertyNamespace() {
+        return "lfh.connect.fhir_r4_rest";
+    }
 
+
+    @Override
+    protected void buildRoute(String routePropertyNamespace) {
         CamelContextSupport contextSupport = new CamelContextSupport(getContext());
         URI fhirBaseUri = URI.create(contextSupport.getProperty("lfh.connect.fhir_r4_rest.uri"));
 
@@ -22,15 +29,24 @@ The LFH FHIR R4 route configuration method, shown here, defines a simple REST ro
         rest(fhirBaseUri.getPath())
                 .post("/{resource}")
                 .route()
-                .routeId(FHIR_R4_ROUTE_ID)
+                .routeId(ROUTE_ID)
                 .unmarshal().fhirJson("R4")
-                .process(new FhirR4MetadataProcessor())
-                .to("direct:storeandnotify");
+                .marshal().fhirJson("R4")
+                .process(new MetaDataProcessor(routePropertyNamespace))
+                .to(LinuxForHealthRouteBuilder.STORE_AND_NOTIFY_CONSUMER_URI);
     }
 
-configure()
------------
-The Linux for Health route builder configure() method contains the route and the following additional elements:
+ROUTE_ID
+--------
+Each route implementation should have a publically accessible "constant" for it's route id. This is used within the route definition and for mocking/intercepting endpoints in unit tests.
+
+getRoutePropertyNamespace()
+---------------------------
+Returns the "property namespace", or property prefix, for the route's property settings. This value aligns with the route's application.property settings.
+
+buildRoute(String routePropertyNamespace)
+-----------------------------------------
+The Linux for Health route builder buildRoute() method contains the route and the following additional elements:
 
 +-----------------------------------+---------------------------------------------+--------------------+
 | Step                              | Explanation                                 | Required/Optional  |
@@ -39,16 +55,12 @@ The Linux for Health route builder configure() method contains the route and the
 +-----------------------------------+---------------------------------------------+--------------------+
 | fhirBaseUri                       | |baseUri_def|                               | Required           |
 +-----------------------------------+---------------------------------------------+--------------------+
-| setFhirR4Metadata                 | |metadata_def|                              | Required           |
-+-----------------------------------+---------------------------------------------+--------------------+
-| restConfiguration().host().port() | |restconfig_def|                            | Required           |
+| restConfiguration                 | |restconfig_def|                            | Required           |
 +-----------------------------------+---------------------------------------------+--------------------+
 
 .. |contextSupport_def| replace:: The CamelContextSupport class provides convenience methods for working with the underlying CamelContext, including parsing application.property settings.
 
 .. |baseUri_def| replace:: The URI for this route.  You will have your own URI for your route.
-
-.. |metadata_def| replace:: An LFH Processor instance that sets the expected LFH message headers as exchange properties.  This step will vary slightly between routes, so you will likely need to create a specific processor for your route.
 
 .. |restconfig_def| replace:: Configures the host and port for this REST route.  The LFH host and port may be the same for all LFH routes.
 
@@ -56,23 +68,25 @@ Route
 -----
 The Linux for Health route contains the following steps:
 
-+-----------------------------------+---------------------------------------------+--------------------+
-| Step                              | Explanation                                 | Required/Optional  |
-+===================================+=============================================+====================+
-| rest(fhirBaseUri.getPath())       | |restUri_def|                               | Required           |
-+-----------------------------------+---------------------------------------------+--------------------+
-| post("/{resource}")               | |restOp_def|                                | Required           |
-+-----------------------------------+---------------------------------------------+--------------------+
-| route()                           | |route_def|                                 | Required           |
-+-----------------------------------+---------------------------------------------+--------------------+
-| routeId()                         | |routeId_def|                               | Required           |
-+-----------------------------------+---------------------------------------------+--------------------+
-| unmarshal()                       | |unmarshall_def|                            | Optional           |
-+-----------------------------------+---------------------------------------------+--------------------+
-| process(setFhirR4Metadata)        | |setMetadata_def|                           | Required           |
-+-----------------------------------+---------------------------------------------+--------------------+
-| to("direct:storeandnotify")       | |storeNotify_def|                           | Required           |
-+-----------------------------------+---------------------------------------------+--------------------+
++---------------------------------------------------------------+---------------------------------------------+--------------------+
+| Step                                                          | Explanation                                 | Required/Optional  |
++===================================+=============================================+==========================================+
+| rest(fhirBaseUri.getPath())                                   | |restUri_def|                               | Required           |
++---------------------------------------------------------------+---------------------------------------------+--------------------+
+| post("/{resource}")                                           | |restOp_def|                                | Required           |
++---------------------------------------------------------------+---------------------------------------------+--------------------+
+| route()                                                       | |route_def|                                 | Required           |
++---------------------------------------------------------------+---------------------------------------------+--------------------+
+| routeId()                                                     | |routeId_def|                               | Required           |
++---------------------------------------------------------------+---------------------------------------------+--------------------+
+| unmarshal()                                                   | |unmarshall_def|                            | Optional           |
++---------------------------------------------------------------+---------------------------------------------+--------------------+
+| marshal()                                                     | |marshall_def|                              | Optional           |
++---------------------------------------------------------------+---------------------------------------------+--------------------+
+| process(new MetaDataProcessor(routePropertyNamespace)         | |setMetadata_def|                           | Required           |
++---------------------------------------------------------------+---------------------------------------------+--------------------+
+| to(LinuxForHealthRouteBuilder.STORE_AND_NOTIFY_CONSUMER_URI)  | |storeNotify_def|                           | Required           |
++---------------------------------------------------------------+---------------------------------------------+--------------------+
 
 .. |restUri_def| replace:: Defines the URL within LFH that will accept REST calls for this route.
 
@@ -82,8 +96,10 @@ The Linux for Health route contains the following steps:
 
 .. |routeId_def| replace:: Specifies a unique LFH route name for the embedded route.
 
-.. |unmarshall_def| replace:: De-serializes the input data to FHIR R4 JSON.
+.. |unmarshall_def| replace:: De-serializes the input data to FHIR R4 JSON data models.
 
-.. |setMetadata_def| replace:: Sets the expected LFH message headers as exchange properties.  This step will vary slightly between routes, so you will likely need to create a specific processor for your route.
+.. |marshall_def| replace:: Serializes FHIR R4 JSON data models to JSON.
+
+.. |setMetadata_def| replace:: Sets the expected LFH message headers as exchange properties.  The MetaDataProcessor is a common and required processor for all LFH routes.
 
 .. |storeNotify_def| replace:: Encapsulates the storage of the LFH message properties and message body in Kafka and the notification of that storage via NATS.  Your route should include this step at or near the end.
