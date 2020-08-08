@@ -4,10 +4,9 @@ Developer Setup
 Overview
 ========
 Linux for Health provides an opinionated implementation of `Camel Routing <https://camel.apache.org/manual/latest/routes.html>`_, focused
-on standard data and messaging formats. Linux for Health data processing routes are dynamically built from application.properties
-configurations.
+on standard data and messaging formats. 
 
-An Linux for Health data processing route consists of:
+A Linux for Health data processing route consists of:
 
 * A consumer endpoint which receives inbound data
 * Optional "components" used to transform, filter, or route data
@@ -63,13 +62,13 @@ To run the entire Linux for Health application stack within a docker compose con
     # navigate to the compose configuration directory
     cd container-support/compose
     # enable the override file to support the local Linux for Health container
-    mv docker-compose.override.disabled docker-compose.override.yml
+    mv docker-compose.override docker-compose.override.yml
     # start up supporting services
     docker-compose up -d
     # review logs to ensure that the Linux for Health service is available
     docker-compose logs -f lfh
     # after testing is complete "disable" the override file
-    mv docker-compose.override.yml docker-compose.override.disabled
+    mv docker-compose.override.yml docker-compose.override
 
 For additional Docker Compose commands, please refer to the `Official Documentation <https://docs.docker.com/compose/reference/overview/>`_
 

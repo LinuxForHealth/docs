@@ -11,7 +11,7 @@ Linux for Health uses the following constructs to process healthcare information
 
 Routes
 ------
-A Linux for Health route is designed to ingest healthcare data, perform any required operations on that data (e.g. de-serialize, transform, enrich), then do something with that data (e.g. store, notify, forward).  Routes may be defined using standard protocols, such as REST or HTTP, and may use a `known data format <https://camel.apache.org/components/latest/dataformats/index.html>`_ such as HL7v2 or FHIR R4.  If you are adding access to a service, you will likely need to add a new route to LFH.
+A Linux for Health route is designed to ingest healthcare data, perform any required operations on that data (e.g. de-serialize, transform, enrich), then do something with that data (e.g. store, notify, forward).  Routes may be defined using standard protocols, such as REST or HTTP, and may use a `known data format <https://camel.apache.org/components/latest/dataformats/index.html>`_ such as HL7v2 or FHIR R4.  If you are adding access to a service, or a data format not yet support in LFH, you will likely need to add a new route.
 
 Components
 ----------
@@ -25,7 +25,9 @@ A Camel `Exchange <https://www.javadoc.io/doc/org.apache.camel/camel-core/2.21.0
 
 Processors
 ----------
-A Linux for Health processor encapsulates code for route message processing and takes the message Exchange instance as input.  Within a processor, you can set headers, properties and the message body itself, all of which flow to the next step in the message processing of the route.  When creating your own route, create a processor instead of performing multiple operations inline in a route.  LFH contains many processors that you can use as examples for your new processor in the connect/java/com/linuxforhealth/connect/processor directory of the Linux for Health connect repo.
+A Linux for Health processor encapsulates code for route message processing and takes the message Exchange instance as input.  Within a processor, you can set headers, properties and the message body itself, all of which flow to the next step in the message processing of the route.  
+
+Processors may be defined inline, within the context of a route, or as a separate class. Inline processors are preferred when the processor's operations are route specific. Processsor classes are recommended if the processor is able to be reused across routes. Examples of "reusable" processor class implementations are found within the connect/java/com/linuxforhealth/connect/processor directory of the Linux for Health connect repo.
 
 Development Steps
 =================
@@ -34,8 +36,7 @@ Follow the steps below to extend Linux for Health:
 1. Clone and build the Linux for Health repo. See the `Developer Setup <../developer-setup.html>`_ Getting Started step for instructions.
 2. Determine if you need a route and component or just a route, based on the discussion above.
 3. Create a new component, if needed, by cloning and modifying a Camel component that most closely matches your requirements.  You can find simple Camel components that include only 4 required files as a starting point.
-4. Create a new route by cloning and modifying the LFH route that most closely matches your requirements, following the `Route Development <./route-basics.html>`_ guidance.  Be sure to include the steps that are required for LFH routes.
-5. Create new processors to encapsulate the route message processing steps by cloning and modifying the LFH processor that most closely matches your requirements.
-6. Add any new dependencies to the LFH build.gradle file, following the guidance in `Building Your Code <./build.html>`_.
-7. Create unit tests and add test services, following the guidance in `Testing Your Code <./test.html>`_.
-8. Build, test, then open a feature issue and a pull request against that feature to contribute your changes to `Linux for Health <https://github.com/LinuxForHealth/connect>`_!
+4. Determine if you need to create a new route, or modify an existing route. New routes are created to support new LFH services and data formats. Existing routes are updated to integrate the route, or data format, with a new target system, or producer. Consult the `Route Development <./route-basics.html>`_ for additional guidance.
+5. Add any new dependencies to the LFH build.gradle file, following the guidance in `Building Your Code <./build.html>`_.
+6. Create unit tests and add test services, following the guidance in `Testing Your Code <./test.html>`_.
+7. Build, test, then open a feature issue and a pull request against that feature to contribute your changes to `Linux for Health <https://github.com/LinuxForHealth/connect>`_!

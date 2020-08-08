@@ -52,12 +52,13 @@ You should see a result similar to::
         "routeId": "bluebutton-20-rest",
         "uuid": "6735c7ef-3640-434e-9563-2ed38958b21a",
         "routeUrl": "http://0.0.0.0:8080/bluebutton/v1/Patient?-19990000002154",
-        "dataFormat": "fhir-r4",
+        "dataFormat": "FHIR-R4",
+        "messageType": "PATIENT",
         "timestamp": 1594050020,
-        "dataStoreUri": "kafka:FHIR_R4_PATIENT?brokers=localhost:9092",
+        "dataStoreUri": "kafka:FHIR-R4_PATIENT?brokers=localhost:9092",
         "status": "success",
         "dataRecordLocation": [
-            "FHIR_R4_PATIENT-0@21"
+            "FHIR-R4_PATIENT-0@21"
         ]
       }
    }
@@ -79,8 +80,8 @@ You can optionally view the message contents in Kafka, via the Kafdrop Kafka cli
 
    http://localhost:9000/
 
-Scoll down and click on the 'FHIR_R4_PATIENT' topic.
+Scoll down and click on the 'FHIR-R4_PATIENT' topic.
 
 Click 'View Messages', then click 'View Messages' again on the next page.  This will take you to a list of all messages for the topic.  
 
-Navigate to the message at the offset indicated in the query results.  For example, from 'FHIR_R4_PATIENT-0@21' in the result, we know the message is at offset '21' in the 'FHIR_R4_PATIENT' topic.  At your result offset, you should see the bundle of Blue Button FHIR patient resources you just requested from Linux for Health.
+Navigate to the message at the offset indicated in the query results.  For example, from 'FHIR-R4_PATIENT-0@21' in the result, we know the message is at offset '21' in the 'FHIR-R4_PATIENT' topic.  At your result offset, you should see the bundle of Blue Button FHIR patient resources you just requested from Linux for Health.
