@@ -108,7 +108,7 @@ The route's **messageType** property supports simple expressions, which may be u
 
     lfh.connect.hl7_v2_mllp.messageType=\${header.CamelHL7MessageType}
 
-The "$" is escaped using a "\" to ensure that the expression is not evaluated using Groovy's templating syntax.
+The "$" is escaped using a "\\" to ensure that the expression is not evaluated using Groovy's templating syntax.
 
 Property Evaluation
 ===================
