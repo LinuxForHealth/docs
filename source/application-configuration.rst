@@ -52,22 +52,19 @@ Where **[route id]** is the route id defined in the Java DSL and **[property]** 
 
 The following route properties are **required**
 
-+-----------------------------------+----------------------------------------------------+
-| Property                          | Description                                        |
-+===================================+====================================================+
-| lfh.connect.[route id].uri        | The consumer URI for the route                     |
-+-----------------------------------+--------------------------------------------------- +
-| lfh.connect.[route id].dataFormat | The data format (HL7, FHIR, etc) used in the route |
-+-----------------------------------+--------------------------------------------------- +
-| lfh.connect.[route id].messageType| The type of message within the data format         |
-+-----------------------------------+--------------------------------------------------- +
++------------------------------------+----------------------------------------------------+
+| Property                           | Description                                        |
++====================================+====================================================+
+| lfh.connect.[route id].uri         | The consumer URI for the route                     |
++------------------------------------+----------------------------------------------------+
+| lfh.connect.[route id].dataFormat  | The data format (HL7, FHIR, etc) used in the route |
++------------------------------------+----------------------------------------------------+
+| lfh.connect.[route id].messageType | The type of message within the format              |
++------------------------------------+----------------------------------------------------+
 
+The **uri** property supports `Camel's Property Placeholder Component <https://camel.apache.org/manual/latest/using-propertyplaceholder.html#UsingPropertyPlaceholder-ExamplesUsingPropertiesComponent>`_ which allows developers to use `Simple Expressions <https://camel.apache.org/components/latest/languages/simple-language.html>`_ within the route's `Java DSL <https://camel.apache.org/manual/latest/java-dsl.html>`_ .
 
-Linux for Health provides support for `Camel's Property Placeholder Component <https://camel.apache.org/manual/latest/using-propertyplaceholder.html#UsingPropertyPlaceholder-ExamplesUsingPropertiesComponent>`_ which allows
-developers to use `Simple Expressions <https://camel.apache.org/components/latest/languages/simple-language.html>`_ within the property files and the `Java DSL <https://camel.apache.org/manual/latest/java-dsl.html>`_.
-
-In the HL7v2 MLLP example below, properties are defined for the route's consumer host and uri. Note that the **uri** property employs the simple expression templating tags
-to reuse the host property.
+In the HL7v2 MLLP example below, properties are defined for the route's consumer host and uri. Note that the **uri** property employs the simple expression templating tags to reuse the host property.
 
 HL7v2 MLLP Example::
 
@@ -106,6 +103,12 @@ Routes which utilize the REST DSL, such as the FHIR R4 REST route, parse propert
                 .process(new MetaDataProcessor(routePropertyNamespace))
                 .to(LinuxForHealthRouteBuilder.STORE_AND_NOTIFY_CONSUMER_URI);
     }
+
+The route's **messageType** property supports simple expressions, which may be used to dynamically assign a value during route processing. In the  example below, the HL7 route's parses its **messageFormat** from the Camel message header.
+
+    lfh.connect.hl7_v2_mllp.messageType=\${header.CamelHL7MessageType}
+
+The "$" is escaped using a "\" to ensure that the expression is not evaluated using Groovy's templating syntax.
 
 Property Evaluation
 ===================

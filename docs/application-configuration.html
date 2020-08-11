@@ -228,10 +228,30 @@ and encoder beans used to in HL7 messaging processing:</p>
 </div>
 <p>Where <strong>[route id]</strong> is the route id defined in the Java DSL and <strong>[property]</strong> is the setting’s property key.</p>
 <p>The following route properties are <strong>required</strong></p>
-<p>Linux for Health provides support for <a class="reference external" href="https://camel.apache.org/manual/latest/using-propertyplaceholder.html#UsingPropertyPlaceholder-ExamplesUsingPropertiesComponent">Camel’s Property Placeholder Component</a> which allows
-developers to use <a class="reference external" href="https://camel.apache.org/components/latest/languages/simple-language.html">Simple Expressions</a> within the property files and the <a class="reference external" href="https://camel.apache.org/manual/latest/java-dsl.html">Java DSL</a>.</p>
-<p>In the HL7v2 MLLP example below, properties are defined for the route’s consumer host and uri. Note that the <strong>uri</strong> property employs the simple expression templating tags
-to reuse the host property.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 41%" />
+<col style="width: 59%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Property</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>lfh.connect.[route id].uri</p></td>
+<td><p>The consumer URI for the route</p></td>
+</tr>
+<tr class="row-odd"><td><p>lfh.connect.[route id].dataFormat</p></td>
+<td><p>The data format (HL7, FHIR, etc) used in the route</p></td>
+</tr>
+<tr class="row-even"><td><p>lfh.connect.[route id].messageType</p></td>
+<td><p>The type of message within the format</p></td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>uri</strong> property supports <a class="reference external" href="https://camel.apache.org/manual/latest/using-propertyplaceholder.html#UsingPropertyPlaceholder-ExamplesUsingPropertiesComponent">Camel’s Property Placeholder Component</a> which allows developers to use <a class="reference external" href="https://camel.apache.org/components/latest/languages/simple-language.html">Simple Expressions</a> within the route’s <a class="reference external" href="https://camel.apache.org/manual/latest/java-dsl.html">Java DSL</a> .</p>
+<p>In the HL7v2 MLLP example below, properties are defined for the route’s consumer host and uri. Note that the <strong>uri</strong> property employs the simple expression templating tags to reuse the host property.</p>
 <p>HL7v2 MLLP Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>lfh.connect.hl7_v2_mllp.host=0.0.0.0:2575
 lfh.connect.hl7_v2_mllp.uri=netty:tcp://{{lfh.connect.hl7_v2_mllp.host}}?sync=true&amp;encoders=#hl7encoder&amp;decoders=#hl7decoder
@@ -270,6 +290,11 @@ lfh.connect.hl7_v2_mllp.uri=netty:tcp://{{lfh.connect.hl7_v2_mllp.host}}?sync=tr
 <span class="p">}</span>
 </pre></div>
 </div>
+<p>The route’s <strong>messageType</strong> property supports simple expressions, which may be used to dynamically assign a value during route processing. In the  example below, the HL7 route’s parses its <strong>messageFormat</strong> from the Camel message header.</p>
+<blockquote>
+<div><p>lfh.connect.hl7_v2_mllp.messageType=${header.CamelHL7MessageType}</p>
+</div></blockquote>
+<p>The “$” is escaped using a “&quot; to ensure that the expression is not evaluated using Groovy’s templating syntax.</p>
 </div>
 <div class="section" id="property-evaluation">
 <h2>Property Evaluation<a class="headerlink" href="#property-evaluation" title="Permalink to this headline">¶</a></h2>
