@@ -265,43 +265,46 @@
 <colgroup>
 <col style="width: 28%" />
 <col style="width: 21%" />
-<col style="width: 13%" />
-<col style="width: 21%" />
+<col style="width: 35%" />
 <col style="width: 16%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head" colspan="5"><p>Step                                                          | Explanation                                 | Required/Optional</p></th>
+<tr class="row-odd"><th class="head" colspan="2"><p>Step</p></th>
+<th class="head"><p>Explanation</p></th>
+<th class="head"><p>Required/Optional</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td colspan="5"><p>rest(fhirBaseUri.getPath())                                   | Defines the URL within LFH that will accept REST calls for this route.                               | Required</p></td>
+<tr class="row-even"><td colspan="2"><p>rest(fhirBaseUri.getPath())</p></td>
+<td><p>Defines the URL within LFH that will accept REST calls for this route.</p></td>
+<td><p>Required</p></td>
 </tr>
 <tr class="row-odd"><td colspan="2"><p>post(“/{resource}”)</p></td>
-<td colspan="2"><p>Defines the REST operation supported by this route and the path parameter.  One route may support multiple REST operations, but in this case only POST is supported.</p></td>
+<td><p>Defines the REST operation supported by this route and the path parameter.  One route may support multiple REST operations, but in this case only POST is supported.</p></td>
 <td><p>Required</p></td>
 </tr>
 <tr class="row-even"><td colspan="2"><p>route()</p></td>
-<td colspan="2"><p>Embeds a Camel route in the REST processing.</p></td>
+<td><p>Embeds a Camel route in the REST processing.</p></td>
 <td><p>Required</p></td>
 </tr>
 <tr class="row-odd"><td colspan="2"><p>routeId()</p></td>
-<td colspan="2"><p>Specifies a unique LFH route name for the embedded route.</p></td>
+<td><p>Specifies a unique LFH route name for the embedded route.</p></td>
 <td><p>Required</p></td>
 </tr>
 <tr class="row-even"><td colspan="2"><p>unmarshal()</p></td>
-<td colspan="2"><p>De-serializes the input data to FHIR R4 JSON data models.</p></td>
+<td><p>De-serializes the input data to FHIR R4 JSON data models.</p></td>
 <td><p>Optional</p></td>
 </tr>
 <tr class="row-odd"><td colspan="2"><p>marshal()</p></td>
-<td colspan="2"><p>Serializes FHIR R4 JSON data models to JSON.</p></td>
+<td><p>Serializes FHIR R4 JSON data models to JSON.</p></td>
 <td><p>Optional</p></td>
 </tr>
 <tr class="row-even"><td colspan="2"><p>process(new MetaDataProcessor(routePropertyNamespace)</p></td>
-<td colspan="2"><p>Sets the expected LFH message headers as exchange properties.  The MetaDataProcessor is a common and required processor for all LFH routes.</p></td>
+<td><p>Sets the expected LFH message headers as exchange properties.  The MetaDataProcessor is a common and required processor for all LFH routes.</p></td>
 <td><p>Required</p></td>
 </tr>
 <tr class="row-odd"><td colspan="2"><p>to(LinuxForHealthRouteBuilder.STORE_AND_NOTIFY_CONSUMER_URI)</p></td>
-<td colspan="2"><p>Encapsulates the storage of the LFH message properties and message body in Kafka and the notification of that storage via NATS.  Your route should include this step at or near the end.</p></td>
+<td><p>Encapsulates the storage of the LFH message properties and message body in Kafka and the notification of that storage via NATS.  Your route should include this step at or near the end.</p></td>
 <td><p>Required</p></td>
 </tr>
 </tbody>
