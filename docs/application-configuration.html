@@ -290,10 +290,10 @@ lfh.connect.hl7_v2_mllp.uri=netty:tcp://{{lfh.connect.hl7_v2_mllp.host}}?sync=tr
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The route’s <strong>messageType</strong> property supports simple expressions, which may be used to dynamically assign a value during route processing. In the  example below, the HL7 route’s parses its <strong>messageFormat</strong> from the Camel message header.</p>
-<blockquote>
-<div><p>lfh.connect.hl7_v2_mllp.messageType=${header.CamelHL7MessageType}</p>
-</div></blockquote>
+<p>The route’s <strong>messageType</strong> property supports simple expressions, which may be used to dynamically assign a value during route processing. In the  example below, the HL7 route’s parses its <strong>messageFormat</strong> from the Camel message header:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>lfh.connect.hl7_v2_mllp.messageType=\${header.CamelHL7MessageType}
+</pre></div>
+</div>
 <p>The “$” is escaped using a “&quot; to ensure that the expression is not evaluated using Groovy’s templating syntax.</p>
 </div>
 <div class="section" id="property-evaluation">

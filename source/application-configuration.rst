@@ -104,7 +104,7 @@ Routes which utilize the REST DSL, such as the FHIR R4 REST route, parse propert
                 .to(LinuxForHealthRouteBuilder.STORE_AND_NOTIFY_CONSUMER_URI);
     }
 
-The route's **messageType** property supports simple expressions, which may be used to dynamically assign a value during route processing. In the  example below, the HL7 route's parses its **messageFormat** from the Camel message header.
+The route's **messageType** property supports simple expressions, which may be used to dynamically assign a value during route processing. In the  example below, the HL7 route's parses its **messageFormat** from the Camel message header::
 
     lfh.connect.hl7_v2_mllp.messageType=\${header.CamelHL7MessageType}
 
