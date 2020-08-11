@@ -7,7 +7,7 @@ Linux for Health (LFH) contains routes for common healthcare data formats, proto
 
 Route Basics
 ============
-LFH routes extend the BaseRouteBuilder class. `BaseRouteBuilder<https://github.com/LinuxForHealth/connect/blob/master/src/main/java/com/linuxforhealth/connect/builder/BaseRouteBuilder.java/>`_ is an abstract class which provides property validations, error handling configuration, and a method for defining LFH routes. The LFH FHIR R4 route, shown here, defines a simple REST route that receives FHIR R4 resources and stores them::
+LFH routes extend the BaseRouteBuilder class. `BaseRouteBuilder <https://github.com/LinuxForHealth/connect/blob/master/src/main/java/com/linuxforhealth/connect/builder/BaseRouteBuilder.java/>`_ is an abstract class which provides property validations, error handling configuration, and a method for defining LFH routes. The LFH FHIR R4 route, shown here, defines a simple REST route that receives FHIR R4 resources and stores them::
 
     public final static String ROUTE_ID = "fhir-r4-rest";
 
@@ -70,7 +70,7 @@ The Linux for Health route contains the following steps:
 
 +---------------------------------------------------------------+---------------------------------------------+--------------------+
 | Step                                                          | Explanation                                 | Required/Optional  |
-+===================================+=============================================+==========================================+
++===================================+=============================================+================================================+
 | rest(fhirBaseUri.getPath())                                   | |restUri_def|                               | Required           |
 +---------------------------------------------------------------+---------------------------------------------+--------------------+
 | post("/{resource}")                                           | |restOp_def|                                | Required           |
