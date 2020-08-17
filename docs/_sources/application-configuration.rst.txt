@@ -79,7 +79,8 @@ Within the HL7v2 MLLP route, the simple templating tags are used to reference th
                 .routeId(HL7_V2_MLLP_ROUTE_ID)
                 .unmarshal().hl7()
                 .process(new MetaDataProcessor(routePropertyNamespace))
-                .to(LinuxForHealthRouteBuilder.STORE_AND_NOTIFY_CONSUMER_URI);
+                .to(LinuxForHealthRouteBuilder.STORE_AND_NOTIFY_CONSUMER_URI)
+                .id(ROUTE_PRODUCER_ID);;
     }
 
 Routes which utilize the REST DSL, such as the FHIR R4 REST route, parse properties using a convenience function in `CamelContextSupport <https://github.com/LinuxForHealth/connect/blob/master/src/main/java/com/linuxforhealth/connect/support/CamelContextSupport.java>`_::
@@ -101,7 +102,8 @@ Routes which utilize the REST DSL, such as the FHIR R4 REST route, parse propert
                 .unmarshal().fhirJson("R4")
                 .marshal().fhirJson("R4")
                 .process(new MetaDataProcessor(routePropertyNamespace))
-                .to(LinuxForHealthRouteBuilder.STORE_AND_NOTIFY_CONSUMER_URI);
+                .to(LinuxForHealthRouteBuilder.STORE_AND_NOTIFY_CONSUMER_URI)
+                .id(ROUTE_PRODUCER_ID);
     }
 
 The route's **messageType** property supports simple expressions, which may be used to dynamically assign a value during route processing. In the  example below, the HL7 route's parses its **messageFormat** from the Camel message header::
