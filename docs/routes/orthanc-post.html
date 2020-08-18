@@ -8,14 +8,14 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Direct Store and Notify &mdash; Linux for Health  documentation</title>
+  <title>Orthanc DICOM &mdash; Linux for Health  documentation</title>
   
 
   
   
   
   
-    <link rel="canonical" href="https://linuxforhealth.github.io/docs/routes/direct-storeandnotify.html"/>
+    <link rel="canonical" href="https://linuxforhealth.github.io/docs/routes/orthanc-post.html"/>
   
 
   
@@ -38,8 +38,8 @@
   <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Quick Start Tutorial" href="../tutorials/quickstart.html" />
-    <link rel="prev" title="Orthanc DICOM" href="orthanc-post.html" /> 
+    <link rel="next" title="Direct Store and Notify" href="direct-storeandnotify.html" />
+    <link rel="prev" title="FHIR R4" href="fhir-r4-rest.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -96,19 +96,21 @@
 <p class="caption"><span class="caption-text">Routes:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="fhir-r4-rest.html">FHIR R4</a></li>
-<li class="toctree-l1"><a class="reference internal" href="orthanc-post.html">Orthanc DICOM</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Direct Store and Notify</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Orthanc DICOM</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#purpose">Purpose</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#details">Details</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#configuration">Configuration</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#exchange-state">Exchange State</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#path-parameters">Path Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#query-parameters">Query Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#required-headers">Required Headers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration-properties">Configuration Properties</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#calling-the-route">Calling the Route</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#results">Results</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="direct-storeandnotify.html">Direct Store and Notify</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Tutorials:</span></p>
 <ul>
@@ -168,13 +170,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Direct Store and Notify</li>
+      <li>Orthanc DICOM</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/routes/direct-storeandnotify.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/routes/orthanc-post.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -187,11 +189,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="direct-store-and-notify">
-<h1>Direct Store and Notify<a class="headerlink" href="#direct-store-and-notify" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="orthanc-dicom">
+<h1>Orthanc DICOM<a class="headerlink" href="#orthanc-dicom" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="purpose">
 <h2>Purpose<a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h2>
-<p>The Linux for Health (LFH) direct:storeAndNotify route allows you to store transaction data as part of the LFH Longitudinal Patient Record (LPR) and notify listeners of the stored data via NATS for downstream integration.</p>
+<p>The Linux for Health (LFH) Orthanc DICOM route allows you to send DICOM images to LFH, store those images as part of the LFH Longitudinal Patient Record (LPR) and notify listeners of the stored images via NATS for downstream integration.</p>
 </div>
 <div class="section" id="details">
 <h2>Details<a class="headerlink" href="#details" title="Permalink to this headline">¶</a></h2>
@@ -207,64 +209,70 @@
 </thead>
 <tbody>
 <tr class="row-even"><td><p>Route Name</p></td>
-<td><p>direct:storeAndNotify</p></td>
+<td><p>orthanc-post</p></td>
+</tr>
+<tr class="row-odd"><td><p>URL Property</p></td>
+<td><p>lfh.connect.orthanc.uri</p></td>
+</tr>
+<tr class="row-even"><td><p>Route URL</p></td>
+<td><p><a class="reference external" href="http:/">http:/</a>/{host}:9090/orthanc/instances</p></td>
+</tr>
+<tr class="row-odd"><td><p>Example URL</p></td>
+<td><p><a class="reference external" href="http://127.0.0.1:9090/orthanc/instances">http://127.0.0.1:9090/orthanc/instances</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Protocol</p></td>
+<td><p>HTTP</p></td>
 </tr>
 <tr class="row-odd"><td><p>Supported Operation(s)</p></td>
-<td><p>Camel direct invocation</p></td>
+<td><p>POST</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="configuration">
 <h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
-<p>The direct:storeAndNotify route expects the following input state in the Camel message Exchange.</p>
-<div class="section" id="exchange-state">
-<h3>Exchange State<a class="headerlink" href="#exchange-state" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="path-parameters">
+<h3>Path Parameters<a class="headerlink" href="#path-parameters" title="Permalink to this headline">¶</a></h3>
+<p>None</p>
+</div>
+<div class="section" id="query-parameters">
+<h3>Query Parameters<a class="headerlink" href="#query-parameters" title="Permalink to this headline">¶</a></h3>
+<p>None</p>
+</div>
+<div class="section" id="required-headers">
+<h3>Required Headers<a class="headerlink" href="#required-headers" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 27%" />
-<col style="width: 16%" />
+<col style="width: 43%" />
 <col style="width: 57%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Element</p></th>
-<th class="head" colspan="2"><p>Description</p></th>
+<tr class="row-odd"><th class="head"><p>Header</p></th>
+<th class="head"><p>Value</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Message Properties</p></td>
-<td colspan="2"><p>LFH message properties are stored as Exchange properties.  Before direct:storeAndNotify is called, these Exchange properties must be set via the LinuxForHealthMessage processor. This ensures that the message will be stored in the data store using the LFH standard format.</p></td>
+<tr class="row-even"><td><p>Content-Type</p></td>
+<td><p>application/octet-stream</p></td>
 </tr>
-<tr class="row-odd"><td><p>Message Body</p></td>
-<td colspan="2"><p>The message body contains the data to be stored in the data store, e.g. a HL7v2 message or a FHIR R4 resource.</p></td>
+<tr class="row-odd"><td><p>Content-Length</p></td>
+<td><p>size of file in bytes</p></td>
 </tr>
 </tbody>
 </table>
 </div>
+<div class="section" id="configuration-properties">
+<h3>Configuration Properties<a class="headerlink" href="#configuration-properties" title="Permalink to this headline">¶</a></h3>
+<p>None</p>
+</div>
 </div>
 <div class="section" id="calling-the-route">
 <h2>Calling the Route<a class="headerlink" href="#calling-the-route" title="Permalink to this headline">¶</a></h2>
-<p>direct:storeAndNotify is invoked as a part of a route you define, at or near the end of your route, once the incoming message is fully processed.  In this example, the LFH HL7v2 route unmarshals the data, does further processing, then invokes direct:storeAndNotify to store the HL7v2 input message and LFH message properties in the data store:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">protected</span> <span class="n">void</span> <span class="n">buildRoute</span><span class="p">(</span><span class="n">String</span> <span class="n">routePropertyNamespace</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">from</span><span class="p">(</span><span class="s2">&quot;{{lfh.connect.hl7_v2_mllp.uri}}&quot;</span><span class="p">)</span>
-            <span class="o">.</span><span class="n">routeId</span><span class="p">(</span><span class="n">ROUTE_ID</span><span class="p">)</span>
-            <span class="o">.</span><span class="n">unmarshal</span><span class="p">()</span><span class="o">.</span><span class="n">hl7</span><span class="p">()</span>
-            <span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">new</span> <span class="n">MetaDataProcessor</span><span class="p">(</span><span class="n">routePropertyNamespace</span><span class="p">))</span>
-            <span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">LinuxForHealthRouteBuilder</span><span class="o">.</span><span class="n">STORE_AND_NOTIFY_CONSUMER_URI</span><span class="p">)</span>
-            <span class="o">.</span><span class="n">id</span><span class="p">(</span><span class="n">ROUTE_PRODUCER_ID</span><span class="p">);</span>
-<span class="p">}</span>
-</pre></div>
-</div>
+<p>Using HTTP (e.g. via curl or Postman), send a DICOM file to the route URL as the body of a POST message.</p>
 </div>
 <div class="section" id="results">
 <h2>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h2>
-<p>As a result of calling this direct:storeAndNotify route, the message body and LFH message attributes are stored in Kafka and a message indicating the location in Kafka is sent via NATS to subscribers.  The data in Kafka is viewable via the <a class="reference external" href="http://localhost:9000/">Kafdrop viewer</a> at the topic, partition and offset shown in the Linux for Health JSON message you receive upon submitting the FHIR resource.</p>
-</div>
-<div class="section" id="see-also">
-<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p><a class="reference external" href="../message-structure.html">Linux for Health Message Structure</a></p></li>
-</ul>
+<p>Results are stored in Kafka, viewable via the <a class="reference external" href="http://localhost:9000/">Kafdrop viewer</a> at the topic, partition and offset shown in the Linux for Health JSON message you receive upon submitting the FHIR resource.</p>
 </div>
 </div>
 
@@ -276,10 +284,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../tutorials/quickstart.html" class="btn btn-neutral float-right" title="Quick Start Tutorial" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="direct-storeandnotify.html" class="btn btn-neutral float-right" title="Direct Store and Notify" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="orthanc-post.html" class="btn btn-neutral float-left" title="Orthanc DICOM" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="fhir-r4-rest.html" class="btn btn-neutral float-left" title="FHIR R4" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

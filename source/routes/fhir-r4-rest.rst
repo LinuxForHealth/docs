@@ -3,20 +3,20 @@ FHIR R4
 
 Purpose
 ========
-The Linux for Health (LFH) FHIR R4 route allows you to send FHIR R4 data to Linux for Health, store that data as part of the LFH Longitudinal Patient Record (LPR) and notify listeners of the stored data via NATS for downstream integration.
+The Linux for Health (LFH) FHIR R4 route allows you to send FHIR R4 data to LFH, store that data as part of the LFH Longitudinal Patient Record (LPR) and notify listeners of the stored data via NATS for downstream integration.
 
 Details
 =======
 +-------------------------+---------------------------------------------------------------------+
 | Attribute               | Value                                                               |
 +=========================+=====================================================================+
-| Route Name              | fhir-r4                                                             |
+| Route Name              | fhir-r4-rest                                                        |
 +-------------------------+---------------------------------------------------------------------+
 | URL Property            | lfh.connect.fhir_r4_rest.uri                                        |
 +-------------------------+---------------------------------------------------------------------+
-| Default URL             | http://0.0.0.0:8080/fhir/r4/{resource}                              |
+| Route URL               | http://{host}:8080/fhir/r4/{resource}                               |
 +-------------------------+---------------------------------------------------------------------+
-| Example URL             | http://0.0.0.0:8080/fhir/r4/Patient                                 |
+| Example URL             | http://127.0.0.1:8080/fhir/r4/Patient                               |
 +-------------------------+---------------------------------------------------------------------+
 | Protocol                | REST                                                                |
 +-------------------------+---------------------------------------------------------------------+
@@ -31,7 +31,7 @@ Path Parameters
 +--------------------+---------------+----------------------------------------------------------+
 | Parameter          | Type          | Description                                              |
 +====================+===============+==========================================================+
-| resource           | ResourceType  | The type of the FHIR R4 JSON resource to save.           |
+| resource           | ResourceType  | The type of the FHIR R4 JSON resource.                   |
 +--------------------+---------------+----------------------------------------------------------+
 
 Query Parameters
@@ -44,6 +44,8 @@ Required Headers
 | Header             | Value                     |
 +====================+===========================+
 | Content-Type       | application/json          |
++--------------------+---------------------------+
+| Content-Length     | size of JSON in bytes     |
 +--------------------+---------------------------+
 
 Configuration Properties
