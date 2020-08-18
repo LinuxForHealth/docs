@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,6 +11,11 @@
   
 
   
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+
+  
   
   
   
@@ -19,7 +23,9 @@
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -31,11 +37,6 @@
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="FHIR R4 Tutorial" href="fhir-r4.html" />
@@ -53,7 +54,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> Linux for Health
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Linux for Health
           
 
           
@@ -80,6 +81,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -127,6 +129,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -165,7 +168,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>Quick Start Tutorial</li>
     
@@ -226,7 +229,7 @@
 </pre></div>
 </div>
 <p>You should see a message echoed in the HL7 client console window, similar to:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;meta&quot;</span><span class="p">:{</span><span class="s2">&quot;routeId&quot;</span><span class="p">:</span><span class="s2">&quot;hl7-v2-mllp&quot;</span><span class="p">,</span><span class="s2">&quot;uuid&quot;</span><span class="p">:</span><span class="s2">&quot;4a49c1b8-c132-40e5-8175-c07dc90637f6&quot;</span><span class="p">,</span><span class="s2">&quot;routeUrl&quot;</span><span class="p">:</span><span class="s2">&quot;netty:tcp://0.0.0.0:2575?sync=true&amp;encoders=#hl7encoder&amp;decoders=#hl7decoder&quot;</span><span class="p">,</span><span class="s2">&quot;dataFormat&quot;</span><span class="p">:</span><span class="s2">&quot;hl7-v2&quot;</span><span class="p">,</span><span class="s2">&quot;timestamp&quot;</span><span class="p">:</span><span class="mi">1596032326</span><span class="p">,</span><span class="s2">&quot;dataStoreUri&quot;</span><span class="p">:</span><span class="s2">&quot;kafka:HL7v2_ADT?brokers=localhost:9092&quot;</span><span class="p">,</span><span class="s2">&quot;status&quot;</span><span class="p">:</span><span class="s2">&quot;success&quot;</span><span class="p">,</span><span class="s2">&quot;dataRecordLocation&quot;</span><span class="p">:[</span><span class="s2">&quot;HL7v2_ADT-0@7&quot;</span><span class="p">]}}</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;meta&quot;</span><span class="p">:{</span><span class="s2">&quot;routeId&quot;</span><span class="p">:</span><span class="s2">&quot;hl7-v2-mllp&quot;</span><span class="p">,</span><span class="s2">&quot;uuid&quot;</span><span class="p">:</span><span class="s2">&quot;4a49c1b8-c132-40e5-8175-c07dc90637f6&quot;</span><span class="p">,</span><span class="s2">&quot;routeUrl&quot;</span><span class="p">:</span><span class="s2">&quot;netty:tcp://0.0.0.0:2575?sync=true&amp;encoders=#hl7encoder&amp;decoders=#hl7decoder&quot;</span><span class="p">,</span><span class="s2">&quot;dataFormat&quot;</span><span class="p">:</span><span class="s2">&quot;HL7-V2&quot;</span><span class="p">,</span><span class="s2">&quot;messageType&quot;</span><span class="p">:</span><span class="s2">&quot;ADT&quot;</span><span class="p">,</span><span class="s2">&quot;timestamp&quot;</span><span class="p">:</span><span class="mi">1596032326</span><span class="p">,</span><span class="s2">&quot;dataStoreUri&quot;</span><span class="p">:</span><span class="s2">&quot;kafka:HL7-V2_ADT?brokers=localhost:9092&quot;</span><span class="p">,</span><span class="s2">&quot;status&quot;</span><span class="p">:</span><span class="s2">&quot;success&quot;</span><span class="p">,</span><span class="s2">&quot;dataRecordLocation&quot;</span><span class="p">:[</span><span class="s2">&quot;HL7-V2_ADT-0@7&quot;</span><span class="p">]}}</span>
 </pre></div>
 </div>
 <p>The dataRecordLocation value indicates the topic, partition and offset of the message in Kafka.</p>
@@ -246,9 +249,9 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">9000</span><span class="o">/</span>
 </pre></div>
 </div>
-<p>Scoll down and click on the ‘HL7v2_ADT’ topic.</p>
+<p>Scoll down and click on the ‘HL7-V2_ADT’ topic.</p>
 <p>Click ‘View Messages’, then click ‘View Messages’ again on the next page. This will take you to a list of all messages for the topic.</p>
-<p>Navigate to the message at the offset indicated in the result.  For example, from ‘HL7v2_ADT-0&#64;7’ in the result, we know the message is at offset ‘7’ in the ‘HL7v2_ADT’ topic.  At your result offset, you should see the HL7v2 ADT message sent to Linux for Health.</p>
+<p>Navigate to the message at the offset indicated in the result.  For example, from ‘HL7-V2_ADT-0&#64;7’ in the result, we know the message is at offset ‘7’ in the ‘HL7-V2_ADT’ topic.  At your result offset, you should see the HL7v2 ADT message sent to Linux for Health.</p>
 </div>
 </div>
 </div>
@@ -273,11 +276,19 @@
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2020, IBM
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -288,7 +299,6 @@
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {
