@@ -54,7 +54,11 @@ None
 
 Calling the Route
 =================
-Using REST (e.g. via curl or Postman), send a FHIR resource to the route URL as the body of a POST message.  See the `FHIR R4 Postman collection <https://github.com/LinuxForHealth/connect/blob/master/src/test/resources/messages/postman/Linux%20for%20Health%20FHIR%20R4%20Tutorial.postman_collection.json>`_ for an example of calling this route with a Patient resource.
+Using REST (e.g. via curl or Postman), send a FHIR resource to the route URL as the body of a POST message.  See the Linux for Health Examples postman collection in your connect repo::
+
+    connect/src/test/resources/messages/postman/Linux for Health Examples.postman_collection.json 
+
+for an example of calling this route with a Patient resource.
 
 Results
 =======

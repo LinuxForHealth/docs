@@ -50,7 +50,11 @@ None
 
 Calling the Route
 =================
-Using HTTP (e.g. via curl or Postman), send a DICOM file to the route URL as the body of a POST message.
+Using HTTP (e.g. via curl or Postman), send a DICOM file to the route URL as the body of a POST message.  See the Linux for Health Examples postman collection in your connect repo::
+
+    connect/src/test/resources/messages/postman/Linux for Health Examples.postman_collection.json 
+    
+for an example of calling this route with a DICOM image file.
 
 Results
 =======
