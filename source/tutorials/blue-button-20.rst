@@ -20,7 +20,7 @@ Authorize Linux for Health to use the Blue Button 2.0 API
 ---------------------------------------------------------
 Open Postman and import this collection by clicking 'Import' -> 'Import File' -> 'Choose Files'::
 
-   connect/src/test/resources/messages/postman/Linux for Health Blue Button Tutorial.postman_collection.json
+   connect/src/test/resources/messages/postman/Linux for Health Examples.postman_collection.json
 
 Click on the collection in the left navigation area and select 'Authorize Linux for Health', then click 'Send'.
 
@@ -35,7 +35,7 @@ From your browser window, copy the resulting 'access_token' and save it for the 
 
 Configure Postman for Blue Button Access
 ----------------------------------------
-In Postman, navigate to your Blue Button tutorial collection and click '...' next to the collection name, then click 'Edit'.
+In Postman, navigate to your Linux for Health Examples collection and click '...' next to the collection name, then click 'Edit'.
 
 Click the 'Authorization' tab, then paste your new access_token from the previous section in the 'Token' field and click 'Update'.
 
@@ -43,7 +43,7 @@ You are now ready to query for Medicare data using Linux for Health and the Blue
 
 Send a Blue Button Query to Linux for Health 
 --------------------------------------------
-From the Blue Button collection in Postman, select 'Get patient details' and click 'Send'.
+From the Examples collection in Postman, select 'Get patient details' and click 'Send'.
 
 You should see a result similar to::
 
@@ -67,12 +67,16 @@ The result indicates the topic, partition and offset of the message in Kafka.  '
 
 View the NATS Notification (Optional)
 -------------------------------------
-You should also see a NATS notification in the nats-subscriber service log.  The message received by the NATS subscriber also indicates the topic, partition and offset of the message in Kafka, which could be used for downstream application integration.
+You should also see a NATS notification in the Linux for Health connect log.  If you are running the Linux for Health connect application locally, you should see a message in the connect console window similar to::
 
-To view NATS notifications in a new console window::
+   15:14:29.474 [nats:3] INFO  c.l.connect.support.NATSSubscriber - nats-subscriber-localhost:4222-lfh-events received message: {"meta":{"routeId":"fhir-r4-rest","uuid":"8bebaaae-a30b-4d8e-8424-d38836bf1d14","routeUri":"jetty:http://0.0.0.0:8080/fhir/r4/Patient?httpMethodRestrict=POST","dataFormat":"FHIR-R4","messageType":"PATIENT","timestamp":1597868068,"dataStoreUri":"kafka:FHIR-R4_PATIENT?brokers=localhost:9092","status":"success","dataRecordLocation":["FHIR-R4_PATIENT-0@21"]}}
+
+If you are running Linux for Health connect with docker-compose, in a console window, navigate to the connect compose directory and view the logs::
 
    cd connect/container-support/compose
-   docker-compose logs -f nats-subscriber
+   docker-compose logs -f lfh
+
+The message received by the NATS subscriber also indicates the topic, partition and offset of the message in Kafka, which could be used for downstream application integration.
 
 View the Message in the Kafdrop Console (Optional)
 --------------------------------------------------
