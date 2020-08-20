@@ -32,24 +32,29 @@ The Test Summary is available within the project's build directory in *./build/r
 
 The Development Environment
 ===========================
-The development environment provides additional systems and integration targets via a Docker Compose configuration (docker-compose.yml).
+The development environment provides additional systems and integration targets via a Docker Compose configuration, docker-compose.yml), and "stack" specific override files.
 
-Systems include:
+LFH Supporting Systems include:
 
 * `Kafdrop <https://github.com/obsidiandynamics/kafdrop>`_ - A Kafka Cluster Viewer
 * `Kafka <https://kafka.apache.org/>`_ - For data storage
 * `Nats <https://nats.io/>`_ - For real time event streaming and messaging
 
-Additionally, the development environment can also support the "full stack" including the Linux for Health application, to support end-to-end
-testing. The docker compose configurations are stored in the project's `compose <https://github.com/LinuxForHealth/connect/tree/master/container-support/compose>`_
-directory.
+LFH supports three Docker Compose container stacks: dev, server, and pi. 
 
-To run the Linux for Health connect application "locally" with supporting services::
+The dev stack supports the local development environment. LFH supporting services run in containers with host port mappings.
+The server stack includes a containerized LFH connect application in addition to LFH supporting services.
+Finally, the pi stack supports optimized containers for arm64/Raspberry Pi usage.
+
+Stacks are supported using Docker Compose file overrides and the `COMPOSE_FILE <https://docs.docker.com/compose/reference/envvars/#compose_file>`_ variable.
+
+To run the Linux for Health connect application "locally", use the dev stack::
 
     # navigate to the compose configuration directory
     cd container-support/compose
-    # start up supporting services
-    docker-compose up -d
+    # start up the dev stack (default)
+    # execute the script within the current shell to ensure that the compose CLI works as expected
+    . ./start-stack.sh
     # review logs to ensure that services are available
     docker-compose logs -f
     # return to the project root directory
@@ -57,18 +62,14 @@ To run the Linux for Health connect application "locally" with supporting servic
     # launch the application
     ./gradlew run
 
-To run the entire Linux for Health application stack within a docker compose configuration::
+To run the entire Linux for Health application stack, use the server stack::
 
     # navigate to the compose configuration directory
     cd container-support/compose
-    # enable the override file to support the local Linux for Health container
-    mv docker-compose.override docker-compose.override.yml
-    # start up supporting services
-    docker-compose up -d
+    # start the server stack
+    . ./start-stack.sh server
     # review logs to ensure that the Linux for Health service is available
     docker-compose logs -f lfh
-    # after testing is complete "disable" the override file
-    mv docker-compose.override.yml docker-compose.override
 
 For additional Docker Compose commands, please refer to the `Official Documentation <https://docs.docker.com/compose/reference/overview/>`_
 
