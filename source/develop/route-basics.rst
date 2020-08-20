@@ -93,7 +93,7 @@ The Linux for Health route contains the following steps:
 | id(ROUTE_PRODUCER_ID);                                        | |producerId_def|                            | Required           |
 +---------------------------------------------------------------+---------------------------------------------+--------------------+
 
-.. |process_def| replace:: process(new MetaDataProcessor(routePropertyNamespace)
+.. |process_def| replace:: process(new MetaDataProcessor(routePropertyNamespace))
 
 .. |to_def| replace:: to(LinuxForHealthRouteBuilder.STORE_AND_NOTIFY_CONSUMER_URI)
 
