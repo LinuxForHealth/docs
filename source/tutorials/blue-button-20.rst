@@ -20,7 +20,7 @@ Authorize Linux for Health to use the Blue Button 2.0 API
 ---------------------------------------------------------
 Open Postman and import this collection by clicking 'Import' -> 'Import File' -> 'Choose Files'::
 
-   connect/src/test/resources/messages/postman/Linux for Health Blue Button Tutorial.postman_collection.json
+   connect/src/test/resources/messages/postman/Linux for Health Examples.postman_collection.json
 
 Click on the collection in the left navigation area and select 'Authorize Linux for Health', then click 'Send'.
 
@@ -35,7 +35,7 @@ From your browser window, copy the resulting 'access_token' and save it for the 
 
 Configure Postman for Blue Button Access
 ----------------------------------------
-In Postman, navigate to your Blue Button tutorial collection and click '...' next to the collection name, then click 'Edit'.
+In Postman, navigate to your Linux for Health Examples collection and click '...' next to the collection name, then click 'Edit'.
 
 Click the 'Authorization' tab, then paste your new access_token from the previous section in the 'Token' field and click 'Update'.
 
@@ -43,7 +43,7 @@ You are now ready to query for Medicare data using Linux for Health and the Blue
 
 Send a Blue Button Query to Linux for Health 
 --------------------------------------------
-From the Blue Button collection in Postman, select 'Get patient details' and click 'Send'.
+From the Examples collection in Postman, select 'Get patient details' and click 'Send'.
 
 You should see a result similar to::
 
