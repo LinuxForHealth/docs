@@ -48,7 +48,7 @@ You should also see a NATS notification in the Linux for Health connect log.  If
 
    15:14:29.474 [nats:3] INFO  c.l.connect.support.NATSSubscriber - nats-subscriber-localhost:4222-lfh-events received message: {"meta":{"routeId":"hl7-v2-mllp","uuid":"8bebaaae-a30b-4d8e-8424-d388367543","routeUri":"jetty:http://0.0.0.0:8080/fhir/r4/Patient?httpMethodRestrict=POST","dataFormat":"HL7-V2","messageType":"ADT","timestamp":1597868800,"dataStoreUri":"kafka:HL7-V2_ADT?brokers=localhost:9092","status":"success","dataRecordLocation":["HL7-V2_ADT-0@7"]}}
 
-If you are running Linux for Health connect with docker-compose, in a console window, navigate to the connect compose directory and view the logs::
+If you are running a Linux for Health container within docker-compose, in a console window, navigate to the connect compose directory and view the logs::
 
    cd connect/container-support/compose
    docker-compose logs -f lfh
