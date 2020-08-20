@@ -8,14 +8,14 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Quick Start Tutorial &mdash; Linux for Health  documentation</title>
+  <title>HL7-v2 Tutorial &mdash; Linux for Health  documentation</title>
   
 
   
   
   
   
-    <link rel="canonical" href="https://linuxforhealth.github.io/docs/tutorials/quickstart.html"/>
+    <link rel="canonical" href="https://linuxforhealth.github.io/docs/tutorials/hl7-v2.html"/>
   
 
   
@@ -38,8 +38,8 @@
   <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="HL7-v2 Tutorial" href="hl7-v2.html" />
-    <link rel="prev" title="Message Structure" href="../message-structure.html" /> 
+    <link rel="next" title="FHIR R4 Tutorial" href="fhir-r4.html" />
+    <link rel="prev" title="Quick Start Tutorial" href="quickstart.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -95,10 +95,12 @@
 </ul>
 <p class="caption"><span class="caption-text">Tutorials:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Quick Start Tutorial</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start Tutorial</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">HL7-v2 Tutorial</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#install-the-hl7-client">Install the HL7 Client</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#send-a-message-to-linux-for-health">Send a Message to Linux for Health</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#view-the-nats-notification-optional">View the NATS Notification (Optional)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#view-the-message-in-the-kafdrop-console-optional">View the Message in the Kafdrop Console (Optional)</a></li>
@@ -106,7 +108,6 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="hl7-v2.html">HL7-v2 Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fhir-r4.html">FHIR R4 Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="blue-button-20.html">Blue Button 2.0 Tutorial</a></li>
 </ul>
@@ -162,13 +163,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Quick Start Tutorial</li>
+      <li>HL7-v2 Tutorial</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/tutorials/quickstart.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/tutorials/hl7-v2.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -181,11 +182,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="quick-start-tutorial">
-<h1>Quick Start Tutorial<a class="headerlink" href="#quick-start-tutorial" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="hl7-v2-tutorial">
+<h1>HL7-v2 Tutorial<a class="headerlink" href="#hl7-v2-tutorial" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>This tutorial provides a working example of a typical Linux for Health route: data ingress via FHIR R4, storage via a Kafka topic and notification via NATS.</p>
+<p>This tutorial provides a working example of a typical Linux for Health route: data ingress via HL7 mllp, storage via a Kafka topic and notification via NATS.</p>
 </div>
 <div class="section" id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
@@ -195,18 +196,33 @@
 </div>
 <div class="section" id="tutorial-steps">
 <h2>Tutorial Steps<a class="headerlink" href="#tutorial-steps" title="Permalink to this headline">¶</a></h2>
-<p>Once you have completed the Prerequisites, follow these steps to see Linux for Health in action.</p>
-<div class="section" id="send-a-message-to-linux-for-health">
-<h3>Send a Message to Linux for Health<a class="headerlink" href="#send-a-message-to-linux-for-health" title="Permalink to this headline">¶</a></h3>
-<p>Use the <cite>curl</cite> utility to send a mock patient record to Linux for Health.  In a new console window, copy and paste the following curl command and hit <cite>return</cite>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">--</span><span class="n">header</span> <span class="s2">&quot;Content-Type: application/json&quot;</span> \
-<span class="o">--</span><span class="n">request</span> <span class="n">POST</span> \
-<span class="o">--</span><span class="n">data</span> <span class="s1">&#39;{ &quot;resourceType&quot;: &quot;Patient&quot;, &quot;identifier&quot;: [ { &quot;system&quot;: &quot;urn:oid:1.2.36.146.595.217.0.1&quot;, &quot;value&quot;: &quot;12345&quot; } ], &quot;name&quot;: [ { &quot;family&quot;: &quot;Duck&quot;, &quot;given&quot;: [ &quot;Donald&quot;, &quot;D.&quot; ] } ], &quot;gender&quot;: &quot;male&quot;, &quot;birthDate&quot;: &quot;1974-12-25&quot; }&#39;</span> \
-<span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8080</span><span class="o">/</span><span class="n">fhir</span><span class="o">/</span><span class="n">r4</span><span class="o">/</span><span class="n">Patient</span>
+<p>Once you have completed the Prerequisites, follow these steps to send HL7-v2 data to Linux for Health.</p>
+<div class="section" id="install-the-hl7-client">
+<h3>Install the HL7 Client<a class="headerlink" href="#install-the-hl7-client" title="Permalink to this headline">¶</a></h3>
+<p>In a new console window, clone the Python HL7 client:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">johnpaulett</span><span class="o">/</span><span class="n">python</span><span class="o">-</span><span class="n">hl7</span><span class="o">.</span><span class="n">git</span>
 </pre></div>
 </div>
-<p>This command POSTs a basic Patient resource to the Linux for Health FHIR R4 route.  You should see a message echoed in the console window, similar to:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;meta&quot;</span><span class="p">:{</span><span class="s2">&quot;routeId&quot;</span><span class="p">:</span><span class="s2">&quot;fhir-r4-rest&quot;</span><span class="p">,</span><span class="s2">&quot;uuid&quot;</span><span class="p">:</span><span class="s2">&quot;8bebaaae-a30b-4d8e-8424-d38836bf1d14&quot;</span><span class="p">,</span><span class="s2">&quot;routeUri&quot;</span><span class="p">:</span><span class="s2">&quot;jetty:http://0.0.0.0:8080/fhir/r4/Patient?httpMethodRestrict=POST&quot;</span><span class="p">,</span><span class="s2">&quot;dataFormat&quot;</span><span class="p">:</span><span class="s2">&quot;FHIR-R4&quot;</span><span class="p">,</span><span class="s2">&quot;messageType&quot;</span><span class="p">:</span><span class="s2">&quot;PATIENT&quot;</span><span class="p">,</span><span class="s2">&quot;timestamp&quot;</span><span class="p">:</span><span class="mi">1597868068</span><span class="p">,</span><span class="s2">&quot;dataStoreUri&quot;</span><span class="p">:</span><span class="s2">&quot;kafka:FHIR-R4_PATIENT?brokers=localhost:9092&quot;</span><span class="p">,</span><span class="s2">&quot;status&quot;</span><span class="p">:</span><span class="s2">&quot;success&quot;</span><span class="p">,</span><span class="s2">&quot;dataRecordLocation&quot;</span><span class="p">:[</span><span class="s2">&quot;FHIR-R4_PATIENT-0@0&quot;</span><span class="p">]}}</span>
+<p>Install the Python HL7 client:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">python</span><span class="o">-</span><span class="n">hl7</span>
+<span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">venv</span> <span class="n">venv</span>
+<span class="n">source</span> <span class="n">venv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
+<span class="n">python3</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="send-a-message-to-linux-for-health">
+<h3>Send a Message to Linux for Health<a class="headerlink" href="#send-a-message-to-linux-for-health" title="Permalink to this headline">¶</a></h3>
+<p>In the same console window as the previous step, cd to the test messages directory in the Linux for Health connect repo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">connect</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">resources</span><span class="o">/</span><span class="n">messages</span><span class="o">/</span><span class="n">hl7</span>
+</pre></div>
+</div>
+<p>Send an HL7 message to Linux for Health:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mllp_send</span> <span class="o">--</span><span class="n">file</span> <span class="n">ADT_A01</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">loose</span> <span class="o">--</span><span class="n">port</span> <span class="mi">2575</span> <span class="n">localhost</span>
+</pre></div>
+</div>
+<p>You should see a message echoed in the HL7 client console window, similar to:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;meta&quot;</span><span class="p">:{</span><span class="s2">&quot;routeId&quot;</span><span class="p">:</span><span class="s2">&quot;hl7-v2-mllp&quot;</span><span class="p">,</span><span class="s2">&quot;uuid&quot;</span><span class="p">:</span><span class="s2">&quot;4a49c1b8-c132-40e5-8175-c07dc90637f6&quot;</span><span class="p">,</span><span class="s2">&quot;routeUrl&quot;</span><span class="p">:</span><span class="s2">&quot;netty:tcp://0.0.0.0:2575?sync=true&amp;encoders=#hl7encoder&amp;decoders=#hl7decoder&quot;</span><span class="p">,</span><span class="s2">&quot;dataFormat&quot;</span><span class="p">:</span><span class="s2">&quot;HL7-V2&quot;</span><span class="p">,</span><span class="s2">&quot;messageType&quot;</span><span class="p">:</span><span class="s2">&quot;ADT&quot;</span><span class="p">,</span><span class="s2">&quot;timestamp&quot;</span><span class="p">:</span><span class="mi">1596032326</span><span class="p">,</span><span class="s2">&quot;dataStoreUri&quot;</span><span class="p">:</span><span class="s2">&quot;kafka:HL7-V2_ADT?brokers=localhost:9092&quot;</span><span class="p">,</span><span class="s2">&quot;status&quot;</span><span class="p">:</span><span class="s2">&quot;success&quot;</span><span class="p">,</span><span class="s2">&quot;dataRecordLocation&quot;</span><span class="p">:[</span><span class="s2">&quot;HL7-V2_ADT-0@7&quot;</span><span class="p">]}}</span>
 </pre></div>
 </div>
 <p>The dataRecordLocation value indicates the topic, partition and offset of the message in Kafka.</p>
@@ -214,7 +230,7 @@
 <div class="section" id="view-the-nats-notification-optional">
 <h3>View the NATS Notification (Optional)<a class="headerlink" href="#view-the-nats-notification-optional" title="Permalink to this headline">¶</a></h3>
 <p>You should also see a NATS notification in the Linux for Health connect log.  If you are running the Linux for Health connect application locally, you should see a message in the connect console window similar to:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">15</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mf">29.474</span> <span class="p">[</span><span class="n">nats</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="n">INFO</span>  <span class="n">c</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">connect</span><span class="o">.</span><span class="n">support</span><span class="o">.</span><span class="n">NATSSubscriber</span> <span class="o">-</span> <span class="n">nats</span><span class="o">-</span><span class="n">subscriber</span><span class="o">-</span><span class="n">localhost</span><span class="p">:</span><span class="mi">4222</span><span class="o">-</span><span class="n">lfh</span><span class="o">-</span><span class="n">events</span> <span class="n">received</span> <span class="n">message</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;meta&quot;</span><span class="p">:{</span><span class="s2">&quot;routeId&quot;</span><span class="p">:</span><span class="s2">&quot;fhir-r4-rest&quot;</span><span class="p">,</span><span class="s2">&quot;uuid&quot;</span><span class="p">:</span><span class="s2">&quot;8bebaaae-a30b-4d8e-8424-d38836bf1d14&quot;</span><span class="p">,</span><span class="s2">&quot;routeUri&quot;</span><span class="p">:</span><span class="s2">&quot;jetty:http://0.0.0.0:8080/fhir/r4/Patient?httpMethodRestrict=POST&quot;</span><span class="p">,</span><span class="s2">&quot;dataFormat&quot;</span><span class="p">:</span><span class="s2">&quot;FHIR-R4&quot;</span><span class="p">,</span><span class="s2">&quot;messageType&quot;</span><span class="p">:</span><span class="s2">&quot;PATIENT&quot;</span><span class="p">,</span><span class="s2">&quot;timestamp&quot;</span><span class="p">:</span><span class="mi">1597868068</span><span class="p">,</span><span class="s2">&quot;dataStoreUri&quot;</span><span class="p">:</span><span class="s2">&quot;kafka:FHIR-R4_PATIENT?brokers=localhost:9092&quot;</span><span class="p">,</span><span class="s2">&quot;status&quot;</span><span class="p">:</span><span class="s2">&quot;success&quot;</span><span class="p">,</span><span class="s2">&quot;dataRecordLocation&quot;</span><span class="p">:[</span><span class="s2">&quot;FHIR-R4_PATIENT-0@0&quot;</span><span class="p">]}}</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">15</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mf">29.474</span> <span class="p">[</span><span class="n">nats</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="n">INFO</span>  <span class="n">c</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">connect</span><span class="o">.</span><span class="n">support</span><span class="o">.</span><span class="n">NATSSubscriber</span> <span class="o">-</span> <span class="n">nats</span><span class="o">-</span><span class="n">subscriber</span><span class="o">-</span><span class="n">localhost</span><span class="p">:</span><span class="mi">4222</span><span class="o">-</span><span class="n">lfh</span><span class="o">-</span><span class="n">events</span> <span class="n">received</span> <span class="n">message</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;meta&quot;</span><span class="p">:{</span><span class="s2">&quot;routeId&quot;</span><span class="p">:</span><span class="s2">&quot;hl7-v2-mllp&quot;</span><span class="p">,</span><span class="s2">&quot;uuid&quot;</span><span class="p">:</span><span class="s2">&quot;8bebaaae-a30b-4d8e-8424-d388367543&quot;</span><span class="p">,</span><span class="s2">&quot;routeUri&quot;</span><span class="p">:</span><span class="s2">&quot;jetty:http://0.0.0.0:8080/fhir/r4/Patient?httpMethodRestrict=POST&quot;</span><span class="p">,</span><span class="s2">&quot;dataFormat&quot;</span><span class="p">:</span><span class="s2">&quot;HL7-V2&quot;</span><span class="p">,</span><span class="s2">&quot;messageType&quot;</span><span class="p">:</span><span class="s2">&quot;ADT&quot;</span><span class="p">,</span><span class="s2">&quot;timestamp&quot;</span><span class="p">:</span><span class="mi">1597868800</span><span class="p">,</span><span class="s2">&quot;dataStoreUri&quot;</span><span class="p">:</span><span class="s2">&quot;kafka:HL7-V2_ADT?brokers=localhost:9092&quot;</span><span class="p">,</span><span class="s2">&quot;status&quot;</span><span class="p">:</span><span class="s2">&quot;success&quot;</span><span class="p">,</span><span class="s2">&quot;dataRecordLocation&quot;</span><span class="p">:[</span><span class="s2">&quot;HL7-V2_ADT-0@7&quot;</span><span class="p">]}}</span>
 </pre></div>
 </div>
 <p>If you are running Linux for Health connect with docker-compose, in a console window, navigate to the connect compose directory and view the logs:</p>
@@ -230,9 +246,9 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">9000</span><span class="o">/</span>
 </pre></div>
 </div>
-<p>Scoll down and click on the ‘FHIR-R4_PATIENT’ topic.</p>
+<p>Scoll down and click on the ‘HL7-V2_ADT’ topic.</p>
 <p>Click ‘View Messages’, then click ‘View Messages’ again on the next page. This will take you to a list of all messages for the topic.</p>
-<p>Navigate to the message at the offset indicated in the result.  For example, from ‘FHIR-R4_PATIENT-0&#64;0’ in the result, we know the message is at offset ‘0’ in the ‘FHIR-R4_PATIENT’ topic.  At your result offset, you should see the FHIR R4 message sent to Linux for Health.</p>
+<p>Navigate to the message at the offset indicated in the result.  For example, from ‘HL7-V2_ADT-0&#64;7’ in the result, we know the message is at offset ‘7’ in the ‘HL7-V2_ADT’ topic.  At your result offset, you should see the HL7v2 ADT message sent to Linux for Health.</p>
 </div>
 </div>
 </div>
@@ -245,10 +261,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="hl7-v2.html" class="btn btn-neutral float-right" title="HL7-v2 Tutorial" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="fhir-r4.html" class="btn btn-neutral float-right" title="FHIR R4 Tutorial" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../message-structure.html" class="btn btn-neutral float-left" title="Message Structure" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="quickstart.html" class="btn btn-neutral float-left" title="Quick Start Tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

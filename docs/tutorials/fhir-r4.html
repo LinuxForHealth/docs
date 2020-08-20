@@ -1,7 +1,8 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   
@@ -11,11 +12,6 @@
   
 
   
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
-
-  
   
   
   
@@ -23,9 +19,7 @@
   
 
   
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -37,10 +31,15 @@
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Blue Button 2.0 Tutorial" href="blue-button-20.html" />
-    <link rel="prev" title="Quick Start Tutorial" href="quickstart.html" /> 
+    <link rel="prev" title="HL7-v2 Tutorial" href="hl7-v2.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -54,7 +53,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Linux for Health
+            <a href="../index.html" class="icon icon-home"> Linux for Health
           
 
           
@@ -81,7 +80,6 @@
           
         </div>
 
-        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -98,6 +96,7 @@
 <p class="caption"><span class="caption-text">Tutorials:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hl7-v2.html">HL7-v2 Tutorial</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">FHIR R4 Tutorial</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
@@ -123,7 +122,6 @@
             
           
         </div>
-        
       </div>
     </nav>
 
@@ -162,7 +160,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><a href="../index.html">Docs</a> &raquo;</li>
         
       <li>FHIR R4 Tutorial</li>
     
@@ -201,12 +199,12 @@
 <p>Once you have completed the Prerequisites, follow these steps to see Linux for Health in action using FHIR R4 resources.</p>
 <div class="section" id="send-a-fhir-r4-message-to-linux-for-health">
 <h3>Send a FHIR R4 Message to Linux for Health<a class="headerlink" href="#send-a-fhir-r4-message-to-linux-for-health" title="Permalink to this headline">¶</a></h3>
-<p>Open Postman and import the FHIR R4 collection by clicking ‘Import’ -&gt; ‘Import File’ -&gt; ‘Choose Files’:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">connect</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">resources</span><span class="o">/</span><span class="n">messages</span><span class="o">/</span><span class="n">postman</span><span class="o">/</span><span class="n">Linux</span> <span class="k">for</span> <span class="n">Health</span> <span class="n">FHIR</span> <span class="n">R4</span> <span class="n">Tutorial</span><span class="o">.</span><span class="n">postman_collection</span><span class="o">.</span><span class="n">json</span>
+<p>Open Postman and import the Linux for Health Examples collection by clicking ‘Import’ -&gt; ‘Import File’ -&gt; ‘Choose Files’:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">connect</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">resources</span><span class="o">/</span><span class="n">messages</span><span class="o">/</span><span class="n">postman</span><span class="o">/</span><span class="n">Linux</span> <span class="k">for</span> <span class="n">Health</span> <span class="n">Examples</span><span class="o">.</span><span class="n">postman_collection</span><span class="o">.</span><span class="n">json</span>
 </pre></div>
 </div>
 <p>Click on the collection in the left navigation area and select ‘Create a patient resource’, then click ‘Send’.</p>
-<p>You should see the JSON result below in the Postman window:</p>
+<p>You should see a result similar to the JSON result below in the Postman window:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
    <span class="s2">&quot;meta&quot;</span><span class="p">:</span> <span class="p">{</span>
       <span class="s2">&quot;routeId&quot;</span><span class="p">:</span> <span class="s2">&quot;fhir-r4-rest&quot;</span><span class="p">,</span>
@@ -228,12 +226,16 @@
 </div>
 <div class="section" id="view-the-nats-notification-optional">
 <h3>View the NATS Notification (Optional)<a class="headerlink" href="#view-the-nats-notification-optional" title="Permalink to this headline">¶</a></h3>
-<p>You should also see a NATS notification in the nats-subscriber service log.  The message received by the NATS subscriber also indicates the topic, partition and offset of the message in Kafka, which could be used for downstream application integration.</p>
-<p>To view NATS notifications in a new console window:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">connect</span><span class="o">/</span><span class="n">container</span><span class="o">-</span><span class="n">support</span><span class="o">/</span><span class="n">compose</span>
-<span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">logs</span> <span class="o">-</span><span class="n">f</span> <span class="n">nats</span><span class="o">-</span><span class="n">subscriber</span>
+<p>You should also see a NATS notification in the Linux for Health connect log.  If you are running the Linux for Health connect application locally, you should see a message in the connect console window similar to:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">15</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mf">29.474</span> <span class="p">[</span><span class="n">nats</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="n">INFO</span>  <span class="n">c</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">connect</span><span class="o">.</span><span class="n">support</span><span class="o">.</span><span class="n">NATSSubscriber</span> <span class="o">-</span> <span class="n">nats</span><span class="o">-</span><span class="n">subscriber</span><span class="o">-</span><span class="n">localhost</span><span class="p">:</span><span class="mi">4222</span><span class="o">-</span><span class="n">lfh</span><span class="o">-</span><span class="n">events</span> <span class="n">received</span> <span class="n">message</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;meta&quot;</span><span class="p">:{</span><span class="s2">&quot;routeId&quot;</span><span class="p">:</span><span class="s2">&quot;fhir-r4-rest&quot;</span><span class="p">,</span><span class="s2">&quot;uuid&quot;</span><span class="p">:</span><span class="s2">&quot;8bebaaae-a30b-4d8e-8424-d38836bf1d14&quot;</span><span class="p">,</span><span class="s2">&quot;routeUri&quot;</span><span class="p">:</span><span class="s2">&quot;jetty:http://0.0.0.0:8080/fhir/r4/Patient?httpMethodRestrict=POST&quot;</span><span class="p">,</span><span class="s2">&quot;dataFormat&quot;</span><span class="p">:</span><span class="s2">&quot;FHIR-R4&quot;</span><span class="p">,</span><span class="s2">&quot;messageType&quot;</span><span class="p">:</span><span class="s2">&quot;PATIENT&quot;</span><span class="p">,</span><span class="s2">&quot;timestamp&quot;</span><span class="p">:</span><span class="mi">1597868068</span><span class="p">,</span><span class="s2">&quot;dataStoreUri&quot;</span><span class="p">:</span><span class="s2">&quot;kafka:FHIR-R4_PATIENT?brokers=localhost:9092&quot;</span><span class="p">,</span><span class="s2">&quot;status&quot;</span><span class="p">:</span><span class="s2">&quot;success&quot;</span><span class="p">,</span><span class="s2">&quot;dataRecordLocation&quot;</span><span class="p">:[</span><span class="s2">&quot;FHIR-R4_PATIENT-0@22&quot;</span><span class="p">]}}</span>
 </pre></div>
 </div>
+<p>If you are running Linux for Health connect with docker-compose, in a console window, navigate to the connect compose directory and view the logs:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">connect</span><span class="o">/</span><span class="n">container</span><span class="o">-</span><span class="n">support</span><span class="o">/</span><span class="n">compose</span>
+<span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">logs</span> <span class="o">-</span><span class="n">f</span> <span class="n">lfh</span>
+</pre></div>
+</div>
+<p>The message received by the NATS subscriber also indicates the topic, partition and offset of the message in Kafka, which could be used for downstream application integration.</p>
 </div>
 <div class="section" id="view-the-message-in-the-kafdrop-console-optional">
 <h3>View the Message in the Kafdrop Console (Optional)<a class="headerlink" href="#view-the-message-in-the-kafdrop-console-optional" title="Permalink to this headline">¶</a></h3>
@@ -259,7 +261,7 @@
         <a href="blue-button-20.html" class="btn btn-neutral float-right" title="Blue Button 2.0 Tutorial" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="quickstart.html" class="btn btn-neutral float-left" title="Quick Start Tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="hl7-v2.html" class="btn btn-neutral float-left" title="HL7-v2 Tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -268,19 +270,11 @@
 
   <div role="contentinfo">
     <p>
-        
         &copy; Copyright 2020, IBM
 
     </p>
   </div>
-    
-    
-    
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -291,6 +285,7 @@
 
   </div>
   
+
 
   <script type="text/javascript">
       jQuery(function () {

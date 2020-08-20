@@ -16,13 +16,13 @@ Once you have completed the Prerequisites, follow these steps to see Linux for H
 
 Send a FHIR R4 Message to Linux for Health 
 ------------------------------------------
-Open Postman and import the FHIR R4 collection by clicking 'Import' -> 'Import File' -> 'Choose Files'::
+Open Postman and import the Linux for Health Examples collection by clicking 'Import' -> 'Import File' -> 'Choose Files'::
 
-   connect/src/test/resources/messages/postman/Linux for Health FHIR R4 Tutorial.postman_collection.json
+   connect/src/test/resources/messages/postman/Linux for Health Examples.postman_collection.json
 
 Click on the collection in the left navigation area and select 'Create a patient resource', then click 'Send'.
 
-You should see the JSON result below in the Postman window::
+You should see a result similar to the JSON result below in the Postman window::
 
    {
       "meta": {
@@ -44,12 +44,16 @@ The dataRecordLocation value indicates the topic, partition and offset of the me
 
 View the NATS Notification (Optional)
 -------------------------------------
-You should also see a NATS notification in the nats-subscriber service log.  The message received by the NATS subscriber also indicates the topic, partition and offset of the message in Kafka, which could be used for downstream application integration.
+You should also see a NATS notification in the Linux for Health connect log.  If you are running the Linux for Health connect application locally, you should see a message in the connect console window similar to::
 
-To view NATS notifications in a new console window::
+   15:14:29.474 [nats:3] INFO  c.l.connect.support.NATSSubscriber - nats-subscriber-localhost:4222-lfh-events received message: {"meta":{"routeId":"fhir-r4-rest","uuid":"8bebaaae-a30b-4d8e-8424-d38836bf1d14","routeUri":"jetty:http://0.0.0.0:8080/fhir/r4/Patient?httpMethodRestrict=POST","dataFormat":"FHIR-R4","messageType":"PATIENT","timestamp":1597868068,"dataStoreUri":"kafka:FHIR-R4_PATIENT?brokers=localhost:9092","status":"success","dataRecordLocation":["FHIR-R4_PATIENT-0@22"]}}
+
+If you are running Linux for Health connect with docker-compose, in a console window, navigate to the connect compose directory and view the logs::
 
    cd connect/container-support/compose
-   docker-compose logs -f nats-subscriber
+   docker-compose logs -f lfh
+
+The message received by the NATS subscriber also indicates the topic, partition and offset of the message in Kafka, which could be used for downstream application integration.
 
 View the Message in the Kafdrop Console (Optional)
 --------------------------------------------------
