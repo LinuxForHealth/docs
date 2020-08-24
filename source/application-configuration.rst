@@ -14,8 +14,8 @@ The route namespace contains properties used to drive and configure a data proce
 Within the route namespace, the following properties are required:
 
 - lfh.connect.[route id].uri
-- lfh.connect.[route id].dataFormat
-- lfh.connect.[route id].messageType
+- lfh.connect.[route id].dataformat
+- lfh.connect.[route id].messagetype
 
 Linux for Health Bean Properties
 =====================================
@@ -48,7 +48,9 @@ Route properties format::
 
     lfh.connect.[route id].[property]
 
-Where **[route id]** is the route id defined in the Java DSL and **[property]** is the setting's property key. 
+Where **[route id]** is the route id defined in the Java DSL and **[property]** is the setting's property key.
+LFH property keys consist of lower-case characters separated by "." to provide namespacing.
+A namespace may contain a "-" if needed.
 
 The following route properties are **required**
 
@@ -57,9 +59,9 @@ The following route properties are **required**
 +====================================+====================================================+
 | lfh.connect.[route id].uri         | The consumer URI for the route                     |
 +------------------------------------+----------------------------------------------------+
-| lfh.connect.[route id].dataFormat  | The data format (HL7, FHIR, etc) used in the route |
+| lfh.connect.[route id].dataformat  | The data format (HL7, FHIR, etc) used in the route |
 +------------------------------------+----------------------------------------------------+
-| lfh.connect.[route id].messageType | The type of message within the format              |
+| lfh.connect.[route id].messagetype | The type of message within the format              |
 +------------------------------------+----------------------------------------------------+
 
 The **uri** property supports `Camel's Property Placeholder Component <https://camel.apache.org/manual/latest/using-propertyplaceholder.html#UsingPropertyPlaceholder-ExamplesUsingPropertiesComponent>`_ which allows developers to use `Simple Expressions <https://camel.apache.org/components/latest/languages/simple-language.html>`_ within the route's `Java DSL <https://camel.apache.org/manual/latest/java-dsl.html>`_ .
@@ -68,14 +70,14 @@ In the HL7v2 MLLP example below, properties are defined for the route's consumer
 
 HL7v2 MLLP Example::
 
-    lfh.connect.hl7_v2_mllp.host=0.0.0.0:2575
-    lfh.connect.hl7_v2_mllp.uri=netty:tcp://{{lfh.connect.hl7_v2_mllp.host}}?sync=true&encoders=#hl7encoder&decoders=#hl7decoder
+    lfh.connect.hl7-v2.host=0.0.0.0:2575
+    lfh.connect.hl7-v2.uri=netty:tcp://{{lfh.connect.hl7-v2.host}}?sync=true&encoders=#hl7encoder&decoders=#hl7decoder
 
 Within the HL7v2 MLLP route, the simple templating tags are used to reference the **uri** property::
 
     @Override
     public void buildRoute(routePropertyNamespace) {
-        from("{{lfh.connect.hl7_v2_mllp.uri}}")
+        from("{{lfh.connect.hl7-v2.uri}}")
                 .routeId(HL7_V2_MLLP_ROUTE_ID)
                 .unmarshal().hl7()
                 .process(new MetaDataProcessor(routePropertyNamespace))
@@ -89,7 +91,7 @@ Routes which utilize the REST DSL, such as the FHIR R4 REST route, parse propert
     public void buildRoute(String routePropertyNamespace) {
 
         CamelContextSupport contextSupport = new CamelContextSupport(getContext());
-        URI fhirBaseUri = URI.create(contextSupport.getProperty("lfh.connect.fhir_r4_rest.uri"));
+        URI fhirBaseUri = URI.create(contextSupport.getProperty("lfh.connect.fhir-r4.uri"));
 
         restConfiguration()
                 .host(fhirBaseUri.getHost())
@@ -106,12 +108,25 @@ Routes which utilize the REST DSL, such as the FHIR R4 REST route, parse propert
                 .id(ROUTE_PRODUCER_ID);
     }
 
-The route's **messageType** property supports simple expressions, which may be used to dynamically assign a value during route processing. In the  example below, the HL7 route's parses its **messageFormat** from the Camel message header::
+The route's **messagetype** property supports simple expressions, which may be used to dynamically assign a value during route processing. In the  example below, the HL7 route's parses its **messageFormat** from the Camel message header::
 
-    lfh.connect.hl7_v2_mllp.messageType=\${header.CamelHL7MessageType}
+    lfh.connect.hl7-v2.messagetype=\${header.CamelHL7MessageType}
 
 The "$" is escaped using a "\\" to ensure that the expression is not evaluated using Groovy's templating syntax.
 
 Property Evaluation
 ===================
-Properties are loaded from the classpath using the **application.properties** file. Property settings may be overriden by creating an *override* file within **[application working directory]/config/application.properties**
+Properties are resolved within LFH using a multi-pass approach which supports property overriding.
+
+#. First, properties are loaded from the class path from the **application.properties** file within the LFH application jar.
+#. Next, properties are loaded from an external file **[application working directory]/config/application.properties**.
+#. Finally, properties are loaded from environment variables.
+
+LFH environment variable names are use upper-case characters with "_" (underscore) separators. LFH environment variables are translated to property settings by translating characters to lower-case and replacing "_" separators with a "."::
+
+    # environment variable
+    LFH_CONNECT_FHIR-R4_URI=http://0.0.0.0:8080/fhir/r4
+
+    # translated property
+    lfh.connect.fhir-r4.uri=http://0.0.0.0:8080/fhir/r4
+

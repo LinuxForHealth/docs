@@ -32,7 +32,7 @@ The Test Summary is available within the project's build directory in *./build/r
 
 The Development Environment
 ===========================
-The development environment provides additional systems and integration targets via a Docker Compose configuration, docker-compose.yml), and "stack" specific override files.
+The development environment provides additional systems and integration targets via a Docker Compose configuration, docker-compose.yml), and "profile" specific override files.
 
 LFH Supporting Systems include:
 
@@ -40,36 +40,28 @@ LFH Supporting Systems include:
 * `Kafka <https://kafka.apache.org/>`_ - For data storage
 * `Nats <https://nats.io/>`_ - For real time event streaming and messaging
 
-LFH supports three Docker Compose container stacks: dev, server, and pi. 
-
-The dev stack supports the local development environment. LFH supporting services run in containers with host port mappings.
-The server stack includes a containerized LFH connect application in addition to LFH supporting services.
-Finally, the pi stack supports optimized containers for arm64/Raspberry Pi usage.
-
-Stacks are supported using Docker Compose file overrides and the `COMPOSE_FILE <https://docs.docker.com/compose/reference/envvars/#compose_file>`_ variable.
-
-To run the Linux for Health connect application "locally", use the dev stack::
+Use docker-compose and gradle to start the local development environment::
 
     # navigate to the compose configuration directory
     cd container-support/compose
-    # start up the dev stack (default)
-    # execute the script within the current shell to ensure that the compose CLI works as expected
+    # execute the compose start script within the current shell
     . ./start-stack.sh
-    # review logs to ensure that services are available
+    # review logs
     docker-compose logs -f
     # return to the project root directory
     cd ../../
-    # launch the application
+    # launch LFH
     ./gradlew run
 
-To run the entire Linux for Health application stack, use the server stack::
+The start-stack.sh script sets the Docker Compose `COMPOSE_VARIABLE <https://docs.docker.com/compose/reference/envvars/>`_ . COMPOSE_FILE specifies the path to each of the configuration files for the current LFH stack profile.
+COMPOSE_FILE remains in scope with the current shell session.
 
-    # navigate to the compose configuration directory
-    cd container-support/compose
-    # start the server stack
-    . ./start-stack.sh server
-    # review logs to ensure that the Linux for Health service is available
-    docker-compose logs -f lfh
+To remove the local development environment::
+
+    # remove all containers, networks, and volumes
+    docker-compose down -v
+    # remove current compose file paths
+    unset COMPOSE_FILE
 
 For additional Docker Compose commands, please refer to the `Official Documentation <https://docs.docker.com/compose/reference/overview/>`_
 

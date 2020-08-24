@@ -38,7 +38,7 @@ Send an HL7 message to Linux for Health::
 
 You should see a message echoed in the HL7 client console window, similar to::
 
-   {"meta":{"routeId":"hl7-v2-mllp","uuid":"4a49c1b8-c132-40e5-8175-c07dc90637f6","routeUrl":"netty:tcp://0.0.0.0:2575?sync=true&encoders=#hl7encoder&decoders=#hl7decoder","dataFormat":"HL7-V2","messageType":"ADT","timestamp":1596032326,"dataStoreUri":"kafka:HL7-V2_ADT?brokers=localhost:9092","status":"success","dataRecordLocation":["HL7-V2_ADT-0@7"]}}
+   {"meta":{"routeId":"hl7-v2","uuid":"4a49c1b8-c132-40e5-8175-c07dc90637f6","routeUrl":"netty:tcp://0.0.0.0:2575?sync=true&encoders=#hl7encoder&decoders=#hl7decoder","dataFormat":"HL7-V2","messageType":"ADT","timestamp":1596032326,"dataStoreUri":"kafka:HL7-V2_ADT?brokers=localhost:9092","status":"success","dataRecordLocation":["HL7-V2_ADT-0@7"]}}
 
 The dataRecordLocation value indicates the topic, partition and offset of the message in Kafka.
 

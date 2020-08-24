@@ -38,7 +38,7 @@ Calling the Route
 direct:storeAndNotify is invoked as a part of a route you define, at or near the end of your route, once the incoming message is fully processed.  In this example, the LFH HL7v2 route unmarshals the data, does further processing, then invokes direct:storeAndNotify to store the HL7v2 input message and LFH message properties in the data store::
 
     protected void buildRoute(String routePropertyNamespace) {
-        from("{{lfh.connect.hl7_v2_mllp.uri}}")
+        from("{{lfh.connect.hl7-v2.uri}}")
                 .routeId(ROUTE_ID)
                 .unmarshal().hl7()
                 .process(new MetaDataProcessor(routePropertyNamespace))

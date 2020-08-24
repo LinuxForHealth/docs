@@ -49,7 +49,7 @@ You should see a result similar to::
 
    {
     "meta": {
-        "routeId": "bluebutton-20-rest",
+        "routeId": "bluebutton-20",
         "uuid": "6735c7ef-3640-434e-9563-2ed38958b21a",
         "routeUrl": "http://0.0.0.0:8080/bluebutton/v1/Patient?-19990000002154",
         "dataFormat": "FHIR-R4",

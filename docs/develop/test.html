@@ -197,11 +197,22 @@
 </div>
 <div class="section" id="test-services">
 <h2>Test Services<a class="headerlink" href="#test-services" title="Permalink to this headline">¶</a></h2>
-<p>To test your new route or component, you may need to add one or more services that can be started up with the Linux for Health services. To do this, create a new directory under connect/container-support/compose for your service and add a docker-compose.yml file in that directory.  That docker-compose.yml file can bring up locally any services that you need for testing.  Then, to start the LFH services along with your services, issue the following command from the connect/container-support/compose directory:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="o">-</span><span class="n">f</span> <span class="o">./</span><span class="n">docker</span><span class="o">-</span><span class="n">compose</span><span class="o">.</span><span class="n">yml</span> <span class="o">-</span><span class="n">f</span> <span class="o">./&lt;</span><span class="n">your_service</span><span class="o">&gt;/</span><span class="n">docker</span><span class="o">-</span><span class="n">compose</span><span class="o">.</span><span class="n">yml</span> <span class="n">up</span>
+<p>To test your new route or component, you may need to add one or more supporting services, such as a database or an external API. To do this, create a new Docker Compose configuration within connect/container-support/compose named as docker-compose.&lt;service&gt;.yml file in that directory. Then, to start the LFH services along with your services, issue the following command from the connect/container-support/compose directory:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="o">-</span><span class="n">f</span> <span class="o">./</span><span class="n">docker</span><span class="o">-</span><span class="n">compose</span><span class="o">.</span><span class="n">yml</span> <span class="o">-</span><span class="n">f</span> <span class="n">docker</span><span class="o">-</span><span class="n">compose</span><span class="o">.&lt;</span><span class="n">service</span><span class="o">&gt;.</span><span class="n">yml</span> <span class="n">up</span>
 </pre></div>
 </div>
 <p>In this mode, Ctrl-C will stop all the services when testing is complete.</p>
+<p>An additional option for including additional services is to add a “profile” to connect/container-support/compose/start-stack.sh for the use-case.
+For example, to support a custom profile for “ftp”, first create a Docker Compose override configuration, docker-compose.ftp.yml to support a ftp container. Next, update the start-stack.sh script to support the “ftp” profile and include the docker-compose.ftp.yml configuration. To start the profile:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># change to compose directory</span>
+<span class="n">cd</span> <span class="n">container</span><span class="o">-</span><span class="n">support</span><span class="o">/</span><span class="n">compose</span>
+<span class="c1"># start the &quot;ftp&quot; profile in the current shell</span>
+<span class="o">.</span> <span class="o">./</span><span class="n">start</span><span class="o">-</span><span class="n">stack</span><span class="o">.</span><span class="n">sh</span> <span class="n">ftp</span>
+<span class="c1"># once testing is concluded</span>
+<span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">down</span> <span class="o">-</span><span class="n">v</span>
+<span class="n">unset</span> <span class="n">COMPOSE_FILE</span>
+</pre></div>
+</div>
 </div>
 </div>
 
