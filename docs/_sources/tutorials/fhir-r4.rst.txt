@@ -26,7 +26,7 @@ You should see a result similar to the JSON result below in the Postman window::
 
    {
       "meta": {
-         "routeId": "fhir-r4-rest",
+         "routeId": "fhir-r4",
          "uuid": "bc4e2040-4a33-44ff-ba5d-374787ceed47",
          "routeUrl": "http://0.0.0.0:8080/fhir/r4/Patient",
          "dataFormat": "FHIR-R4",

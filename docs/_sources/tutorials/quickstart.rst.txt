@@ -24,7 +24,7 @@ Use the `curl` utility to send a mock patient record to Linux for Health.  In a 
 
 This command posts a basic Patient resource to the Linux for Health FHIR R4 route.  You should see a message echoed in the console window, similar to::
 
-   {"meta":{"routeId":"fhir-r4-rest","uuid":"8bebaaae-a30b-4d8e-8424-d38836bf1d14","routeUri":"jetty:http://0.0.0.0:8080/fhir/r4/Patient?httpMethodRestrict=POST","dataFormat":"FHIR-R4","messageType":"PATIENT","timestamp":1597868068,"dataStoreUri":"kafka:FHIR-R4_PATIENT?brokers=localhost:9092","status":"success","dataRecordLocation":["FHIR-R4_PATIENT-0@0"]}}
+   {"meta":{"routeId":"fhir-r4","uuid":"8bebaaae-a30b-4d8e-8424-d38836bf1d14","routeUri":"jetty:http://0.0.0.0:8080/fhir/r4/Patient?httpMethodRestrict=POST","dataFormat":"FHIR-R4","messageType":"PATIENT","timestamp":1597868068,"dataStoreUri":"kafka:FHIR-R4_PATIENT?brokers=localhost:9092","status":"success","dataRecordLocation":["FHIR-R4_PATIENT-0@0"]}}
 
 The dataRecordLocation value indicates the topic, partition and offset of the message in Kafka.
 

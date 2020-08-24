@@ -9,20 +9,20 @@ Route Basics
 ============
 LFH routes extend the BaseRouteBuilder class. `BaseRouteBuilder <https://github.com/LinuxForHealth/connect/blob/master/src/main/java/com/linuxforhealth/connect/builder/BaseRouteBuilder.java/>`_ is an abstract class which provides property validations, error handling configuration, and a method for defining LFH routes. The LFH FHIR R4 route, shown here, defines a simple REST route that receives FHIR R4 resources and stores them::
 
-    public final static String ROUTE_ID = "fhir-r4-rest";
-    public final static String ROUTE_PRODUCER_ID = "fhir-r4-rest-producer-store-and-notify";
+    public final static String ROUTE_ID = "fhir-r4";
+    public final static String ROUTE_PRODUCER_ID = "fhir-r4-producer-store-and-notify";
 
 
     @Override
     protected String getRoutePropertyNamespace() {
-        return "lfh.connect.fhir_r4_rest";
+        return "lfh.connect.fhir-r4";
     }
 
 
     @Override
     protected void buildRoute(String routePropertyNamespace) {
         CamelContextSupport contextSupport = new CamelContextSupport(getContext());
-        URI fhirBaseUri = URI.create(contextSupport.getProperty("lfh.connect.fhir_r4_rest.uri"));
+        URI fhirBaseUri = URI.create(contextSupport.getProperty("lfh.connect.fhir-r4.uri"));
 
         restConfiguration()
                 .host(fhirBaseUri.getHost())

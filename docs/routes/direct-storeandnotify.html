@@ -250,7 +250,7 @@
 <h2>Calling the Route<a class="headerlink" href="#calling-the-route" title="Permalink to this headline">¶</a></h2>
 <p>direct:storeAndNotify is invoked as a part of a route you define, at or near the end of your route, once the incoming message is fully processed.  In this example, the LFH HL7v2 route unmarshals the data, does further processing, then invokes direct:storeAndNotify to store the HL7v2 input message and LFH message properties in the data store:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">protected</span> <span class="n">void</span> <span class="n">buildRoute</span><span class="p">(</span><span class="n">String</span> <span class="n">routePropertyNamespace</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">from</span><span class="p">(</span><span class="s2">&quot;{{lfh.connect.hl7_v2_mllp.uri}}&quot;</span><span class="p">)</span>
+    <span class="n">from</span><span class="p">(</span><span class="s2">&quot;{{lfh.connect.hl7-v2.uri}}&quot;</span><span class="p">)</span>
             <span class="o">.</span><span class="n">routeId</span><span class="p">(</span><span class="n">ROUTE_ID</span><span class="p">)</span>
             <span class="o">.</span><span class="n">unmarshal</span><span class="p">()</span><span class="o">.</span><span class="n">hl7</span><span class="p">()</span>
             <span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">new</span> <span class="n">MetaDataProcessor</span><span class="p">(</span><span class="n">routePropertyNamespace</span><span class="p">))</span>

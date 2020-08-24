@@ -198,20 +198,20 @@
 <div class="section" id="route-basics">
 <h2>Route Basics<a class="headerlink" href="#route-basics" title="Permalink to this headline">¶</a></h2>
 <p>LFH routes extend the BaseRouteBuilder class. <a class="reference external" href="https://github.com/LinuxForHealth/connect/blob/master/src/main/java/com/linuxforhealth/connect/builder/BaseRouteBuilder.java/">BaseRouteBuilder</a> is an abstract class which provides property validations, error handling configuration, and a method for defining LFH routes. The LFH FHIR R4 route, shown here, defines a simple REST route that receives FHIR R4 resources and stores them:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">public</span> <span class="n">final</span> <span class="n">static</span> <span class="n">String</span> <span class="n">ROUTE_ID</span> <span class="o">=</span> <span class="s2">&quot;fhir-r4-rest&quot;</span><span class="p">;</span>
-<span class="n">public</span> <span class="n">final</span> <span class="n">static</span> <span class="n">String</span> <span class="n">ROUTE_PRODUCER_ID</span> <span class="o">=</span> <span class="s2">&quot;fhir-r4-rest-producer-store-and-notify&quot;</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">public</span> <span class="n">final</span> <span class="n">static</span> <span class="n">String</span> <span class="n">ROUTE_ID</span> <span class="o">=</span> <span class="s2">&quot;fhir-r4&quot;</span><span class="p">;</span>
+<span class="n">public</span> <span class="n">final</span> <span class="n">static</span> <span class="n">String</span> <span class="n">ROUTE_PRODUCER_ID</span> <span class="o">=</span> <span class="s2">&quot;fhir-r4-producer-store-and-notify&quot;</span><span class="p">;</span>
 
 
 <span class="nd">@Override</span>
 <span class="n">protected</span> <span class="n">String</span> <span class="n">getRoutePropertyNamespace</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="s2">&quot;lfh.connect.fhir_r4_rest&quot;</span><span class="p">;</span>
+    <span class="k">return</span> <span class="s2">&quot;lfh.connect.fhir-r4&quot;</span><span class="p">;</span>
 <span class="p">}</span>
 
 
 <span class="nd">@Override</span>
 <span class="n">protected</span> <span class="n">void</span> <span class="n">buildRoute</span><span class="p">(</span><span class="n">String</span> <span class="n">routePropertyNamespace</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">CamelContextSupport</span> <span class="n">contextSupport</span> <span class="o">=</span> <span class="n">new</span> <span class="n">CamelContextSupport</span><span class="p">(</span><span class="n">getContext</span><span class="p">());</span>
-    <span class="n">URI</span> <span class="n">fhirBaseUri</span> <span class="o">=</span> <span class="n">URI</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">contextSupport</span><span class="o">.</span><span class="n">getProperty</span><span class="p">(</span><span class="s2">&quot;lfh.connect.fhir_r4_rest.uri&quot;</span><span class="p">));</span>
+    <span class="n">URI</span> <span class="n">fhirBaseUri</span> <span class="o">=</span> <span class="n">URI</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">contextSupport</span><span class="o">.</span><span class="n">getProperty</span><span class="p">(</span><span class="s2">&quot;lfh.connect.fhir-r4.uri&quot;</span><span class="p">));</span>
 
     <span class="n">restConfiguration</span><span class="p">()</span>
             <span class="o">.</span><span class="n">host</span><span class="p">(</span><span class="n">fhirBaseUri</span><span class="o">.</span><span class="n">getHost</span><span class="p">())</span>
