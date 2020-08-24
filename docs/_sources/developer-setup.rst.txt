@@ -53,7 +53,7 @@ Use docker-compose and gradle to start the local development environment::
     # launch LFH
     ./gradlew run
 
-The start-stack.sh script sets the Docker Compose `COMPOSE_VARIABLE <https://docs.docker.com/compose/reference/envvars/>`_ . COMPOSE_FILE specifies the path to each of the configuration files for the current LFH stack profile.
+The start-stack.sh script sets the Docker Compose `COMPOSE_FILE <https://docs.docker.com/compose/reference/envvars/#compose_file/>`_ . COMPOSE_FILE specifies the path to each of the configuration files for the current LFH stack profile.
 COMPOSE_FILE remains in scope with the current shell session.
 
 To remove the local development environment::
