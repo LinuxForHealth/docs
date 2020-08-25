@@ -8,6 +8,7 @@ Linux for Health (LFH) Connect supports provisoning it's applications and servic
 
 Pre-requisites
 ==============
+
 * A `RedHat Developer Account <https://developers.redhat.com/register>`_
 * `Code Ready Containers <https://github.com/code-ready/crc>`_ for local OCP environment, if desired
 * The OpenShift CLI tool, OC, if Code Ready Containers is not installed

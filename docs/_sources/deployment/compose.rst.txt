@@ -17,11 +17,13 @@ Where [profile name] is the name of a supported LFH profile such as dev, server,
 
 +--------------------+------------------------------------------------------------------------------------------------------------------+
 | Profile Name       | Profile Description                                                                                              |
-+===================================+===================================================================================================+
++====================+==================================================================================================================+
 | dev                | For local development use. Runs LFH supporting services with ports mapped to localhost.                          |
++--------------------+------------------------------------------------------------------------------------------------------------------+
 | server             | For deployment environments or integrated testing. Includes the LFH connect application and supporting services. |
++--------------------+------------------------------------------------------------------------------------------------------------------+
 | pi                 | Similar to the server stack. Optimized for arm64/Raspberry Pi usage.                                             |
-+---------------------------------------------------------------+-----------------------------------------------------------------------+
++--------------------+------------------------------------------------------------------------------------------------------------------+
 
 The dev profile is the "default" profile and is started if start-stack.sh is executed without arguments. Run LFH locally to integrate with the "dev" profile::
 
