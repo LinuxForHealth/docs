@@ -118,22 +118,14 @@
 <p class="caption"><span class="caption-text">Deployment:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="container.html">Container Support</a></li>
-<li class="toctree-l1"><a class="reference internal" href="container.html#overview">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="container.html#lfh-base-image">LFH Base Image</a></li>
-<li class="toctree-l1"><a class="reference internal" href="container.html#building-images">Building Images</a></li>
-<li class="toctree-l1"><a class="reference internal" href="container.html#supported-container-runtimes">Supported Container Runtimes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="compose.html">Docker Compose Support</a></li>
-<li class="toctree-l1"><a class="reference internal" href="compose.html#overview">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="compose.html#starting-the-lfh-compose-stack">Starting the LFH Compose Stack</a></li>
 <li class="toctree-l1"><a class="reference internal" href="openshift.html">OpenShift Container Platform</a></li>
-<li class="toctree-l1"><a class="reference internal" href="openshift.html#overview">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="openshift.html#pre-requisites">Pre-requisites</a></li>
-<li class="toctree-l1"><a class="reference internal" href="openshift.html#code-ready-containers-setup">Code Ready Containers Setup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="openshift.html#manage-lfh-openshift-quickstart">Manage LFH OpenShift QuickStart</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Open Container Initiative (OCI)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#overview">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#configuring-oci-services">Configuring OCI services</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#managing-oci-services">Managing OCI services</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Open Container Initiative (OCI)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuring-oci-services">Configuring OCI services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#managing-oci-services">Managing OCI services</a></li>
+</ul>
+</li>
 </ul>
 
             
@@ -201,20 +193,19 @@
             
   <div class="section" id="open-container-initiative-oci">
 <h1>Open Container Initiative (OCI)<a class="headerlink" href="#open-container-initiative-oci" title="Permalink to this headline">¶</a></h1>
-</div>
 <div class="section" id="overview">
-<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <p>Linux for Health (LFH) Connect includes scripts to manage containers within an OCI compliant runtime. The OCI runtime provides services to start, stop, and manage containers. The LFH Connect OCI scripts are located in the project’s <a class="reference external" href="https://github.com/LinuxForHealth/connect/tree/master/container-support/oci">oci</a> directory. LFH Connect OCI support is currently limited to launching and removing containers.</p>
 </div>
 <div class="section" id="configuring-oci-services">
-<h1>Configuring OCI services<a class="headerlink" href="#configuring-oci-services" title="Permalink to this headline">¶</a></h1>
+<h2>Configuring OCI services<a class="headerlink" href="#configuring-oci-services" title="Permalink to this headline">¶</a></h2>
 <p>Configure the OCI_COMMAND within the container-support/oci/.env file to support the “container executable” on the target platform:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">OCI_COMMAND</span><span class="o">=</span><span class="s2">&quot;sudo podman&quot;</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="managing-oci-services">
-<h1>Managing OCI services<a class="headerlink" href="#managing-oci-services" title="Permalink to this headline">¶</a></h1>
+<h2>Managing OCI services<a class="headerlink" href="#managing-oci-services" title="Permalink to this headline">¶</a></h2>
 <p>To start OCI services:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># navigate to oci directory</span>
 <span class="n">cd</span> <span class="n">container</span><span class="o">-</span><span class="n">support</span><span class="o">/</span><span class="n">oci</span>
@@ -228,6 +219,7 @@
 <span class="c1"># launch containers</span>
 <span class="o">./</span><span class="n">remove</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
+</div>
 </div>
 </div>
 

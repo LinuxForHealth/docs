@@ -119,22 +119,13 @@
 <p class="caption"><span class="caption-text">Deployment:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="container.html">Container Support</a></li>
-<li class="toctree-l1"><a class="reference internal" href="container.html#overview">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="container.html#lfh-base-image">LFH Base Image</a></li>
-<li class="toctree-l1"><a class="reference internal" href="container.html#building-images">Building Images</a></li>
-<li class="toctree-l1"><a class="reference internal" href="container.html#supported-container-runtimes">Supported Container Runtimes</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Docker Compose Support</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#overview">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#starting-the-lfh-compose-stack">Starting the LFH Compose Stack</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Docker Compose Support</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#starting-the-lfh-compose-stack">Starting the LFH Compose Stack</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="openshift.html">OpenShift Container Platform</a></li>
-<li class="toctree-l1"><a class="reference internal" href="openshift.html#overview">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="openshift.html#pre-requisites">Pre-requisites</a></li>
-<li class="toctree-l1"><a class="reference internal" href="openshift.html#code-ready-containers-setup">Code Ready Containers Setup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="openshift.html#manage-lfh-openshift-quickstart">Manage LFH OpenShift QuickStart</a></li>
 <li class="toctree-l1"><a class="reference internal" href="oci.html">Open Container Initiative (OCI)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="oci.html#overview">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="oci.html#configuring-oci-services">Configuring OCI services</a></li>
-<li class="toctree-l1"><a class="reference internal" href="oci.html#managing-oci-services">Managing OCI services</a></li>
 </ul>
 
             
@@ -202,13 +193,12 @@
             
   <div class="section" id="docker-compose-support">
 <h1>Docker Compose Support<a class="headerlink" href="#docker-compose-support" title="Permalink to this headline">¶</a></h1>
-</div>
 <div class="section" id="overview">
-<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <p>Linux for Health (LFH) Connect provides a standard Docker Compose configuration with support for file overrides. The compose configurations are included in the project’s <a class="reference external" href="https://github.com/LinuxForHealth/connect/tree/master/container-support/compose">compose directory</a> . A management script, start-stack.sh, is used to launch the LFH application stack for a requested profile.</p>
 </div>
 <div class="section" id="starting-the-lfh-compose-stack">
-<h1>Starting the LFH Compose Stack<a class="headerlink" href="#starting-the-lfh-compose-stack" title="Permalink to this headline">¶</a></h1>
+<h2>Starting the LFH Compose Stack<a class="headerlink" href="#starting-the-lfh-compose-stack" title="Permalink to this headline">¶</a></h2>
 <p>The syntax to launch the LFH compose stack is:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span> <span class="o">./</span><span class="n">start</span><span class="o">-</span><span class="n">stack</span><span class="o">.</span><span class="n">sh</span> <span class="p">[</span><span class="n">profile</span> <span class="n">name</span><span class="p">]</span>
 </pre></div>
@@ -258,6 +248,7 @@ pi                 | Similar to the server stack. Optimized for arm64/Raspberry 
 <span class="c1"># execute the compose start script within the current shell</span>
 <span class="o">.</span> <span class="o">./</span><span class="n">start</span><span class="o">-</span><span class="n">stack</span><span class="o">.</span><span class="n">sh</span> <span class="n">server</span>
 </pre></div>
+</div>
 </div>
 </div>
 

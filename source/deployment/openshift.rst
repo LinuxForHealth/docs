@@ -1,5 +1,5 @@
 OpenShift Container Platform
-============================
+****************************
 
 Overview
 ========
