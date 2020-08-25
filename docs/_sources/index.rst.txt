@@ -59,3 +59,15 @@ You can get started by visiting our `developer setup page <./developer-setup.htm
    develop/test.rst
    develop/property-encryption.rst
    develop/route-basics.rst
+
+.. toctree::
+   :maxdepth: 3
+   :caption: Deployment:
+
+   deployment/container.rst
+   deployment/compose.rst
+   deployment/openshift.rst
+   deployment/oci.rst
+
+
+
