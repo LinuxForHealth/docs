@@ -14,7 +14,7 @@ Prerequisites
 
 Tutorial Steps
 ==============
-Once you have completed the Prerequisites, follow these steps to use Linux for Health to work with Medicare FHIR resources.
+Once you have completed the Prerequisites, follow these steps to use Linux for Health to work with Medicare FHIR resources.  You must be running Linux for Health locally (via ./gradlew run, as in the Developer Setup steps) to follow this tutorial, due to the default browser launch for Blue Button authorization.
 
 Authorize Linux for Health to use the Blue Button 2.0 API
 ---------------------------------------------------------
