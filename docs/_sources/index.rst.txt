@@ -27,9 +27,10 @@ You can get started by visiting our `developer setup page <./developer-setup.htm
 
 .. toctree::
    :maxdepth: 3
-   :caption: Installation:
+   :caption: Getting Started:
 
-   developer-setup.rst  
+   developer-setup.rst
+   tutorials/firstroute.rst
    application-configuration.rst
    message-structure.rst
 
@@ -38,7 +39,6 @@ You can get started by visiting our `developer setup page <./developer-setup.htm
    :caption: Tutorials:
 
    tutorials/quickstart.rst
-   tutorials/firstroute.rst
    tutorials/fhir-r4.rst
    tutorials/hl7-v2.rst
    tutorials/blue-button-20.rst
