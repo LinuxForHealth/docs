@@ -15,7 +15,7 @@ Once you have completed the Prerequisites, follow these steps to build your firs
 
 Hello World Route
 -----------------
-Linux for Health provides a "Hello World" route in `connect/src/main/java/com/linuxforhealth/connect/builder/ExampleRouteBuilder.java`::
+Linux for Health provides a "Hello World" route in ``connect/src/main/java/com/linuxforhealth/connect/builder/ExampleRouteBuilder.java``::
 
        /**
          * "Hello World" example route.
@@ -32,13 +32,13 @@ Linux for Health provides a "Hello World" route in `connect/src/main/java/com/li
             .to(LinuxForHealthRouteBuilder.STORE_AND_NOTIFY_CONSUMER_URI)
             .id(HELLO_WORLD_PRODUCER_ID);
 
-You can run this route using the curl command.  From a console window, copy and paste the following command.  You can change the value of name being passed in as a query param from `me` to anything, then hit `return`::
+You can run this route using the curl command.  From a console window, copy and paste the following command.  You can change the value of name being passed in as a query param from ``me`` to anything, then hit ``return``::
 
    curl http://localhost:9090/hello-world?name=me
 
-This sends an HTTP GET request to Linux for Health, which is processed by the route code above.  The `.process` step gets the value of the query param `name`, which was passed in as an exchange message header by Camel, then forms the response and sets the exchange message body to the result.
+This sends an HTTP GET request to Linux for Health, which is processed by the route code above.  The ``.process`` step gets the value of the query param ``name``, which was passed in as an exchange message header by Camel, then forms the response and sets the exchange message body to the result.
 
-The `.process(new MetaDataProcessor(routePropertyNamespace))` and `.to(LinuxForHealthRouteBuilder.STORE_AND_NOTIFY_CONSUMER_URI)` are built-in Linux for Health steps that form the message to be stored in Kafka based on your data, then send that message to Kafka and then to NATS subscribers for further use.
+The ``.process(new MetaDataProcessor(routePropertyNamespace))`` and ``.to(LinuxForHealthRouteBuilder.STORE_AND_NOTIFY_CONSUMER_URI)`` are built-in Linux for Health steps that form the message to be stored in Kafka based on your data, then send that message to Kafka and then to NATS subscribers for further use.
 
 You should see the following result (all in one line)::
 
@@ -60,7 +60,7 @@ The data value is base64-encoded.  Decode this with any base64 decoder (several 
 
 Modify the Route and Rebuild
 ----------------------------
-In this step, you will modify the "Hello World" route, rebuild it and run it.  First, open `connect/src/main/java/com/linuxforhealth/connect/builder/ExampleRouteBuilder.java` in an editor.  Change the line::
+In this step, you will modify the "Hello World" route, rebuild it and run it.  First, open ``connect/src/main/java/com/linuxforhealth/connect/builder/ExampleRouteBuilder.java`` in an editor.  Change the line::
 
    String result = "Hello World! It's "+name+".";
 
@@ -68,7 +68,7 @@ to::
 
    String result = "It's always sunny in "+name+".";
 
-Save the file and in the console window where you started Linux for Health connect via `./gradlew run`, type ctrl-C to stop it.  Rebuild Linux for Health by typing `./gradlew clean build` and then `./gradlew run`.  The run the following command::
+Save the file and in the console window where you started Linux for Health connect via ``./gradlew run``, type ctrl-C to stop it.  Rebuild Linux for Health by typing ``./gradlew clean build`` and then ``./gradlew run``.  The run the following command::
 
   curl http://localhost:9090/hello-world?name=Austin
 
@@ -90,6 +90,6 @@ You should see the following result (all in one line)::
 
 Decode the data field with any base64 decoder and you get the string "It's always sunny in Austin".
 
-So far, you've run a route, modified it, rebuilt it and run it again to see your changes.  As a next step, you can copy the whole `connect/src/main/java/com/linuxforhealth/connect/builder/ExampleRouteBuilder.java` file, rename it in the same directory and use it as a basis for a brand new route, taking care to create any new environment variables in `src/main/resources/application.properties` when needed.
+So far, you've run a route, modified it, rebuilt it and run it again to see your changes.  As a next step, you can copy the whole ``connect/src/main/java/com/linuxforhealth/connect/builder/ExampleRouteBuilder.java`` file, rename it in the same directory and use it as a basis for a brand new route, taking care to create any new environment variables in ``src/main/resources/application.properties`` when needed.
 
-Also, as you work more with routes, consider installing `Postman<http://postman.com>_` and importing the Linux for Health Postman collection `connect/src/test/resources/messages/postman/Linux for Health Examples.postman_collection.json` to make HTTP and REST calls.
+Also, as you work more with routes, consider installing `Postman <http://postman.com>_` and importing the Linux for Health Postman collection `connect/src/test/resources/messages/postman/Linux for Health Examples.postman_collection.json` to make HTTP and REST calls.
