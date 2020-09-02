@@ -92,4 +92,4 @@ Decode the data field with any base64 decoder and you get the string "It's alway
 
 So far, you've run a route, modified it, rebuilt it and run it again to see your changes.  As a next step, you can copy the whole ``connect/src/main/java/com/linuxforhealth/connect/builder/ExampleRouteBuilder.java`` file, rename it in the same directory and use it as a basis for a brand new route, taking care to create any new environment variables in ``src/main/resources/application.properties`` when needed.
 
-Also, as you work more with routes, consider installing `Postman <http://postman.com>_` and importing the Linux for Health Postman collection `connect/src/test/resources/messages/postman/Linux for Health Examples.postman_collection.json` to make HTTP and REST calls.
+Also, as you work more with routes, consider installing `Postman <http://postman.com>`_ and importing the Linux for Health Postman collection `connect/src/test/resources/messages/postman/Linux for Health Examples.postman_collection.json` to make HTTP and REST calls.
