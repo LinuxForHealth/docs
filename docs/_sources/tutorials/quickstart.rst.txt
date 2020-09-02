@@ -1,9 +1,9 @@
-Quick Start Tutorial
-********************
+Send Your First Message
+***********************
 
 Overview
 ========
-This tutorial provides a working example of a typical Linux for Health route: data ingress via FHIR R4, storage via a Kafka topic and notification via NATS.
+This tutorial shows you how to send your first message to Linux for Health, using a simple FHIR patient resource and the curl command, which can be found on most operating systems.  You can optionally view your data via the Kafdrop Kafka console or NATS subscriber.
 
 Prerequisites
 =============
@@ -11,7 +11,7 @@ Prerequisites
 
 Tutorial Steps
 ==============
-Once you have completed the Prerequisites, follow these steps to see Linux for Health in action.
+Once you have completed the Prerequisites, follow these steps to send a message to Linux for Health.
 
 Send a Message to Linux for Health
 ----------------------------------

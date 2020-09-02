@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Blue Button 2.0 Tutorial &mdash; Linux for Health  documentation</title>
+  <title>Blue Button 2.0 &mdash; Linux for Health  documentation</title>
   
 
   
@@ -38,8 +38,8 @@
   <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Developing for Linux for Health" href="../develop/extend.html" />
-    <link rel="prev" title="FHIR R4 Tutorial" href="fhir-r4.html" /> 
+    <link rel="next" title="FHIR R4" href="../routes/fhir-r4-rest.html" />
+    <link rel="prev" title="HL7-v2" href="hl7-v2.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -93,18 +93,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../application-configuration.html">Application Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../message-structure.html">Message Structure</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Routes:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../routes/fhir-r4-rest.html">FHIR R4</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../routes/orthanc-post.html">Orthanc DICOM</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../routes/direct-storeandnotify.html">Direct Store and Notify</a></li>
-</ul>
 <p class="caption"><span class="caption-text">Tutorials:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start Tutorial</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hl7-v2.html">HL7-v2 Tutorial</a></li>
-<li class="toctree-l1"><a class="reference internal" href="fhir-r4.html">FHIR R4 Tutorial</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Blue Button 2.0 Tutorial</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Send Your First Message</a></li>
+<li class="toctree-l1"><a class="reference internal" href="firstroute.html">Build Your First Route</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fhir-r4.html">FHIR R4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hl7-v2.html">HL7-v2</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Blue Button 2.0</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#tutorial-steps">Tutorial Steps</a><ul>
@@ -117,6 +112,12 @@
 </li>
 </ul>
 </li>
+</ul>
+<p class="caption"><span class="caption-text">Routes:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../routes/fhir-r4-rest.html">FHIR R4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../routes/orthanc-post.html">Orthanc DICOM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../routes/direct-storeandnotify.html">Direct Store and Notify</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Develop:</span></p>
 <ul>
@@ -177,7 +178,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Blue Button 2.0 Tutorial</li>
+      <li>Blue Button 2.0</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -196,8 +197,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="blue-button-2-0-tutorial">
-<h1>Blue Button 2.0 Tutorial<a class="headerlink" href="#blue-button-2-0-tutorial" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="blue-button-2-0">
+<h1>Blue Button 2.0<a class="headerlink" href="#blue-button-2-0" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <p>This tutorial provides instructions for using Linux for Health with <a class="reference external" href="https://bluebutton.cms.gov/developers/#blue-button-implementation-guide">Blue Button 2.0</a>, the CMS API that gives 53 million Medicare beneficiaries access to four years of Medicare Part A, B and D information.  The Blue Button 2.0 route in Linux for Health uses the Blue Button 2.0 Sandbox environment, which includes sample Medicare information for mock beneficiaries.  The route converts the results from FHIR R3 to R4, plus it includes standard steps of storage via a Kafka topic and notification via NATS.</p>
@@ -291,10 +292,10 @@ Password: PW02153!
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../develop/extend.html" class="btn btn-neutral float-right" title="Developing for Linux for Health" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../routes/fhir-r4-rest.html" class="btn btn-neutral float-right" title="FHIR R4" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="fhir-r4.html" class="btn btn-neutral float-left" title="FHIR R4 Tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="hl7-v2.html" class="btn btn-neutral float-left" title="HL7-v2" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

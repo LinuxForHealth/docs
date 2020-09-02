@@ -1,5 +1,5 @@
-Blue Button 2.0 Tutorial
-************************
+Blue Button 2.0
+***************
 
 Overview
 ========
