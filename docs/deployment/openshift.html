@@ -125,7 +125,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#general-requirements">General Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#code-ready-containers-setup">Code Ready Containers Setup</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#azure-redhat-open-shift-setup">Azure RedHat Open Shift Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#azure-red-hat-openshift-setup">Azure Red Hat OpenShift Setup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#lfh-openshift-quickstart">LFH OpenShift QuickStart</a></li>
 </ul>
 </li>
@@ -205,13 +205,13 @@ Supported OCP platforms include Azure and Code Ready Containers (CRC) for local 
 <div class="section" id="general-requirements">
 <h2>General Requirements<a class="headerlink" href="#general-requirements" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>A <a class="reference external" href="https://developers.redhat.com/register">RedHat Developer Account</a></p></li>
+<li><p>A <a class="reference external" href="https://developers.redhat.com/register">Red Hat Developer Account</a></p></li>
 <li><p>The OpenShift CLI tool. Note: this tool is provided with the Code Ready Containers (CRC) installation.</p></li>
 </ul>
 </div>
 <div class="section" id="code-ready-containers-setup">
 <h2>Code Ready Containers Setup<a class="headerlink" href="#code-ready-containers-setup" title="Permalink to this headline">¶</a></h2>
-<p>First, download the latest Code Ready Containers release and “pull secret” from the RedHat Developer Site. The “pull secret” is used to enable access to RedHat image repositories within the CRC VM.</p>
+<p>First, download the latest Code Ready Containers release and “pull secret” from the Red Hat Developer Site. The “pull secret” is used to enable access to Red Hat image repositories within the CRC VM.</p>
 <p>To install Code Ready Containers:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span># assume $HOME/Downloads contains the CRC installation and pull secret
 cd $HOME/Downloads
@@ -236,9 +236,9 @@ crc status
 </div>
 <p>Additional CRC setup instructions are included wihin the doc.pdf file included with the distribution.</p>
 </div>
-<div class="section" id="azure-redhat-open-shift-setup">
-<h2>Azure RedHat Open Shift Setup<a class="headerlink" href="#azure-redhat-open-shift-setup" title="Permalink to this headline">¶</a></h2>
-<p>Provisioning Azure RedHat Open Shift (ARO) requires the following:</p>
+<div class="section" id="azure-red-hat-openshift-setup">
+<h2>Azure Red Hat OpenShift Setup<a class="headerlink" href="#azure-red-hat-openshift-setup" title="Permalink to this headline">¶</a></h2>
+<p>Provisioning Azure Red Hat OpenShift (ARO) requires the following:</p>
 <ul class="simple">
 <li><p>An active Azure Account that is a member of the “User Access Admin” role within the subscription.</p></li>
 <li><p>Configuration to allow “users” to create application registrations and service principals.</p></li>
@@ -258,7 +258,7 @@ crc status
 <span class="n">cd</span> <span class="n">container</span><span class="o">-</span><span class="n">support</span><span class="o">/</span><span class="n">openshift</span>
 <span class="c1"># specify subscription, resource group (new or existing), region, and setup mode</span>
 <span class="o">./</span><span class="n">aro</span><span class="o">-</span><span class="n">quickstart</span> <span class="s2">&quot;My Subscription&quot;</span> <span class="s2">&quot;lfh-rg&quot;</span> <span class="s2">&quot;eastus&quot;</span> <span class="s2">&quot;connection-info&quot;</span>
-<span class="c1"># returns Open Shift console credentials and URLs for the console and api endpoints</span>
+<span class="c1"># returns OpenShift console credentials and URLs for the console and api endpoints</span>
 </pre></div>
 </div>
 <p>To remove the ARO cluster:</p>
@@ -272,7 +272,7 @@ crc status
 </div>
 <div class="section" id="lfh-openshift-quickstart">
 <h2>LFH OpenShift QuickStart<a class="headerlink" href="#lfh-openshift-quickstart" title="Permalink to this headline">¶</a></h2>
-<p>The LFH OpenShift QuickStart is compatible with any Open Shift 4.x installation. The quickstart uses the <cite>oc</cite> command line tool to manage Open Shift resources including projects, applications, services, and routes.</p>
+<p>The LFH OpenShift QuickStart is compatible with any OpenShift 4.x installation. The quickstart uses the <cite>oc</cite> command line tool to manage OpenShift resources including projects, applications, services, and routes.</p>
 <p>To install the LFH QuickStart:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># log into the OCP API</span>
 <span class="n">oc</span> <span class="n">login</span> <span class="o">-</span><span class="n">u</span> <span class="p">[</span><span class="n">username</span><span class="p">]</span> <span class="o">-</span><span class="n">p</span> <span class="p">[</span><span class="n">password</span><span class="p">]</span> <span class="p">[</span><span class="n">openshift</span> <span class="n">api</span> <span class="n">url</span><span class="p">]</span>

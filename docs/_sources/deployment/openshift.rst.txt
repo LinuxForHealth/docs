@@ -11,13 +11,13 @@ Supported OCP platforms include Azure and Code Ready Containers (CRC) for local 
 General Requirements
 ====================
 
-* A `RedHat Developer Account <https://developers.redhat.com/register>`_
+* A `Red Hat Developer Account <https://developers.redhat.com/register>`_
 * The OpenShift CLI tool. Note: this tool is provided with the Code Ready Containers (CRC) installation.
 
 Code Ready Containers Setup
 ===========================
 
-First, download the latest Code Ready Containers release and "pull secret" from the RedHat Developer Site. The "pull secret" is used to enable access to RedHat image repositories within the CRC VM.
+First, download the latest Code Ready Containers release and "pull secret" from the Red Hat Developer Site. The "pull secret" is used to enable access to Red Hat image repositories within the CRC VM.
 
 To install Code Ready Containers::
 
@@ -44,10 +44,10 @@ To view the provided CRC credentials for the OpenShift console run::
 
 Additional CRC setup instructions are included wihin the doc.pdf file included with the distribution.
 
-Azure RedHat Open Shift Setup
+Azure Red Hat OpenShift Setup
 =============================
 
-Provisioning Azure RedHat Open Shift (ARO) requires the following:
+Provisioning Azure Red Hat OpenShift (ARO) requires the following:
 
 * An active Azure Account that is a member of the "User Access Admin" role within the subscription.
 * Configuration to allow "users" to create application registrations and service principals.
@@ -68,7 +68,7 @@ After the ARO cluster is provisioned, fetch credential and access information::
     cd container-support/openshift
     # specify subscription, resource group (new or existing), region, and setup mode
     ./aro-quickstart "My Subscription" "lfh-rg" "eastus" "connection-info"
-    # returns Open Shift console credentials and URLs for the console and api endpoints
+    # returns OpenShift console credentials and URLs for the console and api endpoints
 
 To remove the ARO cluster::
 
@@ -82,7 +82,7 @@ To remove the ARO cluster::
 LFH OpenShift QuickStart
 ========================
 
-The LFH OpenShift QuickStart is compatible with any Open Shift 4.x installation. The quickstart uses the `oc` command line tool to manage Open Shift resources including projects, applications, services, and routes.
+The LFH OpenShift QuickStart is compatible with any OpenShift 4.x installation. The quickstart uses the `oc` command line tool to manage OpenShift resources including projects, applications, services, and routes.
 
 To install the LFH QuickStart::
 
