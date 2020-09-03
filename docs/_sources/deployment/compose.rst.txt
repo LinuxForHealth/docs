@@ -10,8 +10,10 @@ Starting the LFH Compose Stack
 ==============================
 
 The syntax to launch the LFH compose stack is::
-
+    # note that the script is "sourced" into the current shell
+    # alternate command: source start-stack.sh [profile name]
     . ./start-stack.sh [profile name]
+    
 
 Where [profile name] is the name of a supported LFH profile such as dev, server, and pi. Additional profiles will be added as needed to support external systems for new LFH integration use-cases. The script is executed within the current shell to ensure that Docker Compose's COMPOSE_FILE variable is available to the CLI.
 

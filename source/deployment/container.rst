@@ -18,7 +18,7 @@ LFH provides management scripts to support the following runtimes:
 
 * OCI (podman or docker)
 * Docker Compose
-* Open Shift Container Platform and Code Ready Containers (provides a local environment for OCP development)
+* OpenShift Container Platform and Code Ready Containers (provides a local environment for OCP development)
 
 LFH Base Image
 ==============
