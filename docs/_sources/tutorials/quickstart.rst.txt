@@ -1,9 +1,9 @@
-Send Your First Message
-***********************
+Quick Start
+***********
 
 Overview
 ========
-This tutorial shows you how to send your first message to Linux for Health, using a simple FHIR patient resource and the curl command, which can be found on most operating systems.  You can optionally view your data via the Kafdrop Kafka console or NATS subscriber.
+This tutorial shows you how to send a FHIR message to Linux for Health, using a simple FHIR patient resource and the curl command, which can be found on most operating systems.  You can optionally view your data via the Kafdrop Kafka console or NATS subscriber.
 
 Prerequisites
 =============
