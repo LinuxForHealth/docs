@@ -42,7 +42,7 @@ To view the provided CRC credentials for the OpenShift console run::
 
     crc console --credentials
 
-Additional CRC setup instructions are included wihin the doc.pdf file included with the distribution.
+Additional CRC setup instructions are included within the doc.pdf file included with the distribution.
 
 Azure Red Hat OpenShift Setup
 =============================
