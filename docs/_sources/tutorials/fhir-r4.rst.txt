@@ -1,5 +1,5 @@
-FHIR R4 Tutorial
-****************
+FHIR R4
+*******
 
 Overview
 ========
