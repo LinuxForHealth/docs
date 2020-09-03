@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,6 +11,11 @@
   
 
   
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+
+  
   
   
   
@@ -19,7 +23,9 @@
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -31,11 +37,6 @@
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Open Container Initiative (OCI)" href="oci.html" />
@@ -53,7 +54,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> Linux for Health
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Linux for Health
           
 
           
@@ -80,6 +81,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -121,9 +123,10 @@
 <li class="toctree-l1"><a class="reference internal" href="compose.html">Docker Compose Support</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">OpenShift Container Platform</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#pre-requisites">Pre-requisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#general-requirements">General Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#code-ready-containers-setup">Code Ready Containers Setup</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#manage-lfh-openshift-quickstart">Manage LFH OpenShift QuickStart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#azure-redhat-open-shift-setup">Azure RedHat Open Shift Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#lfh-openshift-quickstart">LFH OpenShift QuickStart</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="oci.html">Open Container Initiative (OCI)</a></li>
@@ -132,6 +135,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -170,7 +174,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>OpenShift Container Platform</li>
     
@@ -195,26 +199,27 @@
 <h1>OpenShift Container Platform<a class="headerlink" href="#openshift-container-platform" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>Linux for Health (LFH) Connect supports provisoning it’s applications and services on the OpenShift Container Platform (OCP) and Code Ready Containers, a local application used for OCP development and testing. The provisioning process is a “quick start” process designed to create OCP assets with reasonable defaults.</p>
+<p>Linux for Health (LFH) Connect supports provisoning it’s applications and services on the OpenShift Container Platform (OCP). Additional scripts are provided to provision OCP on supported cloud platforms. The OCP provisioning scripts are “general-use” and may be adapted as needed.
+Supported OCP platforms include Azure and Code Ready Containers (CRC) for local development, with additional environments coming soon!</p>
 </div>
-<div class="section" id="pre-requisites">
-<h2>Pre-requisites<a class="headerlink" href="#pre-requisites" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="general-requirements">
+<h2>General Requirements<a class="headerlink" href="#general-requirements" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>A <a class="reference external" href="https://developers.redhat.com/register">RedHat Developer Account</a></p></li>
-<li><p><a class="reference external" href="https://github.com/code-ready/crc">Code Ready Containers</a> for local OCP environment, if desired</p></li>
-<li><p>The OpenShift CLI tool, OC, if Code Ready Containers is not installed</p></li>
+<li><p>The OpenShift CLI tool. Note: this tool is provided with the Code Ready Containers (CRC) installation.</p></li>
 </ul>
 </div>
 <div class="section" id="code-ready-containers-setup">
 <h2>Code Ready Containers Setup<a class="headerlink" href="#code-ready-containers-setup" title="Permalink to this headline">¶</a></h2>
-<p>If a local OCP environment is desired, download the latest Code Ready Containers release and associated “pull secret” from the RedHat Developer Network site.</p>
+<p>First, download the latest Code Ready Containers release and “pull secret” from the RedHat Developer Site. The “pull secret” is used to enable access to RedHat image repositories within the CRC VM.</p>
 <p>To install Code Ready Containers:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># assume Code Ready Containers and the pull secret are downloaded to /$HOME/Downloads
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># assume $HOME/Downloads contains the CRC installation and pull secret
+cd $HOME/Downloads
 tar -xvzf crc-macos-amd64.tar.xz
 cd crc-&lt;target platform&gt;
 cp crc /usr/local/bin
 crc setup
-crc start -p $HOME/Downloads/pull-secret.txt
+crc start -p pull-secret.txt
 # wait for crc to provision
 crc status
 </pre></div>
@@ -230,34 +235,63 @@ crc status
 </pre></div>
 </div>
 <p>Additional CRC setup instructions are included wihin the doc.pdf file included with the distribution.</p>
-<p>Note: CRC requires considerable resources. It is recommended to stop Docker Desktop, if installed, prior to running CRC unless the local machine is connected to a power source.</p>
 </div>
-<div class="section" id="manage-lfh-openshift-quickstart">
-<h2>Manage LFH OpenShift QuickStart<a class="headerlink" href="#manage-lfh-openshift-quickstart" title="Permalink to this headline">¶</a></h2>
-<p>The LFH Connect project includes scripts to manage the LFH OCP quickstart. The scripts are located in the <a class="reference external" href="https://github.com/LinuxForHealth/connect/tree/master/container-support/openshift">OpenShift directory</a> .</p>
-<p>To provision resources:</p>
+<div class="section" id="azure-redhat-open-shift-setup">
+<h2>Azure RedHat Open Shift Setup<a class="headerlink" href="#azure-redhat-open-shift-setup" title="Permalink to this headline">¶</a></h2>
+<p>Provisioning Azure RedHat Open Shift (ARO) requires the following:</p>
+<ul class="simple">
+<li><p>An active Azure Account that is a member of the “User Access Admin” role within the subscription.</p></li>
+<li><p>Configuration to allow “users” to create application registrations and service principals.</p></li>
+<li><p>A minimum CPU quota of 40 within the desired region and subscription for the DSV3 instance types.</p></li>
+<li><p>The Azure CLI tool (az).</p></li>
+</ul>
+<p>To create an ARO cluster:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># within the LFH connect project directory</span>
+<span class="n">cd</span> <span class="n">container</span><span class="o">-</span><span class="n">support</span><span class="o">/</span><span class="n">openshift</span>
+<span class="c1"># specify subscription, resource group (new or existing), region, and setup mode</span>
+<span class="o">./</span><span class="n">aro</span><span class="o">-</span><span class="n">quickstart</span> <span class="s2">&quot;My Subscription&quot;</span> <span class="s2">&quot;lfh-rg&quot;</span> <span class="s2">&quot;eastus&quot;</span> <span class="s2">&quot;install&quot;</span>
+<span class="c1"># the provisioning process will take approximately 30 - 40 minutes, based on current workloads.</span>
+</pre></div>
+</div>
+<p>After the ARO cluster is provisioned, fetch credential and access information:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># within the LFH connect project directory</span>
+<span class="n">cd</span> <span class="n">container</span><span class="o">-</span><span class="n">support</span><span class="o">/</span><span class="n">openshift</span>
+<span class="c1"># specify subscription, resource group (new or existing), region, and setup mode</span>
+<span class="o">./</span><span class="n">aro</span><span class="o">-</span><span class="n">quickstart</span> <span class="s2">&quot;My Subscription&quot;</span> <span class="s2">&quot;lfh-rg&quot;</span> <span class="s2">&quot;eastus&quot;</span> <span class="s2">&quot;connection-info&quot;</span>
+<span class="c1"># returns Open Shift console credentials and URLs for the console and api endpoints</span>
+</pre></div>
+</div>
+<p>To remove the ARO cluster:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># within the LFH connect project directory</span>
+<span class="n">cd</span> <span class="n">container</span><span class="o">-</span><span class="n">support</span><span class="o">/</span><span class="n">openshift</span>
+<span class="c1"># specify subscription, resource group (new or existing), region, and setup mode</span>
+<span class="o">./</span><span class="n">aro</span><span class="o">-</span><span class="n">quickstart</span> <span class="s2">&quot;My Subscription&quot;</span> <span class="s2">&quot;lfh-rg&quot;</span> <span class="s2">&quot;eastus&quot;</span> <span class="s2">&quot;remove&quot;</span>
+<span class="c1"># submits the delete request and provides commands to run to remove dependent objects once the cluster is deleted</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="lfh-openshift-quickstart">
+<h2>LFH OpenShift QuickStart<a class="headerlink" href="#lfh-openshift-quickstart" title="Permalink to this headline">¶</a></h2>
+<p>The LFH OpenShift QuickStart is compatible with any Open Shift 4.x installation. The quickstart uses the <cite>oc</cite> command line tool to manage Open Shift resources including projects, applications, services, and routes.</p>
+<p>To install the LFH QuickStart:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># log into the OCP API</span>
 <span class="n">oc</span> <span class="n">login</span> <span class="o">-</span><span class="n">u</span> <span class="p">[</span><span class="n">username</span><span class="p">]</span> <span class="o">-</span><span class="n">p</span> <span class="p">[</span><span class="n">password</span><span class="p">]</span> <span class="p">[</span><span class="n">openshift</span> <span class="n">api</span> <span class="n">url</span><span class="p">]</span>
 
 <span class="c1"># install quickstart assets</span>
-<span class="o">./</span><span class="n">install</span><span class="o">-</span><span class="n">quickstart</span><span class="o">.</span><span class="n">sh</span>
+<span class="o">./</span><span class="n">lfh</span><span class="o">-</span><span class="n">quickstart</span><span class="o">.</span><span class="n">sh</span> <span class="n">install</span>
 
-<span class="c1"># when install is complete view status information including exposed endpoint urls for integration</span>
+<span class="c1"># when the install is complete, use `oc` to view cluster status information</span>
 <span class="n">oc</span> <span class="n">status</span>
 </pre></div>
 </div>
-<p>To remove resources:</p>
+<p>To remove the LFH QuickStart:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># log into the OCP API</span>
 <span class="n">oc</span> <span class="n">login</span> <span class="o">-</span><span class="n">u</span> <span class="p">[</span><span class="n">username</span><span class="p">]</span> <span class="o">-</span><span class="n">p</span> <span class="p">[</span><span class="n">password</span><span class="p">]</span> <span class="p">[</span><span class="n">openshift</span> <span class="n">api</span> <span class="n">url</span><span class="p">]</span>
 
 <span class="c1"># install quickstart assets</span>
-<span class="o">./</span><span class="n">remove</span><span class="o">-</span><span class="n">quickstart</span><span class="o">.</span><span class="n">sh</span>
+<span class="o">./</span><span class="n">lfh</span><span class="o">-</span><span class="n">quickstart</span><span class="o">.</span><span class="n">sh</span> <span class="n">remove</span>
 </pre></div>
 </div>
-<p>If the quickstart is used with CRC, use the following login information:</p>
-<blockquote>
-<div><p>oc login -u developer -p developer <a class="reference external" href="https://api.crc.testing:6443">https://api.crc.testing:6443</a></p>
-</div></blockquote>
 </div>
 </div>
 
@@ -281,11 +315,19 @@ crc status
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2020, IBM
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -296,7 +338,6 @@ crc status
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {
