@@ -27,7 +27,7 @@ To install Code Ready Containers::
     cd crc-<target platform>
     cp crc /usr/local/bin
     crc setup
-    crc start -p pull-secret.txt
+    crc start -p pull-secret.txt --nameserver 1.1.1.1
     # wait for crc to provision
     crc status
 
