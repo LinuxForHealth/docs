@@ -248,24 +248,24 @@ crc status
 <p>To create an ARO cluster:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># within the LFH connect project directory</span>
 <span class="n">cd</span> <span class="n">container</span><span class="o">-</span><span class="n">support</span><span class="o">/</span><span class="n">openshift</span>
-<span class="c1"># specify subscription, resource group (new or existing), region, and setup mode</span>
-<span class="o">./</span><span class="n">aro</span><span class="o">-</span><span class="n">quickstart</span> <span class="s2">&quot;My Subscription&quot;</span> <span class="s2">&quot;lfh-rg&quot;</span> <span class="s2">&quot;eastus&quot;</span> <span class="s2">&quot;install&quot;</span>
+<span class="c1"># specify setup mode, subscription, resource group (new or existing), region</span>
+<span class="o">./</span><span class="n">aro</span><span class="o">-</span><span class="n">quickstart</span> <span class="s2">&quot;install&quot;</span> <span class="s2">&quot;My Subscription&quot;</span> <span class="s2">&quot;lfh-rg&quot;</span> <span class="s2">&quot;eastus&quot;</span>
 <span class="c1"># the provisioning process will take approximately 30 - 40 minutes, based on current workloads.</span>
 </pre></div>
 </div>
 <p>After the ARO cluster is provisioned, fetch credential and access information:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># within the LFH connect project directory</span>
 <span class="n">cd</span> <span class="n">container</span><span class="o">-</span><span class="n">support</span><span class="o">/</span><span class="n">openshift</span>
-<span class="c1"># specify subscription, resource group (new or existing), region, and setup mode</span>
-<span class="o">./</span><span class="n">aro</span><span class="o">-</span><span class="n">quickstart</span> <span class="s2">&quot;My Subscription&quot;</span> <span class="s2">&quot;lfh-rg&quot;</span> <span class="s2">&quot;eastus&quot;</span> <span class="s2">&quot;connection-info&quot;</span>
+<span class="c1"># specify setup mode, subscription, resource group (new or existing), region</span>
+<span class="o">./</span><span class="n">aro</span><span class="o">-</span><span class="n">quickstart</span> <span class="s2">&quot;connection-info&quot;</span> <span class="s2">&quot;My Subscription&quot;</span> <span class="s2">&quot;lfh-rg&quot;</span> <span class="s2">&quot;eastus&quot;</span>
 <span class="c1"># returns OpenShift console credentials and URLs for the console and api endpoints</span>
 </pre></div>
 </div>
 <p>To remove the ARO cluster:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># within the LFH connect project directory</span>
 <span class="n">cd</span> <span class="n">container</span><span class="o">-</span><span class="n">support</span><span class="o">/</span><span class="n">openshift</span>
-<span class="c1"># specify subscription, resource group (new or existing), region, and setup mode</span>
-<span class="o">./</span><span class="n">aro</span><span class="o">-</span><span class="n">quickstart</span> <span class="s2">&quot;My Subscription&quot;</span> <span class="s2">&quot;lfh-rg&quot;</span> <span class="s2">&quot;eastus&quot;</span> <span class="s2">&quot;remove&quot;</span>
+<span class="c1"># specify setup mode, subscription, resource group (new or existing), region</span>
+<span class="o">./</span><span class="n">aro</span><span class="o">-</span><span class="n">quickstart</span> <span class="s2">&quot;remove&quot;</span> <span class="s2">&quot;My Subscription&quot;</span> <span class="s2">&quot;lfh-rg&quot;</span> <span class="s2">&quot;eastus&quot;</span>
 <span class="c1"># submits the delete request and provides commands to run to remove dependent objects once the cluster is deleted</span>
 </pre></div>
 </div>

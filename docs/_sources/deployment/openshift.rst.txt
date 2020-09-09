@@ -58,24 +58,24 @@ To create an ARO cluster::
 
     # within the LFH connect project directory
     cd container-support/openshift
-    # specify subscription, resource group (new or existing), region, and setup mode
-    ./aro-quickstart "My Subscription" "lfh-rg" "eastus" "install"
+    # specify setup mode, subscription, resource group (new or existing), region
+    ./aro-quickstart "install" "My Subscription" "lfh-rg" "eastus"
     # the provisioning process will take approximately 30 - 40 minutes, based on current workloads.
 
 After the ARO cluster is provisioned, fetch credential and access information::
 
     # within the LFH connect project directory
     cd container-support/openshift
-    # specify subscription, resource group (new or existing), region, and setup mode
-    ./aro-quickstart "My Subscription" "lfh-rg" "eastus" "connection-info"
+    # specify setup mode, subscription, resource group (new or existing), region
+    ./aro-quickstart "connection-info" "My Subscription" "lfh-rg" "eastus"
     # returns OpenShift console credentials and URLs for the console and api endpoints
 
 To remove the ARO cluster::
 
     # within the LFH connect project directory
     cd container-support/openshift
-    # specify subscription, resource group (new or existing), region, and setup mode
-    ./aro-quickstart "My Subscription" "lfh-rg" "eastus" "remove"
+    # specify setup mode, subscription, resource group (new or existing), region
+    ./aro-quickstart "remove" "My Subscription" "lfh-rg" "eastus" 
     # submits the delete request and provides commands to run to remove dependent objects once the cluster is deleted
 
 

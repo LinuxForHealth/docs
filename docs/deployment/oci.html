@@ -123,7 +123,7 @@
 <li class="toctree-l1"><a class="reference internal" href="openshift.html">OpenShift Container Platform</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Open Container Initiative (OCI)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#configuring-oci-services">Configuring OCI services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#oci-command-parameter">OCI Command Parameter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#managing-oci-services">Managing OCI services</a></li>
 </ul>
 </li>
@@ -198,27 +198,34 @@
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <p>Linux for Health (LFH) Connect includes scripts to manage containers within an OCI compliant runtime. The OCI runtime provides services to start, stop, and manage containers. The LFH Connect OCI scripts are located in the project’s <a class="reference external" href="https://github.com/LinuxForHealth/connect/tree/master/container-support/oci">oci</a> directory. LFH Connect OCI support is currently limited to launching and removing containers.</p>
 </div>
-<div class="section" id="configuring-oci-services">
-<h2>Configuring OCI services<a class="headerlink" href="#configuring-oci-services" title="Permalink to this headline">¶</a></h2>
-<p>Configure the OCI_COMMAND within the container-support/oci/.env file to support the “container executable” on the target platform:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">OCI_COMMAND</span><span class="o">=</span><span class="s2">&quot;sudo podman&quot;</span>
-</pre></div>
-</div>
+<div class="section" id="oci-command-parameter">
+<h2>OCI Command Parameter<a class="headerlink" href="#oci-command-parameter" title="Permalink to this headline">¶</a></h2>
+<p>The OCI Command parameter specifies the name of the command used to start and stop containers. The OCI command defaults to “docker”. If the target system has a different container runtime, pass in the appropriate command name to the <cite>lfh-oci-services.sh</cite> script.</p>
 </div>
 <div class="section" id="managing-oci-services">
 <h2>Managing OCI services<a class="headerlink" href="#managing-oci-services" title="Permalink to this headline">¶</a></h2>
 <p>To start OCI services:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># navigate to oci directory</span>
 <span class="n">cd</span> <span class="n">container</span><span class="o">-</span><span class="n">support</span><span class="o">/</span><span class="n">oci</span>
-<span class="c1"># launch containers</span>
-<span class="o">./</span><span class="n">start</span><span class="o">.</span><span class="n">sh</span>
+
+<span class="c1"># launch containers using docker command</span>
+<span class="o">./</span><span class="n">lfh</span><span class="o">-</span><span class="n">oci</span><span class="o">-</span><span class="n">services</span><span class="o">.</span><span class="n">sh</span> <span class="n">start</span>
 </pre></div>
 </div>
 <p>To remove OCI services (destructive operation):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># navigate to oci directory</span>
 <span class="n">cd</span> <span class="n">container</span><span class="o">-</span><span class="n">support</span><span class="o">/</span><span class="n">oci</span>
-<span class="c1"># launch containers</span>
-<span class="o">./</span><span class="n">remove</span><span class="o">.</span><span class="n">sh</span>
+
+<span class="c1"># remove containers using docker command</span>
+<span class="o">./</span><span class="n">lfh</span><span class="o">-</span><span class="n">oci</span><span class="o">-</span><span class="n">services</span><span class="o">.</span><span class="n">sh</span> <span class="n">remove</span>
+</pre></div>
+</div>
+<p>To start OCI services using “rooted” podman:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># navigate to oci directory</span>
+<span class="n">cd</span> <span class="n">container</span><span class="o">-</span><span class="n">support</span><span class="o">/</span><span class="n">oci</span>
+
+<span class="c1"># launch containers using &quot;rooted&quot; podman command</span>
+<span class="o">./</span><span class="n">lfh</span><span class="o">-</span><span class="n">oci</span><span class="o">-</span><span class="n">services</span><span class="o">.</span><span class="n">sh</span> <span class="n">start</span> <span class="s2">&quot;sudo podman&quot;</span>
 </pre></div>
 </div>
 </div>
