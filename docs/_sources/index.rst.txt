@@ -56,6 +56,7 @@ You can get started by visiting our `developer setup page <./developer-setup.htm
    :caption: Develop:
 
    develop/extend.rst
+   develop/contribute.rst
    develop/build.rst
    develop/test.rst
    develop/property-encryption.rst
@@ -69,6 +70,3 @@ You can get started by visiting our `developer setup page <./developer-setup.htm
    deployment/compose.rst
    deployment/openshift.rst
    deployment/oci.rst
-
-
-
