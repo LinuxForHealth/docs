@@ -193,7 +193,7 @@
   <div class="section" id="feature-configuration">
 <h1>Feature Configuration<a class="headerlink" href="#feature-configuration" title="Permalink to this headline">¶</a></h1>
 <p>As described in <a class="reference external" href="./application-configuration.html">Application Configuration</a>, Linux for Health is configured via application properties and environment variables, where environment variables can override application properties.</p>
-<p>Use the following guidance to configure each of the Linux for Health features below.  When running Linux for Health Connect via Gradle, configure a property in src/main/resources/application.properties.  When running Linux for Health Connect in a container, add an environment variable to the container to override the default value of property defined in application.properties.</p>
+<p>Use the following guidance to configure each of the Linux for Health features below.  When running Linux for Health Connect via Gradle, configure a property in connect/src/main/resources/application.properties.  When running Linux for Health Connect in a container, add an environment variable to the container to override the default value of property defined in application.properties.</p>
 <div class="section" id="nats-subscribers">
 <h2>NATS Subscribers<a class="headerlink" href="#nats-subscribers" title="Permalink to this headline">¶</a></h2>
 <p>A Linux for Health instance can listen for events from another Linux for Health instance by configuring a NATS subscriber. A NATS subscriber will listen for events from the configured Linux for Health instance, then place them in the Kafka lfh-remote-events topic.</p>
