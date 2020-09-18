@@ -15,14 +15,6 @@ NATS subscribers can also be configured in external applications to perform a wo
 
 To configure a NATS subscriber, configure the lfh.connect.fhir-r4.externalservers property with a comma-delimited list of host:port.
 
-Property::
-
-    lfh.connect.messaging.subscribe.hosts=localhost:4222,1.2.3.4:4222
-
-Environment Variable::
-
-    LFH_CONNECT_MESSAGING_SUBSCRIBE_HOSTS=nats-server:4222,5.6.7.8:4222
-
 +-------------------------+----------------------------------------+---------------------+
 |                         | Name                                   | Default Value       |
 +=========================+========================================+=====================+
@@ -31,17 +23,19 @@ Environment Variable::
 | Environment Variable    | LFH_CONNECT_MESSAGING_SUBSCRIBE_HOSTS  | nats-server:4222    |
 +-------------------------+----------------------------------------+---------------------+
 
-External FHIR Servers
-=====================
-The Linux for Health FHIR R4 route can optionally send FHIR resources to external FHIR servers.  To configure external FHIR servers, configure the lfh.connect.fhir-r4.externalservers property with a comma-delimited list of URIs.
-
+Examples
+--------
 Property::
 
-    lfh.connect.fhir-r4.externalservers=http://localhost:9081/fhir-server/api/v4,http://localhost:9083/fhir-server/api/v4
+    lfh.connect.messaging.subscribe.hosts=localhost:4222,1.2.3.4:4222
 
 Environment Variable::
 
-    LFH_CONNECT_FHIR-R4_EXTERNALSERVERS=http://localhost:9081/fhir-server/api/v4,http://localhost:9083/fhir-server/api/v4
+    LFH_CONNECT_MESSAGING_SUBSCRIBE_HOSTS=nats-server:4222,5.6.7.8:4222
+
+External FHIR Servers
+=====================
+The Linux for Health FHIR R4 route can optionally send FHIR resources to external FHIR servers.  To configure external FHIR servers, configure the lfh.connect.fhir-r4.externalservers property with a comma-delimited list of URIs.
 
 +-------------------------+----------------------------------------+---------------------+
 |                         | Name                                   | Default Value       |
@@ -50,3 +44,13 @@ Environment Variable::
 +-------------------------+----------------------------------------+---------------------+
 | Environment Variable    | LFH_CONNECT_FHIR-R4_EXTERNALSERVERS    | None                |
 +-------------------------+----------------------------------------+---------------------+
+
+Examples
+--------
+Property::
+
+    lfh.connect.fhir-r4.externalservers=http://localhost:9081/fhir-server/api/v4,http://localhost:9083/fhir-server/api/v4
+
+Environment Variable::
+
+    LFH_CONNECT_FHIR-R4_EXTERNALSERVERS=http://localhost:9081/fhir-server/api/v4,http://localhost:9083/fhir-server/api/v4

@@ -93,8 +93,14 @@
 <li class="toctree-l1"><a class="reference internal" href="tutorials/firstroute.html">Hello World</a></li>
 <li class="toctree-l1"><a class="reference internal" href="application-configuration.html">Application Configuration</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Feature Configuration</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#nats-subscribers">NATS Subscribers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#external-fhir-servers">External FHIR Servers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nats-subscribers">NATS Subscribers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#external-fhir-servers">External FHIR Servers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Examples</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="message-structure.html">Message Structure</a></li>
@@ -200,14 +206,6 @@
 <p>A Linux for Health Kafka consumer will then take each event as it is received in lfh-remote-events and store it in the correct topic for the message type. This creates an exact copy of the data stored in the Linux for Health instance that sent the original NATS message and is used to form a synchronized longitudinal patient record.</p>
 <p>NATS subscribers can also be configured in external applications to perform a workflow upon receiving a NATS message, but that custom configuration is out of scope for this document.</p>
 <p>To configure a NATS subscriber, configure the lfh.connect.fhir-r4.externalservers property with a comma-delimited list of host:port.</p>
-<p>Property:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lfh</span><span class="o">.</span><span class="n">connect</span><span class="o">.</span><span class="n">messaging</span><span class="o">.</span><span class="n">subscribe</span><span class="o">.</span><span class="n">hosts</span><span class="o">=</span><span class="n">localhost</span><span class="p">:</span><span class="mi">4222</span><span class="p">,</span><span class="mf">1.2</span><span class="o">.</span><span class="mf">3.4</span><span class="p">:</span><span class="mi">4222</span>
-</pre></div>
-</div>
-<p>Environment Variable:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LFH_CONNECT_MESSAGING_SUBSCRIBE_HOSTS</span><span class="o">=</span><span class="n">nats</span><span class="o">-</span><span class="n">server</span><span class="p">:</span><span class="mi">4222</span><span class="p">,</span><span class="mf">5.6</span><span class="o">.</span><span class="mf">7.8</span><span class="p">:</span><span class="mi">4222</span>
-</pre></div>
-</div>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 29%" />
@@ -231,18 +229,21 @@
 </tr>
 </tbody>
 </table>
+<div class="section" id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
+<p>Property:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lfh</span><span class="o">.</span><span class="n">connect</span><span class="o">.</span><span class="n">messaging</span><span class="o">.</span><span class="n">subscribe</span><span class="o">.</span><span class="n">hosts</span><span class="o">=</span><span class="n">localhost</span><span class="p">:</span><span class="mi">4222</span><span class="p">,</span><span class="mf">1.2</span><span class="o">.</span><span class="mf">3.4</span><span class="p">:</span><span class="mi">4222</span>
+</pre></div>
+</div>
+<p>Environment Variable:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LFH_CONNECT_MESSAGING_SUBSCRIBE_HOSTS</span><span class="o">=</span><span class="n">nats</span><span class="o">-</span><span class="n">server</span><span class="p">:</span><span class="mi">4222</span><span class="p">,</span><span class="mf">5.6</span><span class="o">.</span><span class="mf">7.8</span><span class="p">:</span><span class="mi">4222</span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="external-fhir-servers">
 <h2>External FHIR Servers<a class="headerlink" href="#external-fhir-servers" title="Permalink to this headline">¶</a></h2>
 <p>The Linux for Health FHIR R4 route can optionally send FHIR resources to external FHIR servers.  To configure external FHIR servers, configure the lfh.connect.fhir-r4.externalservers property with a comma-delimited list of URIs.</p>
-<p>Property:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lfh</span><span class="o">.</span><span class="n">connect</span><span class="o">.</span><span class="n">fhir</span><span class="o">-</span><span class="n">r4</span><span class="o">.</span><span class="n">externalservers</span><span class="o">=</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">9081</span><span class="o">/</span><span class="n">fhir</span><span class="o">-</span><span class="n">server</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v4</span><span class="p">,</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">9083</span><span class="o">/</span><span class="n">fhir</span><span class="o">-</span><span class="n">server</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v4</span>
-</pre></div>
-</div>
-<p>Environment Variable:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LFH_CONNECT_FHIR</span><span class="o">-</span><span class="n">R4_EXTERNALSERVERS</span><span class="o">=</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">9081</span><span class="o">/</span><span class="n">fhir</span><span class="o">-</span><span class="n">server</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v4</span><span class="p">,</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">9083</span><span class="o">/</span><span class="n">fhir</span><span class="o">-</span><span class="n">server</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v4</span>
-</pre></div>
-</div>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 29%" />
@@ -266,6 +267,17 @@
 </tr>
 </tbody>
 </table>
+<div class="section" id="id1">
+<h3>Examples<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Property:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lfh</span><span class="o">.</span><span class="n">connect</span><span class="o">.</span><span class="n">fhir</span><span class="o">-</span><span class="n">r4</span><span class="o">.</span><span class="n">externalservers</span><span class="o">=</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">9081</span><span class="o">/</span><span class="n">fhir</span><span class="o">-</span><span class="n">server</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v4</span><span class="p">,</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">9083</span><span class="o">/</span><span class="n">fhir</span><span class="o">-</span><span class="n">server</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v4</span>
+</pre></div>
+</div>
+<p>Environment Variable:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LFH_CONNECT_FHIR</span><span class="o">-</span><span class="n">R4_EXTERNALSERVERS</span><span class="o">=</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">9081</span><span class="o">/</span><span class="n">fhir</span><span class="o">-</span><span class="n">server</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v4</span><span class="p">,</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">9083</span><span class="o">/</span><span class="n">fhir</span><span class="o">-</span><span class="n">server</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v4</span>
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 
