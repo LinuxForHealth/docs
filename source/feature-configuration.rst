@@ -3,9 +3,7 @@ Feature Configuration
 
 As described in `Application Configuration <./application-configuration.html>`_, Linux for Health is configured via application properties and environment variables, where environment variables can override application properties.  
 
-When running Linux for Health Connect via Gradle, configure a property in src/main/resources/application.properties.  When running Linux for Health Connect in a container, add an environment variable to the container to override the default value of property defined in application.properties.
-
-The following sections define configurations required to enable specific Linux for Health features.
+Use the following guidance to configure each of the Linux for Health features below.  When running Linux for Health Connect via Gradle, configure a property in src/main/resources/application.properties.  When running Linux for Health Connect in a container, add an environment variable to the container to override the default value of property defined in application.properties.
 
 NATS Subscribers
 ================
