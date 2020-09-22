@@ -3,7 +3,7 @@ Contribute
 
 Contributions of all kinds are welcome and encouraged.
 
-To contribute code or documentation, please open a `pull request <https://github.com/LinuxForHealth/connect/pulls>`_.
+To contribute code or documentation for an existing issue, please open a `pull request <https://github.com/LinuxForHealth/connect/pulls>`_.
 
 A good way to get started and familiarize yourself with the code base is to address issues labeled `good first issue <https://github.com/LinuxForHealth/connect/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22>`_.
 
