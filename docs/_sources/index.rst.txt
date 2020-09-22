@@ -32,6 +32,7 @@ You can get started by visiting our `developer setup page <./developer-setup.htm
    developer-setup.rst
    tutorials/firstroute.rst
    application-configuration.rst
+   feature-configuration.rst
    message-structure.rst
 
 .. toctree::
