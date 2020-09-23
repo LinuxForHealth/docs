@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,6 +11,11 @@
   
 
   
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+
+  
   
   
   
@@ -19,7 +23,9 @@
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -31,11 +37,6 @@
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="OpenShift Container Platform" href="openshift.html" />
@@ -53,7 +54,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> Linux for Health
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Linux for Health
           
 
           
@@ -80,6 +81,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -131,6 +133,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -169,7 +172,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>Docker Compose Support</li>
     
@@ -194,17 +197,17 @@
 <h1>Docker Compose Support<a class="headerlink" href="#docker-compose-support" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>Linux for Health (LFH) Connect provides a standard Docker Compose configuration with support for file overrides. The compose configurations are included in the project’s <a class="reference external" href="https://github.com/LinuxForHealth/connect/tree/master/container-support/compose">compose directory</a> . A management script, start-stack.sh, is used to launch the LFH application stack for a requested profile.</p>
+<p>Linux for Health (LFH) Connect provides a standard Docker Compose configuration with support for file overrides. The compose configurations are included in the project’s <a class="reference external" href="https://github.com/LinuxForHealth/connect/tree/master/container-support/compose">compose directory</a> . A management script, <cite>start-stack.sh</cite>, is used to launch the LFH application stack for a requested profile.</p>
 </div>
 <div class="section" id="starting-the-lfh-compose-stack">
 <h2>Starting the LFH Compose Stack<a class="headerlink" href="#starting-the-lfh-compose-stack" title="Permalink to this headline">¶</a></h2>
-<dl class="simple">
-<dt>The syntax to launch the LFH compose stack is::</dt><dd><p># note that the script is “sourced” into the current shell
-# alternate command: source start-stack.sh [profile name]
-. ./start-stack.sh [profile name]</p>
-</dd>
-</dl>
-<p>Where [profile name] is the name of a supported LFH profile such as dev, server, and pi. Additional profiles will be added as needed to support external systems for new LFH integration use-cases. The script is executed within the current shell to ensure that Docker Compose’s COMPOSE_FILE variable is available to the CLI.</p>
+<p>The syntax to launch the LFH compose stack is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># note that the script is &quot;sourced&quot; into the current shell</span>
+<span class="o">.</span> <span class="o">./</span><span class="n">start</span><span class="o">-</span><span class="n">stack</span><span class="o">.</span><span class="n">sh</span> <span class="p">[</span><span class="n">profile</span> <span class="n">name</span><span class="p">]</span>
+<span class="c1"># alternate command: source start-stack.sh [profile name]</span>
+</pre></div>
+</div>
+<p>Where [profile name] is the name of a supported LFH profile. Supported profiles include: dev, server, and pi. Additional profiles will be added as needed to support external systems for new LFH integration use-cases. The script is executed within the current shell to ensure that Docker Compose’s COMPOSE_FILE variable is set correctly.</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 15%" />
@@ -227,7 +230,7 @@
 </tr>
 </tbody>
 </table>
-<p>The dev profile is the “default” profile and is started if start-stack.sh is executed without arguments. Run LFH locally to integrate with the “dev” profile:</p>
+<p>The dev profile is the “default” profile and is started if start-stack.sh is executed without arguments. The dev profile is intended for local development use:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># navigate to the compose configuration directory</span>
 <span class="n">cd</span> <span class="n">container</span><span class="o">-</span><span class="n">support</span><span class="o">/</span><span class="n">compose</span>
 <span class="c1"># execute the compose start script within the current shell</span>
@@ -240,18 +243,18 @@
 <span class="o">./</span><span class="n">gradlew</span> <span class="n">run</span>
 </pre></div>
 </div>
-<p>When local development work is complete stop or remove the LFH compose stack and reset the COMPOSE_FILE variable:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># stops all containers leaving them intact</span>
-<span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">stop</span> <span class="c1"># containers may be removed with docker-compose down -v</span>
-<span class="c1"># unset the COMPOSE_FILE variable</span>
-<span class="n">unset</span> <span class="n">COMPOSE_FILE</span>
-</pre></div>
-</div>
-<p>To start the “server” profile, which includes the LFH container:</p>
+<p>The “server” and “pi” profiles support a full LFH stack, which includes the LFH container. The example below launches the server profile:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># navigate to the compose configuration directory</span>
 <span class="n">cd</span> <span class="n">container</span><span class="o">-</span><span class="n">support</span><span class="o">/</span><span class="n">compose</span>
 <span class="c1"># execute the compose start script within the current shell</span>
 <span class="o">.</span> <span class="o">./</span><span class="n">start</span><span class="o">-</span><span class="n">stack</span><span class="o">.</span><span class="n">sh</span> <span class="n">server</span>
+</pre></div>
+</div>
+<p>Use standard docker-compose commands to interact with the stack and it’s services. Unset the <cite>COMPOSE_FILE</cite> variable following a <cite>docker-compose stop</cite> or <cite>docker-compose down -v</cite>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># stops all containers leaving them intact</span>
+<span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">stop</span> <span class="c1"># containers may be removed with docker-compose down -v</span>
+<span class="c1"># unset the COMPOSE_FILE variable</span>
+<span class="n">unset</span> <span class="n">COMPOSE_FILE</span>
 </pre></div>
 </div>
 </div>
@@ -277,11 +280,19 @@
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2020, IBM
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -292,7 +303,6 @@
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

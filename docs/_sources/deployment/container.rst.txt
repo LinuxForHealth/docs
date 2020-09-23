@@ -4,7 +4,7 @@ Container Support
 Overview
 ========
 
-Linux for Health (LFH) provides first class support for `OCI Compliant <https://opencontainers.org/>`_ container runtimes. Images for LFH applications and services are available under the `Linux For Health Organization on Docker Hub <https://hub.docker.com/u/linuxforhealth>`_ . Platforms supported include:
+Images for Linux for Health applications and services are available under the `Linux For Health Organization on Docker Hub <https://hub.docker.com/u/linuxforhealth>`_ . Supported platforms include:
 
 * x86/amd64
 * arm64
@@ -12,13 +12,14 @@ Linux for Health (LFH) provides first class support for `OCI Compliant <https://
 
 Red Hat Universal Base Images (UBI) are utilized when possible. UBI images provide an optimizied runtime with an emphasis on security and operational stability. Within the UBI family of images, the minimal variant is preferred, followed by the init and standard variants.
 
-LFH images run within any standard container runtime and orchestration environment. Additionally, all LFH images are supported on Red Hat's Open Shift Container Platform (OCP) and adhere to "best practices".
+LFH images run within any standard container runtime and orchestration environment. Additionally, all LFH images are supported on Red Hat's Open Shift Container Platform (OCP) and adhere to OCP best practices.
 
 LFH provides management scripts to support the following runtimes:
 
 * OCI (podman or docker)
 * Docker Compose
-* OpenShift Container Platform and Code Ready Containers (provides a local environment for OCP development)
+* OpenShift Container Platform
+* Code Ready Containers (provides a local environment for OCP development)
 
 LFH Base Image
 ==============
@@ -46,13 +47,4 @@ If a multi-arch build is not required, a standard "build" command may be used. T
 
     docker build -t [image repository]/connect:1.0.0 .
 
-The additional information on the LFH build process, please review the `LFH Images Repo <https://github.com/LinuxForHealth/images>`_ .
-
-Supported Container Runtimes
-============================
-
-LFH provides management scripts to provision containers within the following runtimes:
-
-* OCI (docker or podman)
-* Docker Compose
-* OpenShift Container Platform
+For more information on available images and specific build commands please visit the `LFH Images Repo <https://github.com/LinuxForHealth/images>`_ .

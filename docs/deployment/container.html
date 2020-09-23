@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,6 +11,11 @@
   
 
   
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+
+  
   
   
   
@@ -19,7 +23,9 @@
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -31,11 +37,6 @@
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Docker Compose Support" href="compose.html" />
@@ -53,7 +54,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> Linux for Health
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Linux for Health
           
 
           
@@ -80,6 +81,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -122,7 +124,6 @@
 <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#lfh-base-image">LFH Base Image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#building-images">Building Images</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#supported-container-runtimes">Supported Container Runtimes</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="compose.html">Docker Compose Support</a></li>
@@ -133,6 +134,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -171,7 +173,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>Container Support</li>
     
@@ -196,19 +198,20 @@
 <h1>Container Support<a class="headerlink" href="#container-support" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>Linux for Health (LFH) provides first class support for <a class="reference external" href="https://opencontainers.org/">OCI Compliant</a> container runtimes. Images for LFH applications and services are available under the <a class="reference external" href="https://hub.docker.com/u/linuxforhealth">Linux For Health Organization on Docker Hub</a> . Platforms supported include:</p>
+<p>Images for Linux for Health applications and services are available under the <a class="reference external" href="https://hub.docker.com/u/linuxforhealth">Linux For Health Organization on Docker Hub</a> . Supported platforms include:</p>
 <ul class="simple">
 <li><p>x86/amd64</p></li>
 <li><p>arm64</p></li>
 <li><p>s390x/Z</p></li>
 </ul>
 <p>Red Hat Universal Base Images (UBI) are utilized when possible. UBI images provide an optimizied runtime with an emphasis on security and operational stability. Within the UBI family of images, the minimal variant is preferred, followed by the init and standard variants.</p>
-<p>LFH images run within any standard container runtime and orchestration environment. Additionally, all LFH images are supported on Red Hat’s Open Shift Container Platform (OCP) and adhere to “best practices”.</p>
+<p>LFH images run within any standard container runtime and orchestration environment. Additionally, all LFH images are supported on Red Hat’s Open Shift Container Platform (OCP) and adhere to OCP best practices.</p>
 <p>LFH provides management scripts to support the following runtimes:</p>
 <ul class="simple">
 <li><p>OCI (podman or docker)</p></li>
 <li><p>Docker Compose</p></li>
-<li><p>OpenShift Container Platform and Code Ready Containers (provides a local environment for OCP development)</p></li>
+<li><p>OpenShift Container Platform</p></li>
+<li><p>Code Ready Containers (provides a local environment for OCP development)</p></li>
 </ul>
 </div>
 <div class="section" id="lfh-base-image">
@@ -235,16 +238,7 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">build</span> <span class="o">-</span><span class="n">t</span> <span class="p">[</span><span class="n">image</span> <span class="n">repository</span><span class="p">]</span><span class="o">/</span><span class="n">connect</span><span class="p">:</span><span class="mf">1.0</span><span class="o">.</span><span class="mi">0</span> <span class="o">.</span>
 </pre></div>
 </div>
-<p>The additional information on the LFH build process, please review the <a class="reference external" href="https://github.com/LinuxForHealth/images">LFH Images Repo</a> .</p>
-</div>
-<div class="section" id="supported-container-runtimes">
-<h2>Supported Container Runtimes<a class="headerlink" href="#supported-container-runtimes" title="Permalink to this headline">¶</a></h2>
-<p>LFH provides management scripts to provision containers within the following runtimes:</p>
-<ul class="simple">
-<li><p>OCI (docker or podman)</p></li>
-<li><p>Docker Compose</p></li>
-<li><p>OpenShift Container Platform</p></li>
-</ul>
+<p>For more information on available images and specific build commands please visit the <a class="reference external" href="https://github.com/LinuxForHealth/images">LFH Images Repo</a> .</p>
 </div>
 </div>
 
@@ -268,11 +262,19 @@
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2020, IBM
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -283,7 +285,6 @@
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

@@ -4,15 +4,48 @@ OpenShift Container Platform
 Overview
 ========
 
-Linux for Health (LFH) Connect supports provisoning it's applications and services on the OpenShift Container Platform (OCP). Additional scripts are provided to provision OCP on supported cloud platforms. The OCP provisioning scripts are "general-use" and may be adapted as needed.
-Supported OCP platforms include Azure and Code Ready Containers (CRC) for local development, with additional environments coming soon!
-
+Linux for Health provides quick-start scripts to provision an `OpenShift Container Platform (OCP) cluster <https://www.openshift.com/>`_, and create a LFH OpenShift project.
+OCP provisioning support is available for Azure using `Azure's Red Hat OpenShift (ARO) service <https://azure.microsoft.com/en-us/services/openshift/>`_, with additional platforms coming soon!
+The provisioning and project creation scripts are independent of one another. In other words the LFH project creation script does not directly depend on a LFH OCP provisioning script, but it does require an existing OCP cluster running on a supported platform (Red Hat, AWS, Azure, Code Ready Containers, private, etc).  
 
 General Requirements
 ====================
 
-* A `Red Hat Developer Account <https://developers.redhat.com/register>`_
-* The OpenShift CLI tool. Note: this tool is provided with the Code Ready Containers (CRC) installation.
+- `Register <https://developers.redhat.com/register>`_ for a free Red Hat Developer Account.
+- Download the OC CLI toolkit from the Red Hat developer site
+
+Where to Start
+==============
+
+If you do not have access to an existing OCP cluster, you will need to create one. `Code Ready Containers <https://github.com/code-ready/crc>`_ provides an OCP compatible environment for local/development use. Red Hat, IBM, Azure, AWS, and GCP provide hosted OCP services environments.
+
+LFH provides documentation and limited support for provisioning :ref:`Code Ready Containers Setup` and :ref:`Azure Red Hat OpenShift Setup`
+
+If you have access to an existing OCP cluster, you may proceed to :ref:`LFH OpenShift QuickStart`
+
+LFH OpenShift QuickStart
+========================
+
+The LFH OpenShift QuickStart is compatible with any OpenShift 4.x installation. The quickstart uses the `oc` command line tool to manage OpenShift resources including projects, applications, services, and routes.
+
+To install the LFH QuickStart::
+
+    # log into the OCP API
+    oc login -u [username] -p [password] [openshift api url]
+
+    # install quickstart assets
+    ./lfh-quickstart.sh install
+
+    # when the install is complete, use `oc` to view cluster status information
+    oc status
+
+To remove the LFH QuickStart::
+
+    # log into the OCP API
+    oc login -u [username] -p [password] [openshift api url]
+
+    # install quickstart assets
+    ./lfh-quickstart.sh remove
 
 Code Ready Containers Setup
 ===========================
@@ -31,7 +64,7 @@ To install Code Ready Containers::
     # wait for crc to provision
     crc status
 
-Following the installation add $HOME/.crc/bin to the system's executable path::
+Add $HOME/.crc/bin to the system's executable path::
 
     # update profile with
     export PATH="$HOME/.crc/bin/oc:$PATH"
@@ -78,27 +111,3 @@ To remove the ARO cluster::
     ./aro-quickstart "remove" "My Subscription" "lfh-rg" "eastus" 
     # submits the delete request and provides commands to run to remove dependent objects once the cluster is deleted
 
-
-LFH OpenShift QuickStart
-========================
-
-The LFH OpenShift QuickStart is compatible with any OpenShift 4.x installation. The quickstart uses the `oc` command line tool to manage OpenShift resources including projects, applications, services, and routes.
-
-To install the LFH QuickStart::
-
-    # log into the OCP API
-    oc login -u [username] -p [password] [openshift api url]
-
-    # install quickstart assets
-    ./lfh-quickstart.sh install
-
-    # when the install is complete, use `oc` to view cluster status information
-    oc status
-
-To remove the LFH QuickStart::
-
-    # log into the OCP API
-    oc login -u [username] -p [password] [openshift api url]
-
-    # install quickstart assets
-    ./lfh-quickstart.sh remove
