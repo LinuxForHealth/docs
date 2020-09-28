@@ -34,7 +34,7 @@ Linux for Health provides a "Hello World" route in ``connect/src/main/java/com/l
 
 You can run this route using the curl command.  From a console window, copy and paste the following command.  You can change the value of name being passed in as a query param from ``me`` to anything, then hit ``return``::
 
-   curl http://localhost:9090/hello-world?name=me
+   curl http://localhost:8080/hello-world?name=me
 
 This sends an HTTP GET request to Linux for Health, which is processed by the route code above.  The ``.process`` step gets the value of the query param ``name``, which was passed in as an exchange message header by Camel, then forms the response and sets the exchange message body to the result.
 
@@ -46,7 +46,7 @@ You should see the following result (all in one line)::
       "meta": {
          "routeId": "hello-world",
          "uuid": "71257051-f2e0-495b-b0d9-beb785b3f850",
-         "routeUri": "jetty:http://0.0.0.0:9090/hello-world?httpMethodRestrict=GET",
+         "routeUri": "jetty:http://0.0.0.0:8080/hello-world?httpMethodRestrict=GET",
          "dataFormat": "EXAMPLE",
          "messageType": "TEXT",
          "timestamp": 1599076120,
@@ -70,7 +70,7 @@ to::
 
 Save the file and in the console window where you started Linux for Health connect via ``./gradlew run``, type ctrl-C to stop it.  Rebuild Linux for Health by typing ``./gradlew clean build`` and then ``./gradlew run``.  The run the following command::
 
-  curl http://localhost:9090/hello-world?name=Austin
+  curl http://localhost:8080/hello-world?name=Austin
 
 You should see the following result (all in one line)::
 
@@ -78,7 +78,7 @@ You should see the following result (all in one line)::
       "meta": {
          "routeId": "hello-world",
          "uuid": "71257051-f2e0-495b-b0d9-beb785b3f850",
-         "routeUri": "jetty:http://0.0.0.0:9090/hello-world?httpMethodRestrict=GET",
+         "routeUri": "jetty:http://0.0.0.0:8080/hello-world?httpMethodRestrict=GET",
          "dataFormat": "EXAMPLE",
          "messageType": "TEXT",
          "timestamp": 1599076120,

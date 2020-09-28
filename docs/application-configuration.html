@@ -292,13 +292,8 @@ lfh.connect.hl7-v2.uri=netty:tcp://{{lfh.connect.hl7-v2.host}}?sync=true&amp;enc
 <span class="n">public</span> <span class="n">void</span> <span class="n">buildRoute</span><span class="p">(</span><span class="n">String</span> <span class="n">routePropertyNamespace</span><span class="p">)</span> <span class="p">{</span>
 
     <span class="n">CamelContextSupport</span> <span class="n">contextSupport</span> <span class="o">=</span> <span class="n">new</span> <span class="n">CamelContextSupport</span><span class="p">(</span><span class="n">getContext</span><span class="p">());</span>
-    <span class="n">URI</span> <span class="n">fhirBaseUri</span> <span class="o">=</span> <span class="n">URI</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">contextSupport</span><span class="o">.</span><span class="n">getProperty</span><span class="p">(</span><span class="s2">&quot;lfh.connect.fhir-r4.uri&quot;</span><span class="p">));</span>
-
-    <span class="n">restConfiguration</span><span class="p">()</span>
-            <span class="o">.</span><span class="n">host</span><span class="p">(</span><span class="n">fhirBaseUri</span><span class="o">.</span><span class="n">getHost</span><span class="p">())</span>
-            <span class="o">.</span><span class="n">port</span><span class="p">(</span><span class="n">fhirBaseUri</span><span class="o">.</span><span class="n">getPort</span><span class="p">());</span>
-
-    <span class="n">rest</span><span class="p">(</span><span class="n">fhirBaseUri</span><span class="o">.</span><span class="n">getPath</span><span class="p">())</span>
+    <span class="n">String</span> <span class="n">fhirUri</span> <span class="o">=</span> <span class="n">ctxSupport</span><span class="o">.</span><span class="n">getProperty</span><span class="p">(</span><span class="s2">&quot;lfh.connect.fhir-r4.uri&quot;</span><span class="p">);</span>
+    <span class="n">rest</span><span class="p">(</span><span class="n">fhirUri</span><span class="p">)</span>
             <span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/</span><span class="si">{resource}</span><span class="s2">&quot;</span><span class="p">)</span>
             <span class="o">.</span><span class="n">route</span><span class="p">()</span>
             <span class="o">.</span><span class="n">routeId</span><span class="p">(</span><span class="n">FHIR_R4_ROUTE_ID</span><span class="p">)</span>

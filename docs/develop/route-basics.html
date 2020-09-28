@@ -221,13 +221,8 @@
 <span class="nd">@Override</span>
 <span class="n">protected</span> <span class="n">void</span> <span class="n">buildRoute</span><span class="p">(</span><span class="n">String</span> <span class="n">routePropertyNamespace</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">CamelContextSupport</span> <span class="n">contextSupport</span> <span class="o">=</span> <span class="n">new</span> <span class="n">CamelContextSupport</span><span class="p">(</span><span class="n">getContext</span><span class="p">());</span>
-    <span class="n">URI</span> <span class="n">fhirBaseUri</span> <span class="o">=</span> <span class="n">URI</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">contextSupport</span><span class="o">.</span><span class="n">getProperty</span><span class="p">(</span><span class="s2">&quot;lfh.connect.fhir-r4.uri&quot;</span><span class="p">));</span>
-
-    <span class="n">restConfiguration</span><span class="p">()</span>
-            <span class="o">.</span><span class="n">host</span><span class="p">(</span><span class="n">fhirBaseUri</span><span class="o">.</span><span class="n">getHost</span><span class="p">())</span>
-            <span class="o">.</span><span class="n">port</span><span class="p">(</span><span class="n">fhirBaseUri</span><span class="o">.</span><span class="n">getPort</span><span class="p">());</span>
-
-    <span class="n">rest</span><span class="p">(</span><span class="n">fhirBaseUri</span><span class="o">.</span><span class="n">getPath</span><span class="p">())</span>
+    <span class="n">String</span> <span class="n">fhirUri</span> <span class="o">=</span> <span class="n">ctxSupport</span><span class="o">.</span><span class="n">getProperty</span><span class="p">(</span><span class="s2">&quot;lfh.connect.fhir-r4.uri&quot;</span><span class="p">);</span>
+    <span class="n">rest</span><span class="p">(</span><span class="n">fhirUri</span><span class="p">)</span>
             <span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/</span><span class="si">{resource}</span><span class="s2">&quot;</span><span class="p">)</span>
             <span class="o">.</span><span class="n">route</span><span class="p">()</span>
             <span class="o">.</span><span class="n">routeId</span><span class="p">(</span><span class="n">ROUTE_ID</span><span class="p">)</span>
@@ -271,10 +266,6 @@
 <td><p>The URI for this route.  You will have your own URI for your route.</p></td>
 <td><p>Required</p></td>
 </tr>
-<tr class="row-even"><td><p>restConfiguration</p></td>
-<td><p>Configures the host and port for this REST route.  The LFH host and port may be the same for all LFH routes.</p></td>
-<td><p>Required</p></td>
-</tr>
 </tbody>
 </table>
 </div>
@@ -295,7 +286,7 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td colspan="2"><p>rest(fhirBaseUri.getPath())</p></td>
+<tr class="row-even"><td colspan="2"><p>rest(fhirUri)</p></td>
 <td><p>Defines the URL within LFH that will accept REST calls for this route.</p></td>
 <td><p>Required</p></td>
 </tr>

@@ -91,13 +91,8 @@ Routes which utilize the REST DSL, such as the FHIR R4 REST route, parse propert
     public void buildRoute(String routePropertyNamespace) {
 
         CamelContextSupport contextSupport = new CamelContextSupport(getContext());
-        URI fhirBaseUri = URI.create(contextSupport.getProperty("lfh.connect.fhir-r4.uri"));
-
-        restConfiguration()
-                .host(fhirBaseUri.getHost())
-                .port(fhirBaseUri.getPort());
-
-        rest(fhirBaseUri.getPath())
+        String fhirUri = ctxSupport.getProperty("lfh.connect.fhir-r4.uri");
+        rest(fhirUri)
                 .post("/{resource}")
                 .route()
                 .routeId(FHIR_R4_ROUTE_ID)
