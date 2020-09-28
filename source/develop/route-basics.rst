@@ -22,13 +22,8 @@ LFH routes extend the BaseRouteBuilder class. `BaseRouteBuilder <https://github.
     @Override
     protected void buildRoute(String routePropertyNamespace) {
         CamelContextSupport contextSupport = new CamelContextSupport(getContext());
-        URI fhirBaseUri = URI.create(contextSupport.getProperty("lfh.connect.fhir-r4.uri"));
-
-        restConfiguration()
-                .host(fhirBaseUri.getHost())
-                .port(fhirBaseUri.getPort());
-
-        rest(fhirBaseUri.getPath())
+        String fhirUri = ctxSupport.getProperty("lfh.connect.fhir-r4.uri");
+        rest(fhirUri)
                 .post("/{resource}")
                 .route()
                 .routeId(ROUTE_ID)
@@ -58,14 +53,11 @@ The Linux for Health route builder buildRoute() method contains the route and th
 +-----------------------------------+---------------------------------------------+--------------------+
 | fhirBaseUri                       | |baseUri_def|                               | Required           |
 +-----------------------------------+---------------------------------------------+--------------------+
-| restConfiguration                 | |restconfig_def|                            | Required           |
-+-----------------------------------+---------------------------------------------+--------------------+
 
 .. |contextSupport_def| replace:: The CamelContextSupport class provides convenience methods for working with the underlying CamelContext, including parsing application.property settings.
 
 .. |baseUri_def| replace:: The URI for this route.  You will have your own URI for your route.
 
-.. |restconfig_def| replace:: Configures the host and port for this REST route.  The LFH host and port may be the same for all LFH routes.
 
 Route
 -----
@@ -74,7 +66,7 @@ The Linux for Health route contains the following steps:
 +---------------------------------------------------------------+---------------------------------------------+--------------------+
 | Step                                                          | Explanation                                 | Required/Optional  |
 +===================================+===========================+=============================================+====================+
-| rest(fhirBaseUri.getPath())                                   | |restUri_def|                               | Required           |
+| rest(fhirUri)                                                 | |restUri_def|                               | Required           |
 +---------------------------------------------------------------+---------------------------------------------+--------------------+
 | post("/{resource}")                                           | |restOp_def|                                | Required           |
 +---------------------------------------------------------------+---------------------------------------------+--------------------+

@@ -233,7 +233,7 @@
 </pre></div>
 </div>
 <p>You can run this route using the curl command.  From a console window, copy and paste the following command.  You can change the value of name being passed in as a query param from <code class="docutils literal notranslate"><span class="pre">me</span></code> to anything, then hit <code class="docutils literal notranslate"><span class="pre">return</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl http://localhost:9090/hello-world?name=me
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl http://localhost:8080/hello-world?name=me
 </pre></div>
 </div>
 <p>This sends an HTTP GET request to Linux for Health, which is processed by the route code above.  The <code class="docutils literal notranslate"><span class="pre">.process</span></code> step gets the value of the query param <code class="docutils literal notranslate"><span class="pre">name</span></code>, which was passed in as an exchange message header by Camel, then forms the response and sets the exchange message body to the result.</p>
@@ -243,7 +243,7 @@
    <span class="s2">&quot;meta&quot;</span><span class="p">:</span> <span class="p">{</span>
       <span class="s2">&quot;routeId&quot;</span><span class="p">:</span> <span class="s2">&quot;hello-world&quot;</span><span class="p">,</span>
       <span class="s2">&quot;uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;71257051-f2e0-495b-b0d9-beb785b3f850&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;routeUri&quot;</span><span class="p">:</span> <span class="s2">&quot;jetty:http://0.0.0.0:9090/hello-world?httpMethodRestrict=GET&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;routeUri&quot;</span><span class="p">:</span> <span class="s2">&quot;jetty:http://0.0.0.0:8080/hello-world?httpMethodRestrict=GET&quot;</span><span class="p">,</span>
       <span class="s2">&quot;dataFormat&quot;</span><span class="p">:</span> <span class="s2">&quot;EXAMPLE&quot;</span><span class="p">,</span>
       <span class="s2">&quot;messageType&quot;</span><span class="p">:</span> <span class="s2">&quot;TEXT&quot;</span><span class="p">,</span>
       <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="mi">1599076120</span><span class="p">,</span>
@@ -267,7 +267,7 @@
 </pre></div>
 </div>
 <p>Save the file and in the console window where you started Linux for Health connect via <code class="docutils literal notranslate"><span class="pre">./gradlew</span> <span class="pre">run</span></code>, type ctrl-C to stop it.  Rebuild Linux for Health by typing <code class="docutils literal notranslate"><span class="pre">./gradlew</span> <span class="pre">clean</span> <span class="pre">build</span></code> and then <code class="docutils literal notranslate"><span class="pre">./gradlew</span> <span class="pre">run</span></code>.  The run the following command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl http://localhost:9090/hello-world?name=Austin
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl http://localhost:8080/hello-world?name=Austin
 </pre></div>
 </div>
 <p>You should see the following result (all in one line):</p>
@@ -275,7 +275,7 @@
    <span class="s2">&quot;meta&quot;</span><span class="p">:</span> <span class="p">{</span>
       <span class="s2">&quot;routeId&quot;</span><span class="p">:</span> <span class="s2">&quot;hello-world&quot;</span><span class="p">,</span>
       <span class="s2">&quot;uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;71257051-f2e0-495b-b0d9-beb785b3f850&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;routeUri&quot;</span><span class="p">:</span> <span class="s2">&quot;jetty:http://0.0.0.0:9090/hello-world?httpMethodRestrict=GET&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;routeUri&quot;</span><span class="p">:</span> <span class="s2">&quot;jetty:http://0.0.0.0:8080/hello-world?httpMethodRestrict=GET&quot;</span><span class="p">,</span>
       <span class="s2">&quot;dataFormat&quot;</span><span class="p">:</span> <span class="s2">&quot;EXAMPLE&quot;</span><span class="p">,</span>
       <span class="s2">&quot;messageType&quot;</span><span class="p">:</span> <span class="s2">&quot;TEXT&quot;</span><span class="p">,</span>
       <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="mi">1599076120</span><span class="p">,</span>
