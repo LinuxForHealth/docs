@@ -3,7 +3,7 @@ Developing Routes
 
 Overview
 ========
-Linux for Health (LFH) contains routes for common healthcare data formats, protocols and services, such as FHIR R4, HL7v2 and CMS Blue Button 2.0.  LFH routes reside within the connect/java/com/linuxforhealth/connect/builder directory of LFH connect repo. 
+LinuxForHealth (LFH) contains routes for common healthcare data formats, protocols and services, such as FHIR R4, HL7v2 and CMS Blue Button 2.0.  LFH routes reside within the connect/java/com/linuxforhealth/connect/builder directory of LFH connect repo. 
 
 Route Basics
 ============
@@ -44,7 +44,7 @@ Returns the "property namespace", or property prefix, for the route's property s
 
 buildRoute(String routePropertyNamespace)
 -----------------------------------------
-The Linux for Health route builder buildRoute() method contains the route and the following additional elements:
+The LinuxForHealth route builder buildRoute() method contains the route and the following additional elements:
 
 +-----------------------------------+---------------------------------------------+--------------------+
 | Step                              | Explanation                                 | Required/Optional  |
@@ -61,7 +61,7 @@ The Linux for Health route builder buildRoute() method contains the route and th
 
 Route
 -----
-The Linux for Health route contains the following steps:
+The LinuxForHealth route contains the following steps:
 
 +---------------------------------------------------------------+---------------------------------------------+--------------------+
 | Step                                                          | Explanation                                 | Required/Optional  |

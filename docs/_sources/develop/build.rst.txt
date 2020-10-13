@@ -3,11 +3,11 @@ Building Your Code
 
 Overview
 ========
-Once you have created a new Linux for Health component or route (see `Developing for Linux for Health <./extend.html>`_), your next step is to run a build.  To build Linux for Health (LFH) with your code changes, you will first need to add any new dependencies to LFH.
+Once you have created a new LinuxForHealth component or route (see `Developing for LinuxForHealth <./extend.html>`_), your next step is to run a build.  To build LinuxForHealth (LFH) with your code changes, you will first need to add any new dependencies to LFH.
 
 Dependencies
 ============
-To add new dependencies to Linux for Health, first look at any new classes that you use. Determine the Java packages those classes are in and make sure those packages are in the connect/build.gradle file.  If the dependencies do not exist yet in build.gradle, follow the example below to learn how to find the dependency information required by LFH.
+To add new dependencies to LinuxForHealth, first look at any new classes that you use. Determine the Java packages those classes are in and make sure those packages are in the connect/build.gradle file.  If the dependencies do not exist yet in build.gradle, follow the example below to learn how to find the dependency information required by LFH.
 
 Example:
 
@@ -40,4 +40,4 @@ Once all your dependencies are added, run::
 
     ./gradlew build
 
-in the top-level connect directory of the Linux for Health repo.
+in the top-level connect directory of the LinuxForHealth repo.

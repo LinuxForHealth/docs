@@ -3,7 +3,7 @@ Testing Your Code
 
 Overview
 ========
-If you are contributing a new route or component to Linux for Health (see `Developing for Linux for Health <./extend.html>`_), create unit tests and add any required test services.
+If you are contributing a new route or component to LinuxForHealth (see `Developing for LinuxForHealth <./extend.html>`_), create unit tests and add any required test services.
 
 Unit Tests
 ==========

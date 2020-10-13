@@ -39,7 +39,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Developing for Linux for Health" href="../develop/extend.html" />
+    <link rel="next" title="Developing for LinuxForHealth" href="../develop/extend.html" />
     <link rel="prev" title="Orthanc DICOM" href="orthanc-post.html" /> 
 </head>
 
@@ -123,7 +123,7 @@
 </ul>
 <p class="caption"><span class="caption-text">Develop:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../develop/extend.html">Developing for Linux for Health</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/extend.html">Developing for LinuxForHealth</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/build.html">Building Your Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/test.html">Testing Your Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/property-encryption.html">Property Encryption</a></li>
@@ -204,7 +204,7 @@
 <h1>Direct Store and Notify<a class="headerlink" href="#direct-store-and-notify" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="purpose">
 <h2>Purpose<a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h2>
-<p>The Linux for Health (LFH) direct:storeAndNotify route allows you to store transaction data as part of the LFH Longitudinal Patient Record (LPR) and notify listeners of the stored data via NATS for downstream integration.</p>
+<p>The LinuxForHealth (LFH) direct:storeAndNotify route allows you to store transaction data as part of the LFH Longitudinal Patient Record (LPR) and notify listeners of the stored data via NATS for downstream integration.</p>
 </div>
 <div class="section" id="details">
 <h2>Details<a class="headerlink" href="#details" title="Permalink to this headline">¶</a></h2>
@@ -246,7 +246,7 @@
 </thead>
 <tbody>
 <tr class="row-even"><td><p>Message Properties</p></td>
-<td colspan="2"><p>LFH message properties are stored as Exchange properties.  Before direct:storeAndNotify is called, these Exchange properties must be set via the Linux for Health MetaDataProcessor. This ensures that the message will be stored in the data store using the LFH standard format.</p></td>
+<td colspan="2"><p>LFH message properties are stored as Exchange properties.  Before direct:storeAndNotify is called, these Exchange properties must be set via the LinuxForHealth MetaDataProcessor. This ensures that the message will be stored in the data store using the LFH standard format.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Message Body</p></td>
 <td colspan="2"><p>The message body contains the data to be stored in the data store, e.g. a HL7v2 message or a FHIR R4 resource.</p></td>
@@ -271,12 +271,12 @@
 </div>
 <div class="section" id="results">
 <h2>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h2>
-<p>As a result of calling this direct:storeAndNotify route, the message body and LFH message attributes are stored in Kafka and a message indicating the location in Kafka is sent via NATS to subscribers.  The data in Kafka is viewable via the <a class="reference external" href="http://localhost:9000/">Kafdrop viewer</a> at the topic, partition and offset shown in the Linux for Health JSON message you receive upon submitting the FHIR resource.</p>
+<p>As a result of calling this direct:storeAndNotify route, the message body and LFH message attributes are stored in Kafka and a message indicating the location in Kafka is sent via NATS to subscribers.  The data in Kafka is viewable via the <a class="reference external" href="http://localhost:9000/">Kafdrop viewer</a> at the topic, partition and offset shown in the LinuxForHealth JSON message you receive upon submitting the FHIR resource.</p>
 </div>
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="../message-structure.html">Linux for Health Message Structure</a></p></li>
+<li><p><a class="reference external" href="../message-structure.html">LinuxForHealth Message Structure</a></p></li>
 </ul>
 </div>
 </div>
@@ -289,7 +289,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../develop/extend.html" class="btn btn-neutral float-right" title="Developing for Linux for Health" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../develop/extend.html" class="btn btn-neutral float-right" title="Developing for LinuxForHealth" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="orthanc-post.html" class="btn btn-neutral float-left" title="Orthanc DICOM" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -313,7 +313,14 @@
     
     <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
     
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+ 
+<div class="footer">
+    <p>
+        LinuxForHealth is sublicensed by the Linux Foundation with Sublicense ID: 20200615-0008
+    </p>
+</div>    
+
 
 </footer>
 

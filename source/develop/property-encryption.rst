@@ -3,7 +3,7 @@ Property Encryption
 
 Overview
 ========
-In Linux for Health (LFH), if you need to use properties to store private information (passwords, client ids, secrets, etc.), you can encrypt those using Jasypt.  The following sections explain how to encrypt your property values and reference those encrypted properties within LFH in a way that Jasypt can decrypt them.
+In LinuxForHealth (LFH), if you need to use properties to store private information (passwords, client ids, secrets, etc.), you can encrypt those using Jasypt.  The following sections explain how to encrypt your property values and reference those encrypted properties within LFH in a way that Jasypt can decrypt them.
 
 Encryption Using Jasypt
 =======================
@@ -29,7 +29,7 @@ There are two ways to run Jasypt to encrypt your property values.  You can use t
 
 Using Encrypted Properties
 ==========================
-To use your Jasypt-encrypted property in a Linux for Health processor, use the CamelContextSupport class::
+To use your Jasypt-encrypted property in a LinuxForHealth processor, use the CamelContextSupport class::
 
     String password = camelContextSupport.getProperty("lfh.connect.my_route.password");
 
@@ -39,7 +39,7 @@ To use your encrypted property in a Java DSL route, use the simple() function::
 
 Changing the Master Password
 ============================
-For development, using the Linux for Health master password will allow you to automatically decrypt your properties without further configuration.  
+For development, using the LinuxForHealth master password will allow you to automatically decrypt your properties without further configuration.  
 
 For production environmments, set the JASYPT_ENCRYPTION_PASSWORD environment variable to your encryption password on LFH startup.::
 

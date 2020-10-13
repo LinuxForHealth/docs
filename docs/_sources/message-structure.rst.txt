@@ -1,10 +1,10 @@
 Message Structure
 *****************
-This section describes the message structure used by Linux for Health and shows typical examples.  
+This section describes the message structure used by LinuxForHealth and shows typical examples.  
 
 Structure
 =========
-The following JSON message structure is used throughout Linux for Health::
+The following JSON message structure is used throughout LinuxForHealth::
 
     {
         'meta': {

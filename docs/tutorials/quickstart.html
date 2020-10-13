@@ -103,7 +103,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#send-a-message-to-linux-for-health">Send a Message to Linux for Health</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#send-a-message-to-linuxforhealth">Send a Message to LinuxForHealth</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#view-the-nats-notification-optional">View the NATS Notification (Optional)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#view-the-message-in-the-kafdrop-console-optional">View the Message in the Kafdrop Console (Optional)</a></li>
 </ul>
@@ -122,7 +122,7 @@
 </ul>
 <p class="caption"><span class="caption-text">Develop:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../develop/extend.html">Developing for Linux for Health</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/extend.html">Developing for LinuxForHealth</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/build.html">Building Your Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/test.html">Testing Your Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/property-encryption.html">Property Encryption</a></li>
@@ -203,7 +203,7 @@
 <h1>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>This tutorial shows you how to send a FHIR message to Linux for Health, using a simple FHIR patient resource and the curl command, which can be found on most operating systems.  You can optionally view your data via the Kafdrop Kafka console or NATS subscriber.</p>
+<p>This tutorial shows you how to send a FHIR message to LinuxForHealth, using a simple FHIR patient resource and the curl command, which can be found on most operating systems.  You can optionally view your data via the Kafdrop Kafka console or NATS subscriber.</p>
 </div>
 <div class="section" id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
@@ -213,17 +213,17 @@
 </div>
 <div class="section" id="tutorial-steps">
 <h2>Tutorial Steps<a class="headerlink" href="#tutorial-steps" title="Permalink to this headline">¶</a></h2>
-<p>Once you have completed the Prerequisites, follow these steps to send a message to Linux for Health.</p>
-<div class="section" id="send-a-message-to-linux-for-health">
-<h3>Send a Message to Linux for Health<a class="headerlink" href="#send-a-message-to-linux-for-health" title="Permalink to this headline">¶</a></h3>
-<p>Use the <cite>curl</cite> utility to send a mock patient record to Linux for Health.  In a new console window, copy and paste the following curl command and hit <cite>return</cite>:</p>
+<p>Once you have completed the Prerequisites, follow these steps to send a message to LinuxForHealth.</p>
+<div class="section" id="send-a-message-to-linuxforhealth">
+<h3>Send a Message to LinuxForHealth<a class="headerlink" href="#send-a-message-to-linuxforhealth" title="Permalink to this headline">¶</a></h3>
+<p>Use the <cite>curl</cite> utility to send a mock patient record to LinuxForHealth.  In a new console window, copy and paste the following curl command and hit <cite>return</cite>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">--</span><span class="n">header</span> <span class="s2">&quot;Content-Type: application/json&quot;</span> \
 <span class="o">--</span><span class="n">request</span> <span class="n">POST</span> \
 <span class="o">--</span><span class="n">data</span> <span class="s1">&#39;{ &quot;resourceType&quot;: &quot;Patient&quot;, &quot;identifier&quot;: [ { &quot;system&quot;: &quot;urn:oid:1.2.36.146.595.217.0.1&quot;, &quot;value&quot;: &quot;12345&quot; } ], &quot;name&quot;: [ { &quot;family&quot;: &quot;Duck&quot;, &quot;given&quot;: [ &quot;Donald&quot;, &quot;D.&quot; ] } ], &quot;gender&quot;: &quot;male&quot;, &quot;birthDate&quot;: &quot;1974-12-25&quot; }&#39;</span> \
 <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8080</span><span class="o">/</span><span class="n">fhir</span><span class="o">/</span><span class="n">r4</span><span class="o">/</span><span class="n">Patient</span>
 </pre></div>
 </div>
-<p>This command posts a basic Patient resource to the Linux for Health FHIR R4 route.  You should see a message echoed in the console window, similar to:</p>
+<p>This command posts a basic Patient resource to the LinuxForHealth FHIR R4 route.  You should see a message echoed in the console window, similar to:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;meta&quot;</span><span class="p">:{</span><span class="s2">&quot;routeId&quot;</span><span class="p">:</span><span class="s2">&quot;fhir-r4&quot;</span><span class="p">,</span><span class="s2">&quot;uuid&quot;</span><span class="p">:</span><span class="s2">&quot;8bebaaae-a30b-4d8e-8424-d38836bf1d14&quot;</span><span class="p">,</span><span class="s2">&quot;routeUri&quot;</span><span class="p">:</span><span class="s2">&quot;jetty:http://0.0.0.0:8080/fhir/r4/Patient?httpMethodRestrict=POST&quot;</span><span class="p">,</span><span class="s2">&quot;dataFormat&quot;</span><span class="p">:</span><span class="s2">&quot;FHIR-R4&quot;</span><span class="p">,</span><span class="s2">&quot;messageType&quot;</span><span class="p">:</span><span class="s2">&quot;PATIENT&quot;</span><span class="p">,</span><span class="s2">&quot;timestamp&quot;</span><span class="p">:</span><span class="mi">1597868068</span><span class="p">,</span><span class="s2">&quot;dataStoreUri&quot;</span><span class="p">:</span><span class="s2">&quot;kafka:FHIR-R4_PATIENT?brokers=localhost:9092&quot;</span><span class="p">,</span><span class="s2">&quot;status&quot;</span><span class="p">:</span><span class="s2">&quot;success&quot;</span><span class="p">,</span><span class="s2">&quot;dataRecordLocation&quot;</span><span class="p">:[</span><span class="s2">&quot;FHIR-R4_PATIENT-0@0&quot;</span><span class="p">]}}</span>
 </pre></div>
 </div>
@@ -231,11 +231,11 @@
 </div>
 <div class="section" id="view-the-nats-notification-optional">
 <h3>View the NATS Notification (Optional)<a class="headerlink" href="#view-the-nats-notification-optional" title="Permalink to this headline">¶</a></h3>
-<p>You should also see a NATS notification in the Linux for Health connect log.  If you are running the Linux for Health connect application locally, you should see a message in the connect console window similar to:</p>
+<p>You should also see a NATS notification in the LinuxForHealth connect log.  If you are running the LinuxForHealth connect application locally, you should see a message in the connect console window similar to:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">15</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mf">29.474</span> <span class="p">[</span><span class="n">nats</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="n">INFO</span>  <span class="n">c</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">connect</span><span class="o">.</span><span class="n">support</span><span class="o">.</span><span class="n">NATSSubscriber</span> <span class="o">-</span> <span class="n">nats</span><span class="o">-</span><span class="n">subscriber</span><span class="o">-</span><span class="n">localhost</span><span class="p">:</span><span class="mi">4222</span><span class="o">-</span><span class="n">lfh</span><span class="o">-</span><span class="n">events</span> <span class="n">received</span> <span class="n">message</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;meta&quot;</span><span class="p">:{</span><span class="s2">&quot;routeId&quot;</span><span class="p">:</span><span class="s2">&quot;fhir-r4-rest&quot;</span><span class="p">,</span><span class="s2">&quot;uuid&quot;</span><span class="p">:</span><span class="s2">&quot;8bebaaae-a30b-4d8e-8424-d38836bf1d14&quot;</span><span class="p">,</span><span class="s2">&quot;routeUri&quot;</span><span class="p">:</span><span class="s2">&quot;jetty:http://0.0.0.0:8080/fhir/r4/Patient?httpMethodRestrict=POST&quot;</span><span class="p">,</span><span class="s2">&quot;dataFormat&quot;</span><span class="p">:</span><span class="s2">&quot;FHIR-R4&quot;</span><span class="p">,</span><span class="s2">&quot;messageType&quot;</span><span class="p">:</span><span class="s2">&quot;PATIENT&quot;</span><span class="p">,</span><span class="s2">&quot;timestamp&quot;</span><span class="p">:</span><span class="mi">1597868068</span><span class="p">,</span><span class="s2">&quot;dataStoreUri&quot;</span><span class="p">:</span><span class="s2">&quot;kafka:FHIR-R4_PATIENT?brokers=localhost:9092&quot;</span><span class="p">,</span><span class="s2">&quot;status&quot;</span><span class="p">:</span><span class="s2">&quot;success&quot;</span><span class="p">,</span><span class="s2">&quot;dataRecordLocation&quot;</span><span class="p">:[</span><span class="s2">&quot;FHIR-R4_PATIENT-0@0&quot;</span><span class="p">]}}</span>
 </pre></div>
 </div>
-<p>If you are running a Linux for Health container within docker-compose, in a console window, navigate to the connect compose directory and view the logs:</p>
+<p>If you are running a LinuxForHealth container within docker-compose, in a console window, navigate to the connect compose directory and view the logs:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">connect</span><span class="o">/</span><span class="n">container</span><span class="o">-</span><span class="n">support</span><span class="o">/</span><span class="n">compose</span>
 <span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">logs</span> <span class="o">-</span><span class="n">f</span> <span class="n">lfh</span>
 </pre></div>
@@ -250,7 +250,7 @@
 </div>
 <p>Scoll down and click on the ‘FHIR-R4_PATIENT’ topic.</p>
 <p>Click ‘View Messages’, then click ‘View Messages’ again on the next page. This will take you to a list of all messages for the topic.</p>
-<p>Navigate to the message at the offset indicated in the result.  For example, from ‘FHIR-R4_PATIENT-0&#64;0’ in the result, we know the message is at offset ‘0’ in the ‘FHIR-R4_PATIENT’ topic.  At your result offset, you should see the FHIR R4 message sent to Linux for Health.</p>
+<p>Navigate to the message at the offset indicated in the result.  For example, from ‘FHIR-R4_PATIENT-0&#64;0’ in the result, we know the message is at offset ‘0’ in the ‘FHIR-R4_PATIENT’ topic.  At your result offset, you should see the FHIR R4 message sent to LinuxForHealth.</p>
 </div>
 </div>
 </div>
@@ -287,7 +287,14 @@
     
     <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
     
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+ 
+<div class="footer">
+    <p>
+        LinuxForHealth is sublicensed by the Linux Foundation with Sublicense ID: 20200615-0008
+    </p>
+</div>    
+
 
 </footer>
 

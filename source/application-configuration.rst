@@ -3,8 +3,8 @@ Application Configuration
 
 Properties based configuration
 ==============================
-Linux for Health application settings are configured in an application.properties file stored within the project under *src/main/resources*.
-Linux for Health properties reside within the following namespaces:
+LinuxForHealth application settings are configured in an application.properties file stored within the project under *src/main/resources*.
+LinuxForHealth properties reside within the following namespaces:
 
 - lfh.connect.bean
 - lfh.connect.[route id]
@@ -17,7 +17,7 @@ Within the route namespace, the following properties are required:
 - lfh.connect.[route id].dataformat
 - lfh.connect.[route id].messagetype
 
-Linux for Health Bean Properties
+LinuxForHealth Bean Properties
 =====================================
 Bean properties format::
 
@@ -34,15 +34,15 @@ A bean, or "Java Bean", is simply a Java class which adheres to the following pr
 
 In contrast, a POJO, or Plain Old Java Object, is a Java class which does not adhere to a specific convention. 
 
-Linux for Health utilizes the "bean" term as this is the term used in the underlying Camel framework when binding objects to a registry.
+LinuxForHealth utilizes the "bean" term as this is the term used in the underlying Camel framework when binding objects to a registry.
 
-Beans are used within Linux for Health to assist with route and message processing. For example, the following properties define HL7 decoder
+Beans are used within LinuxForHealth to assist with route and message processing. For example, the following properties define HL7 decoder
 and encoder beans used to in HL7 messaging processing:: 
 
     lfh.connect.bean.hl7decoder=org.apache.camel.component.hl7.HL7MLLPNettyDecoderFactory
     lfh.connect.bean.hl7encoder=org.apache.camel.component.hl7.HL7MLLPNettyEncoderFactory
 
-Linux for Health Route Properties
+LinuxForHealth Route Properties
 ======================================
 Route properties format::
 
