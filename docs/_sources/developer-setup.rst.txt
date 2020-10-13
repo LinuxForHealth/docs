@@ -3,10 +3,10 @@ Developer Setup
 
 Overview
 ========
-Linux for Health provides an opinionated implementation of `Camel Routing <https://camel.apache.org/manual/latest/routes.html>`_, focused
+LinuxForHealth provides an opinionated implementation of `Camel Routing <https://camel.apache.org/manual/latest/routes.html>`_, focused
 on standard data and messaging formats. 
 
-A Linux for Health data processing route consists of:
+A LinuxForHealth data processing route consists of:
 
 * A consumer endpoint which receives inbound data
 * Optional "components" used to transform, filter, or route data

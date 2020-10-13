@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Developing for Linux for Health &mdash; Linux for Health  documentation</title>
+  <title>Developing for LinuxForHealth &mdash; Linux for Health  documentation</title>
   
 
   
@@ -112,9 +112,9 @@
 </ul>
 <p class="caption"><span class="caption-text">Develop:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Developing for Linux for Health</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Developing for LinuxForHealth</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#linux-for-health-constructs">Linux for Health Constructs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#linuxforhealth-constructs">LinuxForHealth Constructs</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#routes">Routes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#components">Components</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#exchanges">Exchanges</a></li>
@@ -181,7 +181,7 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Developing for Linux for Health</li>
+      <li>Developing for LinuxForHealth</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -200,18 +200,18 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="developing-for-linux-for-health">
-<h1>Developing for Linux for Health<a class="headerlink" href="#developing-for-linux-for-health" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="developing-for-linuxforhealth">
+<h1>Developing for LinuxForHealth<a class="headerlink" href="#developing-for-linuxforhealth" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>This discussion should provide you with enough information to easily extend Linux for Health (LFH) to incorporate routes and components that can perfom new processing functions and connect to new services.  For example, you may want to extend LFH to provide a route that users can call to access a new service.  Or you may need to provide a route and a Apache Camel component to access your service.  You could also provide a new route to take data from one source, transform it if necessary, then send it to another service or data store.  The topics below will help you with these design decisions and provide implementation details.</p>
+<p>This discussion should provide you with enough information to easily extend LinuxForHealth (LFH) to incorporate routes and components that can perfom new processing functions and connect to new services.  For example, you may want to extend LFH to provide a route that users can call to access a new service.  Or you may need to provide a route and a Apache Camel component to access your service.  You could also provide a new route to take data from one source, transform it if necessary, then send it to another service or data store.  The topics below will help you with these design decisions and provide implementation details.</p>
 </div>
-<div class="section" id="linux-for-health-constructs">
-<h2>Linux for Health Constructs<a class="headerlink" href="#linux-for-health-constructs" title="Permalink to this headline">¶</a></h2>
-<p>Linux for Health uses the following constructs to process healthcare information.</p>
+<div class="section" id="linuxforhealth-constructs">
+<h2>LinuxForHealth Constructs<a class="headerlink" href="#linuxforhealth-constructs" title="Permalink to this headline">¶</a></h2>
+<p>LinuxForHealth uses the following constructs to process healthcare information.</p>
 <div class="section" id="routes">
 <h3>Routes<a class="headerlink" href="#routes" title="Permalink to this headline">¶</a></h3>
-<p>A Linux for Health route is designed to ingest healthcare data, perform any required operations on that data (e.g. de-serialize, transform, enrich), then do something with that data (e.g. store, notify, forward).  Routes may be defined using standard protocols, such as REST or HTTP, and may use a <a class="reference external" href="https://camel.apache.org/components/latest/dataformats/index.html">known data format</a> such as HL7v2 or FHIR R4.  If you are adding access to a service, or a data format not yet support in LFH, you will likely need to add a new route.</p>
+<p>A LinuxForHealth route is designed to ingest healthcare data, perform any required operations on that data (e.g. de-serialize, transform, enrich), then do something with that data (e.g. store, notify, forward).  Routes may be defined using standard protocols, such as REST or HTTP, and may use a <a class="reference external" href="https://camel.apache.org/components/latest/dataformats/index.html">known data format</a> such as HL7v2 or FHIR R4.  If you are adding access to a service, or a data format not yet support in LFH, you will likely need to add a new route.</p>
 </div>
 <div class="section" id="components">
 <h3>Components<a class="headerlink" href="#components" title="Permalink to this headline">¶</a></h3>
@@ -224,21 +224,21 @@
 </div>
 <div class="section" id="processors">
 <h3>Processors<a class="headerlink" href="#processors" title="Permalink to this headline">¶</a></h3>
-<p>A Linux for Health processor encapsulates code for route message processing and takes the message Exchange instance as input.  Within a processor, you can set headers, properties and the message body itself, all of which flow to the next step in the message processing of the route.</p>
-<p>Processors may be defined inline, within the context of a route, or as a separate class. Inline processors are preferred when the processor’s operations are route specific. Processsor classes are recommended if the processor is able to be reused across routes. Examples of “reusable” processor class implementations are found within the connect/java/com/linuxforhealth/connect/processor directory of the Linux for Health connect repo.</p>
+<p>A LinuxForHealth processor encapsulates code for route message processing and takes the message Exchange instance as input.  Within a processor, you can set headers, properties and the message body itself, all of which flow to the next step in the message processing of the route.</p>
+<p>Processors may be defined inline, within the context of a route, or as a separate class. Inline processors are preferred when the processor’s operations are route specific. Processsor classes are recommended if the processor is able to be reused across routes. Examples of “reusable” processor class implementations are found within the connect/java/com/linuxforhealth/connect/processor directory of the LinuxForHealth connect repo.</p>
 </div>
 </div>
 <div class="section" id="development-steps">
 <h2>Development Steps<a class="headerlink" href="#development-steps" title="Permalink to this headline">¶</a></h2>
-<p>Follow the steps below to extend Linux for Health:</p>
+<p>Follow the steps below to extend LinuxForHealth:</p>
 <ol class="arabic simple">
-<li><p>Clone and build the Linux for Health repo. See the <a class="reference external" href="../developer-setup.html">Developer Setup</a> Getting Started step for instructions.</p></li>
+<li><p>Clone and build the LinuxForHealth repo. See the <a class="reference external" href="../developer-setup.html">Developer Setup</a> Getting Started step for instructions.</p></li>
 <li><p>Determine if you need a route and component or just a route, based on the discussion above.</p></li>
 <li><p>Create a new component, if needed, by cloning and modifying a Camel component that most closely matches your requirements.  You can find simple Camel components that include only 4 required files as a starting point.</p></li>
 <li><p>Determine if you need to create a new route, or modify an existing route. New routes are created to support new LFH services and data formats. Existing routes are updated to integrate the route, or data format, with a new target system, or producer. Consult the <a class="reference external" href="./route-basics.html">Route Development</a> for additional guidance.</p></li>
 <li><p>Add any new dependencies to the LFH build.gradle file, following the guidance in <a class="reference external" href="./build.html">Building Your Code</a>.</p></li>
 <li><p>Create unit tests and add test services, following the guidance in <a class="reference external" href="./test.html">Testing Your Code</a>.</p></li>
-<li><p>Build, test, then open a feature issue and a pull request against that feature to contribute your changes to <a class="reference external" href="https://github.com/LinuxForHealth/connect">Linux for Health</a>!</p></li>
+<li><p>Build, test, then open a feature issue and a pull request against that feature to contribute your changes to <a class="reference external" href="https://github.com/LinuxForHealth/connect">LinuxForHealth</a>!</p></li>
 </ol>
 </div>
 </div>
@@ -275,7 +275,14 @@
     
     <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
     
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+ 
+<div class="footer">
+    <p>
+        LinuxForHealth is sublicensed by the Linux Foundation with Sublicense ID: 20200615-0008
+    </p>
+</div>    
+
 
 </footer>
 

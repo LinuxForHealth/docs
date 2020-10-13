@@ -40,7 +40,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Testing Your Code" href="test.html" />
-    <link rel="prev" title="Developing for Linux for Health" href="extend.html" /> 
+    <link rel="prev" title="Developing for LinuxForHealth" href="extend.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -112,7 +112,7 @@
 </ul>
 <p class="caption"><span class="caption-text">Develop:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="extend.html">Developing for Linux for Health</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extend.html">Developing for LinuxForHealth</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Building Your Code</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#dependencies">Dependencies</a></li>
@@ -198,11 +198,11 @@
 <h1>Building Your Code<a class="headerlink" href="#building-your-code" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>Once you have created a new Linux for Health component or route (see <a class="reference external" href="./extend.html">Developing for Linux for Health</a>), your next step is to run a build.  To build Linux for Health (LFH) with your code changes, you will first need to add any new dependencies to LFH.</p>
+<p>Once you have created a new LinuxForHealth component or route (see <a class="reference external" href="./extend.html">Developing for LinuxForHealth</a>), your next step is to run a build.  To build LinuxForHealth (LFH) with your code changes, you will first need to add any new dependencies to LFH.</p>
 </div>
 <div class="section" id="dependencies">
 <h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
-<p>To add new dependencies to Linux for Health, first look at any new classes that you use. Determine the Java packages those classes are in and make sure those packages are in the connect/build.gradle file.  If the dependencies do not exist yet in build.gradle, follow the example below to learn how to find the dependency information required by LFH.</p>
+<p>To add new dependencies to LinuxForHealth, first look at any new classes that you use. Determine the Java packages those classes are in and make sure those packages are in the connect/build.gradle file.  If the dependencies do not exist yet in build.gradle, follow the example below to learn how to find the dependency information required by LFH.</p>
 <p>Example:</p>
 <p>A new feature requires the class org.apache.commons.codec.binary.Base64 for base64 encoding.</p>
 <ol class="arabic">
@@ -235,7 +235,7 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">gradlew</span> <span class="n">build</span>
 </pre></div>
 </div>
-<p>in the top-level connect directory of the Linux for Health repo.</p>
+<p>in the top-level connect directory of the LinuxForHealth repo.</p>
 </div>
 </div>
 
@@ -250,7 +250,7 @@
         <a href="test.html" class="btn btn-neutral float-right" title="Testing Your Code" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="extend.html" class="btn btn-neutral float-left" title="Developing for Linux for Health" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="extend.html" class="btn btn-neutral float-left" title="Developing for LinuxForHealth" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -271,7 +271,14 @@
     
     <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
     
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+ 
+<div class="footer">
+    <p>
+        LinuxForHealth is sublicensed by the Linux Foundation with Sublicense ID: 20200615-0008
+    </p>
+</div>    
+
 
 </footer>
 

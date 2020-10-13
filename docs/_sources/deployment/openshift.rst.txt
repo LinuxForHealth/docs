@@ -4,7 +4,7 @@ OpenShift Container Platform
 Overview
 ========
 
-Linux for Health provides quick-start scripts to provision an `OpenShift Container Platform (OCP) cluster <https://www.openshift.com/>`_, and create a LFH OpenShift project.
+LinuxForHealth provides quick-start scripts to provision an `OpenShift Container Platform (OCP) cluster <https://www.openshift.com/>`_, and create a LFH OpenShift project.
 OCP provisioning support is available for Azure using `Azure's Red Hat OpenShift (ARO) service <https://azure.microsoft.com/en-us/services/openshift/>`_, with additional platforms coming soon!
 The provisioning and project creation scripts are independent of one another. In other words the LFH project creation script does not directly depend on a LFH OCP provisioning script, but it does require an existing OCP cluster running on a supported platform (Red Hat, AWS, Azure, Code Ready Containers, private, etc).  
 

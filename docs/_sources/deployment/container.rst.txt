@@ -4,7 +4,7 @@ Container Support
 Overview
 ========
 
-Images for Linux for Health applications and services are available under the `Linux For Health Organization on Docker Hub <https://hub.docker.com/u/linuxforhealth>`_ . Supported platforms include:
+Images for LinuxForHealth applications and services are available under the `LinuxForHealth Organization on Docker Hub <https://hub.docker.com/u/linuxforhealth>`_ . Supported platforms include:
 
 * x86/amd64
 * arm64

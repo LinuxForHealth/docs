@@ -126,7 +126,7 @@
 </ul>
 <p class="caption"><span class="caption-text">Develop:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../develop/extend.html">Developing for Linux for Health</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/extend.html">Developing for LinuxForHealth</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/build.html">Building Your Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/test.html">Testing Your Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/property-encryption.html">Property Encryption</a></li>
@@ -207,7 +207,7 @@
 <h1>FHIR R4<a class="headerlink" href="#fhir-r4" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="purpose">
 <h2>Purpose<a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h2>
-<p>The Linux for Health (LFH) FHIR R4 route allows you to send FHIR R4 data to LFH, store that data as part of the LFH Longitudinal Patient Record (LPR) and notify listeners of the stored data via NATS for downstream integration.</p>
+<p>The LinuxForHealth (LFH) FHIR R4 route allows you to send FHIR R4 data to LFH, store that data as part of the LFH Longitudinal Patient Record (LPR) and notify listeners of the stored data via NATS for downstream integration.</p>
 </div>
 <div class="section" id="details">
 <h2>Details<a class="headerlink" href="#details" title="Permalink to this headline">¶</a></h2>
@@ -300,15 +300,15 @@
 </div>
 <div class="section" id="calling-the-route">
 <h2>Calling the Route<a class="headerlink" href="#calling-the-route" title="Permalink to this headline">¶</a></h2>
-<p>Using REST (e.g. via curl or Postman), send a FHIR resource to the route URL as the body of a POST message.  See the Linux for Health Examples postman collection in your connect repo:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">connect</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">resources</span><span class="o">/</span><span class="n">messages</span><span class="o">/</span><span class="n">postman</span><span class="o">/</span><span class="n">Linux</span> <span class="k">for</span> <span class="n">Health</span> <span class="n">Examples</span><span class="o">.</span><span class="n">postman_collection</span><span class="o">.</span><span class="n">json</span>
+<p>Using REST (e.g. via curl or Postman), send a FHIR resource to the route URL as the body of a POST message.  See the LinuxForHealth Examples postman collection in your connect repo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">connect</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">resources</span><span class="o">/</span><span class="n">messages</span><span class="o">/</span><span class="n">postman</span><span class="o">/</span><span class="n">LinuxForHealth</span> <span class="n">Examples</span><span class="o">.</span><span class="n">postman_collection</span><span class="o">.</span><span class="n">json</span>
 </pre></div>
 </div>
 <p>for an example of calling this route with a Patient resource.</p>
 </div>
 <div class="section" id="results">
 <h2>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h2>
-<p>Results are stored in Kafka, viewable via the <a class="reference external" href="http://localhost:9000/">Kafdrop viewer</a> at the topic, partition and offset shown in the Linux for Health JSON message you receive upon submitting the FHIR resource.</p>
+<p>Results are stored in Kafka, viewable via the <a class="reference external" href="http://localhost:9000/">Kafdrop viewer</a> at the topic, partition and offset shown in the LinuxForHealth JSON message you receive upon submitting the FHIR resource.</p>
 </div>
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
@@ -350,7 +350,14 @@
     
     <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
     
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+ 
+<div class="footer">
+    <p>
+        LinuxForHealth is sublicensed by the Linux Foundation with Sublicense ID: 20200615-0008
+    </p>
+</div>    
+
 
 </footer>
 

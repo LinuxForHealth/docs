@@ -4,7 +4,7 @@ Docker Compose Support
 Overview
 ========
 
-Linux for Health (LFH) Connect provides a standard Docker Compose configuration with support for file overrides. The compose configurations are included in the project's `compose directory <https://github.com/LinuxForHealth/connect/tree/master/container-support/compose>`_ . A management script, `start-stack.sh`, is used to launch the LFH application stack for a requested profile.
+LinuxForHealth (LFH) Connect provides a standard Docker Compose configuration with support for file overrides. The compose configurations are included in the project's `compose directory <https://github.com/LinuxForHealth/connect/tree/master/container-support/compose>`_ . A management script, `start-stack.sh`, is used to launch the LFH application stack for a requested profile.
 
 Starting the LFH Compose Stack
 ==============================

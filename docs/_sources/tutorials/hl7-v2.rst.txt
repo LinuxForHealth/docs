@@ -3,7 +3,7 @@ HL7-v2
 
 Overview
 ========
-This tutorial provides a working example of a typical Linux for Health route: data ingress via HL7 mllp, storage via a Kafka topic and notification via NATS.
+This tutorial provides a working example of a typical LinuxForHealth route: data ingress via HL7 mllp, storage via a Kafka topic and notification via NATS.
 
 Prerequisites
 =============
@@ -11,7 +11,7 @@ Prerequisites
 
 Tutorial Steps
 ==============
-Once you have completed the Prerequisites, follow these steps to send HL7-v2 data to Linux for Health.
+Once you have completed the Prerequisites, follow these steps to send HL7-v2 data to LinuxForHealth.
 
 Install the HL7 Client
 ----------------------
@@ -26,13 +26,13 @@ Install the Python HL7 client::
    source venv/bin/activate
    python3 setup.py install
 
-Send a Message to Linux for Health
+Send a Message to LinuxForHealth
 ----------------------------------
-In the same console window as the previous step, cd to the test messages directory in the Linux for Health connect repo::
+In the same console window as the previous step, cd to the test messages directory in the LinuxForHealth connect repo::
 
    cd connect/src/test/resources/messages/hl7
 
-Send an HL7 message to Linux for Health::
+Send an HL7 message to LinuxForHealth::
 
    mllp_send --file ADT_A01.txt --loose --port 2575 localhost
 
@@ -44,11 +44,11 @@ The dataRecordLocation value indicates the topic, partition and offset of the me
 
 View the NATS Notification (Optional)
 -------------------------------------
-You should also see a NATS notification in the Linux for Health connect log.  If you are running the Linux for Health connect application locally, you should see a message in the connect console window similar to::
+You should also see a NATS notification in the LinuxForHealth connect log.  If you are running the LinuxForHealth connect application locally, you should see a message in the connect console window similar to::
 
    15:14:29.474 [nats:3] INFO  c.l.connect.support.NATSSubscriber - nats-subscriber-localhost:4222-lfh-events received message: {"meta":{"routeId":"hl7-v2-mllp","uuid":"8bebaaae-a30b-4d8e-8424-d388367543","routeUri":"jetty:http://0.0.0.0:8080/fhir/r4/Patient?httpMethodRestrict=POST","dataFormat":"HL7-V2","messageType":"ADT","timestamp":1597868800,"dataStoreUri":"kafka:HL7-V2_ADT?brokers=localhost:9092","status":"success","dataRecordLocation":["HL7-V2_ADT-0@7"]}}
 
-If you are running a Linux for Health container within docker-compose, in a console window, navigate to the connect compose directory and view the logs::
+If you are running a LinuxForHealth container within docker-compose, in a console window, navigate to the connect compose directory and view the logs::
 
    cd connect/container-support/compose
    docker-compose logs -f lfh
@@ -65,4 +65,4 @@ Scoll down and click on the 'HL7-V2_ADT' topic.
 
 Click 'View Messages', then click 'View Messages' again on the next page. This will take you to a list of all messages for the topic.  
 
-Navigate to the message at the offset indicated in the result.  For example, from 'HL7-V2_ADT-0@7' in the result, we know the message is at offset '7' in the 'HL7-V2_ADT' topic.  At your result offset, you should see the HL7v2 ADT message sent to Linux for Health.
+Navigate to the message at the offset indicated in the result.  For example, from 'HL7-V2_ADT-0@7' in the result, we know the message is at offset '7' in the 'HL7-V2_ADT' topic.  At your result offset, you should see the HL7v2 ADT message sent to LinuxForHealth.

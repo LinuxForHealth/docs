@@ -122,7 +122,7 @@
 </ul>
 <p class="caption"><span class="caption-text">Develop:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="develop/extend.html">Developing for Linux for Health</a></li>
+<li class="toctree-l1"><a class="reference internal" href="develop/extend.html">Developing for LinuxForHealth</a></li>
 <li class="toctree-l1"><a class="reference internal" href="develop/build.html">Building Your Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="develop/test.html">Testing Your Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="develop/property-encryption.html">Property Encryption</a></li>
@@ -201,12 +201,12 @@
             
   <div class="section" id="feature-configuration">
 <h1>Feature Configuration<a class="headerlink" href="#feature-configuration" title="Permalink to this headline">¶</a></h1>
-<p>As described in <a class="reference external" href="./application-configuration.html">Application Configuration</a>, Linux for Health is configured via application properties and environment variables, where environment variables can override application properties.</p>
-<p>Use the following guidance to configure each of the Linux for Health features below.  When running Linux for Health Connect via Gradle, configure a property in connect/src/main/resources/application.properties.  When running Linux for Health Connect in a container, add an environment variable to the container to override the default value of property defined in application.properties.</p>
+<p>As described in <a class="reference external" href="./application-configuration.html">Application Configuration</a>, LinuxForHealth is configured via application properties and environment variables, where environment variables can override application properties.</p>
+<p>Use the following guidance to configure each of the LinuxForHealth features below.  When running LinuxForHealth Connect via Gradle, configure a property in connect/src/main/resources/application.properties.  When running LinuxForHealth Connect in a container, add an environment variable to the container to override the default value of property defined in application.properties.</p>
 <div class="section" id="nats-subscribers">
 <h2>NATS Subscribers<a class="headerlink" href="#nats-subscribers" title="Permalink to this headline">¶</a></h2>
-<p>A Linux for Health instance can listen for events from another Linux for Health instance by configuring a NATS subscriber. A NATS subscriber will listen for events from the configured Linux for Health instance, then place them in the Kafka lfh-remote-events topic.</p>
-<p>A Linux for Health Kafka consumer will then take each event as it is received in lfh-remote-events and store it in the correct topic for the message type. This creates an exact copy of the data stored in the Linux for Health instance that sent the original NATS message and is used to form a synchronized longitudinal patient record.</p>
+<p>A LinuxForHealth instance can listen for events from another LinuxForHealth instance by configuring a NATS subscriber. A NATS subscriber will listen for events from the configured LinuxForHealth instance, then place them in the Kafka lfh-remote-events topic.</p>
+<p>A LinuxForHealth Kafka consumer will then take each event as it is received in lfh-remote-events and store it in the correct topic for the message type. This creates an exact copy of the data stored in the LinuxForHealth instance that sent the original NATS message and is used to form a synchronized longitudinal patient record.</p>
 <p>NATS subscribers can also be configured in external applications to perform a workflow upon receiving a NATS message, but that custom configuration is out of scope for this document.</p>
 <p>To configure a NATS subscriber, configure the lfh.connect.fhir-r4.externalservers property with a comma-delimited list of host:port.</p>
 <table class="docutils align-default">
@@ -246,7 +246,7 @@
 </div>
 <div class="section" id="external-fhir-servers">
 <h2>External FHIR Servers<a class="headerlink" href="#external-fhir-servers" title="Permalink to this headline">¶</a></h2>
-<p>The Linux for Health FHIR R4 route can optionally send FHIR resources to external FHIR servers.  To configure external FHIR servers, configure the lfh.connect.fhir-r4.externalservers property with a comma-delimited list of URIs.</p>
+<p>The LinuxForHealth FHIR R4 route can optionally send FHIR resources to external FHIR servers.  To configure external FHIR servers, configure the lfh.connect.fhir-r4.externalservers property with a comma-delimited list of URIs.</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 29%" />
@@ -316,7 +316,14 @@
     
     <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
     
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+ 
+<div class="footer">
+    <p>
+        LinuxForHealth is sublicensed by the Linux Foundation with Sublicense ID: 20200615-0008
+    </p>
+</div>    
+
 
 </footer>
 

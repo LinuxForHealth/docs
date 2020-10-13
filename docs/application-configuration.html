@@ -95,8 +95,8 @@
 <li class="toctree-l1"><a class="reference internal" href="tutorials/firstroute.html">Hello World</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Application Configuration</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#properties-based-configuration">Properties based configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#linux-for-health-bean-properties">Linux for Health Bean Properties</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#linux-for-health-route-properties">Linux for Health Route Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#linuxforhealth-bean-properties">LinuxForHealth Bean Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#linuxforhealth-route-properties">LinuxForHealth Route Properties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#property-evaluation">Property Evaluation</a></li>
 </ul>
 </li>
@@ -118,7 +118,7 @@
 </ul>
 <p class="caption"><span class="caption-text">Develop:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="develop/extend.html">Developing for Linux for Health</a></li>
+<li class="toctree-l1"><a class="reference internal" href="develop/extend.html">Developing for LinuxForHealth</a></li>
 <li class="toctree-l1"><a class="reference internal" href="develop/build.html">Building Your Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="develop/test.html">Testing Your Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="develop/property-encryption.html">Property Encryption</a></li>
@@ -199,8 +199,8 @@
 <h1>Application Configuration<a class="headerlink" href="#application-configuration" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="properties-based-configuration">
 <h2>Properties based configuration<a class="headerlink" href="#properties-based-configuration" title="Permalink to this headline">¶</a></h2>
-<p>Linux for Health application settings are configured in an application.properties file stored within the project under <em>src/main/resources</em>.
-Linux for Health properties reside within the following namespaces:</p>
+<p>LinuxForHealth application settings are configured in an application.properties file stored within the project under <em>src/main/resources</em>.
+LinuxForHealth properties reside within the following namespaces:</p>
 <ul class="simple">
 <li><p>lfh.connect.bean</p></li>
 <li><p>lfh.connect.[route id]</p></li>
@@ -214,8 +214,8 @@ Within the route namespace, the following properties are required:</p>
 <li><p>lfh.connect.[route id].messagetype</p></li>
 </ul>
 </div>
-<div class="section" id="linux-for-health-bean-properties">
-<h2>Linux for Health Bean Properties<a class="headerlink" href="#linux-for-health-bean-properties" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="linuxforhealth-bean-properties">
+<h2>LinuxForHealth Bean Properties<a class="headerlink" href="#linuxforhealth-bean-properties" title="Permalink to this headline">¶</a></h2>
 <p>Bean properties format:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lfh</span><span class="o">.</span><span class="n">connect</span><span class="o">.</span><span class="n">bean</span><span class="o">.</span><span class="p">[</span><span class="n">bean</span> <span class="n">name</span><span class="p">]</span><span class="o">=</span><span class="p">[</span><span class="n">bean</span> <span class="n">class</span><span class="p">]</span>
 </pre></div>
@@ -228,16 +228,16 @@ to the Camel Registry.</p>
 - Utilizes accessors, getters and setters, to access and set properties.
 - Implements the Serializable interface.</p>
 <p>In contrast, a POJO, or Plain Old Java Object, is a Java class which does not adhere to a specific convention.</p>
-<p>Linux for Health utilizes the “bean” term as this is the term used in the underlying Camel framework when binding objects to a registry.</p>
-<p>Beans are used within Linux for Health to assist with route and message processing. For example, the following properties define HL7 decoder
+<p>LinuxForHealth utilizes the “bean” term as this is the term used in the underlying Camel framework when binding objects to a registry.</p>
+<p>Beans are used within LinuxForHealth to assist with route and message processing. For example, the following properties define HL7 decoder
 and encoder beans used to in HL7 messaging processing:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lfh</span><span class="o">.</span><span class="n">connect</span><span class="o">.</span><span class="n">bean</span><span class="o">.</span><span class="n">hl7decoder</span><span class="o">=</span><span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">camel</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">hl7</span><span class="o">.</span><span class="n">HL7MLLPNettyDecoderFactory</span>
 <span class="n">lfh</span><span class="o">.</span><span class="n">connect</span><span class="o">.</span><span class="n">bean</span><span class="o">.</span><span class="n">hl7encoder</span><span class="o">=</span><span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">camel</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">hl7</span><span class="o">.</span><span class="n">HL7MLLPNettyEncoderFactory</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="linux-for-health-route-properties">
-<h2>Linux for Health Route Properties<a class="headerlink" href="#linux-for-health-route-properties" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="linuxforhealth-route-properties">
+<h2>LinuxForHealth Route Properties<a class="headerlink" href="#linuxforhealth-route-properties" title="Permalink to this headline">¶</a></h2>
 <p>Route properties format:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lfh</span><span class="o">.</span><span class="n">connect</span><span class="o">.</span><span class="p">[</span><span class="n">route</span> <span class="nb">id</span><span class="p">]</span><span class="o">.</span><span class="p">[</span><span class="nb">property</span><span class="p">]</span>
 </pre></div>
@@ -362,7 +362,14 @@ lfh.connect.hl7-v2.uri=netty:tcp://{{lfh.connect.hl7-v2.host}}?sync=true&amp;enc
     
     <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
     
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+ 
+<div class="footer">
+    <p>
+        LinuxForHealth is sublicensed by the Linux Foundation with Sublicense ID: 20200615-0008
+    </p>
+</div>    
+
 
 </footer>
 

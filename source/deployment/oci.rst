@@ -4,7 +4,7 @@ Open Container Initiative (OCI)
 Overview
 ========
 
-Linux for Health (LFH) Connect includes scripts to manage containers within an OCI compliant runtime. The OCI runtime provides services to start, stop, and manage containers. The LFH Connect OCI scripts are located in the project's `oci <https://github.com/LinuxForHealth/connect/tree/master/container-support/oci>`_ directory. LFH Connect OCI support is currently limited to launching and removing containers. 
+LinuxForHealth (LFH) Connect includes scripts to manage containers within an OCI compliant runtime. The OCI runtime provides services to start, stop, and manage containers. The LFH Connect OCI scripts are located in the project's `oci <https://github.com/LinuxForHealth/connect/tree/master/container-support/oci>`_ directory. LFH Connect OCI support is currently limited to launching and removing containers. 
 
 OCI Command Parameter
 =====================

@@ -112,7 +112,7 @@
 </ul>
 <p class="caption"><span class="caption-text">Develop:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="extend.html">Developing for Linux for Health</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extend.html">Developing for LinuxForHealth</a></li>
 <li class="toctree-l1"><a class="reference internal" href="build.html">Building Your Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="test.html">Testing Your Code</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Property Encryption</a><ul>
@@ -199,7 +199,7 @@
 <h1>Property Encryption<a class="headerlink" href="#property-encryption" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>In Linux for Health (LFH), if you need to use properties to store private information (passwords, client ids, secrets, etc.), you can encrypt those using Jasypt.  The following sections explain how to encrypt your property values and reference those encrypted properties within LFH in a way that Jasypt can decrypt them.</p>
+<p>In LinuxForHealth (LFH), if you need to use properties to store private information (passwords, client ids, secrets, etc.), you can encrypt those using Jasypt.  The following sections explain how to encrypt your property values and reference those encrypted properties within LFH in a way that Jasypt can decrypt them.</p>
 </div>
 <div class="section" id="encryption-using-jasypt">
 <h2>Encryption Using Jasypt<a class="headerlink" href="#encryption-using-jasypt" title="Permalink to this headline">¶</a></h2>
@@ -229,7 +229,7 @@
 </div>
 <div class="section" id="using-encrypted-properties">
 <h2>Using Encrypted Properties<a class="headerlink" href="#using-encrypted-properties" title="Permalink to this headline">¶</a></h2>
-<p>To use your Jasypt-encrypted property in a Linux for Health processor, use the CamelContextSupport class:</p>
+<p>To use your Jasypt-encrypted property in a LinuxForHealth processor, use the CamelContextSupport class:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">String</span> <span class="n">password</span> <span class="o">=</span> <span class="n">camelContextSupport</span><span class="o">.</span><span class="n">getProperty</span><span class="p">(</span><span class="s2">&quot;lfh.connect.my_route.password&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -240,7 +240,7 @@
 </div>
 <div class="section" id="changing-the-master-password">
 <h2>Changing the Master Password<a class="headerlink" href="#changing-the-master-password" title="Permalink to this headline">¶</a></h2>
-<p>For development, using the Linux for Health master password will allow you to automatically decrypt your properties without further configuration.</p>
+<p>For development, using the LinuxForHealth master password will allow you to automatically decrypt your properties without further configuration.</p>
 <p>For production environmments, set the JASYPT_ENCRYPTION_PASSWORD environment variable to your encryption password on LFH startup.:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">JASYPT_ENCRYPTION_PASSWORD</span><span class="o">=&lt;</span><span class="n">your_new_password</span><span class="o">&gt;</span> <span class="o">./</span><span class="n">gradlew</span> <span class="n">run</span>
 </pre></div>
@@ -281,7 +281,14 @@
     
     <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
     
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+ 
+<div class="footer">
+    <p>
+        LinuxForHealth is sublicensed by the Linux Foundation with Sublicense ID: 20200615-0008
+    </p>
+</div>    
+
 
 </footer>
 

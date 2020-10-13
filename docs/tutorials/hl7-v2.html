@@ -106,7 +106,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#tutorial-steps">Tutorial Steps</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#install-the-hl7-client">Install the HL7 Client</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#send-a-message-to-linux-for-health">Send a Message to Linux for Health</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#send-a-message-to-linuxforhealth">Send a Message to LinuxForHealth</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#view-the-nats-notification-optional">View the NATS Notification (Optional)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#view-the-message-in-the-kafdrop-console-optional">View the Message in the Kafdrop Console (Optional)</a></li>
 </ul>
@@ -123,7 +123,7 @@
 </ul>
 <p class="caption"><span class="caption-text">Develop:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../develop/extend.html">Developing for Linux for Health</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/extend.html">Developing for LinuxForHealth</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/build.html">Building Your Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/test.html">Testing Your Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/property-encryption.html">Property Encryption</a></li>
@@ -204,7 +204,7 @@
 <h1>HL7-v2<a class="headerlink" href="#hl7-v2" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>This tutorial provides a working example of a typical Linux for Health route: data ingress via HL7 mllp, storage via a Kafka topic and notification via NATS.</p>
+<p>This tutorial provides a working example of a typical LinuxForHealth route: data ingress via HL7 mllp, storage via a Kafka topic and notification via NATS.</p>
 </div>
 <div class="section" id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
@@ -214,7 +214,7 @@
 </div>
 <div class="section" id="tutorial-steps">
 <h2>Tutorial Steps<a class="headerlink" href="#tutorial-steps" title="Permalink to this headline">¶</a></h2>
-<p>Once you have completed the Prerequisites, follow these steps to send HL7-v2 data to Linux for Health.</p>
+<p>Once you have completed the Prerequisites, follow these steps to send HL7-v2 data to LinuxForHealth.</p>
 <div class="section" id="install-the-hl7-client">
 <h3>Install the HL7 Client<a class="headerlink" href="#install-the-hl7-client" title="Permalink to this headline">¶</a></h3>
 <p>In a new console window, clone the Python HL7 client:</p>
@@ -229,13 +229,13 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="send-a-message-to-linux-for-health">
-<h3>Send a Message to Linux for Health<a class="headerlink" href="#send-a-message-to-linux-for-health" title="Permalink to this headline">¶</a></h3>
-<p>In the same console window as the previous step, cd to the test messages directory in the Linux for Health connect repo:</p>
+<div class="section" id="send-a-message-to-linuxforhealth">
+<h3>Send a Message to LinuxForHealth<a class="headerlink" href="#send-a-message-to-linuxforhealth" title="Permalink to this headline">¶</a></h3>
+<p>In the same console window as the previous step, cd to the test messages directory in the LinuxForHealth connect repo:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">connect</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">resources</span><span class="o">/</span><span class="n">messages</span><span class="o">/</span><span class="n">hl7</span>
 </pre></div>
 </div>
-<p>Send an HL7 message to Linux for Health:</p>
+<p>Send an HL7 message to LinuxForHealth:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mllp_send</span> <span class="o">--</span><span class="n">file</span> <span class="n">ADT_A01</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">loose</span> <span class="o">--</span><span class="n">port</span> <span class="mi">2575</span> <span class="n">localhost</span>
 </pre></div>
 </div>
@@ -247,11 +247,11 @@
 </div>
 <div class="section" id="view-the-nats-notification-optional">
 <h3>View the NATS Notification (Optional)<a class="headerlink" href="#view-the-nats-notification-optional" title="Permalink to this headline">¶</a></h3>
-<p>You should also see a NATS notification in the Linux for Health connect log.  If you are running the Linux for Health connect application locally, you should see a message in the connect console window similar to:</p>
+<p>You should also see a NATS notification in the LinuxForHealth connect log.  If you are running the LinuxForHealth connect application locally, you should see a message in the connect console window similar to:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">15</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mf">29.474</span> <span class="p">[</span><span class="n">nats</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="n">INFO</span>  <span class="n">c</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">connect</span><span class="o">.</span><span class="n">support</span><span class="o">.</span><span class="n">NATSSubscriber</span> <span class="o">-</span> <span class="n">nats</span><span class="o">-</span><span class="n">subscriber</span><span class="o">-</span><span class="n">localhost</span><span class="p">:</span><span class="mi">4222</span><span class="o">-</span><span class="n">lfh</span><span class="o">-</span><span class="n">events</span> <span class="n">received</span> <span class="n">message</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;meta&quot;</span><span class="p">:{</span><span class="s2">&quot;routeId&quot;</span><span class="p">:</span><span class="s2">&quot;hl7-v2-mllp&quot;</span><span class="p">,</span><span class="s2">&quot;uuid&quot;</span><span class="p">:</span><span class="s2">&quot;8bebaaae-a30b-4d8e-8424-d388367543&quot;</span><span class="p">,</span><span class="s2">&quot;routeUri&quot;</span><span class="p">:</span><span class="s2">&quot;jetty:http://0.0.0.0:8080/fhir/r4/Patient?httpMethodRestrict=POST&quot;</span><span class="p">,</span><span class="s2">&quot;dataFormat&quot;</span><span class="p">:</span><span class="s2">&quot;HL7-V2&quot;</span><span class="p">,</span><span class="s2">&quot;messageType&quot;</span><span class="p">:</span><span class="s2">&quot;ADT&quot;</span><span class="p">,</span><span class="s2">&quot;timestamp&quot;</span><span class="p">:</span><span class="mi">1597868800</span><span class="p">,</span><span class="s2">&quot;dataStoreUri&quot;</span><span class="p">:</span><span class="s2">&quot;kafka:HL7-V2_ADT?brokers=localhost:9092&quot;</span><span class="p">,</span><span class="s2">&quot;status&quot;</span><span class="p">:</span><span class="s2">&quot;success&quot;</span><span class="p">,</span><span class="s2">&quot;dataRecordLocation&quot;</span><span class="p">:[</span><span class="s2">&quot;HL7-V2_ADT-0@7&quot;</span><span class="p">]}}</span>
 </pre></div>
 </div>
-<p>If you are running a Linux for Health container within docker-compose, in a console window, navigate to the connect compose directory and view the logs:</p>
+<p>If you are running a LinuxForHealth container within docker-compose, in a console window, navigate to the connect compose directory and view the logs:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">connect</span><span class="o">/</span><span class="n">container</span><span class="o">-</span><span class="n">support</span><span class="o">/</span><span class="n">compose</span>
 <span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">logs</span> <span class="o">-</span><span class="n">f</span> <span class="n">lfh</span>
 </pre></div>
@@ -266,7 +266,7 @@
 </div>
 <p>Scoll down and click on the ‘HL7-V2_ADT’ topic.</p>
 <p>Click ‘View Messages’, then click ‘View Messages’ again on the next page. This will take you to a list of all messages for the topic.</p>
-<p>Navigate to the message at the offset indicated in the result.  For example, from ‘HL7-V2_ADT-0&#64;7’ in the result, we know the message is at offset ‘7’ in the ‘HL7-V2_ADT’ topic.  At your result offset, you should see the HL7v2 ADT message sent to Linux for Health.</p>
+<p>Navigate to the message at the offset indicated in the result.  For example, from ‘HL7-V2_ADT-0&#64;7’ in the result, we know the message is at offset ‘7’ in the ‘HL7-V2_ADT’ topic.  At your result offset, you should see the HL7v2 ADT message sent to LinuxForHealth.</p>
 </div>
 </div>
 </div>
@@ -303,7 +303,14 @@
     
     <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
     
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+ 
+<div class="footer">
+    <p>
+        LinuxForHealth is sublicensed by the Linux Foundation with Sublicense ID: 20200615-0008
+    </p>
+</div>    
+
 
 </footer>
 

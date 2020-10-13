@@ -121,7 +121,7 @@
 </ul>
 <p class="caption"><span class="caption-text">Develop:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../develop/extend.html">Developing for Linux for Health</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/extend.html">Developing for LinuxForHealth</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/build.html">Building Your Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/test.html">Testing Your Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/property-encryption.html">Property Encryption</a></li>
@@ -202,7 +202,7 @@
 <h1>Hello World<a class="headerlink" href="#hello-world" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>This tutorial shows you how to build your first route starting with the Linux for Health “Hello World” route.</p>
+<p>This tutorial shows you how to build your first route starting with the LinuxForHealth “Hello World” route.</p>
 </div>
 <div class="section" id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
@@ -212,10 +212,10 @@
 </div>
 <div class="section" id="steps">
 <h2>Steps<a class="headerlink" href="#steps" title="Permalink to this headline">¶</a></h2>
-<p>Once you have completed the Prerequisites, follow these steps to build your first Linux for Health route.</p>
+<p>Once you have completed the Prerequisites, follow these steps to build your first LinuxForHealth route.</p>
 <div class="section" id="hello-world-route">
 <h3>Hello World Route<a class="headerlink" href="#hello-world-route" title="Permalink to this headline">¶</a></h3>
-<p>Linux for Health provides a “Hello World” route in <code class="docutils literal notranslate"><span class="pre">connect/src/main/java/com/linuxforhealth/connect/builder/ExampleRouteBuilder.java</span></code>:</p>
+<p>LinuxForHealth provides a “Hello World” route in <code class="docutils literal notranslate"><span class="pre">connect/src/main/java/com/linuxforhealth/connect/builder/ExampleRouteBuilder.java</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/**</span>
   <span class="o">*</span> <span class="s2">&quot;Hello World&quot;</span> <span class="n">example</span> <span class="n">route</span><span class="o">.</span>
   <span class="o">*/</span>
@@ -236,8 +236,8 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl http://localhost:8080/hello-world?name=me
 </pre></div>
 </div>
-<p>This sends an HTTP GET request to Linux for Health, which is processed by the route code above.  The <code class="docutils literal notranslate"><span class="pre">.process</span></code> step gets the value of the query param <code class="docutils literal notranslate"><span class="pre">name</span></code>, which was passed in as an exchange message header by Camel, then forms the response and sets the exchange message body to the result.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">.process(new</span> <span class="pre">MetaDataProcessor(routePropertyNamespace))</span></code> and <code class="docutils literal notranslate"><span class="pre">.to(LinuxForHealthRouteBuilder.STORE_AND_NOTIFY_CONSUMER_URI)</span></code> are built-in Linux for Health steps that form the message to be stored in Kafka based on your data, then send that message to Kafka and then to NATS subscribers for further use.</p>
+<p>This sends an HTTP GET request to LinuxForHealth, which is processed by the route code above.  The <code class="docutils literal notranslate"><span class="pre">.process</span></code> step gets the value of the query param <code class="docutils literal notranslate"><span class="pre">name</span></code>, which was passed in as an exchange message header by Camel, then forms the response and sets the exchange message body to the result.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">.process(new</span> <span class="pre">MetaDataProcessor(routePropertyNamespace))</span></code> and <code class="docutils literal notranslate"><span class="pre">.to(LinuxForHealthRouteBuilder.STORE_AND_NOTIFY_CONSUMER_URI)</span></code> are built-in LinuxForHealth steps that form the message to be stored in Kafka based on your data, then send that message to Kafka and then to NATS subscribers for further use.</p>
 <p>You should see the following result (all in one line):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
    <span class="s2">&quot;meta&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -254,7 +254,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The data value is base64-encoded.  Decode this with any base64 decoder (several web sites do this) and you get the string “Hello World! It’s me.”  To recap, you sent an HTTP GET to Linux for Health, which stored the result in a topic called EXAMPLE_TEXT.</p>
+<p>The data value is base64-encoded.  Decode this with any base64 decoder (several web sites do this) and you get the string “Hello World! It’s me.”  To recap, you sent an HTTP GET to LinuxForHealth, which stored the result in a topic called EXAMPLE_TEXT.</p>
 </div>
 <div class="section" id="modify-the-route-and-rebuild">
 <h3>Modify the Route and Rebuild<a class="headerlink" href="#modify-the-route-and-rebuild" title="Permalink to this headline">¶</a></h3>
@@ -266,7 +266,7 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">String</span> <span class="n">result</span> <span class="o">=</span> <span class="s2">&quot;It&#39;s always sunny in &quot;</span><span class="o">+</span><span class="n">name</span><span class="o">+</span><span class="s2">&quot;.&quot;</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>Save the file and in the console window where you started Linux for Health connect via <code class="docutils literal notranslate"><span class="pre">./gradlew</span> <span class="pre">run</span></code>, type ctrl-C to stop it.  Rebuild Linux for Health by typing <code class="docutils literal notranslate"><span class="pre">./gradlew</span> <span class="pre">clean</span> <span class="pre">build</span></code> and then <code class="docutils literal notranslate"><span class="pre">./gradlew</span> <span class="pre">run</span></code>.  The run the following command:</p>
+<p>Save the file and in the console window where you started LinuxForHealth connect via <code class="docutils literal notranslate"><span class="pre">./gradlew</span> <span class="pre">run</span></code>, type ctrl-C to stop it.  Rebuild LinuxForHealth by typing <code class="docutils literal notranslate"><span class="pre">./gradlew</span> <span class="pre">clean</span> <span class="pre">build</span></code> and then <code class="docutils literal notranslate"><span class="pre">./gradlew</span> <span class="pre">run</span></code>.  The run the following command:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl http://localhost:8080/hello-world?name=Austin
 </pre></div>
 </div>
@@ -288,7 +288,7 @@
 </div>
 <p>Decode the data field with any base64 decoder and you get the string “It’s always sunny in Austin”.</p>
 <p>So far, you’ve run a route, modified it, rebuilt it and run it again to see your changes.  As a next step, you can copy the whole <code class="docutils literal notranslate"><span class="pre">connect/src/main/java/com/linuxforhealth/connect/builder/ExampleRouteBuilder.java</span></code> file, rename it in the same directory and use it as a basis for a brand new route, taking care to create any new environment variables in <code class="docutils literal notranslate"><span class="pre">src/main/resources/application.properties</span></code> when needed.</p>
-<p>Also, as you work more with routes, consider installing <a class="reference external" href="http://postman.com">Postman</a> and importing the Linux for Health Postman collection <code class="docutils literal notranslate"><span class="pre">connect/src/test/resources/messages/postman/Linux</span> <span class="pre">for</span> <span class="pre">Health</span> <span class="pre">Examples.postman_collection.json</span></code> to make HTTP and REST calls.</p>
+<p>Also, as you work more with routes, consider installing <a class="reference external" href="http://postman.com">Postman</a> and importing the LinuxForHealth Postman collection <code class="docutils literal notranslate"><span class="pre">connect/src/test/resources/messages/postman/LinuxForHealth</span> <span class="pre">Examples.postman_collection.json</span></code> to make HTTP and REST calls.</p>
 </div>
 </div>
 </div>
@@ -325,7 +325,14 @@
     
     <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
     
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+ 
+<div class="footer">
+    <p>
+        LinuxForHealth is sublicensed by the Linux Foundation with Sublicense ID: 20200615-0008
+    </p>
+</div>    
+
 
 </footer>
 
