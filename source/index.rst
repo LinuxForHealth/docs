@@ -63,6 +63,7 @@ You can get started by visiting our `developer setup page <./developer-setup.htm
    develop/test.rst
    develop/property-encryption.rst
    develop/route-basics.rst
+   develop/configure-kong.rst
 
 .. toctree::
    :maxdepth: 3
