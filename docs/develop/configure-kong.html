@@ -8,14 +8,14 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Building Your Code &mdash; Linux for Health  documentation</title>
+  <title>Configuring Kong &mdash; Linux for Health  documentation</title>
   
 
   
   
   
   
-    <link rel="canonical" href="https://linuxforhealth.github.io/docs/develop/build.html"/>
+    <link rel="canonical" href="https://linuxforhealth.github.io/docs/develop/configure-kong.html"/>
   
 
   
@@ -38,8 +38,8 @@
   <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Testing Your Code" href="test.html" />
-    <link rel="prev" title="Developing for LinuxForHealth" href="extend.html" /> 
+    <link rel="next" title="Container Support" href="../deployment/container.html" />
+    <link rel="prev" title="Developing Routes" href="route-basics.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -111,16 +111,19 @@
 <p class="caption"><span class="caption-text">Develop:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="extend.html">Developing for LinuxForHealth</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Building Your Code</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#dependencies">Dependencies</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#build">Build</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="build.html">Building Your Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="test.html">Testing Your Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="property-encryption.html">Property Encryption</a></li>
 <li class="toctree-l1"><a class="reference internal" href="route-basics.html">Developing Routes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="configure-kong.html">Configuring Kong</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Configuring Kong</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#kong-configuration">Kong Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#create-a-new-kong-service-if-needed">1. Create a new Kong service (if needed)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-a-new-kong-route">2. Create a new Kong route</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <p class="caption"><span class="caption-text">Deployment:</span></p>
 <ul>
@@ -173,13 +176,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Building Your Code</li>
+      <li>Configuring Kong</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/develop/build.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/develop/configure-kong.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -192,48 +195,39 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="building-your-code">
-<h1>Building Your Code<a class="headerlink" href="#building-your-code" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="configuring-kong">
+<h1>Configuring Kong<a class="headerlink" href="#configuring-kong" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>Once you have created a new LinuxForHealth component or route (see <a class="reference external" href="./extend.html">Developing for LinuxForHealth</a>), your next step is to run a build.  To build LinuxForHealth (LFH) with your code changes, you will first need to add any new dependencies to LFH.</p>
+<p>LinuxForHealth (LFH) uses the <a class="reference external" href="https://konghq.com/kong">Kong API Gateway</a>.  When you add a route to LinuxForHealth, you’ll need to add the route to Kong as well.  The steps below explain how to do that.</p>
 </div>
-<div class="section" id="dependencies">
-<h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
-<p>To add new dependencies to LinuxForHealth, first look at any new classes that you use. Determine the Java packages those classes are in and make sure those packages are in the connect/build.gradle file.  If the dependencies do not exist yet in build.gradle, follow the example below to learn how to find the dependency information required by LFH.</p>
-<p>Example:</p>
-<p>A new feature requires the class org.apache.commons.codec.binary.Base64 for base64 encoding.</p>
-<ol class="arabic">
-<li><p>Use your browser to find the javadoc for this class (Search: “org.apache.commons.codec.binary.Base64”).  From that search, we find the <a class="reference external" href="https://www.javadoc.io/doc/commons-codec/commons-codec/1.13/org/apache/commons/codec/binary/Base64.html">javadoc</a>.</p></li>
-<li><p>On that page, we see that the package path for the class is org.apache.commons.codec.binary.</p></li>
-<li><p>Use your browser to search the maven repo for that package (Search: “maven org.apache.commons.codec.binary”). From that search, we find the package information in <a class="reference external" href="https://mvnrepository.com/artifact/commons-codec/commons-codec">Maven Central</a>.</p></li>
-<li><p>On that page, click on the latest version, then click on the Gradle tab and you will see:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">mvnrepository</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">artifact</span><span class="o">/</span><span class="n">commons</span><span class="o">-</span><span class="n">codec</span><span class="o">/</span><span class="n">commons</span><span class="o">-</span><span class="n">codec</span>
-<span class="nb">compile</span> <span class="n">group</span><span class="p">:</span> <span class="s1">&#39;commons-codec&#39;</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="s1">&#39;commons-codec&#39;</span><span class="p">,</span> <span class="n">version</span><span class="p">:</span> <span class="s1">&#39;1.14&#39;</span>
+<div class="section" id="kong-configuration">
+<h2>Kong Configuration<a class="headerlink" href="#kong-configuration" title="Permalink to this headline">¶</a></h2>
+<p>The Kong configuration is implemented via curl commands to Kong’s Admin API in 2 files:</p>
+<ul class="simple">
+<li><p>connect/container-support/compose/configure-kong.sh (docker-compose)</p></li>
+<li><p>connect/container-support/oci/configure-kong.sh (oci)</p></li>
+</ul>
+<p>In order to use a new LinuxForHealth route, you’ll need to update the configure-kong script for the container system you are using.  If you plan to contribute your route back to LinuxForHealth you’ll need to update both of these scripts as follows.</p>
+<div class="section" id="create-a-new-kong-service-if-needed">
+<h3>1. Create a new Kong service (if needed)<a class="headerlink" href="#create-a-new-kong-service-if-needed" title="Permalink to this headline">¶</a></h3>
+<p>If you are just adding a new http or REST route, you probably don’t need a new Kong service.  However, if you want specific Kong plugins to work with your route, you will need to create a Kong service.  To create a Kong service, add a curl command to configure-kong.sh:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">--</span><span class="n">insecure</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8444</span><span class="o">/</span><span class="n">services</span> \
+  <span class="o">-</span><span class="n">H</span> <span class="s1">&#39;Content-Type: application/json&#39;</span> \
+  <span class="o">-</span><span class="n">d</span> <span class="s1">&#39;{&quot;name&quot;: &quot;my-new-service&quot;, &quot;url&quot;: &quot;http://&#39;</span><span class="s2">&quot;$</span><span class="si">{host}</span><span class="s2">&quot;</span><span class="s1">&#39;:&#39;</span><span class="s2">&quot;$</span><span class="si">{lfhhttp}</span><span class="s2">&quot;</span><span class="s1">&#39;&quot;}&#39;</span>
 </pre></div>
 </div>
-</li>
-<li><p>Add a new line to the LFH build.gradle for this dependency. Since this was the first general utility we added, we added a line to the dependencies section.:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Java</span> <span class="n">utils</span> <span class="p">(</span><span class="n">base64</span> <span class="n">encoding</span><span class="p">,</span> <span class="n">OS</span> <span class="nb">type</span><span class="p">)</span>
-<span class="n">implementation</span> <span class="n">group</span><span class="p">:</span> <span class="s1">&#39;commons-codec&#39;</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="s1">&#39;commons-codec&#39;</span><span class="p">,</span> <span class="n">version</span><span class="p">:</span> <span class="n">project</span><span class="o">.</span><span class="n">commonsVersion</span>
+<p>Give the service a new name and either use the same lfhhttp port or a different port, depending on your use case. ${host} is set for you automatically, depending on where LinuxForHealth is running. Use –insecure to avoid self-signed certificate verification.</p>
+</div>
+<div class="section" id="create-a-new-kong-route">
+<h3>2. Create a new Kong route<a class="headerlink" href="#create-a-new-kong-route" title="Permalink to this headline">¶</a></h3>
+<p>A Kong route matches incoming transactions and sends them to the LinuxForHealth url contained in the associated Kong service.  To create a Kong route for your LinuxForHealth route, add a line to configure-kong.sh.</p>
+<p>To add a new http or REST route, you can use the lfh-http-service:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">add_http_route</span> <span class="s2">&quot;my-new-route&quot;</span> <span class="s2">&quot;GET&quot;</span> <span class="s2">&quot;/new-route&quot;</span> <span class="s2">&quot;lfh-http-service&quot;</span>
 </pre></div>
 </div>
-</li>
-<li><p>Add a property in gradle.properties for the package version, which we called “commonsVersion” in this case.:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># java util versions</span>
-<span class="n">commonsVersion</span><span class="o">=</span><span class="mf">1.14</span>
-</pre></div>
+<p>The first argument is the name of your new route.  The second is the HTTP method supported by your route.  The third argument is the path for your new route.  This should not include any query parameters, as even partial paths will be matched. The last argument is the name of the Kong service that traffic on this Kong route will be sent to, either “lfh-http-service” to use the existing service or your own service, if you created one in the previous step.</p>
 </div>
-</li>
-</ol>
-</div>
-<div class="section" id="build">
-<h2>Build<a class="headerlink" href="#build" title="Permalink to this headline">¶</a></h2>
-<p>Once all your dependencies are added, run:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">gradlew</span> <span class="n">build</span>
-</pre></div>
-</div>
-<p>in the top-level connect directory of the LinuxForHealth repo.</p>
 </div>
 </div>
 
@@ -245,10 +239,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="test.html" class="btn btn-neutral float-right" title="Testing Your Code" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../deployment/container.html" class="btn btn-neutral float-right" title="Container Support" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="extend.html" class="btn btn-neutral float-left" title="Developing for LinuxForHealth" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="route-basics.html" class="btn btn-neutral float-left" title="Developing Routes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

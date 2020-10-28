@@ -34,7 +34,7 @@ LinuxForHealth provides a "Hello World" route in ``connect/src/main/java/com/lin
 
 You can run this route using the curl command.  From a console window, copy and paste the following command.  You can change the value of name being passed in as a query param from ``me`` to anything, then hit ``return``::
 
-   curl http://localhost:8080/hello-world?name=me
+   curl --insecure https://localhost:8443/hello-world?name=me
 
 This sends an HTTP GET request to LinuxForHealth, which is processed by the route code above.  The ``.process`` step gets the value of the query param ``name``, which was passed in as an exchange message header by Camel, then forms the response and sets the exchange message body to the result.
 
@@ -70,7 +70,7 @@ to::
 
 Save the file and in the console window where you started LinuxForHealth connect via ``./gradlew run``, type ctrl-C to stop it.  Rebuild LinuxForHealth by typing ``./gradlew clean build`` and then ``./gradlew run``.  The run the following command::
 
-  curl http://localhost:8080/hello-world?name=Austin
+  curl --insecure https://localhost:8443/hello-world?name=Austin
 
 You should see the following result (all in one line)::
 

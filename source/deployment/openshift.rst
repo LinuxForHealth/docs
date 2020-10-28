@@ -19,9 +19,11 @@ Where to Start
 
 If you do not have access to an existing OCP cluster, you will need to create one. `Code Ready Containers <https://github.com/code-ready/crc>`_ provides an OCP compatible environment for local/development use. Red Hat, IBM, Azure, AWS, and GCP provide hosted OCP services environments.
 
-LFH provides documentation and limited support for provisioning :ref:`Code Ready Containers Setup` and :ref:`Azure Red Hat OpenShift Setup`
+LFH provides documentation and limited support for provisioning :ref:`Code-Ready-Containers` and :ref:`Azure-Red-Hat-Openshift`
 
-If you have access to an existing OCP cluster, you may proceed to :ref:`LFH OpenShift QuickStart`
+If you have access to an existing OCP cluster, you may proceed to :ref:`LFH-OpenShift-QuickStart`
+
+.. _LFH-OpenShift-QuickStart:
 
 LFH OpenShift QuickStart
 ========================
@@ -46,6 +48,8 @@ To remove the LFH QuickStart::
 
     # install quickstart assets
     ./lfh-quickstart.sh remove
+
+.. _Code-Ready-Containers:
 
 Code Ready Containers Setup
 ===========================
@@ -76,6 +80,8 @@ To view the provided CRC credentials for the OpenShift console run::
     crc console --credentials
 
 Additional CRC setup instructions are included within the doc.pdf file included with the distribution.
+
+.. _Azure-Red-Hat-Openshift:
 
 Azure Red Hat OpenShift Setup
 =============================

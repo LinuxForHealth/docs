@@ -1,7 +1,8 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   
@@ -11,11 +12,6 @@
   
 
   
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
-
-  
   
   
   
@@ -23,9 +19,7 @@
   
 
   
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -37,6 +31,11 @@
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Developer Setup" href="developer-setup.html" /> 
@@ -53,7 +52,7 @@
           
 
           
-            <a href="#" class="icon icon-home" alt="Documentation Home"> Linux for Health
+            <a href="#" class="icon icon-home"> Linux for Health
           
 
           
@@ -80,7 +79,6 @@
           
         </div>
 
-        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -116,6 +114,7 @@
 <li class="toctree-l1"><a class="reference internal" href="develop/test.html">Testing Your Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="develop/property-encryption.html">Property Encryption</a></li>
 <li class="toctree-l1"><a class="reference internal" href="develop/route-basics.html">Developing Routes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="develop/configure-kong.html">Configuring Kong</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Deployment:</span></p>
 <ul>
@@ -128,7 +127,6 @@
             
           
         </div>
-        
       </div>
     </nav>
 
@@ -167,7 +165,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
+      <li><a href="#">Docs</a> &raquo;</li>
         
       <li>What is LinuxForHealth?</li>
     
@@ -356,6 +354,7 @@
 <li class="toctree-l3"><a class="reference internal" href="develop/extend.html#components">Components</a></li>
 <li class="toctree-l3"><a class="reference internal" href="develop/extend.html#exchanges">Exchanges</a></li>
 <li class="toctree-l3"><a class="reference internal" href="develop/extend.html#processors">Processors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="develop/extend.html#api-gateway">API Gateway</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="develop/extend.html#development-steps">Development Steps</a></li>
@@ -387,6 +386,15 @@
 <li class="toctree-l3"><a class="reference internal" href="develop/route-basics.html#getroutepropertynamespace">getRoutePropertyNamespace()</a></li>
 <li class="toctree-l3"><a class="reference internal" href="develop/route-basics.html#buildroute-string-routepropertynamespace">buildRoute(String routePropertyNamespace)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="develop/route-basics.html#route">Route</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="develop/configure-kong.html">Configuring Kong</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="develop/configure-kong.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="develop/configure-kong.html#kong-configuration">Kong Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="develop/configure-kong.html#create-a-new-kong-service-if-needed">1. Create a new Kong service (if needed)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="develop/configure-kong.html#create-a-new-kong-route">2. Create a new Kong route</a></li>
 </ul>
 </li>
 </ul>
@@ -444,19 +452,11 @@
 
   <div role="contentinfo">
     <p>
-        
         &copy; Copyright 2020, IBM
 
     </p>
   </div>
-    
-    
-    
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
  
 <div class="footer">
     <p>
@@ -474,6 +474,7 @@
 
   </div>
   
+
 
   <script type="text/javascript">
       jQuery(function () {

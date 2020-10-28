@@ -61,7 +61,7 @@ You can optionally view the message in Kafka, via the Kafdrop Kafka client.  In 
 
    http://localhost:9000/
 
-Scoll down and click on the 'HL7-V2_ADT' topic.
+Scroll down and click on the 'HL7-V2_ADT' topic.
 
 Click 'View Messages', then click 'View Messages' again on the next page. This will take you to a list of all messages for the topic.  
 

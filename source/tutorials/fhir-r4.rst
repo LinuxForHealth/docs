@@ -20,7 +20,7 @@ Open Postman and import the LinuxForHealth Examples collection by clicking 'Impo
 
    connect/src/test/resources/messages/postman/LinuxForHealth Examples.postman_collection.json
 
-Click on the collection in the left navigation area and select 'Create a patient resource', then click 'Send'.
+Click on the collection in the left navigation area and select 'FHIR-R4 - Create patient resource', then click 'Send'.
 
 You should see a result similar to the JSON result below in the Postman window::
 
@@ -61,7 +61,7 @@ You can optionally view the message in Kafka, via the Kafdrop Kafka client.  In 
 
    http://localhost:9000/
 
-Scoll down and click on the 'FHIR-R4_PATIENT' topic.
+Scroll down and click on the 'FHIR-R4_PATIENT' topic.
 
 Click 'View Messages', then click 'View Messages' again on the next page.  This will take you to a list of all messages for the topic.  
 

@@ -17,10 +17,10 @@ Send a Message to LinuxForHealth
 ----------------------------------
 Use the `curl` utility to send a mock patient record to LinuxForHealth.  In a new console window, copy and paste the following curl command and hit `return`::
 
-   curl --header "Content-Type: application/json" \
+   curl --insecure --header "Content-Type: application/json" \
    --request POST \
    --data '{ "resourceType": "Patient", "identifier": [ { "system": "urn:oid:1.2.36.146.595.217.0.1", "value": "12345" } ], "name": [ { "family": "Duck", "given": [ "Donald", "D." ] } ], "gender": "male", "birthDate": "1974-12-25" }' \
-   http://localhost:8080/fhir/r4/Patient
+   https://localhost:8443/fhir/r4/Patient
 
 This command posts a basic Patient resource to the LinuxForHealth FHIR R4 route.  You should see a message echoed in the console window, similar to::
 
@@ -47,7 +47,7 @@ You can optionally view the message in Kafka, via the Kafdrop Kafka client.  In 
 
    http://localhost:9000/
 
-Scoll down and click on the 'FHIR-R4_PATIENT' topic.
+Scroll down and click on the 'FHIR-R4_PATIENT' topic.
 
 Click 'View Messages', then click 'View Messages' again on the next page. This will take you to a list of all messages for the topic.  
 
