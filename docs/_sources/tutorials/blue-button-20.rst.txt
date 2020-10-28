@@ -14,10 +14,10 @@ Prerequisites
 
 Tutorial Steps
 ==============
-Once you have completed the Prerequisites, follow these steps to use LinuxForHealth to work with Medicare FHIR resources.  You must be running LinuxForHealth locally (via ./gradlew run, as in the Developer Setup steps) to follow this tutorial, due to the default browser launch for Blue Button authorization.
+Once you have completed the Prerequisites, follow these steps to use LinuxForHealth to work with Medicare FHIR resources.  You must be running LinuxForHealth locally (via ./gradlew run, as in the Developer Setup steps) to follow this tutorial, due to the default browser launch for Blue Button authorization.  Once you have a Blue Button access token, however, that token can be used with any LinuxForHealth instance.
 
 Authorize LinuxForHealth to use the Blue Button 2.0 API
----------------------------------------------------------
+-------------------------------------------------------
 Open Postman and import this collection by clicking 'Import' -> 'Import File' -> 'Choose Files'::
 
    connect/src/test/resources/messages/postman/LinuxForHealth Examples.postman_collection.json
@@ -43,7 +43,7 @@ You are now ready to query for Medicare data using LinuxForHealth and the Blue B
 
 Send a Blue Button Query to LinuxForHealth 
 --------------------------------------------
-From the Examples collection in Postman, select 'Get patient details' and click 'Send'.
+From the Examples collection in Postman, select 'BlueB - Get patient details' and click 'Send'.
 
 You should see a result similar to::
 
@@ -84,7 +84,7 @@ You can optionally view the message contents in Kafka, via the Kafdrop Kafka cli
 
    http://localhost:9000/
 
-Scoll down and click on the 'FHIR-R4_PATIENT' topic.
+Scroll down and click on the 'FHIR-R4_PATIENT' topic.
 
 Click 'View Messages', then click 'View Messages' again on the next page.  This will take you to a list of all messages for the topic.  
 
