@@ -17,15 +17,17 @@ The syntax to launch the LFH compose stack is::
 
 Where [profile name] is the name of a supported LFH profile. Supported profiles include: dev, server, and pi. Additional profiles will be added as needed to support external systems for new LFH integration use-cases. The script is executed within the current shell to ensure that Docker Compose's COMPOSE_FILE variable is set correctly.
 
-+--------------------+------------------------------------------------------------------------------------------------------------------+
-| Profile Name       | Profile Description                                                                                              |
-+====================+==================================================================================================================+
-| dev                | For local development use. Runs LFH supporting services with ports mapped to localhost.                          |
-+--------------------+------------------------------------------------------------------------------------------------------------------+
-| server             | For deployment environments or integrated testing. Includes the LFH connect application and supporting services. |
-+--------------------+------------------------------------------------------------------------------------------------------------------+
-| pi                 | Similar to the server stack. Optimized for arm64/Raspberry Pi usage.                                             |
-+--------------------+------------------------------------------------------------------------------------------------------------------+
++--------------------+----------------------------------------------------------------------------------------------------------------------------+
+| Profile Name       | Profile Description                                                                                                        |
++====================+============================================================================================================================+
+| dev                | For local development use. Runs LFH supporting services with ports mapped to localhost.                                    |
++--------------------+----------------------------------------------------------------------------------------------------------------------------+
+| integration        | Supports integration testing with external systems. Includes LFH connect application, supporting and external services.    |
++--------------------+----------------------------------------------------------------------------------------------------------------------------+
+| server             | For deployment environments or integrated testing. Includes the LFH connect application and supporting services.           |
++--------------------+----------------------------------------------------------------------------------------------------------------------------+
+| pi                 | Similar to the server stack. Optimized for arm64/Raspberry Pi usage.                                                       |
++--------------------+----------------------------------------------------------------------------------------------------------------------------+
 
 The dev profile is the "default" profile and is started if start-stack.sh is executed without arguments. The dev profile is intended for local development use::
 
@@ -39,6 +41,13 @@ The dev profile is the "default" profile and is started if start-stack.sh is exe
     cd ../../
     # launch LFH
     ./gradlew run
+
+The integration profile supports a full LFH stack with external systems (e.g. FHIR R4 Servers). The integration profile is launched using::
+
+    # navigate to the compose configuration directory
+    cd container-support/compose
+    # execute the compose start script within the current shell
+    . ./start-stack.sh integration
 
 The "server" and "pi" profiles support a full LFH stack, which includes the LFH container. The example below launches the server profile::
 
