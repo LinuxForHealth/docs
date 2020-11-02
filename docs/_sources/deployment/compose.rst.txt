@@ -56,6 +56,13 @@ The "server" and "pi" profiles support a full LFH stack, which includes the LFH 
     # execute the compose start script within the current shell
     . ./start-stack.sh server
 
+When running the "pi" profile, you may need to increase the value of COMPOSE_HTTP_TIMEOUT::
+
+    # set the value of COMPOSE_HTTP_TIMEOUT
+    export COMPOSE_HTTP_TIMEOUT=180
+    # execute the compose start script within the current shell
+    . ./start-stack.sh pi
+
 Use standard docker-compose commands to interact with the stack and it's services. Unset the `COMPOSE_FILE` variable following a `docker-compose stop` or `docker-compose down -v`::
 
     # stops all containers leaving them intact
