@@ -10,11 +10,11 @@ What is LinuxForHealth?
    :width: 600
    :alt: LinuxForHealth
 
-Welcome to the future of healthcare software development - The world's first true HealthOS.
+Welcome to the future of healthcare software development - the world's first true HealthOS.
 
 LinuxForHealth (LFH) is a distributed processing network operating system which allows edge devices (IoT, workstations, app servers) to connect directly to health care transaction systems.  The processing model abstracts the need for intermediary third-party organizations, resulting in a developer-extensible trust protocol.
 
-Among the features provided by LinuxForHealth are:
+Key features provided by LinuxForHealth:
 
 * An open source interoperable health stack to enable developers to build further platforms and applications
 
@@ -28,7 +28,7 @@ Among the features provided by LinuxForHealth are:
 
 * Community support & enterprise readiness.
 
-LinuxForHealth has captured the attention of industry leaders.  While the project is in its nascent stages, leading companies are already committing significant features, including APIs and build recipes that support LFH deployment from embedded device, fully distributed agent-based, multi-tenant multi cloud and LinuxONE distributions.  We hope you join our journey in making the LinuxForHealth.
+LinuxForHealth has captured the attention of industry leaders.  While the project is in its nascent stages, leading companies are already committing significant features, including APIs and build recipes that support LFH deployment from embedded device, fully distributed agent-based, multi-tenant multi cloud and LinuxONE distributions.
 
 Core to LinuxForHealth data transformation and synchronization is the concept of a route, or a sequential set of operations on a transaction.  LinuxForHealth routes are designed to ingest healthcare data, perform any required operations on that data (e.g. de-serialize, transform, enrich), then do something with that data (e.g. store, notify, forward), providing a transformative capability which has the potential to revolutionize the healthcare industry.
 
@@ -38,7 +38,7 @@ LinuxForHealth is built on:
 * Kafka and NATS JetStream for world-class data streaming and messaging.
 * Standard data formats, including HL7 FHIR R4, HL7, MLLP and EDI, with easy extensibility to support any format.
 
-You can get started by visiting our `developer setup page <./developer-setup.html>`_ and visit us on `Github <https://github.com/linuxforhealth/connect>`_.
+You can get started by visiting our `developer setup page <./developer-setup.html>`_ and visit us on `Github <https://github.com/linuxforhealth/connect>`_.  We hope you join our journey in creating LinuxForHealth, the world's first true HealthOS.
 
 .. toctree::
    :maxdepth: 3
