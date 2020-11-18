@@ -10,22 +10,35 @@ What is LinuxForHealth?
    :width: 600
    :alt: LinuxForHealth
 
-Welcome to the future of healthcare software development - The world's first true HealthOS.
+Welcome to the future of healthcare software development - the world's first true HealthOS.
 
-LinuxForHealth (LFH) has captured the attention of industry leaders in the field.  While the project is in its nascent stages, industry leaders are already committing significant features. The goal is to be become the reference for a trusted interoperable transactional development system for data, deployment, and machine learning within the healthcare industry.  As the project evolves, the initial companies who have committed to develop on LFH will be providing APIs and build recipes that support LFH deployment from embedded device, fully distributed agent-based, multi-tenant multi cloud and LinuxOne distributions.  We hope you join our journey in making the LinuxForHealth.
+LinuxForHealth (LFH) is a distributed processing network operating system which allows edge devices (IoT, workstations, app servers) to connect directly to health care transaction systems.  The processing model abstracts the need for intermediary third-party organizations, resulting in a developer-extensible trust protocol.
 
-Core to LinuxForHealth is the concept of a route, or a sequential set of operations on a transaction.  LinuxForHealth routes are designed to ingest healthcare data, perform any required operations on that data (e.g. de-serialize, transform, enrich), then do something with that data (e.g. store, notify, forward), providing a transformative capability which has the potential to revolutionize the healthcare industry.
+Key features provided by LinuxForHealth:
+
+* An open source interoperable health stack to enable developers to build further platforms and applications
+
+* Connectivity across embedded devices, multi-cloud and LinuxONE
+
+* Data acquisition, integration, routing
+
+* Real-time and batch processing
+
+* Abstraction of the details of health standards, enabling extensibility, modularity, scalability
+
+* Community support & enterprise readiness.
+
+LinuxForHealth has captured the attention of industry leaders.  While the project is in its nascent stages, leading companies are already committing significant features, including APIs and build recipes that support LFH deployment from embedded device, fully distributed agent-based, multi-tenant multi cloud and LinuxONE distributions.
+
+Core to LinuxForHealth data transformation and synchronization is the concept of a route, or a sequential set of operations on a transaction.  LinuxForHealth routes are designed to ingest healthcare data, perform any required operations on that data (e.g. de-serialize, transform, enrich), then do something with that data (e.g. store, notify, forward), providing a transformative capability which has the potential to revolutionize the healthcare industry.
 
 LinuxForHealth is built on:
 
 * Apache Camel for integration, supported by one of the most active development communities.
-* Kafka and NATS for world-class data streaming and messaging.
-* Standard data formats, including HL7 FHIR R4, HL7 MLLP and EDI, with easy extensiblity to support any format.
+* Kafka and NATS JetStream for world-class data streaming and messaging.
+* Standard data formats, including HL7 FHIR R4, HL7, MLLP and EDI, with easy extensibility to support any format.
 
-LinuxForHealth provides data connectivity and routing, dynamic extensibility, custom events and data-driven insights for clinical data standards, including HL7v2 and FHIR R4, and a variety of standard inputs, including JDBC, Kafka, FTP/sFTP and sFTP, AS400, HTTP(s) and REST.
-
-You can get started by visiting our `developer setup page <./developer-setup.html>`_ and visit us on `Github <https://github.com/linuxforhealth/connect>`_.
-
+You can get started by visiting our `developer setup page <./developer-setup.html>`_ and visit us on `Github <https://github.com/linuxforhealth/connect>`_.  We hope you join our journey in creating LinuxForHealth, the world's first true HealthOS.
 
 .. toctree::
    :maxdepth: 3
