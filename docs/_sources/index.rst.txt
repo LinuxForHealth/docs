@@ -17,10 +17,15 @@ LinuxForHealth (LFH) is a distributed processing network operating system which 
 Among the features provided by LinuxForHealth are:
 
 * An open source interoperable health stack to enable developers to build further platforms and applications
+
 * Connectivity across embedded devices, multi-cloud and LinuxONE
+
 * Data acquisition, integration, routing
+
 * Real-time and batch processing
+
 * Abstraction of the details of health standards, enabling extensibility, modularity, scalability
+
 * Community support & enterprise readiness.
 
 LinuxForHealth has captured the attention of industry leaders.  While the project is in its nascent stages, leading companies are already committing significant features, including APIs and build recipes that support LFH deployment from embedded device, fully distributed agent-based, multi-tenant multi cloud and LinuxONE distributions.  We hope you join our journey in making the LinuxForHealth.
