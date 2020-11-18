@@ -15,6 +15,7 @@ Welcome to the future of healthcare software development - The world's first tru
 LinuxForHealth (LFH) is a distributed processing network operating system which allows edge devices (IoT, workstations, app servers) to connect directly to health care transaction systems.  The processing model abstracts the need for intermediary third-party organizations, resulting in a developer-extensible trust protocol.
 
 Among the features provided by LinuxForHealth are:
+
 * An open source interoperable health stack to enable developers to build further platforms and applications
 * Connectivity across embedded devices, multi-cloud and LinuxONE
 * Data acquisition, integration, routing
