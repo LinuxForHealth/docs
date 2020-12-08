@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,6 +11,11 @@
   
 
   
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
+
+  
   
   
   
@@ -19,7 +23,9 @@
   
 
   
-  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -31,11 +37,6 @@
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Developer Setup" href="developer-setup.html" /> 
@@ -52,7 +53,7 @@
           
 
           
-            <a href="#" class="icon icon-home"> Linux for Health
+            <a href="#" class="icon icon-home" alt="Documentation Home"> Linux for Health
           
 
           
@@ -79,6 +80,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -127,6 +129,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -165,7 +168,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="#">Docs</a> &raquo;</li>
+      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
         
       <li>What is LinuxForHealth?</li>
     
@@ -186,7 +189,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="what-is-linuxforhealth">
+  <p>Hello! Thanks for checking out LinuxForHealth Connect. We are in the process of migrating to Python, but feel free to review our existing Java code. The Python Connect repository can be found here. Take a look at the <a class="reference external" href="https://github.com/LinuxForHealth/pyconnect#workspaces/linux-for-health-5ee2d7cecec5920ec43ae1cb/board?repos=318320762">ZenHub</a> to contribute!</p>
+<div class="section" id="what-is-linuxforhealth">
 <h1>What is LinuxForHealth?<a class="headerlink" href="#what-is-linuxforhealth" title="Permalink to this headline">¶</a></h1>
 <p>Welcome to the future of healthcare software development - the world’s first true HealthOS.</p>
 <p>LinuxForHealth (LFH) is a distributed processing network operating system which allows edge devices (IoT, workstations, app servers) to connect directly to health care transaction systems.  The processing model abstracts the need for intermediary third-party organizations, resulting in a developer-extensible trust protocol.</p>
@@ -455,11 +459,19 @@
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2020, IBM
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
  
 <div class="footer">
     <p>
@@ -477,7 +489,6 @@
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

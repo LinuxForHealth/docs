@@ -1,3 +1,5 @@
+Hello! Thanks for checking out LinuxForHealth Connect. We are in the process of migrating to Python, but feel free to review our existing Java code. The Python Connect repository can be found here. Take a look at the `ZenHub <https://github.com/LinuxForHealth/pyconnect#workspaces/linux-for-health-5ee2d7cecec5920ec43ae1cb/board?repos=318320762>`_ to contribute!
+
 What is LinuxForHealth?
 *************************
 Welcome to the future of healthcare software development - the world's first true HealthOS.
