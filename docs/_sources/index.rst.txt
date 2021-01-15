@@ -47,6 +47,7 @@ You can get started by visiting our `developer setup page <./developer-setup.htm
    :caption: Routes:
 
    routes/fhir-r4-rest.rst
+   routes/etl.rst
    routes/orthanc-post.rst
    routes/direct-storeandnotify.rst
 
