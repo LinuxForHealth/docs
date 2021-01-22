@@ -9,13 +9,17 @@ The set of FHIR resource topics consumed from Kafka is configurable as shown bel
 
 Details
 =======
-+-------------------------+-----------------------------------------------------------------------------------+
-| Attribute               | Value                                                                             |
-+=========================+===================================================================================+
-| Route Name              | "kafka:{{lfh.connect.nlp.fhir-topics}}?brokers={{lfh.connect.datastore.brokers}}" |
-+-------------------------+-----------------------------------------------------------------------------------+
-| Supported Operations(s) | Camel direct invocation                                                           |
-+-------------------------+-----------------------------------------------------------------------------------+
++-------------------------+----------------------------------------------------------------------------------+
+| Attribute               | Value                                                                            |
++=========================+==================================================================================+
+| Route Name              | kafka-fhir-to-text                                                               |
++-------------------------+----------------------------------------------------------------------------------+
+| Route URI               | kafka:{{lfh.connect.nlp.fhir-topics}}?brokers={{lfh.connect.datastore.brokers}}  |
++-------------------------+----------------------------------------------------------------------------------+
+| Example URI             | kafka:FHIR-R4_DOCUMENTREFERENCE,FHIR-R4_DIAGNOSTICREPORT?brokers=localhost:9094  |
++-------------------------+----------------------------------------------------------------------------------+
+| Supported Operations(s) | Kafka Consumer Route                                                             |
++-------------------------+----------------------------------------------------------------------------------+
 
 Configuration
 =============
@@ -38,4 +42,4 @@ This route extracts unstructured data from the following FHIR R4 resources and e
 
 Calling the Route
 =================
-This route need not be invoked by another. Simply enable the route, configure your desired nlp service and FHIR resources will be consumed from Kafka, unstructured data within will be extracted and sent to the direct:nlp route to be analyzed.
+This route need not be invoked by another. Simply enable the route, configure your desired nlp service and FHIR resources will be consumed from Kafka, then unstructured data within will be extracted and sent to the direct:nlp route to be analyzed.
