@@ -50,6 +50,8 @@ You can get started by visiting our `developer setup page <./developer-setup.htm
    routes/etl.rst
    routes/orthanc-post.rst
    routes/direct-storeandnotify.rst
+   routes/fhir-to-text.rst
+   routes/nlp.rst
 
 .. toctree::
    :maxdepth: 3
@@ -70,6 +72,3 @@ You can get started by visiting our `developer setup page <./developer-setup.htm
    deployment/compose.rst
    deployment/openshift.rst
    deployment/oci.rst
-
-
-
