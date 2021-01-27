@@ -33,24 +33,24 @@ Environment Variable::
 
     LFH_CONNECT_MESSAGING_SUBSCRIBE_HOSTS=nats-server:4222,5.6.7.8:4222
 
-External FHIR Servers
+External FHIR Server
 =====================
-The LinuxForHealth FHIR R4 route can optionally send FHIR resources to external FHIR servers.  To configure external FHIR servers, configure the lfh.connect.fhir-r4.externalservers property with a comma-delimited list of URIs.
+The LinuxForHealth FHIR R4 route can optionally send FHIR resources to an external FHIR server. To configure an external FHIR server, configure the lfh.connect.fhir-r4.externalserver property with the FHIR endpoint URI.
 
 +-------------------------+----------------------------------------+---------------------+
 |                         | Name                                   | Default Value       |
 +=========================+========================================+=====================+
-| Property                | lfh.connect.fhir-r4.externalservers    | None                |
+| Property                | lfh.connect.fhir-r4.externalserver    | None                 |
 +-------------------------+----------------------------------------+---------------------+
-| Environment Variable    | LFH_CONNECT_FHIR-R4_EXTERNALSERVERS    | None                |
+| Environment Variable    | LFH_CONNECT_FHIR-R4_EXTERNALSERVER    | None                 |
 +-------------------------+----------------------------------------+---------------------+
 
 Examples
 --------
 Property::
 
-    lfh.connect.fhir-r4.externalservers=http://localhost:9081/fhir-server/api/v4,http://localhost:9083/fhir-server/api/v4
+    lfh.connect.fhir-r4.externalserver=https://ID:PASSWORD@localhost:9443/fhir-server/api/v4
 
 Environment Variable::
 
-    LFH_CONNECT_FHIR-R4_EXTERNALSERVERS=http://localhost:9081/fhir-server/api/v4,http://localhost:9083/fhir-server/api/v4
+    LFH_CONNECT_FHIR-R4_EXTERNALSERVER=https://ID:PASSWORD@localhost:9443/fhir-server/api/v4
