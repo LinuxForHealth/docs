@@ -40,9 +40,9 @@ The LinuxForHealth FHIR R4 route can optionally send FHIR resources to an extern
 +-------------------------+----------------------------------------+---------------------+
 |                         | Name                                   | Default Value       |
 +=========================+========================================+=====================+
-| Property                | lfh.connect.fhir-r4.externalserver    | None                 |
+| Property                | lfh.connect.fhir-r4.externalserver     | None                |
 +-------------------------+----------------------------------------+---------------------+
-| Environment Variable    | LFH_CONNECT_FHIR-R4_EXTERNALSERVER    | None                 |
+| Environment Variable    | LFH_CONNECT_FHIR-R4_EXTERNALSERVER     | None                |
 +-------------------------+----------------------------------------+---------------------+
 
 Examples
