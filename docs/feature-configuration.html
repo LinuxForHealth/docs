@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Feature Configuration &mdash; Linux for Health  documentation</title>
   
@@ -17,12 +17,9 @@
 
   
   
-
   
   
     <link rel="canonical" href="https://linuxforhealth.github.io/docs/feature-configuration.html"/>
-  
-
   
 
   
@@ -35,6 +32,7 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -56,7 +54,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home"> Linux for Health
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> Linux for Health
           
 
           
@@ -101,7 +99,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#examples">Examples</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#external-fhir-servers">External FHIR Servers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#external-fhir-server">External FHIR Server</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id1">Examples</a></li>
 </ul>
 </li>
@@ -180,8 +178,6 @@
 
 
 
-
-
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -193,7 +189,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="_sources/feature-configuration.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -252,9 +248,9 @@
 </div>
 </div>
 </div>
-<div class="section" id="external-fhir-servers">
-<h2>External FHIR Servers<a class="headerlink" href="#external-fhir-servers" title="Permalink to this headline">¶</a></h2>
-<p>The LinuxForHealth FHIR R4 route can optionally send FHIR resources to external FHIR servers.  To configure external FHIR servers, configure the lfh.connect.fhir-r4.externalservers property with a comma-delimited list of URIs.</p>
+<div class="section" id="external-fhir-server">
+<h2>External FHIR Server<a class="headerlink" href="#external-fhir-server" title="Permalink to this headline">¶</a></h2>
+<p>The LinuxForHealth FHIR R4 route can optionally send FHIR resources to an external FHIR server. To configure an external FHIR server, configure the lfh.connect.fhir-r4.externalserver property with the FHIR endpoint URI.</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 29%" />
@@ -269,11 +265,11 @@
 </thead>
 <tbody>
 <tr class="row-even"><td><p>Property</p></td>
-<td><p>lfh.connect.fhir-r4.externalservers</p></td>
+<td><p>lfh.connect.fhir-r4.externalserver</p></td>
 <td><p>None</p></td>
 </tr>
 <tr class="row-odd"><td><p>Environment Variable</p></td>
-<td><p>LFH_CONNECT_FHIR-R4_EXTERNALSERVERS</p></td>
+<td><p>LFH_CONNECT_FHIR-R4_EXTERNALSERVER</p></td>
 <td><p>None</p></td>
 </tr>
 </tbody>
@@ -281,11 +277,11 @@
 <div class="section" id="id1">
 <h3>Examples<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <p>Property:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lfh</span><span class="o">.</span><span class="n">connect</span><span class="o">.</span><span class="n">fhir</span><span class="o">-</span><span class="n">r4</span><span class="o">.</span><span class="n">externalservers</span><span class="o">=</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">9081</span><span class="o">/</span><span class="n">fhir</span><span class="o">-</span><span class="n">server</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v4</span><span class="p">,</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">9083</span><span class="o">/</span><span class="n">fhir</span><span class="o">-</span><span class="n">server</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v4</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lfh</span><span class="o">.</span><span class="n">connect</span><span class="o">.</span><span class="n">fhir</span><span class="o">-</span><span class="n">r4</span><span class="o">.</span><span class="n">externalserver</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">ID</span><span class="p">:</span><span class="n">PASSWORD</span><span class="nd">@localhost</span><span class="p">:</span><span class="mi">9443</span><span class="o">/</span><span class="n">fhir</span><span class="o">-</span><span class="n">server</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v4</span>
 </pre></div>
 </div>
 <p>Environment Variable:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LFH_CONNECT_FHIR</span><span class="o">-</span><span class="n">R4_EXTERNALSERVERS</span><span class="o">=</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">9081</span><span class="o">/</span><span class="n">fhir</span><span class="o">-</span><span class="n">server</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v4</span><span class="p">,</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">9083</span><span class="o">/</span><span class="n">fhir</span><span class="o">-</span><span class="n">server</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v4</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LFH_CONNECT_FHIR</span><span class="o">-</span><span class="n">R4_EXTERNALSERVER</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">ID</span><span class="p">:</span><span class="n">PASSWORD</span><span class="nd">@localhost</span><span class="p">:</span><span class="mi">9443</span><span class="o">/</span><span class="n">fhir</span><span class="o">-</span><span class="n">server</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v4</span>
 </pre></div>
 </div>
 </div>
@@ -297,25 +293,32 @@
            
           </div>
           <footer>
+  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="message-structure.html" class="btn btn-neutral float-right" title="Message Structure" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="application-configuration.html" class="btn btn-neutral float-left" title="Application Configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+      
+        <a href="message-structure.html" class="btn btn-neutral float-right" title="Message Structure" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="application-configuration.html" class="btn btn-neutral float-left" title="Application Configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
     </div>
+  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2020, IBM.
+        
+        &copy; Copyright 2020, IBM
 
     </p>
   </div>
     
     
     
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>.
  
@@ -327,6 +330,7 @@
 
 
 </footer>
+
         </div>
       </div>
 
