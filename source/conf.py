@@ -20,7 +20,6 @@ import sphinx_rtd_theme
 
 version = 'master'
 project = 'Linux for Health'
-copyright = '2020, IBM'
 author = 'the Linux for Health team'
 
 
