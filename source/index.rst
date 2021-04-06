@@ -28,47 +28,28 @@ You can get started by visiting our `developer setup page <./developer-setup.htm
    :caption: Getting Started:
 
    developer-setup.rst
-   tutorials/firstroute.rst
-   application-configuration.rst
-   feature-configuration.rst
-   message-structure.rst
-
-.. toctree::
-   :maxdepth: 3
-   :caption: Tutorials:
-
    tutorials/quickstart.rst
-   tutorials/fhir-r4.rst
-   tutorials/hl7-v2.rst
-   tutorials/blue-button-20.rst
+   application-configuration.rst
+   message-structure.rst
 
 .. toctree::
    :maxdepth: 3
    :caption: Routes:
 
-   routes/fhir-r4-rest.rst
-   routes/etl.rst
-   routes/orthanc-post.rst
-   routes/direct-storeandnotify.rst
-   routes/fhir-to-text.rst
-   routes/nlp.rst
+   routes/fhir-r4.rst
 
 .. toctree::
    :maxdepth: 3
    :caption: Develop:
 
-   develop/extend.rst
-   develop/build.rst
-   develop/test.rst
-   develop/property-encryption.rst
-   develop/route-basics.rst
-   develop/configure-kong.rst
+   develop/develop.rst
+   develop/lpr.rst
 
 .. toctree::
    :maxdepth: 3
    :caption: Deployment:
 
-   deployment/container.rst
    deployment/compose.rst
-   deployment/openshift.rst
-   deployment/oci.rst
+   deployment/container.rst
+   deployment/kubernetes.rst
+

@@ -1,6 +1,10 @@
 Message Structure
 *****************
-This section describes the message structure used by LinuxForHealth and shows typical examples.  
+This section describes the message structure used by LinuxForHealth and shows typical examples.
+
+TBD - Update based on pyconnect
+
+
 
 Structure
 =========

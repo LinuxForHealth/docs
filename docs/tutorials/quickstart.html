@@ -1,34 +1,25 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Quick Start &mdash; Linux for Health  documentation</title>
   
 
   
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
-
   
-  
-
   
   
     <link rel="canonical" href="https://linuxforhealth.github.io/docs/tutorials/quickstart.html"/>
   
 
   
-
-  
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -39,10 +30,15 @@
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="FHIR R4" href="fhir-r4.html" />
-    <link rel="prev" title="Message Structure" href="../message-structure.html" /> 
+    <link rel="next" title="Application Configuration" href="../application-configuration.html" />
+    <link rel="prev" title="Developer Setup" href="../developer-setup.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -83,7 +79,6 @@
           
         </div>
 
-        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -92,15 +87,8 @@
             
             
               <p class="caption"><span class="caption-text">Getting Started:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../developer-setup.html">Developer Setup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="firstroute.html">Hello World</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../application-configuration.html">Application Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../feature-configuration.html">Feature Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../message-structure.html">Message Structure</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Tutorials:</span></p>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../developer-setup.html">Developer Setup</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Quick Start</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
@@ -112,40 +100,28 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="fhir-r4.html">FHIR R4</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hl7-v2.html">HL7-v2</a></li>
-<li class="toctree-l1"><a class="reference internal" href="blue-button-20.html">Blue Button 2.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../application-configuration.html">Application Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../message-structure.html">Message Structure</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Routes:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../routes/fhir-r4-rest.html">FHIR R4</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../routes/etl.html">ETL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../routes/orthanc-post.html">Orthanc DICOM</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../routes/direct-storeandnotify.html">Direct Store and Notify</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../routes/fhir-to-text.html">FHIR TO TEXT</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../routes/nlp.html">NLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../routes/fhir-r4.html">FHIR R4</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Develop:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../develop/extend.html">Developing for LinuxForHealth</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../develop/build.html">Building Your Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../develop/test.html">Testing Your Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../develop/property-encryption.html">Property Encryption</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../develop/route-basics.html">Developing Routes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../develop/configure-kong.html">Configuring Kong</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/develop.html">Developing for LinuxForHealth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/lpr.html">LinuxForHealth LPR</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Deployment:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../deployment/container.html">Container Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../deployment/compose.html">Docker Compose Support</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../deployment/openshift.html">OpenShift Container Platform</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../deployment/oci.html">Open Container Initiative (OCI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deployment/container.html">Container Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deployment/kubernetes.html">Kubernetes Support</a></li>
 </ul>
 
             
           
         </div>
-        
       </div>
     </nav>
 
@@ -180,20 +156,18 @@
 
 
 
-
-
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><a href="../index.html">Docs</a> &raquo;</li>
         
       <li>Quick Start</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="../_sources/tutorials/quickstart.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -209,6 +183,7 @@
             
   <div class="section" id="quick-start">
 <h1>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h1>
+<p>TBD - Rewrite for pyconnect</p>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <p>This tutorial shows you how to send a FHIR message to LinuxForHealth, using a simple FHIR patient resource and the curl command, which can be found on most operating systems.  You can optionally view your data via the Kafdrop Kafka console or NATS subscriber.</p>
@@ -268,27 +243,26 @@
            
           </div>
           <footer>
+  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="fhir-r4.html" class="btn btn-neutral float-right" title="FHIR R4" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="../message-structure.html" class="btn btn-neutral float-left" title="Message Structure" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+      
+        <a href="../application-configuration.html" class="btn btn-neutral float-right" title="Application Configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../developer-setup.html" class="btn btn-neutral float-left" title="Developer Setup" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
     </div>
+  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright .
+        &copy; Copyright 
 
     </p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
  
 <div class="footer">
     <p>
@@ -298,6 +272,7 @@
 
 
 </footer>
+
         </div>
       </div>
 
@@ -305,6 +280,7 @@
 
   </div>
   
+
 
   <script type="text/javascript">
       jQuery(function () {

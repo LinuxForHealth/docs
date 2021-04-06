@@ -1,6 +1,10 @@
 Quick Start
 ***********
 
+TBD - Rewrite for pyconnect
+
+
+
 Overview
 ========
 This tutorial shows you how to send a FHIR message to LinuxForHealth, using a simple FHIR patient resource and the curl command, which can be found on most operating systems.  You can optionally view your data via the Kafdrop Kafka console or NATS subscriber.

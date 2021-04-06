@@ -1,6 +1,8 @@
 Developing for LinuxForHealth
 *******************************
 
+TBD - Rewrite for pyconnect
+
 Overview
 ========
 This discussion should provide you with enough information to easily extend LinuxForHealth (LFH) to incorporate routes and components that can perfom new processing functions and connect to new services.  For example, you may want to extend LFH to provide a route that users can call to access a new service.  Or you may need to provide a route and a Apache Camel component to access your service.  You could also provide a new route to take data from one source, transform it if necessary, then send it to another service or data store.  The topics below will help you with these design decisions and provide implementation details.

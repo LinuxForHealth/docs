@@ -1,6 +1,10 @@
 Application Configuration
 *************************
 
+TBD - Update to discuss config.py
+
+
+
 Properties based configuration
 ==============================
 LinuxForHealth application settings are configured in an application.properties file stored within the project under *src/main/resources*.

@@ -1,34 +1,25 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>What is LinuxForHealth? &mdash; Linux for Health  documentation</title>
   
 
   
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
-
   
-  
-
   
   
     <link rel="canonical" href="https://linuxforhealth.github.io/docs/index.html"/>
   
 
   
-
-  
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -39,6 +30,11 @@
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Developer Setup" href="developer-setup.html" /> 
@@ -82,7 +78,6 @@
           
         </div>
 
-        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -93,48 +88,29 @@
               <p class="caption"><span class="caption-text">Getting Started:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="developer-setup.html">Developer Setup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorials/firstroute.html">Hello World</a></li>
-<li class="toctree-l1"><a class="reference internal" href="application-configuration.html">Application Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="feature-configuration.html">Feature Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="message-structure.html">Message Structure</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Tutorials:</span></p>
-<ul>
 <li class="toctree-l1"><a class="reference internal" href="tutorials/quickstart.html">Quick Start</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorials/fhir-r4.html">FHIR R4</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorials/hl7-v2.html">HL7-v2</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorials/blue-button-20.html">Blue Button 2.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="application-configuration.html">Application Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="message-structure.html">Message Structure</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Routes:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="routes/fhir-r4-rest.html">FHIR R4</a></li>
-<li class="toctree-l1"><a class="reference internal" href="routes/etl.html">ETL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="routes/orthanc-post.html">Orthanc DICOM</a></li>
-<li class="toctree-l1"><a class="reference internal" href="routes/direct-storeandnotify.html">Direct Store and Notify</a></li>
-<li class="toctree-l1"><a class="reference internal" href="routes/fhir-to-text.html">FHIR TO TEXT</a></li>
-<li class="toctree-l1"><a class="reference internal" href="routes/nlp.html">NLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="routes/fhir-r4.html">FHIR R4</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Develop:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="develop/extend.html">Developing for LinuxForHealth</a></li>
-<li class="toctree-l1"><a class="reference internal" href="develop/build.html">Building Your Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="develop/test.html">Testing Your Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="develop/property-encryption.html">Property Encryption</a></li>
-<li class="toctree-l1"><a class="reference internal" href="develop/route-basics.html">Developing Routes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="develop/configure-kong.html">Configuring Kong</a></li>
+<li class="toctree-l1"><a class="reference internal" href="develop/develop.html">Developing for LinuxForHealth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="develop/lpr.html">LinuxForHealth LPR</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Deployment:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="deployment/container.html">Container Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="deployment/compose.html">Docker Compose Support</a></li>
-<li class="toctree-l1"><a class="reference internal" href="deployment/openshift.html">OpenShift Container Platform</a></li>
-<li class="toctree-l1"><a class="reference internal" href="deployment/oci.html">Open Container Initiative (OCI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deployment/container.html">Container Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deployment/kubernetes.html">Kubernetes Support</a></li>
 </ul>
 
             
           
         </div>
-        
       </div>
     </nav>
 
@@ -169,20 +145,18 @@
 
 
 
-
-
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
+      <li><a href="#">Docs</a> &raquo;</li>
         
       <li>What is LinuxForHealth?</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -216,52 +190,7 @@
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Getting Started:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="developer-setup.html">Developer Setup</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="developer-setup.html#overview">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="developer-setup.html#prerequisites">Prerequisites</a></li>
-<li class="toctree-l2"><a class="reference internal" href="developer-setup.html#getting-started">Getting Started</a></li>
-<li class="toctree-l2"><a class="reference internal" href="developer-setup.html#the-development-environment">The Development Environment</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="tutorials/firstroute.html">Hello World</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tutorials/firstroute.html#overview">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorials/firstroute.html#prerequisites">Prerequisites</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorials/firstroute.html#steps">Steps</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="tutorials/firstroute.html#hello-world-route">Hello World Route</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tutorials/firstroute.html#modify-the-route-and-rebuild">Modify the Route and Rebuild</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="application-configuration.html">Application Configuration</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="application-configuration.html#properties-based-configuration">Properties based configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="application-configuration.html#linuxforhealth-bean-properties">LinuxForHealth Bean Properties</a></li>
-<li class="toctree-l2"><a class="reference internal" href="application-configuration.html#linuxforhealth-route-properties">LinuxForHealth Route Properties</a></li>
-<li class="toctree-l2"><a class="reference internal" href="application-configuration.html#property-evaluation">Property Evaluation</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="feature-configuration.html">Feature Configuration</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="feature-configuration.html#nats-subscribers">NATS Subscribers</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="feature-configuration.html#examples">Examples</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="feature-configuration.html#external-fhir-server">External FHIR Server</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="feature-configuration.html#id1">Examples</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="message-structure.html">Message Structure</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="message-structure.html#structure">Structure</a></li>
-<li class="toctree-l2"><a class="reference internal" href="message-structure.html#description">Description</a></li>
-<li class="toctree-l2"><a class="reference internal" href="message-structure.html#examples">Examples</a></li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Tutorials:</span></p>
-<ul>
+<li class="toctree-l1"><a class="reference internal" href="developer-setup.html">Developer Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorials/quickstart.html">Quick Start</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="tutorials/quickstart.html#overview">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorials/quickstart.html#prerequisites">Prerequisites</a></li>
@@ -273,40 +202,17 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="tutorials/fhir-r4.html">FHIR R4</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tutorials/fhir-r4.html#overview">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorials/fhir-r4.html#prerequisites">Prerequisites</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorials/fhir-r4.html#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="tutorials/fhir-r4.html#send-a-fhir-r4-message-to-linuxforhealth">Send a FHIR R4 Message to LinuxForHealth</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tutorials/fhir-r4.html#view-the-nats-notification-optional">View the NATS Notification (Optional)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tutorials/fhir-r4.html#view-the-message-in-the-kafdrop-console-optional">View the Message in the Kafdrop Console (Optional)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="application-configuration.html">Application Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="application-configuration.html#properties-based-configuration">Properties based configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application-configuration.html#linuxforhealth-bean-properties">LinuxForHealth Bean Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application-configuration.html#linuxforhealth-route-properties">LinuxForHealth Route Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application-configuration.html#property-evaluation">Property Evaluation</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="tutorials/hl7-v2.html">HL7-v2</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tutorials/hl7-v2.html#overview">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorials/hl7-v2.html#prerequisites">Prerequisites</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorials/hl7-v2.html#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="tutorials/hl7-v2.html#install-the-hl7-client">Install the HL7 Client</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tutorials/hl7-v2.html#send-a-message-to-linuxforhealth">Send a Message to LinuxForHealth</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tutorials/hl7-v2.html#view-the-nats-notification-optional">View the NATS Notification (Optional)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tutorials/hl7-v2.html#view-the-message-in-the-kafdrop-console-optional">View the Message in the Kafdrop Console (Optional)</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="tutorials/blue-button-20.html">Blue Button 2.0</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tutorials/blue-button-20.html#overview">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorials/blue-button-20.html#prerequisites">Prerequisites</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorials/blue-button-20.html#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="tutorials/blue-button-20.html#authorize-linuxforhealth-to-use-the-blue-button-2-0-api">Authorize LinuxForHealth to use the Blue Button 2.0 API</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tutorials/blue-button-20.html#configure-postman-for-blue-button-access">Configure Postman for Blue Button Access</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tutorials/blue-button-20.html#send-a-blue-button-query-to-linuxforhealth">Send a Blue Button Query to LinuxForHealth</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tutorials/blue-button-20.html#view-the-nats-notification-optional">View the NATS Notification (Optional)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tutorials/blue-button-20.html#view-the-message-in-the-kafdrop-console-optional">View the Message in the Kafdrop Console (Optional)</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="message-structure.html">Message Structure</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="message-structure.html#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="message-structure.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="message-structure.html#examples">Examples</a></li>
 </ul>
 </li>
 </ul>
@@ -314,73 +220,19 @@
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Routes:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="routes/fhir-r4-rest.html">FHIR R4</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="routes/fhir-r4-rest.html#purpose">Purpose</a></li>
-<li class="toctree-l2"><a class="reference internal" href="routes/fhir-r4-rest.html#details">Details</a></li>
-<li class="toctree-l2"><a class="reference internal" href="routes/fhir-r4-rest.html#configuration">Configuration</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="routes/fhir-r4-rest.html#path-parameters">Path Parameters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="routes/fhir-r4-rest.html#query-parameters">Query Parameters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="routes/fhir-r4-rest.html#required-headers">Required Headers</a></li>
-<li class="toctree-l3"><a class="reference internal" href="routes/fhir-r4-rest.html#configuration-properties">Configuration Properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="routes/fhir-r4.html">FHIR R4</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="routes/fhir-r4.html#purpose">Purpose</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routes/fhir-r4.html#details">Details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routes/fhir-r4.html#configuration">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="routes/fhir-r4.html#path-parameters">Path Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="routes/fhir-r4.html#query-parameters">Query Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="routes/fhir-r4.html#required-headers">Required Headers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="routes/fhir-r4.html#configuration-properties">Configuration Properties</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="routes/fhir-r4-rest.html#calling-the-route">Calling the Route</a></li>
-<li class="toctree-l2"><a class="reference internal" href="routes/fhir-r4-rest.html#results">Results</a></li>
-<li class="toctree-l2"><a class="reference internal" href="routes/fhir-r4-rest.html#see-also">See Also</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="routes/etl.html">ETL</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="routes/etl.html#purpose">Purpose</a></li>
-<li class="toctree-l2"><a class="reference internal" href="routes/etl.html#details">Details</a></li>
-<li class="toctree-l2"><a class="reference internal" href="routes/etl.html#configuration">Configuration</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="routes/etl.html#required-headers">Required Headers</a></li>
-<li class="toctree-l3"><a class="reference internal" href="routes/etl.html#configuration-properties">Configuration Properties</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="routes/etl.html#calling-the-route">Calling the Route</a></li>
-<li class="toctree-l2"><a class="reference internal" href="routes/etl.html#results">Results</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="routes/orthanc-post.html">Orthanc DICOM</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="routes/orthanc-post.html#purpose">Purpose</a></li>
-<li class="toctree-l2"><a class="reference internal" href="routes/orthanc-post.html#details">Details</a></li>
-<li class="toctree-l2"><a class="reference internal" href="routes/orthanc-post.html#configuration">Configuration</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="routes/orthanc-post.html#path-parameters">Path Parameters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="routes/orthanc-post.html#query-parameters">Query Parameters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="routes/orthanc-post.html#required-headers">Required Headers</a></li>
-<li class="toctree-l3"><a class="reference internal" href="routes/orthanc-post.html#configuration-properties">Configuration Properties</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="routes/orthanc-post.html#calling-the-route">Calling the Route</a></li>
-<li class="toctree-l2"><a class="reference internal" href="routes/orthanc-post.html#results">Results</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="routes/direct-storeandnotify.html">Direct Store and Notify</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="routes/direct-storeandnotify.html#purpose">Purpose</a></li>
-<li class="toctree-l2"><a class="reference internal" href="routes/direct-storeandnotify.html#details">Details</a></li>
-<li class="toctree-l2"><a class="reference internal" href="routes/direct-storeandnotify.html#configuration">Configuration</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="routes/direct-storeandnotify.html#exchange-state">Exchange State</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="routes/direct-storeandnotify.html#calling-the-route">Calling the Route</a></li>
-<li class="toctree-l2"><a class="reference internal" href="routes/direct-storeandnotify.html#results">Results</a></li>
-<li class="toctree-l2"><a class="reference internal" href="routes/direct-storeandnotify.html#see-also">See Also</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="routes/fhir-to-text.html">FHIR TO TEXT</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="routes/fhir-to-text.html#purpose">Purpose</a></li>
-<li class="toctree-l2"><a class="reference internal" href="routes/fhir-to-text.html#details">Details</a></li>
-<li class="toctree-l2"><a class="reference internal" href="routes/fhir-to-text.html#configuration">Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="routes/fhir-to-text.html#fhir-resource-text-extraction">FHIR Resource Text Extraction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="routes/fhir-to-text.html#calling-the-route">Calling the Route</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="routes/nlp.html">NLP</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="routes/nlp.html#purpose">Purpose</a></li>
-<li class="toctree-l2"><a class="reference internal" href="routes/nlp.html#details">Details</a></li>
-<li class="toctree-l2"><a class="reference internal" href="routes/nlp.html#configuration">Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="routes/nlp.html#calling-the-route">Calling the Route</a></li>
-<li class="toctree-l2"><a class="reference internal" href="routes/nlp.html#results">Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routes/fhir-r4.html#calling-the-route">Calling the Route</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routes/fhir-r4.html#results">Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routes/fhir-r4.html#see-also">See Also</a></li>
 </ul>
 </li>
 </ul>
@@ -388,89 +240,37 @@
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Develop:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="develop/extend.html">Developing for LinuxForHealth</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="develop/extend.html#overview">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="develop/extend.html#linuxforhealth-constructs">LinuxForHealth Constructs</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="develop/extend.html#routes">Routes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="develop/extend.html#components">Components</a></li>
-<li class="toctree-l3"><a class="reference internal" href="develop/extend.html#exchanges">Exchanges</a></li>
-<li class="toctree-l3"><a class="reference internal" href="develop/extend.html#processors">Processors</a></li>
-<li class="toctree-l3"><a class="reference internal" href="develop/extend.html#api-gateway">API Gateway</a></li>
+<li class="toctree-l1"><a class="reference internal" href="develop/develop.html">Developing for LinuxForHealth</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="develop/develop.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="develop/develop.html#linuxforhealth-constructs">LinuxForHealth Constructs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="develop/develop.html#routes">Routes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="develop/develop.html#components">Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="develop/develop.html#exchanges">Exchanges</a></li>
+<li class="toctree-l3"><a class="reference internal" href="develop/develop.html#processors">Processors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="develop/develop.html#api-gateway">API Gateway</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="develop/extend.html#development-steps">Development Steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="develop/develop.html#development-steps">Development Steps</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="develop/build.html">Building Your Code</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="develop/build.html#overview">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="develop/build.html#dependencies">Dependencies</a></li>
-<li class="toctree-l2"><a class="reference internal" href="develop/build.html#build">Build</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="develop/test.html">Testing Your Code</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="develop/test.html#overview">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="develop/test.html#unit-tests">Unit Tests</a></li>
-<li class="toctree-l2"><a class="reference internal" href="develop/test.html#test-services">Test Services</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="develop/property-encryption.html">Property Encryption</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="develop/property-encryption.html#overview">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="develop/property-encryption.html#encryption-using-jasypt">Encryption Using Jasypt</a></li>
-<li class="toctree-l2"><a class="reference internal" href="develop/property-encryption.html#using-encrypted-properties">Using Encrypted Properties</a></li>
-<li class="toctree-l2"><a class="reference internal" href="develop/property-encryption.html#changing-the-master-password">Changing the Master Password</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="develop/route-basics.html">Developing Routes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="develop/route-basics.html#overview">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="develop/route-basics.html#route-basics">Route Basics</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="develop/route-basics.html#route-id-and-route-producer-id">ROUTE_ID and ROUTE_PRODUCER_ID</a></li>
-<li class="toctree-l3"><a class="reference internal" href="develop/route-basics.html#getroutepropertynamespace">getRoutePropertyNamespace()</a></li>
-<li class="toctree-l3"><a class="reference internal" href="develop/route-basics.html#buildroute-string-routepropertynamespace">buildRoute(String routePropertyNamespace)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="develop/route-basics.html#route">Route</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="develop/configure-kong.html">Configuring Kong</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="develop/configure-kong.html#overview">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="develop/configure-kong.html#kong-configuration">Kong Configuration</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="develop/configure-kong.html#create-a-new-kong-service-if-needed">1. Create a new Kong service (if needed)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="develop/configure-kong.html#create-a-new-kong-route">2. Create a new Kong route</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="develop/lpr.html">LinuxForHealth LPR</a></li>
 </ul>
 </div>
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Deployment:</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="deployment/compose.html">Docker Compose Support</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="deployment/compose.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deployment/compose.html#starting-the-lfh-compose-stack">Starting the LFH Compose Stack</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="deployment/container.html">Container Support</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="deployment/container.html#overview">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="deployment/container.html#lfh-base-image">LFH Base Image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="deployment/container.html#building-images">Building Images</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="deployment/compose.html">Docker Compose Support</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="deployment/compose.html#overview">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="deployment/compose.html#starting-the-lfh-compose-stack">Starting the LFH Compose Stack</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="deployment/openshift.html">OpenShift Container Platform</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="deployment/openshift.html#overview">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="deployment/openshift.html#general-requirements">General Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="deployment/openshift.html#where-to-start">Where to Start</a></li>
-<li class="toctree-l2"><a class="reference internal" href="deployment/openshift.html#lfh-openshift-quickstart">LFH OpenShift QuickStart</a></li>
-<li class="toctree-l2"><a class="reference internal" href="deployment/openshift.html#code-ready-containers-setup">Code Ready Containers Setup</a></li>
-<li class="toctree-l2"><a class="reference internal" href="deployment/openshift.html#azure-red-hat-openshift-setup">Azure Red Hat OpenShift Setup</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="deployment/oci.html">Open Container Initiative (OCI)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="deployment/oci.html#overview">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="deployment/oci.html#oci-command-parameter">OCI Command Parameter</a></li>
-<li class="toctree-l2"><a class="reference internal" href="deployment/oci.html#managing-oci-services">Managing OCI services</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="deployment/kubernetes.html">Kubernetes Support</a></li>
 </ul>
 </div>
 </div>
@@ -480,26 +280,24 @@
            
           </div>
           <footer>
+  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="developer-setup.html" class="btn btn-neutral float-right" title="Developer Setup" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+      
+        <a href="developer-setup.html" class="btn btn-neutral float-right" title="Developer Setup" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
     </div>
+  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright .
+        &copy; Copyright 
 
     </p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
  
 <div class="footer">
     <p>
@@ -509,6 +307,7 @@
 
 
 </footer>
+
         </div>
       </div>
 
@@ -516,6 +315,7 @@
 
   </div>
   
+
 
   <script type="text/javascript">
       jQuery(function () {
