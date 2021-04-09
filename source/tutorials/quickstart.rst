@@ -3,7 +3,7 @@ QuickStart
 
 Overview
 ========
-This tutorial shows you how to send a FHIR message to LinuxForHealth, using a mock FHIR patient resource and the LinuxForHealth Open API UI.
+This tutorial shows you how to send a FHIR message to LinuxForHealth connect, using a mock FHIR patient resource and the connect Open API UI.
 
 Prerequisites
 =============
@@ -11,7 +11,7 @@ Prerequisites
 
 Tutorial Steps
 ==============
-Once you have completed the prerequisites, follow these steps to send a message to LinuxForHealth.
+Once you have completed the prerequisites, follow these steps to send a message to LinuxForHealth connect.
 
 Send a Message to LinuxForHealth
 --------------------------------
@@ -89,6 +89,6 @@ The **data** field contains a base64-encoded version of the original data you po
 
 Next Steps
 ----------
-Experiment further with the LinuxForHealth APIs, providing your own data.  There is also a :code:`GET /status` endpoint that requires no parameters and returns the status of the LinuxForHealth services.
+Experiment further with the LinuxForHealth connect APIs, providing your own data.  There is also a :code:`GET /status` endpoint that requires no parameters and returns the status of the LinuxForHealth services.
 
-Think about extending LinuxForHealth to add new APIs to transform and connect healthcare data.  What APIs can you provide?  Open a PR and contribute!
+Think about extending LinuxForHealth connect to add new APIs to transform and connect healthcare data.  What APIs can you provide?  Open a PR and contribute!
