@@ -1,71 +1,33 @@
 FHIR R4
 *******
 
-TBD - Rewrite for pyconnect
-
 Purpose
-========
-The LinuxForHealth (LFH) FHIR R4 route allows you to send FHIR R4 data to LFH, store that data as part of the LFH Longitudinal Patient Record (LPR) and notify listeners of the stored data via NATS for downstream integration.
+=======
+The LinuxForHealth connect FHIR R4 route allows you to post FHIR R4 data to connect and store that data as part of the LinuxForHealth Longitudinal Patient Record (LPR).  You can also optionally configure LinuxForHealth connect to send your FHIR R4 data to an external FHIR server.
 
 Details
 =======
-+-------------------------+---------------------------------------------------------------------+
-| Attribute               | Value                                                               |
-+=========================+=====================================================================+
-| Route Name              | fhir-r4                                                             |
-+-------------------------+---------------------------------------------------------------------+
-| URL Property            | lfh.connect.fhir-r4.uri                                             |
-+-------------------------+---------------------------------------------------------------------+
-| Route URL               | https://{host}:8443/fhir/r4/{resource}                              |
-+-------------------------+---------------------------------------------------------------------+
-| Example URL             | https://127.0.0.1:8443/fhir/r4/Patient                              |
-+-------------------------+---------------------------------------------------------------------+
-| Protocol                | REST                                                                |
-+-------------------------+---------------------------------------------------------------------+
-| Supported Operation(s)  | POST                                                                |
-+-------------------------+---------------------------------------------------------------------+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 0
 
-Configuration
-=============
-
-Path Parameters
----------------
-+--------------------+---------------+----------------------------------------------------------+
-| Parameter          | Type          | Description                                              |
-+====================+===============+==========================================================+
-| resource           | ResourceType  | The type of the FHIR R4 JSON resource.                   |
-+--------------------+---------------+----------------------------------------------------------+
-
-Query Parameters
-----------------
-None
-
-Required Headers
-----------------
-+--------------------+---------------------------+
-| Header             | Value                     |
-+====================+===========================+
-| Content-Type       | application/json          |
-+--------------------+---------------------------+
-| Content-Length     | size of JSON in bytes     |
-+--------------------+---------------------------+
-
-Configuration Properties
-------------------------
-None
+   * - Route URL
+     - https://{host}:5000/fhir/{resource_type}
+   * - Example URL
+     - https://127.0.0.1:5000/fhir/Patient
+   * - Path Parameter
+     - resource_type - The FHIR R4 type of the resource
 
 Calling the Route
 =================
-Using REST (e.g. via curl or Postman), send a FHIR resource to the route URL as the body of a POST message.  See the LinuxForHealth Examples postman collection in your connect repo::
+Navigate to the LinuxForHealth connect Open API UI at https://127.0.0.1:5000/docs and select :code:`POST /fhir/{resource_type}` to post a FHIR resource as discussed in `QuickStart <../tutorials/quickstart.rst>`_.  You may also use the tool of your choice, such as curl or Postman, to send data to LinuxForHealth connect.
 
-    connect/src/test/resources/messages/postman/LinuxForHealth Examples.postman_collection.json 
+Optional Config
+===============
+In addition to storing data in the LinuxForHealth LPR, the FHIR R4 route can be configured to send the FHIR resource to an external FHIR server.  To configure this feature, add your external FHIR server URL to config.py as follows and restart LinuxForHealth connect::
 
-for an example of calling this route with a Patient resource.
+    fhir_r4_externalserver: str = 'https://user:password@localhost:9443/fhir-server/api/v4'
 
 Results
 =======
-Results are stored in Kafka, viewable via the `Kafdrop viewer <http://localhost:9000/>`_ at the topic, partition and offset shown in the LinuxForHealth JSON message you receive upon submitting the FHIR resource.
-
-See Also
-========
-* `FHIR R4 Tutorial <../tutorials/fhir-r4.html>`_
+The FHIR resource you supplied is stored in Kafka as part of the LinuxForHealth LPR, viewable via the Open API UI :code:`GET /data` API.  Please see `QuickStart <../tutorials/quickstart.rst>`_ for instructions.
