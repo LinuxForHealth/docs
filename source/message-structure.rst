@@ -1,9 +1,6 @@
 Message Structure
 *****************
-This section describes the message structure used by LinuxForHealth and shows typical examples.
-
-TBD - Update based on pyconnect
-
+This section describes the message structure used by LinuxForHealth connect, and shows typical examples.
 
 
 Structure
@@ -11,93 +8,94 @@ Structure
 The following JSON message structure is used throughout LinuxForHealth::
 
     {
-        'meta': {
-            'routeId': string,
-            'uuid': string,
-            'routeUrl': string,
-            'dataFormat': string,
-            'messageType': string,
-            'timestamp': long,
-            'dataStoreUri': string,
-            'status': string, optional
-            'dataRecordLocation': string[], optional
-        }, 
-        'data': object, optional
-    }
+        uuid: uuid,
+        lfh_id: string,
+        creation_date: datetime,
+        store_date: datetime,
+        consuming_endpoint_url: string,
+        data: string,
+        data_format: string,
+        status: string,
+        data_record_location: string,
+        target_endpoint_url: string,
+        elapsed_storage_time: float,
+        transmit_date: datetime,
+        elapsed_transmit_time: float,
+        elapsed_total_time: float
+    }    
 
 Description
 ===========
-The message consists of two top-level keys: 'meta' for describing information about a transaction and 'data' to contain the transaction payload.  The table below further describes each key.
+
+The LinuxForHealth connect message format captures metadata pertaining to the data transaction. Data is received via an endpoint, as noted by the consuming_endpoint_url, and then persisted to the connect database. Data is transmitted to an external service if a transmission URL is configured.
 
 +--------------------+-----------+---------------------------------------------------------------------+
 | Key                | Type      | Description                                                         |
 +====================+===========+=====================================================================+
-| routeId            | string    | The identifier assigned to the route during route construction.     |
-+--------------------+-----------+---------------------------------------------------------------------+
 | uuid               | string    | The message uuid assigned during route invocation.                  |
 +--------------------+-----------+---------------------------------------------------------------------+
-| routeUrl           | string    | The url for the route associated with the message.                  |
+| lfh_id             | string    | The LinuxForHealth connect node identifier.                         |
 +--------------------+-----------+---------------------------------------------------------------------+
-| dataFormat         | string    | The format of the data sent as the message payload.                 |
+| creation_date      | datetime  | The message creation timestamp.                                     |
 +--------------------+-----------+---------------------------------------------------------------------+
-| messageType        | string    | The data format's message type.                                     |
+| store_date         | datetime  | The message storage timestamp.                                      |
 +--------------------+-----------+---------------------------------------------------------------------+
-| timestamp          | long      | The timestamp in seconds since the epoch.                           |
+| consuming_endpoint_url | string | The LinuxForHealth connect endpoint which received the message.    |
 +--------------------+-----------+---------------------------------------------------------------------+
-| dataStoreUri       | string    | The uri of the data store.                                          |
+| data               | string    | Data content received as a base-64 encoded string.                  |
 +--------------------+-----------+---------------------------------------------------------------------+
-| status             | string    | Optional result success indicator: "success" | "error".             |
+| status             | string    | Indicates if the message was persisted. Either "success" or "error".|
 +--------------------+-----------+---------------------------------------------------------------------+
-| dataRecordLocation | string[]  | Optional location(s) of data stored successfully in the data store. |
+| data_record_location | string  | The data record's URI within the LinuxForHealth connect datastore.  |
 +--------------------+-----------+---------------------------------------------------------------------+
-| data               | object    | Optional data payload: byte[] or error message.                     |
+| target_endpoint_url | string   | The external URL where the data is transmitted.                     |
++--------------------+-----------+---------------------------------------------------------------------+
+| elapsed_storage_time | float   | Elapsed data storage time in seconds.                               |
++--------------------+-----------+---------------------------------------------------------------------+
+| transmit_date      | datetime  | The data transmission timestamp.                                    |
++--------------------+-----------+---------------------------------------------------------------------+
+| elapsed_transmit_time | datetime | Elapsed external transmission time in seconds.                    |
++--------------------+-----------+---------------------------------------------------------------------+
+| elapsed_total_time | datetime  | Elapsed total transmission time including storage and transmission  |
 +--------------------+-----------+---------------------------------------------------------------------+
 
 Examples
 ========
-Successful route processing notification::
+
+The LinuxForHealth message for a FHIR-R4 Patient resource which is persisted to the connect db, but not transmitted externally::
 
     {
-       "meta": {
-            "routeId": "fhir-r4-rest",
-            "uuid": "ab2385c6-ebb8-4ddd-a4b2-fc37c61761d4",
-            "routeUrl": "http://0.0.0.0:8080/fhir/r4",
-            "dataFormat": "FHIR-R4",
-            "messageType": "PATIENT",
-            "timestamp": 1592574430,
-            "dataStoreUri": "kafka:FHIR-R4_PATIENT?brokers=localhost:9092",
-            "dataRecordLocation": ["FHIR-R4_PATIENT-0@0"],
-            "status": "success"
-        }
+        "uuid": "290487e0-2864-445b-acc7-907c227ba2d3",
+        "lfh_id": "3b935d2b1441",
+        "creation_date": "2021-04-09T20:34:36+00:00",
+        "store_date": "2021-04-09T20:34:36+00:00",
+        "consuming_endpoint_url": "/fhir/Patient",
+        "data": "eyJpZCI6ICIwMDEiLCAiYWN0aXZlIjogdHJ1ZSwgInJlc291cmNlVHlwZSI6ICJQYXRpZW50In0=",
+        "data_format": "FHIR-R4_PATIENT",
+        "status": "success",
+        "data_record_location": "FHIR-R4_PATIENT:0:0",
+        "target_endpoint_url": null,
+        "elapsed_storage_time": 1.64379,
+        "transmit_date": null,
+        "elapsed_transmit_time": null,
+        "elapsed_total_time": 1.680011
     }
 
-Notification of error caused by unavailable storage service::
+A LinuxForHealth message that is both persisted and transmitted to an external service::
 
     {
-        "meta": {
-            "routeId": "fhir-r4-rest",
-            "uuid": "ab2385c6-ebb8-4ddd-a4b2-fc37c61761d4",
-            "routeUrl": "http://0.0.0.0:8080/fhir/r4",
-            "dataFormat": "FHIR-R4",
-            "messageType": "PATIENT",
-            "timestamp": 1592574430,
-            "dataStoreUri": "kafka:FHIR-R4_PATIENT?brokers=localhost:9092",
-            "status": "error"
-        },
-        "data": "Topic FHIR-R4_PATIENT not present in metadata after 60000 ms."
-    }
-
-Internal message sent to the storage service::
-
-    {
-        "meta": {
-            "routeId": "hl7-v2-mllp",
-            "uuid": "ab2385c6-ebb8-4ddd-a4b2-fc37c61761d4",
-            "routeUrl": "netty:tcp://localhost:2575?sync=true&encoders=#hl7encoder&decoders=#hl7decoder",
-            "dataFormat": "HL7-V2",
-            "messageType": "ADT",
-            "timestamp": 1592574430,
-            "dataStoreUri": "kafka:HL7-V2_ADT?brokers=localhost:9092"
-        },
-        "data": <base64 encoded message>
+        "uuid": "290487e0-2864-445b-acc7-907c227ba2d3",
+        "lfh_id": "3b935d2b1441",
+        "creation_date": "2021-04-09T20:34:36+00:00",
+        "store_date": "2021-04-09T20:34:36+00:00",
+        "consuming_endpoint_url": "/fhir/Patient",
+        "data": "eyJpZCI6ICIwMDEiLCAiYWN0aXZlIjogdHJ1ZSwgInJlc291cmNlVHlwZSI6ICJQYXRpZW50In0=",
+        "data_format": "FHIR-R4_PATIENT",
+        "status": "success",
+        "data_record_location": "FHIR-R4_PATIENT:0:0",
+        "target_endpoint_url": null,
+        "elapsed_storage_time": 1.64379,
+        "transmit_date": "2021-04-09T20:34:36+00:00",
+        "elapsed_transmit_time": 1.64379,
+        "elapsed_total_time": 3.28758
     }
