@@ -1,74 +1,78 @@
 Docker Compose Support
 **********************
 
-TBD - Rewrite for pyconnect
-
 Overview
 ========
 
-LinuxForHealth (LFH) Connect provides a standard Docker Compose configuration with support for file overrides. The compose configurations are included in the project's `compose directory <https://github.com/LinuxForHealth/connect/tree/master/container-support/compose>`_ . A management script, `start-stack.sh`, is used to launch the LFH application stack for a requested profile.
+LinuxForHealth (LFH) pyconnect provides an out-of-the-box Docker Compose configuration with support for `profiles <https://docs.docker.com/compose/profiles/>`_ that enable deploying specific support services in addition to pyconnect. We will go through the supported profiles and usage below.
 
 Starting the LFH Compose Stack
 ==============================
 
 The syntax to launch the LFH compose stack is::
 
-    # note that the script is "sourced" into the current shell
-    . ./start-stack.sh [profile name]
-    # alternate command: source start-stack.sh [profile name]    
+    docker-compose --profile [profile name] up -d
+    # Multiple profiles can be specified in this fashion:
+    docker-compose --profile [profile name] --profile [profile-name] up -d
 
-Where [profile name] is the name of a supported LFH profile. Supported profiles include: dev, server, and pi. Additional profiles will be added as needed to support external systems for new LFH integration use-cases. The script is executed within the current shell to ensure that Docker Compose's COMPOSE_FILE variable is set correctly.
+Where [profile name] is the name of a supported LFH profile. Supported profiles include:: deployment, ipfs and fhir. Additional profiles will be added as needed to support external systems for new LFH integration use-cases.
+
+**NOTE::** All ``docker-compose`` commands always deploy support services Kafka, Zookeeper & NATS by default.
 
 +--------------------+----------------------------------------------------------------------------------------------------------------------------+
 | Profile Name       | Profile Description                                                                                                        |
 +====================+============================================================================================================================+
-| dev                | For local development use. Runs LFH supporting services with ports mapped to localhost.                                    |
+| deployment         | For bundled deployment of ``pyconnect`` along with the support services with ports mapped to localhost.                    |
 +--------------------+----------------------------------------------------------------------------------------------------------------------------+
-| integration        | Supports integration testing with external systems. Includes LFH connect application, supporting and external services.    |
+| ipfs               | Deploys IPFS nodes and an IPFS cluster for managing pinsets.                                                               |
 +--------------------+----------------------------------------------------------------------------------------------------------------------------+
-| server             | For deployment environments or integrated testing. Includes the LFH connect application and supporting services.           |
-+--------------------+----------------------------------------------------------------------------------------------------------------------------+
-| pi                 | Similar to the server stack. Optimized for arm64/Raspberry Pi usage.                                                       |
+| fhir               | Deploys the IBM Fhir Server.                                                                                               |
 +--------------------+----------------------------------------------------------------------------------------------------------------------------+
 
-The dev profile is the "default" profile and is started if start-stack.sh is executed without arguments. The dev profile is intended for local development use::
 
-    # navigate to the compose configuration directory
-    cd container-support/compose
-    # execute the compose start script within the current shell
-    . ./start-stack.sh
-    # review logs
-    docker-compose logs -f
-    # return to the project root directory
-    cd ../../
-    # launch LFH
-    ./gradlew run
+Not specifying a profile name would lead to deploying Kafka, Zookeeper & NATS which are the default support services for pyconnect::
 
-The integration profile supports a full LFH stack with external systems (e.g. FHIR R4 Servers). The integration profile is launched using::
+    # navigate to the ``pyconnect`` project directory
+    cd ./pyconnect
+    # run the docker-compose command with no profile specified
+    docker-compose up -d
+    # Kafka, Zookeeper & NATS should be deployed
+Deploying only the support services can come in handy in use-cases where pyconnect is run external of the compose stack.
 
-    # navigate to the compose configuration directory
-    cd container-support/compose
-    # execute the compose start script within the current shell
-    . ./start-stack.sh integration
 
-The "server" and "pi" profiles support a full LFH stack, which includes the LFH container. The example below launches the server profile::
+The ``deployment`` profile supports spinning up pyconnect application along with default support services::
 
-    # navigate to the compose configuration directory
-    cd container-support/compose
-    # execute the compose start script within the current shell
-    . ./start-stack.sh server
+    # navigate to the ``pyconnect`` project directory
+    cd ./pyconnect
+    # run the docker-compose command with ``deployment`` profile specified
+    docker-compose --profile deployment up -d
+    # pyconnect, Kafka, Zookeeper & NATS should now be deployed
+Using the ``deployment`` profile would be the out-of-the-box solution for most users of the compose stack
 
-When running the "pi" profile, you may need to increase the value of COMPOSE_HTTP_TIMEOUT::
 
-    # set the value of COMPOSE_HTTP_TIMEOUT
-    export COMPOSE_HTTP_TIMEOUT=180
-    # execute the compose start script within the current shell
-    . ./start-stack.sh pi
+The ``ipfs`` profile deploys a 3 node IPFS peer and IPFS cluster in addition to the default support services. Using the ``deployment`` profile in addition to ``ipfs`` profile would ensure that pyconnect, Kafka, Zookeeper, NATS and IPFS are deployed simultaneously. Note, the modular nature of docker-compose profiles would allow users to only deploy ``ipfs`` as an additional support service to an already ``deployment`` profile stack that is up and running.
 
-Use standard docker-compose commands to interact with the stack and it's services. Unset the `COMPOSE_FILE` variable following a `docker-compose stop` or `docker-compose down -v`::
+    # navigate to the ``pyconnect`` project directory
+    cd ./pyconnect
+    # run the docker-compose command with ``deployment`` and ``ipfs`` profile specified
+    docker-compose --profile deployment --profile ipfs up -d
+    # pyconnect, Kafka, Zookeeper, NATS & IPFS should now be deployed
+
+The ``fhir`` profile allows deploying the `IBM FHIR Server <https://ibm.github.io/FHIR/>`_ in addition to other support services::
+
+    # navigate to the ``pyconnect`` project directory
+    cd ./pyconnect
+    # run the docker-compose command with ``fhir`` profile specified
+    docker-compose --profile fhir up -d
+    # chain together deployment & fhir profiles
+    docker-compose ---profile deployment --profile fhir up -d
+
+Use standard docker-compose commands to interact with the stack and it's services. Stop containers leaving them intact for starting them back up again or tear down down deployments using profiles similarly as for when deploying them initially, as shown in the examples above::
 
     # stops all containers leaving them intact
     docker-compose stop # containers may be removed with docker-compose down -v
-    # unset the COMPOSE_FILE variable
-    unset COMPOSE_FILE
+    # tear down deployment of pyconnect, Kafka, Zookeeper & NATS
+    docker-compose --profile deployment down
+    # tear down ipfs & fhir server (together or separately)
+    docker-compose --profile ipfs --profile fhir down
     
