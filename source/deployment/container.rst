@@ -10,9 +10,9 @@ Images for LinuxForHealth applications and services are available under the `Lin
 * arm64
 * s390x/Z
 
-Alpine base images are utilized wherever possible to enable small memory footprints (Kafka & Zookeeper), specially for arm64 arch-type.
+Alpine base images are utilized wherever possible to enable small memory footprints (Kafka & Zookeeper), specially to enable the arm64 arch-type.
 
-LFH images run within any standard container runtime and orchestration environment. Additionally, all LFH images are supported on Red Hat's Open Shift Container Platform (OCP) and adhere to OCP best practices.
+LFH images run within any standard container runtime and orchestration environment. The pyconnect project provides example yaml's to deploy the application and support services on a kubernetes cluster.
 
 LFH provides management scripts to support the following runtimes:
 
