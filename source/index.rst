@@ -10,6 +10,10 @@ The LinuxForHealth architecture builds on successive levels of industry standard
    :width: 600
    :alt: LinuxForHealth
 
+.. image:: images/LinuxForHealthLPRProcessing.png
+   :width: 600
+   :alt: LinuxForHealth
+
 This architecture facilitates these key LinuxForHealth features:
 
 * An open source interoperable health stack to enable developers to build further platforms and applications
