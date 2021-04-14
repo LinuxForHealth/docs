@@ -34,7 +34,7 @@ The standard workflow process provides default implementations for "general" wor
 
 The table below lists each standard workflow step and notes which steps are "data format specific".
 
-.. image:: images/LinuxForHealthWorkflow.png
+.. image:: ../images/LinuxForHealthWorkflow.png
    :width: 600
    :alt: LinuxForHealth
 
