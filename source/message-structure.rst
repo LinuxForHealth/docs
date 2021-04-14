@@ -29,35 +29,35 @@ Description
 
 The LinuxForHealth connect message format captures metadata pertaining to the data transaction. Data is received via an endpoint, as noted by the consuming_endpoint_url, and then persisted to the connect database. Data is transmitted to an external service if a transmission URL is configured.
 
-+--------------------+-----------+---------------------------------------------------------------------+
-| Key                | Type      | Description                                                         |
-+====================+===========+=====================================================================+
-| uuid               | string    | The message uuid assigned during route invocation.                  |
-+--------------------+-----------+---------------------------------------------------------------------+
-| lfh_id             | string    | The LinuxForHealth connect node identifier.                         |
-+--------------------+-----------+---------------------------------------------------------------------+
-| creation_date      | datetime  | The message creation timestamp.                                     |
-+--------------------+-----------+---------------------------------------------------------------------+
-| store_date         | datetime  | The message storage timestamp.                                      |
-+--------------------+-----------+---------------------------------------------------------------------+
-| consuming_endpoint_url | string | The LinuxForHealth connect endpoint which received the message.    |
-+--------------------+-----------+---------------------------------------------------------------------+
-| data               | string    | Data content received as a base-64 encoded string.                  |
-+--------------------+-----------+---------------------------------------------------------------------+
-| status             | string    | Indicates if the message was persisted. Either "success" or "error".|
-+--------------------+-----------+---------------------------------------------------------------------+
-| data_record_location | string  | The data record's URI within the LinuxForHealth connect datastore.  |
-+--------------------+-----------+---------------------------------------------------------------------+
-| target_endpoint_url | string   | The external URL where the data is transmitted.                     |
-+--------------------+-----------+---------------------------------------------------------------------+
-| elapsed_storage_time | float   | Elapsed data storage time in seconds.                               |
-+--------------------+-----------+---------------------------------------------------------------------+
-| transmit_date      | datetime  | The data transmission timestamp.                                    |
-+--------------------+-----------+---------------------------------------------------------------------+
-| elapsed_transmit_time | datetime | Elapsed external transmission time in seconds.                    |
-+--------------------+-----------+---------------------------------------------------------------------+
-| elapsed_total_time | datetime  | Elapsed total transmission time including storage and transmission  |
-+--------------------+-----------+---------------------------------------------------------------------+
++------------------------+-----------+---------------------------------------------------------------------+
+| Key                    | Type      | Description                                                         |
++========================+===========+=====================================================================+
+| uuid                   | string    | The message uuid assigned during route invocation.                  |
++------------------------+-----------+---------------------------------------------------------------------+
+| lfh_id                 | string    | The LinuxForHealth connect node identifier.                         |
++------------------------+-----------+---------------------------------------------------------------------+
+| creation_date          | datetime  | The message creation timestamp.                                     |
++------------------------+-----------+---------------------------------------------------------------------+
+| store_date             | datetime  | The message storage timestamp.                                      |
++------------------------+-----------+---------------------------------------------------------------------+
+| consuming_endpoint_url | string    | The LinuxForHealth connect endpoint which received the message.     |
++------------------------+-----------+---------------------------------------------------------------------+
+| data                   | string    | Data content received as a base-64 encoded string.                  |
++------------------------+-----------+---------------------------------------------------------------------+
+| status                 | string    | Indicates if the message was persisted. Either "success" or "error".|
++------------------------+-----------+---------------------------------------------------------------------+
+| data_record_location   | string    | The data record's URI within the LinuxForHealth connect datastore.  |
++------------------------+-----------+---------------------------------------------------------------------+
+| target_endpoint_url    | string    | The external URL where the data is transmitted.                     |
++------------------------+-----------+---------------------------------------------------------------------+
+| elapsed_storage_time   | float     | Elapsed data storage time in seconds.                               |
++------------------------+-----------+---------------------------------------------------------------------+
+| transmit_date          | datetime  | The data transmission timestamp.                                    |
++------------------------+-----------+---------------------------------------------------------------------+
+| elapsed_transmit_time  | datetime  | Elapsed external transmission time in seconds.                      |
++------------------------+-----------+---------------------------------------------------------------------+
+| elapsed_total_time     | datetime  | Elapsed total transmission time including storage and transmission  |
++------------------------+-----------+---------------------------------------------------------------------+
 
 Examples
 ========

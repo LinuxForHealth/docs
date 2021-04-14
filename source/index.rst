@@ -47,7 +47,6 @@ You can get started by visiting our `developer setup page <./developer-setup.htm
    :caption: Develop:
 
    develop/develop.rst
-   develop/lpr.rst
 
 .. toctree::
    :maxdepth: 3
