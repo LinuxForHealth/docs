@@ -1,6 +1,6 @@
 What is LinuxForHealth?
 *************************
-Welcome to the future of healthcare software development - the world's first true HealthOS.
+Welcome to the future of healthcare software development - the world's first true enabled HealthOS.
 
 LinuxForHealth is a distributed processing network operating system which allows mainframes, cloud and edge devices to be seamlessly connected directly to healthcare transaction systems. The processing model abstracts the need for intermediary third-party organizations, resulting in a developer-extensible trust protocol.
 
@@ -8,8 +8,8 @@ The LinuxForHealth architecture builds on successive levels of industry standard
 
 .. image:: images/LinuxForHealthArch.png
    :width: 600
-   :alt: LinuxForHealth
-
+   :alt: LinuxForHealth  
+  
 .. image:: images/LinuxForHealthLPRProcessing.png
    :width: 600
    :alt: LinuxForHealth

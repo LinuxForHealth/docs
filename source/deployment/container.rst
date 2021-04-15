@@ -10,9 +10,9 @@ Images for LinuxForHealth applications and services are available under the `Lin
 * arm64
 * s390x/Z
 
-Alpine base images are utilized wherever possible to enable small memory footprints (Kafka & Zookeeper), specially to enable the arm64 arch-type.
+Alpine base images are utilized wherever possible to enable small memory footprints (Kafka & Zookeeper), especially to enable the arm64 arch-type.
 
-LFH images run within any standard container runtime and orchestration environment. The pyconnect project provides example yaml's to deploy the application and support services on a kubernetes cluster.
+LFH images run within any standard container runtime and orchestration environment. The connect project provides example yaml files to deploy the application and support services on a kubernetes cluster.
 
 LFH provides management scripts to support the following runtimes:
 
@@ -22,7 +22,7 @@ LFH provides management scripts to support the following runtimes:
 LFH Base Image
 ==============
 
-The LFH base image is used as the base image for all LFH images when possible. The LFH base image in turn is based off of the Red Hat minimal UBI image. The LFH base image provides the following:
+The LFH base image is used as the base image for all LFH images when possible. The LFH base image provides the following:
 
 * a standard non-privileged application user, lfh
 * a root directory, /opt/lfh, for applications and services

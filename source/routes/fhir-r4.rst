@@ -15,8 +15,8 @@ Details
      - https://{host}:5000/fhir/{resource_type}
    * - Example URL
      - https://127.0.0.1:5000/fhir/Patient
-   * - Path Parameter
-     - resource_type - The FHIR R4 type of the resource
+   * - Path Parameter: resource_type
+     - The FHIR R4 type of the resource
 
 Calling the Route
 =================

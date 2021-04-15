@@ -17,7 +17,7 @@ LinuxForHealth Connect consumes inbound data messages using **routes**. Routes a
 LinuxForHealth Routes
 =====================
 
-LinuxForHealth routes process data messages using a standard workflow process. Routes are implemented as `FastAPI <https://fastapi.tiangolo.com>`_ endpoint and can support data exchanges using HTTP, REST, and Websockets.
+LinuxForHealth routes process data messages using a standard workflow process. Routes are implemented as `FastAPI <https://fastapi.tiangolo.com>`_ endpoints and can support data exchanges using HTTP, REST, and Websockets.
 
 FastAPI endpoints typically use `Pydantic <https://pydantic-docs.helpmanual.io>`_ models to support API requests and responses. LinuxForHealth routes prefer 3rd party libraries to support standard healthcare formats, since the message types within these formats are not generally encapsulated witihn a single model.
 
@@ -32,7 +32,7 @@ Standard Workflow Implementation
 
 The standard workflow process provides default implementations for "general" workflow steps which are not specific to the inbound data format. For example, persist is a "general" workflow step which saves inbound data to the LinuxForHealth data store. The validate step is workflow specific since it requires parsing the inbound data format.
 
-The table below lists each standard workflow step and notes which steps are "data format specific".
+The table below lists each standard workflow step and notes which steps are "data format-specific".
 
 .. image:: ../images/LinuxForHealthWorkflow.png
    :width: 600
@@ -69,13 +69,13 @@ Complete the following steps to add a new route:
 
 #. Create a new workflow:
     #. Add a new workflow module to the `main <https://github.com/LinuxForHealth/pyconnect/tree/main/pyconnect/workflows>`_ and `test <https://github.com/LinuxForHealth/pyconnect/tree/main/tests/workflows>`_ packages.
-    #. Create a new class in the "main" workflow module to support the data format. Provide a validate, and optionally a transform method implementation to support the format.
+    #. Create a new class in your new workflow module to support the data format. Provide a validate and, optionally, a transform method implementation to support the format.
     #. Ensure that test cases for the workflow cover the methods implemented in the new workflow class.
 #. Create new routes:
     #. Add a new route module to the `main <https://github.com/LinuxForHealth/pyconnect/tree/main/pyconnect/routes>`_ and `test <https://github.com/LinuxForHealth/pyconnect/tree/main/tests/routes>`_ packages.
-    #. Determine which HTTP Verbs are required to support the data format and it's messaging interface.
+    #. Determine which HTTP verbs are required to support the data format and it's messaging interface.
     #. Complete test cases for the new routes. The test cases should validate the status codes and response body returned by the routes. Note that the test cases will fail until the routes are implemented.
-    #. Create a route for each HTTP Verb. Determine if the route will use Pydantic based request and response models, or defer to a 3rd party library.
+    #. Create a route for each HTTP verb. Determine if the route will use Pydantic based request and response models, or defer to a 3rd party library.
 #. Register the routes within the LinuxForHealth `api module <https://github.com/LinuxForHealth/pyconnect/blob/main/pyconnect/routes/api.py>`_
 
 When the routes are complete, the endpoints will be available in the `OpenAPI UI <https://localhost:5000/docs>`_

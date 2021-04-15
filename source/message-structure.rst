@@ -74,28 +74,9 @@ The LinuxForHealth message for a FHIR-R4 Patient resource which is persisted to 
         "data_format": "FHIR-R4_PATIENT",
         "status": "success",
         "data_record_location": "FHIR-R4_PATIENT:0:0",
-        "target_endpoint_url": null,
+        "target_endpoint_url": "https://fhiruser:change-password@localhost:9443/fhir-server/api/v4/Patient",
         "elapsed_storage_time": 1.64379,
         "transmit_date": null,
         "elapsed_transmit_time": null,
         "elapsed_total_time": 1.680011
-    }
-
-A LinuxForHealth message that is both persisted and transmitted to an external service::
-
-    {
-        "uuid": "290487e0-2864-445b-acc7-907c227ba2d3",
-        "lfh_id": "3b935d2b1441",
-        "creation_date": "2021-04-09T20:34:36+00:00",
-        "store_date": "2021-04-09T20:34:36+00:00",
-        "consuming_endpoint_url": "/fhir/Patient",
-        "data": "eyJpZCI6ICIwMDEiLCAiYWN0aXZlIjogdHJ1ZSwgInJlc291cmNlVHlwZSI6ICJQYXRpZW50In0=",
-        "data_format": "FHIR-R4_PATIENT",
-        "status": "success",
-        "data_record_location": "FHIR-R4_PATIENT:0:0",
-        "target_endpoint_url": null,
-        "elapsed_storage_time": 1.64379,
-        "transmit_date": "2021-04-09T20:34:36+00:00",
-        "elapsed_transmit_time": 1.64379,
-        "elapsed_total_time": 3.28758
     }
