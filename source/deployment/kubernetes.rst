@@ -3,15 +3,11 @@ Kubernetes Support
 
 Overview
 ========
-<<<<<<< HEAD
-Enables deployment of connect and supporting services on a Kubernetes Cluster
-=======
 We provide example kubernetes yaml files that enable the deployment of connect and support services (Kafka, Zookeeper, NATS & IBM FHIR Server) on a Kubernetes Cluster. Advanced users can tweak these yaml files to allow for customizations and achieving granular control on deployments.
->>>>>>> origin/pyconnect
 
 Requirements
 ------------
-Deploying LFH pyconnect on a Kubernetes cluster requires the following::
+Deploying LFH connect on a Kubernetes cluster requires the following::
 
 1. A working k8s cluster - check `Minikube <https://minikube.sigs.k8s.io/>`_ & Docker Desktop Kubernetes support.
 2. `mkcert <https://github.com/FiloSottile/mkcert>`_ for generating local trusted certificates.
@@ -27,7 +23,7 @@ Generate trusted local certs for connect and supporting services for your kubern
 -------------------------------
 Create Configmaps for connect
 -------------------------------
-The following configmaps are required to be created for connect (as defined in `pyconnect-deployment.yml <https://github.com/LinuxForHealth/pyconnect/blob/main/k8s-deployment/pyconnect/pyconnect-deployment.yml>`_)::
+The following configmaps are required to be created for connect (as defined in `connect-deployment.yml <https://github.com/LinuxForHealth/connect/blob/main/k8s-deployment/connect/connect-deployment.yml>`_)::
 
     kubectl -n <namespace-for-config-map> create configmap lfh-pemstore --from-file=lfh.pem
     
@@ -39,26 +35,27 @@ The following configmaps are required to be created for connect (as defined in `
     
     kubectl -n <namespace-for-config-map> create configmap nats-keystore --from-file=nats-server.key
     
-Please see example `here <https://github.com/LinuxForHealth/pyconnect/blob/main/k8s-deployment/pyconnect/pyconnect-deployment.yml>`_.
+Please see example `here <https://github.com/LinuxForHealth/connect/blob/main/k8s-deployment/connect/connect-deployment.yml>`_.
 
 -------------------------
 Make NATS certs available
 -------------------------
-Certs for NATS should be made available on the node(s) hosting the deployment for NATS-JS as a `hostPath <https://kubernetes.io/docs/concepts/storage/volumes/#hostpath>`_ volume mount. The directory path on the host node(s) should be referenced `here <https://github.com/LinuxForHealth/pyconnect/blob/main/k8s-deployment/nats-js/nats-with-jetstream.yml>`_ under ``volumes``.
+NATS certificates are mounted as a `hostPath <https://kubernetes.io/docs/concepts/storage/volumes/#hostpath>`_ volume. That would require making the NATS certs available on each node of the kubernetes cluster in the location specified in the yaml file for ``nats-js``.
+The directory path on the host node(s) should be referenced `here <https://github.com/LinuxForHealth/connect/blob/main/k8s-deployment/nats-js/nats-with-jetstream.yml>`_ under the ``volumes`` label.
 
-Deploying Connect & Support Services
+Deploying connect & Support Services
 --------------------------------------
 Example deployment yaml's are provided for reference in each of the sub-folders within ``connect/k8s-deployment`` directory.
 
-- ``nats-js/`` - Provides an out-of-the-box deployment for NATS Server and Jetstream – mount ``/path/to/nats-server-certs/`` directory with the `hostPath` directive - check `nats-with-jetstream.yml <https://github.com/LinuxForHealth/pyconnect/blob/main/k8s-deployment/nats-js/nats-with-jetstream.yml>`_ for example.
+- ``nats-js/`` - Provides an out-of-the-box deployment for NATS Server and Jetstream – mount ``/path/to/nats-server-certs/`` directory with the `hostPath` directive - check `nats-with-jetstream.yml <https://github.com/LinuxForHealth/connect/blob/main/k8s-deployment/nats-js/nats-with-jetstream.yml>`_ for example.
 - ``kafka-zk/`` - Provides an out-of-the-box deployment for Kafka and ZooKeeper - exposes ``localhost:9094`` as the broker.
 - ``ibm-fhir/`` - Fires up the IBM FHIR Server; `documentation here <https://ibm.github.io/FHIR/guides/FHIRServerUsersGuide/>`_.
-- ``connect/`` - Deploys the ``connect`` application to work with NATS and Kafka in the same namespace - create configmaps as described above and reference them in the deployment yaml files before connect can be deployed.
+- ``connect/`` - Deploys the ``connect`` application to work with NATS and Kafka in the same namespace - create configmaps as described above and reference them in the deployment yaml's before connect can be deployed.
 
 -----------------------------
 Helper scripts for deployment
 -----------------------------
-Although the deployment yaml files in the sub-directories can be altered for achieving granular control, we provide helper shell scripts to deploy ``connect`` and required supporting services for users who are not familiar with tuning k8s deployments. All helper scripts require the ``-n`` (namespace) option.
+Although the deployment yaml's in the sub-directories can be altered for achieving granular control, we provide helper shell scripts to deploy ``connect`` and required supporting services for users who are not familiar with tuning k8s deployments. All helper scripts require the ``-n`` (namespace) option.
 
 Here are helpful descriptions for each script:
 
