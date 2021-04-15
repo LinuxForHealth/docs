@@ -15,9 +15,15 @@ The syntax to launch the LFH compose stack is::
     # Multiple profiles can be specified in this fashion:
     docker-compose --profile [profile name] --profile [profile-name] up -d
 
-Where [profile name] is the name of a supported LFH profile. Supported profiles include:: deployment, ipfs and fhir. Additional profiles will be added as needed to support external systems for new LFH integration use-cases.
+Where [profile name] is the name of a supported LFH profile.
 
-**NOTE::** All ``docker-compose`` commands always deploy support services Kafka, Zookeeper & NATS by default.
+Supported profiles include:
+
+- deployment
+- ipfs
+- fhir
+
+Additional profiles will be added as needed to support external systems for new LFH integration use-cases.
 
 +--------------------+----------------------------------------------------------------------------------------------------------------------------+
 | Profile Name       | Profile Description                                                                                                        |
@@ -29,6 +35,7 @@ Where [profile name] is the name of a supported LFH profile. Supported profiles 
 | fhir               | Deploys the IBM Fhir Server.                                                                                               |
 +--------------------+----------------------------------------------------------------------------------------------------------------------------+
 
+**NOTE::** All ``docker-compose`` commands always deploy support services Kafka, Zookeeper & NATS by default.
 
 Not specifying a profile name would lead to deploying Kafka, Zookeeper & NATS which are the default support services for pyconnect::
 
@@ -50,7 +57,7 @@ The ``deployment`` profile supports spinning up pyconnect application along with
 Using the ``deployment`` profile would be the out-of-the-box solution for most users of the compose stack
 
 
-The ``ipfs`` profile deploys a 3 node IPFS peer and IPFS cluster in addition to the default support services. Using the ``deployment`` profile in addition to ``ipfs`` profile would ensure that pyconnect, Kafka, Zookeeper, NATS and IPFS are deployed simultaneously. Note, the modular nature of docker-compose profiles would allow users to only deploy ``ipfs`` as an additional support service to an already ``deployment`` profile stack that is up and running.
+The ``ipfs`` profile deploys a 3 node IPFS peer and IPFS cluster in addition to the default support services. Using the ``deployment`` profile in addition to ``ipfs`` profile would ensure that pyconnect, Kafka, Zookeeper, NATS and IPFS are deployed simultaneously. Note, the modular nature of docker-compose profiles would allow users to only deploy ``ipfs`` as an additional support service to an already ``deployment`` profile stack that is up and running::
 
     # navigate to the ``pyconnect`` project directory
     cd ./pyconnect
