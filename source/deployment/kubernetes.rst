@@ -3,7 +3,11 @@ Kubernetes Support
 
 Overview
 ========
+<<<<<<< HEAD
 Enables deployment of connect and supporting services on a Kubernetes Cluster
+=======
+We provide example kubernetes yaml files that enable the deployment of connect and support services (Kafka, Zookeeper, NATS & IBM FHIR Server) on a Kubernetes Cluster. Advanced users can tweak these yaml files to allow for customizations and achieving granular control on deployments.
+>>>>>>> origin/pyconnect
 
 Requirements
 ------------
