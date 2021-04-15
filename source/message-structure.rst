@@ -121,4 +121,4 @@ You may also define an external server to which LinuxForHealth will send message
        "elapsed_total_time": null
     }
 
-When an external server is defined, the return value is the actual response from that external server (such as an HTTP 201 - created respose). In this case, the LinuxForHealth message UUID is included in the **LinuxForHealth-MessageId** header of the response.
+When an external server is defined, the return value is the actual response from that external server (such as an HTTP 201 - created response). In this case, the LinuxForHealth message UUID is included in the **LinuxForHealth-MessageId** header of the response.
