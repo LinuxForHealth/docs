@@ -23,7 +23,7 @@ LinuxForHealth has captured the attention of industry leaders.  While the projec
 
 You can get started by visiting our `developer setup page <./developer-setup.html>`_ and visit us on `Github <https://github.com/linuxforhealth/connect>`_.  We hope you join our journey in creating LinuxForHealth, the world's first true HealthOS.
 
-LinuxForHealth Eco-system
+LinuxForHealth Ecosystem
 =========================
 
 .. image:: images/LinuxForHealth-Ecosystem.png
