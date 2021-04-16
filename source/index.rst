@@ -32,8 +32,8 @@ LinuxForHealth Eco-system
 
 
 
-LinuxForHealth Longitudinal Patient Record (LPR) Processing
-===========================================================
+LinuxForHealth Longitudinal Patient Record (LPR)
+================================================
 
 .. image:: images/LinuxForHealthLPRProcessing.png
    :width: 600
