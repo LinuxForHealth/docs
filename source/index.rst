@@ -9,10 +9,6 @@ The LinuxForHealth architecture builds on successive levels of industry standard
 .. image:: images/LinuxForHealthArch.png
    :width: 600
    :alt: LinuxForHealth  
-  
-.. image:: images/LinuxForHealthLPRProcessing.png
-   :width: 600
-   :alt: LinuxForHealth
 
 This architecture facilitates these key LinuxForHealth features:
 
@@ -26,6 +22,42 @@ This architecture facilitates these key LinuxForHealth features:
 LinuxForHealth has captured the attention of industry leaders.  While the project is in its nascent stages, leading companies are already committing significant features, including APIs and build recipes that support LFH deployment from embedded device, fully distributed agent-based, multi-tenant multi cloud and LinuxONE distributions.
 
 You can get started by visiting our `developer setup page <./developer-setup.html>`_ and visit us on `Github <https://github.com/linuxforhealth/connect>`_.  We hope you join our journey in creating LinuxForHealth, the world's first true HealthOS.
+
+LinuxForHealth Eco-system
+=========================
+
+.. image:: images/LinuxForHealth-Ecosystem.png
+   :width: 600
+   :alt: LinuxForHealth
+
+   
+
+LinuxForHealth Longitudinal Patient Record (LPR)
+================================================
+
+.. image:: images/LinuxForHealthLPRProcessing.png
+   :width: 600
+   :alt: LinuxForHealth
+
+
+
+LinuxForHealth Connect
+======================
+
+.. image:: images/LinuxForHealth-Connect.png
+   :width: 600
+   :alt: LinuxForHealth
+
+   
+
+LinuxForHealth Workflow
+=======================
+
+.. image:: images/LinuxForHealthWorkflow.png
+   :width: 600
+   :alt: LinuxForHealth
+   
+
 
 .. toctree::
    :maxdepth: 3
