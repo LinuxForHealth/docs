@@ -30,10 +30,10 @@ LinuxForHealth Eco-system
    :width: 600
    :alt: LinuxForHealth
 
-   
 
-LinuxForHealth Longitudinal Patient Record (LPR)
-================================================
+
+LinuxForHealth Longitudinal Patient Record (LPR) Pipeline
+=========================================================
 
 .. image:: images/LinuxForHealthLPRProcessing.png
    :width: 600
