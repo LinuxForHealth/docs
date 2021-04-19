@@ -30,6 +30,14 @@ LinuxForHealth Ecosystem
    :width: 600
    :alt: LinuxForHealth
 
+Applications that use the LFH OS are able to leverage its distributed ledger and healthcare transaction processing capabilities. This offers the following advantages for LFH applications:   
+
+* High Availability and Redundancy with no single point of failure
+* Scales horizontally
+* Indexed LPR updated in real-time
+* Abstracts health messaging interfaces
+* Compatible with existing Health IT infrastructure
+
 
 
 LinuxForHealth Longitudinal Patient Record (LPR)
@@ -39,6 +47,11 @@ LinuxForHealth Longitudinal Patient Record (LPR)
    :width: 600
    :alt: LinuxForHealth
 
+Each LPR node consists of a robust data processing pipeline which ingests a variety of transactional healthcare data (X-12, C-CDA, DICOM, FHIR, HL7v2), runs it through a duplicate detection processor, and transforms the data into FHIR R4 for persistence and maintenance of the centralized LPR.
+
+* Data ingestion
+* Data transformation to standardized LFH message format
+* Persist into LPR
 
 
 LinuxForHealth Connect
@@ -48,6 +61,11 @@ LinuxForHealth Connect
    :width: 600
    :alt: LinuxForHealth
 
+Each LFH node is comprised of the connect application, the ledger and data persistence for the LPR.
+* `connect` application
+* Ledger
+* LPR (Longitudinal Patient Record) datastore 
+
    
 
 LinuxForHealth Workflow
@@ -56,7 +74,33 @@ LinuxForHealth Workflow
 .. image:: images/LinuxForHealthWorkflow.png
    :width: 600
    :alt: LinuxForHealth
-   
+
+LFH workflow consists of distinct steps for interfacing applications - these are described below:
+
+Parse
+-----
+LinuxForHealth connect receives an inbound data message.
+
+
+Validate
+--------
+Validates data for completeness and accuracy. This is key to ensuring that data persisted within the OS is consistent for use by downstream steps in the workflow.
+
+Transform
+---------
+Optional step used for applying data transformations and updates to validated data.
+
+Persist
+-------
+Data is persisted into the LPR store. Metadata is also created and provided to ledger related services, including search.
+
+Transmit
+--------
+Optional step which transmits the validated data message to an external system.
+
+Synchronize
+-----------
+Broadcasts the data message to the LinuxForHealth network, applying the message to the other nodes.
 
 
 .. toctree::
