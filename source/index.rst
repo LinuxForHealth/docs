@@ -92,7 +92,7 @@ Optional step used for applying data transformations and updates to validated da
 
 Persist
 -------
-Data is persisted into the LPR store. Metadata is also created and provided to ledger related services, including search.
+Data is persisted into the LPR store. Metadata is also created and provided to ledger storage and search services.
 
 Transmit
 --------
