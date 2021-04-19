@@ -1,6 +1,6 @@
-## Welcome to Linux for Health
+## Welcome to LinuxforHealth
 
-Linux for Health for healthcare data interoperability
+LinuxforHealth for healthcare data interoperability
 
 Powered by [Apache Camel](https://camel.apache.org/)
 
