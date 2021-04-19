@@ -13,7 +13,7 @@ The LinuxForHealth architecture builds on successive levels of industry standard
 This architecture facilitates these key LinuxForHealth features:
 
 * An open source interoperable health stack to enable developers to build further platforms and applications
-* Connectivity across embedded devices, multi-cloud and LinuxONE
+* Connectivity across mainframes, embedded devices, multi-cloud and LinuxONE
 * Data acquisition, integration, routing
 * Real-time and batch processing
 * Abstraction of the details of health standards, enabling extensibility, modularity, scalability
