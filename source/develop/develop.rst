@@ -56,7 +56,7 @@ The table below lists each standard workflow step and notes which steps are "dat
 | Error              | N                          | Provides a general error handler if an unhandled exception occurs during the workflow process.  |
 +--------------------+----------------------------+-------------------------------------------------------------------------------------------------+
 
-The LinuxForHealth standard workflow is implemented within the  `CoreWorkflow class <https://github.com/LinuxForHealth/pyconnect/blob/main/pyconnect/workflows/core.py#L54>`_. As noted above, the CoreWorkflow class provides implementations for data persistence, transmission, synchronization, and error handling. The CoreWorkflow is extended, or sub-classed, to support specific data formats such as ASC X12, C-CDA, DICOM, FHIR R4, and HL7. The `FHIR R4 Workflow class <https://github.com/LinuxForHealth/pyconnect/blob/main/pyconnect/workflows/fhir.py#L14>`_ is an example of a format specific implementation.
+The LinuxForHealth standard workflow is implemented within the  `CoreWorkflow class <https://github.com/LinuxForHealth/connect/blob/main/connect/workflows/core.py#L54>`_. As noted above, the CoreWorkflow class provides implementations for data persistence, transmission, synchronization, and error handling. The CoreWorkflow is extended, or sub-classed, to support specific data formats such as ASC X12, C-CDA, DICOM, FHIR R4, and HL7. The `FHIR R4 Workflow class <https://github.com/LinuxForHealth/connect/blob/main/connect/workflows/fhir.py#L14>`_ is an example of a format specific implementation.
 
 Implementing A New Route
 ========================
@@ -68,14 +68,14 @@ Data formats are best supported by external libraries which support the breadth 
 Complete the following steps to add a new route:
 
 #. Create a new workflow:
-    #. Add a new workflow module to the `main <https://github.com/LinuxForHealth/pyconnect/tree/main/pyconnect/workflows>`_ and `test <https://github.com/LinuxForHealth/pyconnect/tree/main/tests/workflows>`_ packages.
+    #. Add a new workflow module to the `main <https://github.com/LinuxForHealth/connect/tree/main/connect/workflows>`_ and `test <https://github.com/LinuxForHealth/connect/tree/main/tests/workflows>`_ packages.
     #. Create a new class in your new workflow module to support the data format. Provide a validate and, optionally, a transform method implementation to support the format.
     #. Ensure that test cases for the workflow cover the methods implemented in the new workflow class.
 #. Create new routes:
-    #. Add a new route module to the `main <https://github.com/LinuxForHealth/pyconnect/tree/main/pyconnect/routes>`_ and `test <https://github.com/LinuxForHealth/pyconnect/tree/main/tests/routes>`_ packages.
+    #. Add a new route module to the `main <https://github.com/LinuxForHealth/connect/tree/main/connect/routes>`_ and `test <https://github.com/LinuxForHealth/connect/tree/main/tests/routes>`_ packages.
     #. Determine which HTTP verbs are required to support the data format and it's messaging interface.
     #. Complete test cases for the new routes. The test cases should validate the status codes and response body returned by the routes. Note that the test cases will fail until the routes are implemented.
     #. Create a route for each HTTP verb. Determine if the route will use Pydantic based request and response models, or defer to a 3rd party library.
-#. Register the routes within the LinuxForHealth `api module <https://github.com/LinuxForHealth/pyconnect/blob/main/pyconnect/routes/api.py>`_
+#. Register the routes within the LinuxForHealth `api module <https://github.com/LinuxForHealth/connect/blob/main/connect/routes/api.py>`_
 
 When the routes are complete, the endpoints will be available in the `OpenAPI UI <https://localhost:5000/docs>`_

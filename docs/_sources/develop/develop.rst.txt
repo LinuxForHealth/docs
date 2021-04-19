@@ -1,49 +1,81 @@
-Developing for LinuxForHealth
-*******************************
-
-TBD - Rewrite for pyconnect
+LinuxForHealth Connect Development
+**********************************
 
 Overview
 ========
-This discussion should provide you with enough information to easily extend LinuxForHealth (LFH) to incorporate routes and components that can perfom new processing functions and connect to new services.  For example, you may want to extend LFH to provide a route that users can call to access a new service.  Or you may need to provide a route and a Apache Camel component to access your service.  You could also provide a new route to take data from one source, transform it if necessary, then send it to another service or data store.  The topics below will help you with these design decisions and provide implementation details.
 
-LinuxForHealth Constructs
-===========================
-LinuxForHealth uses the following constructs to process healthcare information.
+LinuxForHealth Connect serves as the entry point to the LinuxForHealth platform. LinuxForHealth supports standard health-care formats including:
 
-Routes
-------
-A LinuxForHealth route is designed to ingest healthcare data, perform any required operations on that data (e.g. de-serialize, transform, enrich), then do something with that data (e.g. store, notify, forward).  Routes may be defined using standard protocols, such as REST or HTTP, and may use a `known data format <https://camel.apache.org/components/latest/dataformats/index.html>`_ such as HL7v2 or FHIR R4.  If you are adding access to a service, or a data format not yet support in LFH, you will likely need to add a new route.
+* ASC X12
+* C-CDA
+* DICOM 
+* FHIR R4
+* HL7 2.X
 
-Components
-----------
-If access to your service requires the use of a library (e.g. a custom protocol), you may need to also create a Camel component to access the service.  That component would be called from your route and would handle the connection to your service.  Camel contains hundreds of `components <https://camel.apache.org/components/latest/index.html>`_ that can serve as `examples <https://github.com/apache/camel/tree/master/components>`_.  However, if a service is accessible via HTTP or REST, you probably don't need to create a new component.
+LinuxForHealth Connect consumes inbound data messages using **routes**. Routes are used to encapsulate a standard workflow process. The route is used to capture data within the LinuxForHealth data store prior to its transmission to an external service. This allows LinuxForHealth to integrate within an organization's existing data flows and provide value downstream with an aggregated data store.
 
-If you do need to create a new Camel component, or modify an existing component, consider contributing your changes back to the `Apache Camel project <https://camel.apache.org/components/latest/dataformats/index.html>`_ for others to use.
+LinuxForHealth Routes
+=====================
 
-Exchanges
----------
-A Camel `Exchange <https://www.javadoc.io/doc/org.apache.camel/camel-core/2.21.0/org/apache/camel/Exchange.html>`_ is a construct that encapsulates the processing of a single incoming message.  The Exchange instance includes all the input data and headers, as well as exchange properties, for that message.  Exchange properties are recommended for storing data needed by downstream steps in a route.
+LinuxForHealth routes process data messages using a standard workflow process. Routes are implemented as `FastAPI <https://fastapi.tiangolo.com>`_ endpoints and can support data exchanges using HTTP, REST, and Websockets.
 
-Processors
-----------
-A LinuxForHealth processor encapsulates code for route message processing and takes the message Exchange instance as input.  Within a processor, you can set headers, properties and the message body itself, all of which flow to the next step in the message processing of the route.  
+FastAPI endpoints typically use `Pydantic <https://pydantic-docs.helpmanual.io>`_ models to support API requests and responses. LinuxForHealth routes prefer 3rd party libraries to support standard healthcare formats, since the message types within these formats are not generally encapsulated witihn a single model.
 
-Processors may be defined inline, within the context of a route, or as a separate class. Inline processors are preferred when the processor's operations are route specific. Processsor classes are recommended if the processor is able to be reused across routes. Examples of "reusable" processor class implementations are found within the connect/java/com/linuxforhealth/connect/processor directory of the LinuxForHealth connect repo.
+LinuxForHealth developers are encouraged to review the following tutorials to become familar with the FastAPI and Pydantic frameworks:
 
-API Gateway
------------
-LinuxForHealth (LFH) uses the `Kong API Gateway <https://konghq.com/kong>`_.  If you extend LinuxForHealth, you will need to extend the Kong configuration as well, as mentioned in the steps below.
+* `Python Type Hints <https://fastapi.tiangolo.com/python-types/>`_
+* `FastAPI Tutorial <https://fastapi.tiangolo.com/tutorial/>`_
+* `Fast API Advanced Tutorial <https://fastapi.tiangolo.com/advanced/>`_
 
-Development Steps
-=================
-Follow the steps below to extend LinuxForHealth:
+Standard Workflow Implementation
+================================
 
-1. Clone and build the LinuxForHealth repo. See the `Developer Setup <../developer-setup.html>`_ Getting Started step for instructions.
-2. Determine if you need a route and component or just a route, based on the discussion above.
-3. Create a new component, if needed, by cloning and modifying a Camel component that most closely matches your requirements.  You can find simple Camel components that include only 4 required files as a starting point.
-4. Determine if you need to create a new route, or modify an existing route. New routes are created to support new LFH services and data formats. Existing routes are updated to integrate the route, or data format, with a new target system, or producer. Consult the `Route Development <./route-basics.html>`_ for additional guidance.
-5. Add any new Kong service or Kong route require to enable your LinuxForHealth route, following the steps in `Configuring Kong <./configure-kong.html>`_.
-6. Add any new dependencies to the LFH build.gradle file, following the guidance in `Building Your Code <./build.html>`_.
-7. Create unit tests and add test services, following the guidance in `Testing Your Code <./test.html>`_.
-8. Build, test, then open a feature issue and a pull request against that feature to contribute your changes to `LinuxForHealth <https://github.com/LinuxForHealth/connect>`_!
+The standard workflow process provides default implementations for "general" workflow steps which are not specific to the inbound data format. For example, persist is a "general" workflow step which saves inbound data to the LinuxForHealth data store. The validate step is workflow specific since it requires parsing the inbound data format.
+
+The table below lists each standard workflow step and notes which steps are "data format-specific".
+
+.. image:: ../images/LinuxForHealthWorkflow.png
+   :width: 600
+   :alt: LinuxForHealth
+
++--------------------+----------------------------+-------------------------------------------------------------------------------------------------+
+| Workflow Step      | Is Data Format Specific    | Description                                                                                     |
++====================+============================+=================================================================================================+
+| Parse              | Y                          | Initial step used to start the workflow.                                                        |
++--------------------+----------------------------+-------------------------------------------------------------------------------------------------+
+| Validate           | Y                          | Executes data validations against the inbound data message.                                     |
++--------------------+----------------------------+-------------------------------------------------------------------------------------------------+
+| Transform          | Y                          | Executes data updates against the inbound data format.                                          |
++--------------------+----------------------------+-------------------------------------------------------------------------------------------------+
+| Persist            | N                          | Stores the inbound data message and metadata in the LinuxForHealth Connect data store.          |
++--------------------+----------------------------+-------------------------------------------------------------------------------------------------+
+| Transmit           | N                          | Transmits the inbound data message to an external service, such as a HTTP REST endpoint.        |
++--------------------+----------------------------+-------------------------------------------------------------------------------------------------+
+| Sync               | N                          | Applies the inbound data messages to the other nodes within the LinuxForHealth network.         |
++--------------------+----------------------------+-------------------------------------------------------------------------------------------------+
+| Error              | N                          | Provides a general error handler if an unhandled exception occurs during the workflow process.  |
++--------------------+----------------------------+-------------------------------------------------------------------------------------------------+
+
+The LinuxForHealth standard workflow is implemented within the  `CoreWorkflow class <https://github.com/LinuxForHealth/connect/blob/main/connect/workflows/core.py#L54>`_. As noted above, the CoreWorkflow class provides implementations for data persistence, transmission, synchronization, and error handling. The CoreWorkflow is extended, or sub-classed, to support specific data formats such as ASC X12, C-CDA, DICOM, FHIR R4, and HL7. The `FHIR R4 Workflow class <https://github.com/LinuxForHealth/connect/blob/main/connect/workflows/fhir.py#L14>`_ is an example of a format specific implementation.
+
+Implementing A New Route
+========================
+
+A LinuxForHealth route supports a single data format. The route may support multiple versions of the format if the versions are handled appropriately in the workflow's validation and transform steps.
+
+Data formats are best supported by external libraries which support the breadth of a data format specification with parsing, modeling, and validation services. In other words, data modeling code should not be checked into the LinuxForHealth `connect` project.
+
+Complete the following steps to add a new route:
+
+#. Create a new workflow:
+    #. Add a new workflow module to the `main <https://github.com/LinuxForHealth/connect/tree/main/connect/workflows>`_ and `test <https://github.com/LinuxForHealth/connect/tree/main/tests/workflows>`_ packages.
+    #. Create a new class in your new workflow module to support the data format. Provide a validate and, optionally, a transform method implementation to support the format.
+    #. Ensure that test cases for the workflow cover the methods implemented in the new workflow class.
+#. Create new routes:
+    #. Add a new route module to the `main <https://github.com/LinuxForHealth/connect/tree/main/connect/routes>`_ and `test <https://github.com/LinuxForHealth/connect/tree/main/tests/routes>`_ packages.
+    #. Determine which HTTP verbs are required to support the data format and it's messaging interface.
+    #. Complete test cases for the new routes. The test cases should validate the status codes and response body returned by the routes. Note that the test cases will fail until the routes are implemented.
+    #. Create a route for each HTTP verb. Determine if the route will use Pydantic based request and response models, or defer to a 3rd party library.
+#. Register the routes within the LinuxForHealth `api module <https://github.com/LinuxForHealth/connect/blob/main/connect/routes/api.py>`_
+
+When the routes are complete, the endpoints will be available in the `OpenAPI UI <https://localhost:5000/docs>`_

@@ -1,25 +1,34 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Developing for LinuxForHealth &mdash; Linux for Health  documentation</title>
+  <title>LinuxForHealth Connect Development &mdash; Linux for Health  documentation</title>
   
 
   
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+
   
+  
+
   
   
     <link rel="canonical" href="https://linuxforhealth.github.io/docs/develop/develop.html"/>
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -30,14 +39,9 @@
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="LinuxForHealth LPR" href="lpr.html" />
+    <link rel="next" title="Docker Compose Support" href="../deployment/compose.html" />
     <link rel="prev" title="FHIR R4" href="../routes/fhir-r4.html" /> 
 </head>
 
@@ -79,6 +83,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -89,7 +94,7 @@
               <p class="caption"><span class="caption-text">Getting Started:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../developer-setup.html">Developer Setup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/quickstart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/quickstart.html">QuickStart</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../application-configuration.html">Application Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../message-structure.html">Message Structure</a></li>
 </ul>
@@ -99,20 +104,13 @@
 </ul>
 <p class="caption"><span class="caption-text">Develop:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Developing for LinuxForHealth</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">LinuxForHealth Connect Development</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#linuxforhealth-constructs">LinuxForHealth Constructs</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#routes">Routes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#components">Components</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#exchanges">Exchanges</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#processors">Processors</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#api-gateway">API Gateway</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#linuxforhealth-routes">LinuxForHealth Routes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#standard-workflow-implementation">Standard Workflow Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#implementing-a-new-route">Implementing A New Route</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#development-steps">Development Steps</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="lpr.html">LinuxForHealth LPR</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Deployment:</span></p>
 <ul>
@@ -124,6 +122,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -158,18 +157,20 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Developing for LinuxForHealth</li>
+      <li>LinuxForHealth Connect Development</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/develop/develop.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -183,52 +184,109 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="developing-for-linuxforhealth">
-<h1>Developing for LinuxForHealth<a class="headerlink" href="#developing-for-linuxforhealth" title="Permalink to this headline">¶</a></h1>
-<p>TBD - Rewrite for pyconnect</p>
+  <div class="section" id="linuxforhealth-connect-development">
+<h1>LinuxForHealth Connect Development<a class="headerlink" href="#linuxforhealth-connect-development" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>This discussion should provide you with enough information to easily extend LinuxForHealth (LFH) to incorporate routes and components that can perfom new processing functions and connect to new services.  For example, you may want to extend LFH to provide a route that users can call to access a new service.  Or you may need to provide a route and a Apache Camel component to access your service.  You could also provide a new route to take data from one source, transform it if necessary, then send it to another service or data store.  The topics below will help you with these design decisions and provide implementation details.</p>
+<p>LinuxForHealth Connect serves as the entry point to the LinuxForHealth platform. LinuxForHealth supports standard health-care formats including:</p>
+<ul class="simple">
+<li><p>ASC X12</p></li>
+<li><p>C-CDA</p></li>
+<li><p>DICOM</p></li>
+<li><p>FHIR R4</p></li>
+<li><p>HL7 2.X</p></li>
+</ul>
+<p>LinuxForHealth Connect consumes inbound data messages using <strong>routes</strong>. Routes are used to encapsulate a standard workflow process. The route is used to capture data within the LinuxForHealth data store prior to its transmission to an external service. This allows LinuxForHealth to integrate within an organization’s existing data flows and provide value downstream with an aggregated data store.</p>
 </div>
-<div class="section" id="linuxforhealth-constructs">
-<h2>LinuxForHealth Constructs<a class="headerlink" href="#linuxforhealth-constructs" title="Permalink to this headline">¶</a></h2>
-<p>LinuxForHealth uses the following constructs to process healthcare information.</p>
-<div class="section" id="routes">
-<h3>Routes<a class="headerlink" href="#routes" title="Permalink to this headline">¶</a></h3>
-<p>A LinuxForHealth route is designed to ingest healthcare data, perform any required operations on that data (e.g. de-serialize, transform, enrich), then do something with that data (e.g. store, notify, forward).  Routes may be defined using standard protocols, such as REST or HTTP, and may use a <a class="reference external" href="https://camel.apache.org/components/latest/dataformats/index.html">known data format</a> such as HL7v2 or FHIR R4.  If you are adding access to a service, or a data format not yet support in LFH, you will likely need to add a new route.</p>
+<div class="section" id="linuxforhealth-routes">
+<h2>LinuxForHealth Routes<a class="headerlink" href="#linuxforhealth-routes" title="Permalink to this headline">¶</a></h2>
+<p>LinuxForHealth routes process data messages using a standard workflow process. Routes are implemented as <a class="reference external" href="https://fastapi.tiangolo.com">FastAPI</a> endpoints and can support data exchanges using HTTP, REST, and Websockets.</p>
+<p>FastAPI endpoints typically use <a class="reference external" href="https://pydantic-docs.helpmanual.io">Pydantic</a> models to support API requests and responses. LinuxForHealth routes prefer 3rd party libraries to support standard healthcare formats, since the message types within these formats are not generally encapsulated witihn a single model.</p>
+<p>LinuxForHealth developers are encouraged to review the following tutorials to become familar with the FastAPI and Pydantic frameworks:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://fastapi.tiangolo.com/python-types/">Python Type Hints</a></p></li>
+<li><p><a class="reference external" href="https://fastapi.tiangolo.com/tutorial/">FastAPI Tutorial</a></p></li>
+<li><p><a class="reference external" href="https://fastapi.tiangolo.com/advanced/">Fast API Advanced Tutorial</a></p></li>
+</ul>
 </div>
-<div class="section" id="components">
-<h3>Components<a class="headerlink" href="#components" title="Permalink to this headline">¶</a></h3>
-<p>If access to your service requires the use of a library (e.g. a custom protocol), you may need to also create a Camel component to access the service.  That component would be called from your route and would handle the connection to your service.  Camel contains hundreds of <a class="reference external" href="https://camel.apache.org/components/latest/index.html">components</a> that can serve as <a class="reference external" href="https://github.com/apache/camel/tree/master/components">examples</a>.  However, if a service is accessible via HTTP or REST, you probably don’t need to create a new component.</p>
-<p>If you do need to create a new Camel component, or modify an existing component, consider contributing your changes back to the <a class="reference external" href="https://camel.apache.org/components/latest/dataformats/index.html">Apache Camel project</a> for others to use.</p>
+<div class="section" id="standard-workflow-implementation">
+<h2>Standard Workflow Implementation<a class="headerlink" href="#standard-workflow-implementation" title="Permalink to this headline">¶</a></h2>
+<p>The standard workflow process provides default implementations for “general” workflow steps which are not specific to the inbound data format. For example, persist is a “general” workflow step which saves inbound data to the LinuxForHealth data store. The validate step is workflow specific since it requires parsing the inbound data format.</p>
+<p>The table below lists each standard workflow step and notes which steps are “data format-specific”.</p>
+<a class="reference internal image-reference" href="../_images/LinuxForHealthWorkflow.png"><img alt="LinuxForHealth" src="../_images/LinuxForHealthWorkflow.png" style="width: 600px;" /></a>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 19%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Workflow Step</p></th>
+<th class="head"><p>Is Data Format Specific</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Parse</p></td>
+<td><p>Y</p></td>
+<td><p>Initial step used to start the workflow.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Validate</p></td>
+<td><p>Y</p></td>
+<td><p>Executes data validations against the inbound data message.</p></td>
+</tr>
+<tr class="row-even"><td><p>Transform</p></td>
+<td><p>Y</p></td>
+<td><p>Executes data updates against the inbound data format.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Persist</p></td>
+<td><p>N</p></td>
+<td><p>Stores the inbound data message and metadata in the LinuxForHealth Connect data store.</p></td>
+</tr>
+<tr class="row-even"><td><p>Transmit</p></td>
+<td><p>N</p></td>
+<td><p>Transmits the inbound data message to an external service, such as a HTTP REST endpoint.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sync</p></td>
+<td><p>N</p></td>
+<td><p>Applies the inbound data messages to the other nodes within the LinuxForHealth network.</p></td>
+</tr>
+<tr class="row-even"><td><p>Error</p></td>
+<td><p>N</p></td>
+<td><p>Provides a general error handler if an unhandled exception occurs during the workflow process.</p></td>
+</tr>
+</tbody>
+</table>
+<p>The LinuxForHealth standard workflow is implemented within the  <a class="reference external" href="https://github.com/LinuxForHealth/connect/blob/main/connect/workflows/core.py#L54">CoreWorkflow class</a>. As noted above, the CoreWorkflow class provides implementations for data persistence, transmission, synchronization, and error handling. The CoreWorkflow is extended, or sub-classed, to support specific data formats such as ASC X12, C-CDA, DICOM, FHIR R4, and HL7. The <a class="reference external" href="https://github.com/LinuxForHealth/connect/blob/main/connect/workflows/fhir.py#L14">FHIR R4 Workflow class</a> is an example of a format specific implementation.</p>
 </div>
-<div class="section" id="exchanges">
-<h3>Exchanges<a class="headerlink" href="#exchanges" title="Permalink to this headline">¶</a></h3>
-<p>A Camel <a class="reference external" href="https://www.javadoc.io/doc/org.apache.camel/camel-core/2.21.0/org/apache/camel/Exchange.html">Exchange</a> is a construct that encapsulates the processing of a single incoming message.  The Exchange instance includes all the input data and headers, as well as exchange properties, for that message.  Exchange properties are recommended for storing data needed by downstream steps in a route.</p>
-</div>
-<div class="section" id="processors">
-<h3>Processors<a class="headerlink" href="#processors" title="Permalink to this headline">¶</a></h3>
-<p>A LinuxForHealth processor encapsulates code for route message processing and takes the message Exchange instance as input.  Within a processor, you can set headers, properties and the message body itself, all of which flow to the next step in the message processing of the route.</p>
-<p>Processors may be defined inline, within the context of a route, or as a separate class. Inline processors are preferred when the processor’s operations are route specific. Processsor classes are recommended if the processor is able to be reused across routes. Examples of “reusable” processor class implementations are found within the connect/java/com/linuxforhealth/connect/processor directory of the LinuxForHealth connect repo.</p>
-</div>
-<div class="section" id="api-gateway">
-<h3>API Gateway<a class="headerlink" href="#api-gateway" title="Permalink to this headline">¶</a></h3>
-<p>LinuxForHealth (LFH) uses the <a class="reference external" href="https://konghq.com/kong">Kong API Gateway</a>.  If you extend LinuxForHealth, you will need to extend the Kong configuration as well, as mentioned in the steps below.</p>
-</div>
-</div>
-<div class="section" id="development-steps">
-<h2>Development Steps<a class="headerlink" href="#development-steps" title="Permalink to this headline">¶</a></h2>
-<p>Follow the steps below to extend LinuxForHealth:</p>
+<div class="section" id="implementing-a-new-route">
+<h2>Implementing A New Route<a class="headerlink" href="#implementing-a-new-route" title="Permalink to this headline">¶</a></h2>
+<p>A LinuxForHealth route supports a single data format. The route may support multiple versions of the format if the versions are handled appropriately in the workflow’s validation and transform steps.</p>
+<p>Data formats are best supported by external libraries which support the breadth of a data format specification with parsing, modeling, and validation services. In other words, data modeling code should not be checked into the LinuxForHealth <cite>connect</cite> project.</p>
+<p>Complete the following steps to add a new route:</p>
 <ol class="arabic simple">
-<li><p>Clone and build the LinuxForHealth repo. See the <a class="reference external" href="../developer-setup.html">Developer Setup</a> Getting Started step for instructions.</p></li>
-<li><p>Determine if you need a route and component or just a route, based on the discussion above.</p></li>
-<li><p>Create a new component, if needed, by cloning and modifying a Camel component that most closely matches your requirements.  You can find simple Camel components that include only 4 required files as a starting point.</p></li>
-<li><p>Determine if you need to create a new route, or modify an existing route. New routes are created to support new LFH services and data formats. Existing routes are updated to integrate the route, or data format, with a new target system, or producer. Consult the <a class="reference external" href="./route-basics.html">Route Development</a> for additional guidance.</p></li>
-<li><p>Add any new Kong service or Kong route require to enable your LinuxForHealth route, following the steps in <a class="reference external" href="./configure-kong.html">Configuring Kong</a>.</p></li>
-<li><p>Add any new dependencies to the LFH build.gradle file, following the guidance in <a class="reference external" href="./build.html">Building Your Code</a>.</p></li>
-<li><p>Create unit tests and add test services, following the guidance in <a class="reference external" href="./test.html">Testing Your Code</a>.</p></li>
-<li><p>Build, test, then open a feature issue and a pull request against that feature to contribute your changes to <a class="reference external" href="https://github.com/LinuxForHealth/connect">LinuxForHealth</a>!</p></li>
+<li><dl class="simple">
+<dt>Create a new workflow:</dt><dd><ol class="arabic simple">
+<li><p>Add a new workflow module to the <a class="reference external" href="https://github.com/LinuxForHealth/connect/tree/main/connect/workflows">main</a> and <a class="reference external" href="https://github.com/LinuxForHealth/connect/tree/main/tests/workflows">test</a> packages.</p></li>
+<li><p>Create a new class in your new workflow module to support the data format. Provide a validate and, optionally, a transform method implementation to support the format.</p></li>
+<li><p>Ensure that test cases for the workflow cover the methods implemented in the new workflow class.</p></li>
 </ol>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Create new routes:</dt><dd><ol class="arabic simple">
+<li><p>Add a new route module to the <a class="reference external" href="https://github.com/LinuxForHealth/connect/tree/main/connect/routes">main</a> and <a class="reference external" href="https://github.com/LinuxForHealth/connect/tree/main/tests/routes">test</a> packages.</p></li>
+<li><p>Determine which HTTP verbs are required to support the data format and it’s messaging interface.</p></li>
+<li><p>Complete test cases for the new routes. The test cases should validate the status codes and response body returned by the routes. Note that the test cases will fail until the routes are implemented.</p></li>
+<li><p>Create a route for each HTTP verb. Determine if the route will use Pydantic based request and response models, or defer to a 3rd party library.</p></li>
+</ol>
+</dd>
+</dl>
+</li>
+<li><p>Register the routes within the LinuxForHealth <a class="reference external" href="https://github.com/LinuxForHealth/connect/blob/main/connect/routes/api.py">api module</a></p></li>
+</ol>
+<p>When the routes are complete, the endpoints will be available in the <a class="reference external" href="https://localhost:5000/docs">OpenAPI UI</a></p>
 </div>
 </div>
 
@@ -237,26 +295,27 @@
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="lpr.html" class="btn btn-neutral float-right" title="LinuxForHealth LPR" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="../routes/fhir-r4.html" class="btn btn-neutral float-left" title="FHIR R4" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="../deployment/compose.html" class="btn btn-neutral float-right" title="Docker Compose Support" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../routes/fhir-r4.html" class="btn btn-neutral float-left" title="FHIR R4" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 
+        &#169; Copyright .
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
  
 <div class="footer">
     <p>
@@ -266,7 +325,6 @@
 
 
 </footer>
-
         </div>
       </div>
 
@@ -274,7 +332,6 @@
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {
