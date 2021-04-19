@@ -197,8 +197,8 @@
 <p>LFH images run within any standard container runtime and orchestration environment. The connect project provides example yaml files to deploy the application and support services on a kubernetes cluster.</p>
 <p>LFH provides management scripts to support the following runtimes:</p>
 <ul class="simple">
-<li><p>Docker Compose (in <code class="docutils literal notranslate"><span class="pre">./pyconnect</span></code>)</p></li>
-<li><p>Kubernetes Cluster Deployments (in <code class="docutils literal notranslate"><span class="pre">./pyconnect/k8s-deployment</span></code>)</p></li>
+<li><p>Docker Compose (in <code class="docutils literal notranslate"><span class="pre">./connect</span></code>)</p></li>
+<li><p>Kubernetes Cluster Deployments (in <code class="docutils literal notranslate"><span class="pre">./connect/k8s-deployment</span></code>)</p></li>
 </ul>
 </div>
 <div class="section" id="lfh-base-image">
@@ -212,17 +212,17 @@
 </div>
 <div class="section" id="building-images">
 <h2>Building Images<a class="headerlink" href="#building-images" title="Permalink to this headline">¶</a></h2>
-<p>LFH images are built to support multiple architectures, including x86/amd, arm64, and s390x/Z. Multi-arch builds are supported in OCI compliant tools such as docker. The following docker command illustrates a multi-arch build for the LFH pyconnect project:</p>
+<p>LFH images are built to support multiple architectures, including x86/amd, arm64, and s390x/Z. Multi-arch builds are supported in OCI compliant tools such as docker. The following docker command illustrates a multi-arch build for the LFH connect project:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">buildx</span> <span class="n">build</span> \
     <span class="o">--</span><span class="n">pull</span> \
     <span class="o">--</span><span class="n">push</span> \
     <span class="o">--</span><span class="n">platform</span> <span class="n">linux</span><span class="o">/</span><span class="n">amd64</span><span class="p">,</span><span class="n">linux</span><span class="o">/</span><span class="n">arm64</span><span class="p">,</span><span class="n">linux</span><span class="o">/</span><span class="n">s390x</span> \
-    <span class="o">-</span><span class="n">t</span> <span class="p">[</span><span class="n">image</span> <span class="n">repository</span><span class="p">]</span><span class="o">/</span><span class="n">pyconnect</span><span class="p">:</span><span class="mf">1.0</span><span class="o">.</span><span class="mi">0</span> <span class="o">.</span>
+    <span class="o">-</span><span class="n">t</span> <span class="p">[</span><span class="n">image</span> <span class="n">repository</span><span class="p">]</span><span class="o">/</span><span class="n">connect</span><span class="p">:</span><span class="mf">1.0</span><span class="o">.</span><span class="mi">0</span> <span class="o">.</span>
 </pre></div>
 </div>
 <p>The image tag, specified by “-t”, may be updated to push the image to a different repository.</p>
 <p>If a multi-arch build is not required, a standard “build” command may be used. The following command builds the LFH connect image for the target platform:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">build</span> <span class="o">-</span><span class="n">t</span> <span class="p">[</span><span class="n">image</span> <span class="n">repository</span><span class="p">]</span><span class="o">/</span><span class="n">pyconnect</span><span class="p">:</span><span class="mf">1.0</span><span class="o">.</span><span class="mi">0</span> <span class="o">.</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">build</span> <span class="o">-</span><span class="n">t</span> <span class="p">[</span><span class="n">image</span> <span class="n">repository</span><span class="p">]</span><span class="o">/</span><span class="n">connect</span><span class="p">:</span><span class="mf">1.0</span><span class="o">.</span><span class="mi">0</span> <span class="o">.</span>
 </pre></div>
 </div>
 <p>For more information on available images and specific build commands please visit the <a class="reference external" href="https://github.com/LinuxForHealth/images">LFH Images Repo</a> .</p>

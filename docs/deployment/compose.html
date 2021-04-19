@@ -186,7 +186,7 @@
 <h1>Docker Compose Support<a class="headerlink" href="#docker-compose-support" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>LinuxForHealth (LFH) pyconnect provides an out-of-the-box Docker Compose configuration with support for <a class="reference external" href="https://docs.docker.com/compose/profiles/">profiles</a> that enable deploying specific support services in addition to pyconnect. We will go through the supported profiles and usage below.</p>
+<p>LinuxForHealth (LFH) connect provides an out-of-the-box Docker Compose configuration with support for <a class="reference external" href="https://docs.docker.com/compose/profiles/">profiles</a> that enable deploying specific support services in addition to connect. We will go through the supported profiles and usage below.</p>
 </div>
 <div class="section" id="starting-the-lfh-compose-stack">
 <h2>Starting the LFH Compose Stack<a class="headerlink" href="#starting-the-lfh-compose-stack" title="Permalink to this headline">¶</a></h2>
@@ -216,7 +216,7 @@
 </thead>
 <tbody>
 <tr class="row-even"><td><p>deployment</p></td>
-<td><p>For bundled deployment of <code class="docutils literal notranslate"><span class="pre">pyconnect</span></code> along with the support services with ports mapped to localhost.</p></td>
+<td><p>For bundled deployment of <code class="docutils literal notranslate"><span class="pre">connect</span></code> along with the support services with ports mapped to localhost.</p></td>
 </tr>
 <tr class="row-odd"><td><p>ipfs</p></td>
 <td><p>Deploys IPFS nodes and an IPFS cluster for managing pinsets.</p></td>
@@ -227,35 +227,35 @@
 </tbody>
 </table>
 <p><strong>NOTE::</strong> All <code class="docutils literal notranslate"><span class="pre">docker-compose</span></code> commands always deploy support services Kafka, Zookeeper &amp; NATS by default.</p>
-<p>Not specifying a profile name would lead to deploying Kafka, Zookeeper &amp; NATS which are the default support services for pyconnect:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># navigate to the ``pyconnect`` project directory</span>
-<span class="n">cd</span> <span class="o">./</span><span class="n">pyconnect</span>
+<p>Not specifying a profile name would lead to deploying Kafka, Zookeeper &amp; NATS which are the default support services for connect:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># navigate to the ``connect`` project directory</span>
+<span class="n">cd</span> <span class="o">./</span><span class="n">connect</span>
 <span class="c1"># run the docker-compose command with no profile specified</span>
 <span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">up</span> <span class="o">-</span><span class="n">d</span>
 <span class="c1"># Kafka, Zookeeper &amp; NATS should be deployed</span>
 </pre></div>
 </div>
-<p>Deploying only the support services can come in handy in use-cases where pyconnect is run external of the compose stack.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">deployment</span></code> profile supports spinning up pyconnect application along with default support services:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># navigate to the ``pyconnect`` project directory</span>
-<span class="n">cd</span> <span class="o">./</span><span class="n">pyconnect</span>
+<p>Deploying only the support services can come in handy in use-cases where connect is run external of the compose stack.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">deployment</span></code> profile supports spinning up connect application along with default support services:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># navigate to the ``connect`` project directory</span>
+<span class="n">cd</span> <span class="o">./</span><span class="n">connect</span>
 <span class="c1"># run the docker-compose command with ``deployment`` profile specified</span>
 <span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="o">--</span><span class="n">profile</span> <span class="n">deployment</span> <span class="n">up</span> <span class="o">-</span><span class="n">d</span>
-<span class="c1"># pyconnect, Kafka, Zookeeper &amp; NATS should now be deployed</span>
+<span class="c1"># connect, Kafka, Zookeeper &amp; NATS should now be deployed</span>
 </pre></div>
 </div>
 <p>Using the <code class="docutils literal notranslate"><span class="pre">deployment</span></code> profile would be the out-of-the-box solution for most users of the compose stack</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">ipfs</span></code> profile deploys a 3 node IPFS peer and IPFS cluster in addition to the default support services. Using the <code class="docutils literal notranslate"><span class="pre">deployment</span></code> profile in addition to <code class="docutils literal notranslate"><span class="pre">ipfs</span></code> profile would ensure that pyconnect, Kafka, Zookeeper, NATS and IPFS are deployed simultaneously. Note, the modular nature of docker-compose profiles would allow users to only deploy <code class="docutils literal notranslate"><span class="pre">ipfs</span></code> as an additional support service to an already <code class="docutils literal notranslate"><span class="pre">deployment</span></code> profile stack that is up and running:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># navigate to the ``pyconnect`` project directory</span>
-<span class="n">cd</span> <span class="o">./</span><span class="n">pyconnect</span>
+<p>The <code class="docutils literal notranslate"><span class="pre">ipfs</span></code> profile deploys a 3 node IPFS peer and IPFS cluster in addition to the default support services. Using the <code class="docutils literal notranslate"><span class="pre">deployment</span></code> profile in addition to <code class="docutils literal notranslate"><span class="pre">ipfs</span></code> profile would ensure that connect, Kafka, Zookeeper, NATS and IPFS are deployed simultaneously. Note, the modular nature of docker-compose profiles would allow users to only deploy <code class="docutils literal notranslate"><span class="pre">ipfs</span></code> as an additional support service to an already <code class="docutils literal notranslate"><span class="pre">deployment</span></code> profile stack that is up and running:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># navigate to the ``connect`` project directory</span>
+<span class="n">cd</span> <span class="o">./</span><span class="n">connect</span>
 <span class="c1"># run the docker-compose command with ``deployment`` and ``ipfs`` profile specified</span>
 <span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="o">--</span><span class="n">profile</span> <span class="n">deployment</span> <span class="o">--</span><span class="n">profile</span> <span class="n">ipfs</span> <span class="n">up</span> <span class="o">-</span><span class="n">d</span>
-<span class="c1"># pyconnect, Kafka, Zookeeper, NATS &amp; IPFS should now be deployed</span>
+<span class="c1"># connect, Kafka, Zookeeper, NATS &amp; IPFS should now be deployed</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">fhir</span></code> profile allows deploying the <a class="reference external" href="https://ibm.github.io/FHIR/">IBM FHIR Server</a> in addition to other support services:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># navigate to the ``pyconnect`` project directory</span>
-<span class="n">cd</span> <span class="o">./</span><span class="n">pyconnect</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># navigate to the ``connect`` project directory</span>
+<span class="n">cd</span> <span class="o">./</span><span class="n">connect</span>
 <span class="c1"># run the docker-compose command with ``fhir`` profile specified</span>
 <span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="o">--</span><span class="n">profile</span> <span class="n">fhir</span> <span class="n">up</span> <span class="o">-</span><span class="n">d</span>
 <span class="c1"># chain together deployment &amp; fhir profiles</span>
@@ -265,7 +265,7 @@
 <p>Use standard docker-compose commands to interact with the stack and it’s services. Stop containers leaving them intact for starting them back up again or tear down down deployments using profiles similarly as for when deploying them initially, as shown in the examples above:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># stops all containers leaving them intact</span>
 <span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">stop</span> <span class="c1"># containers may be removed with docker-compose down -v</span>
-<span class="c1"># tear down deployment of pyconnect, Kafka, Zookeeper &amp; NATS</span>
+<span class="c1"># tear down deployment of connect, Kafka, Zookeeper &amp; NATS</span>
 <span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="o">--</span><span class="n">profile</span> <span class="n">deployment</span> <span class="n">down</span>
 <span class="c1"># tear down ipfs &amp; fhir server (together or separately)</span>
 <span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="o">--</span><span class="n">profile</span> <span class="n">ipfs</span> <span class="o">--</span><span class="n">profile</span> <span class="n">fhir</span> <span class="n">down</span>

@@ -16,8 +16,8 @@ LFH images run within any standard container runtime and orchestration environme
 
 LFH provides management scripts to support the following runtimes:
 
-* Docker Compose (in ``./pyconnect``)
-* Kubernetes Cluster Deployments (in ``./pyconnect/k8s-deployment``)
+* Docker Compose (in ``./connect``)
+* Kubernetes Cluster Deployments (in ``./connect/k8s-deployment``)
 
 LFH Base Image
 ==============
@@ -31,18 +31,18 @@ The LFH base image is used as the base image for all LFH images when possible. T
 Building Images
 ===============
 
-LFH images are built to support multiple architectures, including x86/amd, arm64, and s390x/Z. Multi-arch builds are supported in OCI compliant tools such as docker. The following docker command illustrates a multi-arch build for the LFH pyconnect project::
+LFH images are built to support multiple architectures, including x86/amd, arm64, and s390x/Z. Multi-arch builds are supported in OCI compliant tools such as docker. The following docker command illustrates a multi-arch build for the LFH connect project::
 
     docker buildx build \
         --pull \
         --push \
         --platform linux/amd64,linux/arm64,linux/s390x \
-        -t [image repository]/pyconnect:1.0.0 .
+        -t [image repository]/connect:1.0.0 .
 
 The image tag, specified by "-t", may be updated to push the image to a different repository.
 
 If a multi-arch build is not required, a standard "build" command may be used. The following command builds the LFH connect image for the target platform::
 
-    docker build -t [image repository]/pyconnect:1.0.0 .
+    docker build -t [image repository]/connect:1.0.0 .
 
 For more information on available images and specific build commands please visit the `LFH Images Repo <https://github.com/LinuxForHealth/images>`_ .
