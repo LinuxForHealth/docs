@@ -1,0 +1,300 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Configuring Kong &mdash; Linux for Health  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+
+  
+  
+
+  
+  
+    <link rel="canonical" href="https://linuxforhealth.github.io/docs/develop/configure-kong.html"/>
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Container Support" href="../deployment/container.html" />
+    <link rel="prev" title="Developing Routes" href="route-basics.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: 0x4380B4" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Linux for Health
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                master
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developer-setup.html">Developer Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/firstroute.html">Hello World</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../application-configuration.html">Application Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../feature-configuration.html">Feature Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../message-structure.html">Message Structure</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/quickstart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/fhir-r4.html">FHIR R4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/hl7-v2.html">HL7-v2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/blue-button-20.html">Blue Button 2.0</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Routes:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../routes/fhir-r4-rest.html">FHIR R4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../routes/etl.html">ETL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../routes/orthanc-post.html">Orthanc DICOM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../routes/direct-storeandnotify.html">Direct Store and Notify</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../routes/fhir-to-text.html">FHIR TO TEXT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../routes/nlp.html">NLP</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Develop:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="extend.html">Developing for LinuxForHealth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build.html">Building Your Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="test.html">Testing Your Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="property-encryption.html">Property Encryption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="route-basics.html">Developing Routes</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Configuring Kong</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#kong-configuration">Kong Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#create-a-new-kong-service-if-needed">1. Create a new Kong service (if needed)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-a-new-kong-route">2. Create a new Kong route</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Deployment:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../deployment/container.html">Container Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deployment/compose.html">Docker Compose Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deployment/openshift.html">OpenShift Container Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deployment/oci.html">Open Container Initiative (OCI)</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Linux for Health</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Configuring Kong</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/develop/configure-kong.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="configuring-kong">
+<h1>Configuring Kong<a class="headerlink" href="#configuring-kong" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>LinuxForHealth (LFH) uses the <a class="reference external" href="https://konghq.com/kong">Kong API Gateway</a>.  When you add a route to LinuxForHealth, you’ll need to add the route to Kong as well.  The steps below explain how to do that.</p>
+</div>
+<div class="section" id="kong-configuration">
+<h2>Kong Configuration<a class="headerlink" href="#kong-configuration" title="Permalink to this headline">¶</a></h2>
+<p>The Kong configuration is implemented via curl commands to Kong’s Admin API in 2 files:</p>
+<ul class="simple">
+<li><p>connect/container-support/compose/configure-kong.sh (docker-compose)</p></li>
+<li><p>connect/container-support/oci/configure-kong.sh (oci)</p></li>
+</ul>
+<p>In order to use a new LinuxForHealth route, you’ll need to update the configure-kong script for the container system you are using.  If you plan to contribute your route back to LinuxForHealth you’ll need to update both of these scripts as follows.</p>
+<div class="section" id="create-a-new-kong-service-if-needed">
+<h3>1. Create a new Kong service (if needed)<a class="headerlink" href="#create-a-new-kong-service-if-needed" title="Permalink to this headline">¶</a></h3>
+<p>If you are just adding a new http or REST route, you probably don’t need a new Kong service.  However, if you want specific Kong plugins to work with your route, you will need to create a Kong service.  To create a Kong service, add a curl command to configure-kong.sh:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">--</span><span class="n">insecure</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8444</span><span class="o">/</span><span class="n">services</span> \
+  <span class="o">-</span><span class="n">H</span> <span class="s1">&#39;Content-Type: application/json&#39;</span> \
+  <span class="o">-</span><span class="n">d</span> <span class="s1">&#39;{&quot;name&quot;: &quot;my-new-service&quot;, &quot;url&quot;: &quot;http://&#39;</span><span class="s2">&quot;$</span><span class="si">{host}</span><span class="s2">&quot;</span><span class="s1">&#39;:&#39;</span><span class="s2">&quot;$</span><span class="si">{lfhhttp}</span><span class="s2">&quot;</span><span class="s1">&#39;&quot;}&#39;</span>
+</pre></div>
+</div>
+<p>Give the service a new name and either use the same lfhhttp port or a different port, depending on your use case. ${host} is set for you automatically, depending on where LinuxForHealth is running. Use –insecure to avoid self-signed certificate verification.</p>
+</div>
+<div class="section" id="create-a-new-kong-route">
+<h3>2. Create a new Kong route<a class="headerlink" href="#create-a-new-kong-route" title="Permalink to this headline">¶</a></h3>
+<p>A Kong route matches incoming transactions and sends them to the LinuxForHealth url contained in the associated Kong service.  To create a Kong route for your LinuxForHealth route, add a line to configure-kong.sh.</p>
+<p>To add a new http or REST route, you can use the lfh-http-service:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">add_http_route</span> <span class="s2">&quot;my-new-route&quot;</span> <span class="s2">&quot;GET&quot;</span> <span class="s2">&quot;/new-route&quot;</span> <span class="s2">&quot;lfh-http-service&quot;</span>
+</pre></div>
+</div>
+<p>The first argument is the name of your new route.  The second is the HTTP method supported by your route.  The third argument is the path for your new route.  This should not include any query parameters, as even partial paths will be matched. The last argument is the name of the Kong service that traffic on this Kong route will be sent to, either “lfh-http-service” to use the existing service or your own service, if you created one in the previous step.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../deployment/container.html" class="btn btn-neutral float-right" title="Container Support" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="route-basics.html" class="btn btn-neutral float-left" title="Developing Routes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright .
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+ 
+<div class="footer">
+    <p>
+        LinuxForHealth is sublicensed by the Linux Foundation with Sublicense ID: 20200615-0008
+    </p>
+</div>    
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
