@@ -102,7 +102,7 @@ Synchronize
 -----------
 Broadcasts the data message to the LinuxForHealth network, applying the message to the other nodes.
 
-LinuxForHealth Dial Tone Example
+LinuxForHealth Dialtone Example
 ================================
 .. image:: images/LinuxForHealth-DialTone.png
    :width: 600
