@@ -62,9 +62,6 @@ LinuxForHealth Connect
    :alt: LinuxForHealth
 
 Each LFH node is comprised of the connect application, the ledger and data persistence for the LPR.
-* `connect` application
-* Ledger
-* LPR (Longitudinal Patient Record) datastore 
 
    
 
@@ -75,7 +72,7 @@ LinuxForHealth Workflow
    :width: 600
    :alt: LinuxForHealth
 
-LFH workflow consists of distinct steps for interfacing applications - these are described below:
+The LFH workflow consists of distinct steps for interfacing applications - these are described below:
 
 Parse
 -----
@@ -108,7 +105,9 @@ LinuxForHealth Dialtone Example
    :width: 600
    :alt: LinuxForHealth
    
-   
+This diagram shows the power of the LFH network where a transaction is submitted to a node and is then applied to the entire network, regardless of architecture or deployment, via the synchronized ledger.  In this example, a radiology image is sent to an imaging device running LFH, which the network applies to the other nodes - a Payer System running LFH on Z and a Provider System running on the Azure cloud.
+
+
 .. toctree::
    :maxdepth: 3
    :caption: Getting Started:
