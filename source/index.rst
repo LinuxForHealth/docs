@@ -1,6 +1,6 @@
 What is LinuxForHealth?
 *************************
-Welcome to the future of healthcare software development - the world's first true HealthOS.
+Welcome to the future of healthcare software development - the world's first true enabled HealthOS.
 
 LinuxForHealth is a distributed processing network operating system which allows mainframes, cloud and edge devices to be seamlessly connected directly to healthcare transaction systems. The processing model abstracts the need for intermediary third-party organizations, resulting in a developer-extensible trust protocol.
 
@@ -8,7 +8,7 @@ The LinuxForHealth architecture builds on successive levels of industry standard
 
 .. image:: images/LinuxForHealthArch.png
    :width: 600
-   :alt: LinuxForHealth
+   :alt: LinuxForHealth  
 
 This architecture facilitates these key LinuxForHealth features:
 
@@ -23,52 +23,117 @@ LinuxForHealth has captured the attention of industry leaders.  While the projec
 
 You can get started by visiting our `developer setup page <./developer-setup.html>`_ and visit us on `Github <https://github.com/linuxforhealth/connect>`_.  We hope you join our journey in creating LinuxForHealth, the world's first true HealthOS.
 
+LinuxForHealth Ecosystem
+=========================
+
+.. image:: images/LinuxForHealth-Ecosystem.png
+   :width: 600
+   :alt: LinuxForHealth
+
+Applications that use the LFH OS are able to leverage its distributed ledger and healthcare transaction processing capabilities. This offers the following advantages for LFH applications:   
+
+* High Availability and Redundancy with no single point of failure
+* Scales horizontally
+* Indexed LPR updated in real-time
+* Abstracts health messaging interfaces
+* Compatible with existing Health IT infrastructure
+
+
+
+LinuxForHealth Longitudinal Patient Record (LPR)
+================================================
+
+.. image:: images/LinuxForHealthLPRProcessing.png
+   :width: 600
+   :alt: LinuxForHealth
+
+Each LPR node consists of a robust data processing pipeline which ingests a variety of transactional healthcare data (X-12, C-CDA, DICOM, FHIR, HL7v2), runs it through a duplicate detection processor, and transforms the data into FHIR R4 for persistence and maintenance of the centralized LPR.
+
+* Data ingestion
+* Data transformation to standardized LFH message format
+* Persist into LPR
+
+
+LinuxForHealth Connect
+======================
+
+.. image:: images/LinuxForHealth-Connect.png
+   :width: 600
+   :alt: LinuxForHealth
+
+Each LFH node is comprised of the connect application, the ledger and data persistence for the LPR.
+
+   
+
+LinuxForHealth Workflow
+=======================
+
+.. image:: images/LinuxForHealthWorkflow.png
+   :width: 600
+   :alt: LinuxForHealth
+
+The LFH workflow consists of distinct steps for interfacing applications - these are described below:
+
+Parse
+-----
+LinuxForHealth connect receives an inbound data message.
+
+
+Validate
+--------
+Validates data for completeness and accuracy. This is key to ensuring that data persisted within the OS is consistent for use by downstream steps in the workflow.
+
+Transform
+---------
+Optional step used for applying data transformations and updates to validated data.
+
+Persist
+-------
+Data is persisted into the LPR store. Metadata is also created and provided to ledger storage and search services.
+
+Transmit
+--------
+Optional step which transmits the validated data message to an external system.
+
+Synchronize
+-----------
+Broadcasts the data message to the LinuxForHealth network, applying the message to the other nodes.
+
+LinuxForHealth Dialtone Example
+================================
+.. image:: images/LinuxForHealth-DialTone.png
+   :width: 600
+   :alt: LinuxForHealth
+   
+This diagram shows the power of the LFH network where a transaction is submitted to a node and is then applied to the entire network, regardless of architecture or deployment, via the synchronized ledger.  In this example, a radiology image is sent to an imaging device running LFH, which the network applies to the other nodes - a Payer System running LFH on Z and a Provider System running on the Azure cloud.
+
+
 .. toctree::
    :maxdepth: 3
    :caption: Getting Started:
 
    developer-setup.rst
-   tutorials/firstroute.rst
-   application-configuration.rst
-   feature-configuration.rst
-   message-structure.rst
-
-.. toctree::
-   :maxdepth: 3
-   :caption: Tutorials:
-
    tutorials/quickstart.rst
-   tutorials/fhir-r4.rst
-   tutorials/hl7-v2.rst
-   tutorials/blue-button-20.rst
+   application-configuration.rst
+   message-structure.rst
 
 .. toctree::
    :maxdepth: 3
    :caption: Routes:
 
-   routes/fhir-r4-rest.rst
-   routes/etl.rst
-   routes/orthanc-post.rst
-   routes/direct-storeandnotify.rst
-   routes/fhir-to-text.rst
-   routes/nlp.rst
+   routes/fhir-r4.rst
 
 .. toctree::
    :maxdepth: 3
    :caption: Develop:
 
-   develop/extend.rst
-   develop/build.rst
-   develop/test.rst
-   develop/property-encryption.rst
-   develop/route-basics.rst
-   develop/configure-kong.rst
+   develop/develop.rst
 
 .. toctree::
    :maxdepth: 3
    :caption: Deployment:
 
-   deployment/container.rst
    deployment/compose.rst
-   deployment/openshift.rst
-   deployment/oci.rst
+   deployment/container.rst
+   deployment/kubernetes.rst
+

@@ -42,8 +42,8 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Quick Start" href="tutorials/quickstart.html" />
-    <link rel="prev" title="Feature Configuration" href="feature-configuration.html" /> 
+    <link rel="next" title="FHIR R4" href="routes/fhir-r4.html" />
+    <link rel="prev" title="Application Configuration" href="application-configuration.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -95,9 +95,8 @@
               <p class="caption"><span class="caption-text">Getting Started:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="developer-setup.html">Developer Setup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorials/firstroute.html">Hello World</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/quickstart.html">QuickStart</a></li>
 <li class="toctree-l1"><a class="reference internal" href="application-configuration.html">Application Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="feature-configuration.html">Feature Configuration</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Message Structure</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#structure">Structure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#description">Description</a></li>
@@ -105,37 +104,19 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">Tutorials:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="tutorials/quickstart.html">Quick Start</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorials/fhir-r4.html">FHIR R4</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorials/hl7-v2.html">HL7-v2</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorials/blue-button-20.html">Blue Button 2.0</a></li>
-</ul>
 <p class="caption"><span class="caption-text">Routes:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="routes/fhir-r4-rest.html">FHIR R4</a></li>
-<li class="toctree-l1"><a class="reference internal" href="routes/etl.html">ETL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="routes/orthanc-post.html">Orthanc DICOM</a></li>
-<li class="toctree-l1"><a class="reference internal" href="routes/direct-storeandnotify.html">Direct Store and Notify</a></li>
-<li class="toctree-l1"><a class="reference internal" href="routes/fhir-to-text.html">FHIR TO TEXT</a></li>
-<li class="toctree-l1"><a class="reference internal" href="routes/nlp.html">NLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="routes/fhir-r4.html">FHIR R4</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Develop:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="develop/extend.html">Developing for LinuxForHealth</a></li>
-<li class="toctree-l1"><a class="reference internal" href="develop/build.html">Building Your Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="develop/test.html">Testing Your Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="develop/property-encryption.html">Property Encryption</a></li>
-<li class="toctree-l1"><a class="reference internal" href="develop/route-basics.html">Developing Routes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="develop/configure-kong.html">Configuring Kong</a></li>
+<li class="toctree-l1"><a class="reference internal" href="develop/develop.html">LinuxForHealth Connect Development</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Deployment:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="deployment/container.html">Container Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="deployment/compose.html">Docker Compose Support</a></li>
-<li class="toctree-l1"><a class="reference internal" href="deployment/openshift.html">OpenShift Container Platform</a></li>
-<li class="toctree-l1"><a class="reference internal" href="deployment/oci.html">Open Container Initiative (OCI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deployment/container.html">Container Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deployment/kubernetes.html">Kubernetes Support</a></li>
 </ul>
 
             
@@ -205,35 +186,37 @@
             
   <div class="section" id="message-structure">
 <h1>Message Structure<a class="headerlink" href="#message-structure" title="Permalink to this headline">¶</a></h1>
-<p>This section describes the message structure used by LinuxForHealth and shows typical examples.</p>
+<p>This section describes the message structure used by LinuxForHealth connect, and shows typical examples.</p>
 <div class="section" id="structure">
 <h2>Structure<a class="headerlink" href="#structure" title="Permalink to this headline">¶</a></h2>
 <p>The following JSON message structure is used throughout LinuxForHealth:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s1">&#39;meta&#39;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s1">&#39;routeId&#39;</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span>
-        <span class="s1">&#39;uuid&#39;</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span>
-        <span class="s1">&#39;routeUrl&#39;</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span>
-        <span class="s1">&#39;dataFormat&#39;</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span>
-        <span class="s1">&#39;messageType&#39;</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span>
-        <span class="s1">&#39;timestamp&#39;</span><span class="p">:</span> <span class="n">long</span><span class="p">,</span>
-        <span class="s1">&#39;dataStoreUri&#39;</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span>
-        <span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span> <span class="n">optional</span>
-        <span class="s1">&#39;dataRecordLocation&#39;</span><span class="p">:</span> <span class="n">string</span><span class="p">[],</span> <span class="n">optional</span>
-    <span class="p">},</span>
-    <span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span> <span class="n">optional</span>
+    <span class="n">uuid</span><span class="p">:</span> <span class="n">uuid</span><span class="p">,</span>
+    <span class="n">lfh_id</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span>
+    <span class="n">creation_date</span><span class="p">:</span> <span class="n">datetime</span><span class="p">,</span>
+    <span class="n">store_date</span><span class="p">:</span> <span class="n">datetime</span><span class="p">,</span>
+    <span class="n">consuming_endpoint_url</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span>
+    <span class="n">data</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span>
+    <span class="n">data_format</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span>
+    <span class="n">status</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span>
+    <span class="n">data_record_location</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span>
+    <span class="n">target_endpoint_url</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span>
+    <span class="n">elapsed_storage_time</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">transmit_date</span><span class="p">:</span> <span class="n">datetime</span><span class="p">,</span>
+    <span class="n">elapsed_transmit_time</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">elapsed_total_time</span><span class="p">:</span> <span class="nb">float</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
-<p>The message consists of two top-level keys: ‘meta’ for describing information about a transaction and ‘data’ to contain the transaction payload.  The table below further describes each key.</p>
+<p>The LinuxForHealth connect message format captures metadata pertaining to the data transaction. Data is received via an endpoint, as noted by the consuming_endpoint_url, and then persisted to the connect database. Data is transmitted to an external service if a transmission URL is configured.</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 20%" />
+<col style="width: 23%" />
 <col style="width: 11%" />
-<col style="width: 69%" />
+<col style="width: 66%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Key</p></th>
@@ -242,98 +225,122 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>routeId</p></td>
-<td><p>string</p></td>
-<td><p>The identifier assigned to the route during route construction.</p></td>
-</tr>
-<tr class="row-odd"><td><p>uuid</p></td>
+<tr class="row-even"><td><p>uuid</p></td>
 <td><p>string</p></td>
 <td><p>The message uuid assigned during route invocation.</p></td>
 </tr>
-<tr class="row-even"><td><p>routeUrl</p></td>
+<tr class="row-odd"><td><p>lfh_id</p></td>
 <td><p>string</p></td>
-<td><p>The url for the route associated with the message.</p></td>
+<td><p>The LinuxForHealth connect node identifier.</p></td>
 </tr>
-<tr class="row-odd"><td><p>dataFormat</p></td>
+<tr class="row-even"><td><p>creation_date</p></td>
+<td><p>datetime</p></td>
+<td><p>The message creation timestamp.</p></td>
+</tr>
+<tr class="row-odd"><td><p>store_date</p></td>
+<td><p>datetime</p></td>
+<td><p>The message storage timestamp.</p></td>
+</tr>
+<tr class="row-even"><td><p>consuming_endpoint_url</p></td>
 <td><p>string</p></td>
-<td><p>The format of the data sent as the message payload.</p></td>
-</tr>
-<tr class="row-even"><td><p>messageType</p></td>
-<td><p>string</p></td>
-<td><p>The data format’s message type.</p></td>
-</tr>
-<tr class="row-odd"><td><p>timestamp</p></td>
-<td><p>long</p></td>
-<td><p>The timestamp in seconds since the epoch.</p></td>
-</tr>
-<tr class="row-even"><td><p>dataStoreUri</p></td>
-<td><p>string</p></td>
-<td><p>The uri of the data store.</p></td>
-</tr>
-<tr class="row-odd"><td><p>status</p></td>
-<td><p>string</p></td>
-<td><p>Optional result success indicator: “success” | “error”.</p></td>
-</tr>
-<tr class="row-even"><td><p>dataRecordLocation</p></td>
-<td><p>string[]</p></td>
-<td><p>Optional location(s) of data stored successfully in the data store.</p></td>
+<td><p>The LinuxForHealth connect endpoint which received the message.</p></td>
 </tr>
 <tr class="row-odd"><td><p>data</p></td>
-<td><p>object</p></td>
-<td><p>Optional data payload: byte[] or error message.</p></td>
+<td><p>string</p></td>
+<td><p>Data content received as a base-64 encoded string.</p></td>
+</tr>
+<tr class="row-even"><td><p>status</p></td>
+<td><p>string</p></td>
+<td><p>Indicates if the message was persisted. Either “success” or “error”.</p></td>
+</tr>
+<tr class="row-odd"><td><p>data_record_location</p></td>
+<td><p>string</p></td>
+<td><p>The data record’s URI within the LinuxForHealth connect datastore.</p></td>
+</tr>
+<tr class="row-even"><td><p>target_endpoint_url</p></td>
+<td><p>string</p></td>
+<td><p>The external URL where the data is transmitted.</p></td>
+</tr>
+<tr class="row-odd"><td><p>elapsed_storage_time</p></td>
+<td><p>float</p></td>
+<td><p>Elapsed data storage time in seconds.</p></td>
+</tr>
+<tr class="row-even"><td><p>transmit_date</p></td>
+<td><p>datetime</p></td>
+<td><p>The data transmission timestamp.</p></td>
+</tr>
+<tr class="row-odd"><td><p>elapsed_transmit_time</p></td>
+<td><p>datetime</p></td>
+<td><p>Elapsed external transmission time in seconds.</p></td>
+</tr>
+<tr class="row-even"><td><p>elapsed_total_time</p></td>
+<td><p>datetime</p></td>
+<td><p>Elapsed total transmission time including storage and transmission</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
-<p>Successful route processing notification:</p>
+<p>The LinuxForHealth message for a FHIR-R4 Patient resource which is persisted to the connect db:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-   <span class="s2">&quot;meta&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;routeId&quot;</span><span class="p">:</span> <span class="s2">&quot;fhir-r4-rest&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;ab2385c6-ebb8-4ddd-a4b2-fc37c61761d4&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;routeUrl&quot;</span><span class="p">:</span> <span class="s2">&quot;http://0.0.0.0:8080/fhir/r4&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;dataFormat&quot;</span><span class="p">:</span> <span class="s2">&quot;FHIR-R4&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;messageType&quot;</span><span class="p">:</span> <span class="s2">&quot;PATIENT&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="mi">1592574430</span><span class="p">,</span>
-        <span class="s2">&quot;dataStoreUri&quot;</span><span class="p">:</span> <span class="s2">&quot;kafka:FHIR-R4_PATIENT?brokers=localhost:9092&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;dataRecordLocation&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;FHIR-R4_PATIENT-0@0&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span>
-    <span class="p">}</span>
+   <span class="s2">&quot;uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;fd09c54d-4e64-478c-93bb-456e0cfe67f4&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;lfh_id&quot;</span><span class="p">:</span> <span class="s2">&quot;My-Computer.net&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;creation_date&quot;</span><span class="p">:</span> <span class="s2">&quot;2021-04-07T21:08:45+00:00&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;store_date&quot;</span><span class="p">:</span> <span class="s2">&quot;2021-04-07T21:08:45+00:00&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;consuming_endpoint_url&quot;</span><span class="p">:</span> <span class="s2">&quot;/fhir/Patient&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="s2">&quot;eyJiaXJ0aERhdGUiOiAiMTk3NC0xMi0yNSIsICJnZW5kZXIiOiAibWFsZSIsICJpZGVudGlmaWVyIjogW3sic3lzdGVtIjogInVybjpvaWQ6MS4yLjM2LjE0Ni41OTUuMjE3LjAuMSIsICJ2YWx1ZSI6ICIxMjM0NSJ9XSwgIm5hbWUiOiBbeyJmYW1pbHkiOiAiRHVjayIsICJnaXZlbiI6IFsiRG9uYWxkIiwgIkQuIl19XSwgInJlc291cmNlVHlwZSI6ICJQYXRpZW50In0=&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;data_format&quot;</span><span class="p">:</span> <span class="s2">&quot;PATIENT&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+   <span class="s2">&quot;data_record_location&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+   <span class="s2">&quot;target_endpoint_url&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+   <span class="s2">&quot;elapsed_storage_time&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+   <span class="s2">&quot;transmit_date&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+   <span class="s2">&quot;elapsed_transmit_time&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+   <span class="s2">&quot;elapsed_total_time&quot;</span><span class="p">:</span> <span class="n">null</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Notification of error caused by unavailable storage service:</p>
+<p>The <strong>data</strong> field contains a base64-encoded version of the original data sent to LinuxForHealth.  Some fields, like <strong>data_record_location</strong>, are not available until after the storage is complete.</p>
+<p>When a transaction is complete, the resulting LinuxForHealth message contains the <strong>data_record_location</strong>, as well as the storage <strong>status</strong> and metrics such as <strong>elapsed_storage_time</strong>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;meta&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;routeId&quot;</span><span class="p">:</span> <span class="s2">&quot;fhir-r4-rest&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;ab2385c6-ebb8-4ddd-a4b2-fc37c61761d4&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;routeUrl&quot;</span><span class="p">:</span> <span class="s2">&quot;http://0.0.0.0:8080/fhir/r4&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;dataFormat&quot;</span><span class="p">:</span> <span class="s2">&quot;FHIR-R4&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;messageType&quot;</span><span class="p">:</span> <span class="s2">&quot;PATIENT&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="mi">1592574430</span><span class="p">,</span>
-        <span class="s2">&quot;dataStoreUri&quot;</span><span class="p">:</span> <span class="s2">&quot;kafka:FHIR-R4_PATIENT?brokers=localhost:9092&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;error&quot;</span>
-    <span class="p">},</span>
-    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="s2">&quot;Topic FHIR-R4_PATIENT not present in metadata after 60000 ms.&quot;</span>
+    <span class="s2">&quot;uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;290487e0-2864-445b-acc7-907c227ba2d3&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;lfh_id&quot;</span><span class="p">:</span> <span class="s2">&quot;3b935d2b1441&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;creation_date&quot;</span><span class="p">:</span> <span class="s2">&quot;2021-04-09T20:34:36+00:00&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;store_date&quot;</span><span class="p">:</span> <span class="s2">&quot;2021-04-09T20:34:36+00:00&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;consuming_endpoint_url&quot;</span><span class="p">:</span> <span class="s2">&quot;/fhir/Patient&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="s2">&quot;eyJpZCI6ICIwMDEiLCAiYWN0aXZlIjogdHJ1ZSwgInJlc291cmNlVHlwZSI6ICJQYXRpZW50In0=&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;data_format&quot;</span><span class="p">:</span> <span class="s2">&quot;FHIR-R4_PATIENT&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;data_record_location&quot;</span><span class="p">:</span> <span class="s2">&quot;FHIR-R4_PATIENT:0:0&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;target_endpoint_url&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s2">&quot;elapsed_storage_time&quot;</span><span class="p">:</span> <span class="mf">1.64379</span><span class="p">,</span>
+    <span class="s2">&quot;transmit_date&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s2">&quot;elapsed_transmit_time&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s2">&quot;elapsed_total_time&quot;</span><span class="p">:</span> <span class="mf">1.680011</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Internal message sent to the storage service:</p>
+<p>You may also define an external server to which LinuxForHealth will send messages, such as a FHIR server.  In this case, the message stored in the connect DB will include a value for <strong>target_endpoint_url</strong>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;meta&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;routeId&quot;</span><span class="p">:</span> <span class="s2">&quot;hl7-v2-mllp&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;ab2385c6-ebb8-4ddd-a4b2-fc37c61761d4&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;routeUrl&quot;</span><span class="p">:</span> <span class="s2">&quot;netty:tcp://localhost:2575?sync=true&amp;encoders=#hl7encoder&amp;decoders=#hl7decoder&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;dataFormat&quot;</span><span class="p">:</span> <span class="s2">&quot;HL7-V2&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;messageType&quot;</span><span class="p">:</span> <span class="s2">&quot;ADT&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="mi">1592574430</span><span class="p">,</span>
-        <span class="s2">&quot;dataStoreUri&quot;</span><span class="p">:</span> <span class="s2">&quot;kafka:HL7-V2_ADT?brokers=localhost:9092&quot;</span>
-    <span class="p">},</span>
-    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">base64</span> <span class="n">encoded</span> <span class="n">message</span><span class="o">&gt;</span>
+   <span class="s2">&quot;uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;fd09c54d-4e64-478c-93bb-456e0cfe67f4&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;lfh_id&quot;</span><span class="p">:</span> <span class="s2">&quot;My-Computer.net&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;creation_date&quot;</span><span class="p">:</span> <span class="s2">&quot;2021-04-07T21:08:45+00:00&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;store_date&quot;</span><span class="p">:</span> <span class="s2">&quot;2021-04-07T21:08:45+00:00&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;consuming_endpoint_url&quot;</span><span class="p">:</span> <span class="s2">&quot;/fhir/Patient&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="s2">&quot;eyJiaXJ0aERhdGUiOiAiMTk3NC0xMi0yNSIsICJnZW5kZXIiOiAibWFsZSIsICJpZGVudGlmaWVyIjogW3sic3lzdGVtIjogInVybjpvaWQ6MS4yLjM2LjE0Ni41OTUuMjE3LjAuMSIsICJ2YWx1ZSI6ICIxMjM0NSJ9XSwgIm5hbWUiOiBbeyJmYW1pbHkiOiAiRHVjayIsICJnaXZlbiI6IFsiRG9uYWxkIiwgIkQuIl19XSwgInJlc291cmNlVHlwZSI6ICJQYXRpZW50In0=&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;data_format&quot;</span><span class="p">:</span> <span class="s2">&quot;PATIENT&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+   <span class="s2">&quot;data_record_location&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+   <span class="s2">&quot;target_endpoint_url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://fhiruser:change-password@localhost:9443/fhir-server/api/v4&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;elapsed_storage_time&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+   <span class="s2">&quot;transmit_date&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+   <span class="s2">&quot;elapsed_transmit_time&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+   <span class="s2">&quot;elapsed_total_time&quot;</span><span class="p">:</span> <span class="n">null</span>
 <span class="p">}</span>
 </pre></div>
 </div>
+<p>When an external server is defined, the return value is the actual response from that external server (such as an HTTP 201 - created response). In this case, the LinuxForHealth message UUID is included in the <strong>LinuxForHealth-MessageId</strong> header of the response.</p>
 </div>
 </div>
 
@@ -343,8 +350,8 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="tutorials/quickstart.html" class="btn btn-neutral float-right" title="Quick Start" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="feature-configuration.html" class="btn btn-neutral float-left" title="Feature Configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="routes/fhir-r4.html" class="btn btn-neutral float-right" title="FHIR R4" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="application-configuration.html" class="btn btn-neutral float-left" title="Application Configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

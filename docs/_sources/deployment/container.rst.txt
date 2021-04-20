@@ -10,21 +10,19 @@ Images for LinuxForHealth applications and services are available under the `Lin
 * arm64
 * s390x/Z
 
-Red Hat Universal Base Images (UBI) are utilized when possible. UBI images provide an optimizied runtime with an emphasis on security and operational stability. Within the UBI family of images, the minimal variant is preferred, followed by the init and standard variants.
+Alpine base images are utilized wherever possible to enable small memory footprints (Kafka & Zookeeper), especially to enable the arm64 arch-type.
 
-LFH images run within any standard container runtime and orchestration environment. Additionally, all LFH images are supported on Red Hat's Open Shift Container Platform (OCP) and adhere to OCP best practices.
+LFH images run within any standard container runtime and orchestration environment. The connect project provides example yaml files to deploy the application and support services on a kubernetes cluster.
 
 LFH provides management scripts to support the following runtimes:
 
-* OCI (podman or docker)
-* Docker Compose
-* OpenShift Container Platform
-* Code Ready Containers (provides a local environment for OCP development)
+* Docker Compose (in ``./connect``)
+* Kubernetes Cluster Deployments (in ``./connect/k8s-deployment``)
 
 LFH Base Image
 ==============
 
-The LFH base image is used as the base image for all LFH images when possible. The LFH base image in turn is based off of the Red Hat minimal UBI image. The LFH base image provides the following:
+The LFH base image is used as the base image for all LFH images when possible. The LFH base image provides the following:
 
 * a standard non-privileged application user, lfh
 * a root directory, /opt/lfh, for applications and services
@@ -33,7 +31,7 @@ The LFH base image is used as the base image for all LFH images when possible. T
 Building Images
 ===============
 
-LFH images are built to support multiple architectures, including x86/amd, arm64, and s390x/Z. Multi-arch builds are supported in OCI compliant tools such as docker and podman. The following docker command illustrates a multi-arch build for the LFH connect project::
+LFH images are built to support multiple architectures, including x86/amd, arm64, and s390x/Z. Multi-arch builds are supported in OCI compliant tools such as docker. The following docker command illustrates a multi-arch build for the LFH connect project::
 
     docker buildx build \
         --pull \

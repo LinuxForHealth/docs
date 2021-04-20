@@ -42,7 +42,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Hello World" href="tutorials/firstroute.html" />
+    <link rel="next" title="QuickStart" href="tutorials/quickstart.html" />
     <link rel="prev" title="What is LinuxForHealth?" href="index.html" /> 
 </head>
 
@@ -95,48 +95,46 @@
               <p class="caption"><span class="caption-text">Getting Started:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Developer Setup</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting Started</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-development-environment">The Development Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#where-to-contribute">Where to Contribute</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting Started</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#required-software">Required Software</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set-up-a-local-environment">Set Up A Local Environment</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#clone-the-project-and-navigate-to-the-root-directory">Clone the project and navigate to the root directory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-virtual-environment">Create a virtual environment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#install-connect-with-dev-and-test-dependencies">Install connect with dev and test dependencies</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#generate-trusted-local-certs-for-connect-and-supporting-services">Generate trusted local certs for connect and supporting services</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#start-connect-and-supporting-services">Start connect and supporting services</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="tutorials/firstroute.html">Hello World</a></li>
-<li class="toctree-l1"><a class="reference internal" href="application-configuration.html">Application Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="feature-configuration.html">Feature Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="message-structure.html">Message Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#docker-image">Docker Image</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#build-the-image">Build the image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#build-the-image-with-docker-cli">Build the image with Docker CLI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#build-the-image-with-docker-compose">Build the image with Docker-Compose</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#run-connect-and-supporting-services">Run connect and Supporting Services</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Tutorials:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="tutorials/quickstart.html">Quick Start</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorials/fhir-r4.html">FHIR R4</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorials/hl7-v2.html">HL7-v2</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorials/blue-button-20.html">Blue Button 2.0</a></li>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#links-and-resources">Links and Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/quickstart.html">QuickStart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="application-configuration.html">Application Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="message-structure.html">Message Structure</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Routes:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="routes/fhir-r4-rest.html">FHIR R4</a></li>
-<li class="toctree-l1"><a class="reference internal" href="routes/etl.html">ETL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="routes/orthanc-post.html">Orthanc DICOM</a></li>
-<li class="toctree-l1"><a class="reference internal" href="routes/direct-storeandnotify.html">Direct Store and Notify</a></li>
-<li class="toctree-l1"><a class="reference internal" href="routes/fhir-to-text.html">FHIR TO TEXT</a></li>
-<li class="toctree-l1"><a class="reference internal" href="routes/nlp.html">NLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="routes/fhir-r4.html">FHIR R4</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Develop:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="develop/extend.html">Developing for LinuxForHealth</a></li>
-<li class="toctree-l1"><a class="reference internal" href="develop/build.html">Building Your Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="develop/test.html">Testing Your Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="develop/property-encryption.html">Property Encryption</a></li>
-<li class="toctree-l1"><a class="reference internal" href="develop/route-basics.html">Developing Routes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="develop/configure-kong.html">Configuring Kong</a></li>
+<li class="toctree-l1"><a class="reference internal" href="develop/develop.html">LinuxForHealth Connect Development</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Deployment:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="deployment/container.html">Container Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="deployment/compose.html">Docker Compose Support</a></li>
-<li class="toctree-l1"><a class="reference internal" href="deployment/openshift.html">OpenShift Container Platform</a></li>
-<li class="toctree-l1"><a class="reference internal" href="deployment/oci.html">Open Container Initiative (OCI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deployment/container.html">Container Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deployment/kubernetes.html">Kubernetes Support</a></li>
 </ul>
 
             
@@ -206,74 +204,142 @@
             
   <div class="section" id="developer-setup">
 <h1>Developer Setup<a class="headerlink" href="#developer-setup" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>LinuxForHealth provides an opinionated implementation of <a class="reference external" href="https://camel.apache.org/manual/latest/routes.html">Camel Routing</a>, focused
-on standard data and messaging formats.</p>
-<p>A LinuxForHealth data processing route consists of:</p>
-<ul class="simple">
-<li><p>A consumer endpoint which receives inbound data</p></li>
-<li><p>Optional “components” used to transform, filter, or route data</p></li>
-<li><p>Error handling and auditing</p></li>
-<li><p>A Kafka based producer endpoint, used to store data messages</p></li>
-<li><p>Additional optional producer endpoints to support “multi-cast” routes when needed</p></li>
-</ul>
-</div>
-<div class="section" id="prerequisites">
-<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p>Java 1.8</p></li>
-<li><p><a class="reference external" href="https://gradle.org/">Gradle 6.x</a></p></li>
-</ul>
+<div class="section" id="where-to-contribute">
+<h2>Where to Contribute<a class="headerlink" href="#where-to-contribute" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Resource Type</p></th>
+<th class="head"><p>Link</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>🚨 Bug Reports</p></td>
+<td><p><a class="reference external" href="https://github.com/LinuxForHealth/connect/labels/bug">GitHub Bug List</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>🎁 Feature Requests &amp; Ideas</p></td>
+<td><p><a class="reference external" href="https://github.com/LinuxForHealth/connect/issues">GitHub Issues Tracker</a></p></td>
+</tr>
+<tr class="row-even"><td><p>❔ Questions</p></td>
+<td><p><a class="reference external" href="https://ibm-watsonhealth.slack.com/archives/G01639WJEMA">LFH Slack Channel</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>🚙 Roadmap</p></td>
+<td><p><a class="reference external" href="https://github.com/LinuxForHealth/connect/projects/1">Project Board</a></p></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="getting-started">
 <h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
-<p>Clone and build the project:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># clone the repo and confirm the build</span>
-<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">linuxforhealth</span><span class="o">/</span><span class="n">connect</span><span class="o">.</span><span class="n">git</span>
-<span class="n">cd</span> <span class="n">connect</span>
-<span class="o">./</span><span class="n">gradlew</span> <span class="n">build</span>
-</pre></div>
-</div>
-<p>The Test Summary is available within the project’s build directory in <em>./build/reports/tests/test/index.html</em></p>
-</div>
-<div class="section" id="the-development-environment">
-<h2>The Development Environment<a class="headerlink" href="#the-development-environment" title="Permalink to this headline">¶</a></h2>
-<p>The development environment provides additional systems and integration targets via a Docker Compose configuration, docker-compose.yml), and “profile” specific override files.</p>
-<p>LFH Supporting Systems include:</p>
+<div class="section" id="required-software">
+<h3>Required Software<a class="headerlink" href="#required-software" title="Permalink to this headline">¶</a></h3>
+<p>The LinuxForHealth connect development environment requires the following:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/obsidiandynamics/kafdrop">Kafdrop</a> - A Kafka Cluster Viewer</p></li>
-<li><p><a class="reference external" href="https://kafka.apache.org/">Kafka</a> - For data storage</p></li>
-<li><p><a class="reference external" href="https://nats.io/">Nats</a> - For real time event streaming and messaging</p></li>
+<li><p><a class="reference external" href="https://git-scm.com/">git</a> for project version control</p></li>
+<li><p><a class="reference external" href="https://github.com/FiloSottile/mkcert">mkcert</a> for local trusted certificates</p></li>
+<li><p><a class="reference external" href="https://www.python.org/downloads/mac-osx/">Python 3.8 or higher</a> for runtime/coding support</p></li>
+<li><p><a class="reference external" href="https://docs.docker.com/compose/install/">Docker Compose</a> for a local container runtime</p></li>
 </ul>
-<p>Use docker-compose and gradle to start the local development environment:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># navigate to the compose configuration directory</span>
-<span class="n">cd</span> <span class="n">container</span><span class="o">-</span><span class="n">support</span><span class="o">/</span><span class="n">compose</span>
-<span class="c1"># execute the compose start script within the current shell</span>
-<span class="o">.</span> <span class="o">./</span><span class="n">start</span><span class="o">-</span><span class="n">stack</span><span class="o">.</span><span class="n">sh</span>
-<span class="c1"># review logs</span>
-<span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">logs</span> <span class="o">-</span><span class="n">f</span>
-<span class="c1"># return to the project root directory</span>
-<span class="n">cd</span> <span class="o">../../</span>
-<span class="c1"># launch LFH</span>
-<span class="o">./</span><span class="n">gradlew</span> <span class="n">run</span>
+<p>For Windows 10 users, we suggest using <a class="reference external" href="https://docs.microsoft.com/en-us/windows/wsl/install-win10">Windows Subsystem for Linux</a></p>
+</div>
+<div class="section" id="set-up-a-local-environment">
+<h3>Set Up A Local Environment<a class="headerlink" href="#set-up-a-local-environment" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="clone-the-project-and-navigate-to-the-root-directory">
+<h4>Clone the project and navigate to the root directory<a class="headerlink" href="#clone-the-project-and-navigate-to-the-root-directory" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">LinuxForHealth</span><span class="o">/</span><span class="n">connect</span>
+<span class="n">cd</span> <span class="n">connect</span>
 </pre></div>
 </div>
-<p>The start-stack.sh script sets the Docker Compose <a class="reference external" href="https://docs.docker.com/compose/reference/envvars/#compose_file/">COMPOSE_FILE</a> . COMPOSE_FILE specifies the path to each of the configuration files for the current LFH stack profile.
-COMPOSE_FILE remains in scope with the current shell session.</p>
-<p>To remove the local development environment:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># remove all containers, networks, and volumes</span>
-<span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">down</span> <span class="o">-</span><span class="n">v</span>
-<span class="c1"># remove current compose file paths</span>
-<span class="n">unset</span> <span class="n">COMPOSE_FILE</span>
+</div>
+<div class="section" id="create-a-virtual-environment">
+<h4>Create a virtual environment<a class="headerlink" href="#create-a-virtual-environment" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">venv</span> <span class="n">venv</span>
+<span class="n">source</span> <span class="n">venv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">upgrade</span> <span class="n">pip</span>
 </pre></div>
 </div>
-<p>For additional Docker Compose commands, please refer to the <a class="reference external" href="https://docs.docker.com/compose/reference/overview/">Official Documentation</a></p>
-<p>To access Kafdrop, the Kafka Cluster View, browse to <a class="reference external" href="http://localhost:9000">http://localhost:9000</a></p>
-<p>To list all available Gradle tasks:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">gradlew</span> <span class="n">tasks</span>
+</div>
+<div class="section" id="install-connect-with-dev-and-test-dependencies">
+<h4>Install connect with dev and test dependencies<a class="headerlink" href="#install-connect-with-dev-and-test-dependencies" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="o">.</span><span class="p">[</span><span class="n">dev</span><span class="p">,</span><span class="n">test</span><span class="p">]</span>
+<span class="c1"># note if using zsh shell the extra dependencies require quoting</span>
+<span class="c1"># pip install -e &quot;.[dev,test]&quot;</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="generate-trusted-local-certs-for-connect-and-supporting-services">
+<h4>Generate trusted local certs for connect and supporting services<a class="headerlink" href="#generate-trusted-local-certs-for-connect-and-supporting-services" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">local</span><span class="o">-</span><span class="n">certs</span><span class="o">/</span><span class="n">install</span><span class="o">-</span><span class="n">certificates</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>For more information on connect and HTTPS/TLS support, please refer to the <a class="reference external" href="https://github.com/LinuxForHealth/connect/blob/main/local-certs/README.md">local cert readme</a>.</p>
+</div>
+<div class="section" id="start-connect-and-supporting-services">
+<h4>Start connect and supporting services<a class="headerlink" href="#start-connect-and-supporting-services" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">up</span> <span class="o">-</span><span class="n">d</span>
+<span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">ps</span>
+
+<span class="n">APPLICATION_CERT_PATH</span><span class="o">=./</span><span class="n">local</span><span class="o">-</span><span class="n">certs</span> \
+  <span class="n">UVICORN_RELOAD</span><span class="o">=</span><span class="kc">True</span> \
+  <span class="n">python</span> <span class="n">connect</span><span class="o">/</span><span class="n">main</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>Browse to <a class="reference external" href="https://localhost:5000/docs">https://localhost:5000/docs</a> to view the Open API documentation</p>
+</div>
+</div>
+<div class="section" id="docker-image">
+<h3>Docker Image<a class="headerlink" href="#docker-image" title="Permalink to this headline">¶</a></h3>
+<p>The connect docker image is an “incubating” feature and is subject to change. The image is associated with the “deployment” profile to provide separation from core services.</p>
+<div class="section" id="build-the-image">
+<h4>Build the image<a class="headerlink" href="#build-the-image" title="Permalink to this headline">¶</a></h4>
+<p>The connect image build integrates the application’s x509 certificate (PEM encoded) into the image.</p>
+<p>The <code class="code docutils literal notranslate"><span class="pre">APPLICATION_CERT_PATH</span></code> build argument is used to specify the location of the certificate on the host machine. If the <code class="code docutils literal notranslate"><span class="pre">APPLICATION_CERT_PATH</span></code> build argument is not provided, a default value of ./local-certs/lfh.pem is used.</p>
+</div>
+<div class="section" id="build-the-image-with-docker-cli">
+<h4>Build the image with Docker CLI<a class="headerlink" href="#build-the-image-with-docker-cli" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">build</span> <span class="o">--</span><span class="n">build</span><span class="o">-</span><span class="n">arg</span> <span class="n">APPLICATION_BUILD_CERT_PATH</span><span class="o">=./</span><span class="n">local</span><span class="o">-</span><span class="n">certs</span><span class="o">/</span> <span class="o">-</span><span class="n">t</span> <span class="n">linuxforhealth</span><span class="o">/</span><span class="n">connect</span><span class="p">:</span><span class="mf">0.25</span><span class="o">.</span><span class="mi">0</span> <span class="o">.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="build-the-image-with-docker-compose">
+<h4>Build the image with Docker-Compose<a class="headerlink" href="#build-the-image-with-docker-compose" title="Permalink to this headline">¶</a></h4>
+<p>The docker-compose command below parses the build context, arguments, and image tag from the docker-compose.yaml file.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">build</span> <span class="n">connect</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="run-connect-and-supporting-services">
+<h4>Run connect and Supporting Services<a class="headerlink" href="#run-connect-and-supporting-services" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="o">--</span><span class="n">profile</span> <span class="n">deployment</span> <span class="n">up</span> <span class="o">-</span><span class="n">d</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="links-and-resources">
+<h2>Links and Resources<a class="headerlink" href="#links-and-resources" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 40%" />
+<col style="width: 60%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Resource Type</p></th>
+<th class="head"><p>Link</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>📰 Documentation</p></td>
+<td><p><a class="reference external" href="https://linuxforhealth.github.io/docs/">LinuxForHealth Docs Site</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>📰 Documentation</p></td>
+<td><p><a class="reference external" href="https://github.com/LinuxForHealth/connect/blob/main/IPFS.md">IPFS</a></p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 
@@ -283,7 +349,7 @@ COMPOSE_FILE remains in scope with the current shell session.</p>
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="tutorials/firstroute.html" class="btn btn-neutral float-right" title="Hello World" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="tutorials/quickstart.html" class="btn btn-neutral float-right" title="QuickStart" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="index.html" class="btn btn-neutral float-left" title="What is LinuxForHealth?" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 

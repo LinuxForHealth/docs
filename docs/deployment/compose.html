@@ -42,8 +42,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="OpenShift Container Platform" href="openshift.html" />
-    <link rel="prev" title="Container Support" href="container.html" /> 
+    <link rel="next" title="Container Support" href="container.html" />
+    <link rel="prev" title="LinuxForHealth Connect Development" href="../develop/develop.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -95,46 +95,27 @@
               <p class="caption"><span class="caption-text">Getting Started:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../developer-setup.html">Developer Setup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/firstroute.html">Hello World</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/quickstart.html">QuickStart</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../application-configuration.html">Application Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../feature-configuration.html">Feature Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../message-structure.html">Message Structure</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Tutorials:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/quickstart.html">Quick Start</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/fhir-r4.html">FHIR R4</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/hl7-v2.html">HL7-v2</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/blue-button-20.html">Blue Button 2.0</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Routes:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../routes/fhir-r4-rest.html">FHIR R4</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../routes/etl.html">ETL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../routes/orthanc-post.html">Orthanc DICOM</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../routes/direct-storeandnotify.html">Direct Store and Notify</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../routes/fhir-to-text.html">FHIR TO TEXT</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../routes/nlp.html">NLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../routes/fhir-r4.html">FHIR R4</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Develop:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../develop/extend.html">Developing for LinuxForHealth</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../develop/build.html">Building Your Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../develop/test.html">Testing Your Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../develop/property-encryption.html">Property Encryption</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../develop/route-basics.html">Developing Routes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../develop/configure-kong.html">Configuring Kong</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/develop.html">LinuxForHealth Connect Development</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Deployment:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="container.html">Container Support</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Docker Compose Support</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#starting-the-lfh-compose-stack">Starting the LFH Compose Stack</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="openshift.html">OpenShift Container Platform</a></li>
-<li class="toctree-l1"><a class="reference internal" href="oci.html">Open Container Initiative (OCI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="container.html">Container Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kubernetes.html">Kubernetes Support</a></li>
 </ul>
 
             
@@ -206,17 +187,24 @@
 <h1>Docker Compose Support<a class="headerlink" href="#docker-compose-support" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>LinuxForHealth (LFH) Connect provides a standard Docker Compose configuration with support for file overrides. The compose configurations are included in the project’s <a class="reference external" href="https://github.com/LinuxForHealth/connect/tree/master/container-support/compose">compose directory</a> . A management script, <cite>start-stack.sh</cite>, is used to launch the LFH application stack for a requested profile.</p>
+<p>LinuxForHealth (LFH) connect provides an out-of-the-box Docker Compose configuration with support for <a class="reference external" href="https://docs.docker.com/compose/profiles/">profiles</a> that enable deploying specific support services in addition to connect. We will go through the supported profiles and usage below.</p>
 </div>
 <div class="section" id="starting-the-lfh-compose-stack">
 <h2>Starting the LFH Compose Stack<a class="headerlink" href="#starting-the-lfh-compose-stack" title="Permalink to this headline">¶</a></h2>
 <p>The syntax to launch the LFH compose stack is:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># note that the script is &quot;sourced&quot; into the current shell</span>
-<span class="o">.</span> <span class="o">./</span><span class="n">start</span><span class="o">-</span><span class="n">stack</span><span class="o">.</span><span class="n">sh</span> <span class="p">[</span><span class="n">profile</span> <span class="n">name</span><span class="p">]</span>
-<span class="c1"># alternate command: source start-stack.sh [profile name]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="o">--</span><span class="n">profile</span> <span class="p">[</span><span class="n">profile</span> <span class="n">name</span><span class="p">]</span> <span class="n">up</span> <span class="o">-</span><span class="n">d</span>
+<span class="c1"># Multiple profiles can be specified in this fashion:</span>
+<span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="o">--</span><span class="n">profile</span> <span class="p">[</span><span class="n">profile</span> <span class="n">name</span><span class="p">]</span> <span class="o">--</span><span class="n">profile</span> <span class="p">[</span><span class="n">profile</span><span class="o">-</span><span class="n">name</span><span class="p">]</span> <span class="n">up</span> <span class="o">-</span><span class="n">d</span>
 </pre></div>
 </div>
-<p>Where [profile name] is the name of a supported LFH profile. Supported profiles include: dev, server, and pi. Additional profiles will be added as needed to support external systems for new LFH integration use-cases. The script is executed within the current shell to ensure that Docker Compose’s COMPOSE_FILE variable is set correctly.</p>
+<p>Where [profile name] is the name of a supported LFH profile.</p>
+<p>Supported profiles include:</p>
+<ul class="simple">
+<li><p>deployment</p></li>
+<li><p>ipfs</p></li>
+<li><p>fhir</p></li>
+</ul>
+<p>Additional profiles will be added as needed to support external systems for new LFH integration use-cases.</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 14%" />
@@ -228,59 +216,60 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>dev</p></td>
-<td><p>For local development use. Runs LFH supporting services with ports mapped to localhost.</p></td>
+<tr class="row-even"><td><p>deployment</p></td>
+<td><p>For bundled deployment of <code class="docutils literal notranslate"><span class="pre">connect</span></code> along with the support services with ports mapped to localhost.</p></td>
 </tr>
-<tr class="row-odd"><td><p>integration</p></td>
-<td><p>Supports integration testing with external systems. Includes LFH connect application, supporting and external services.</p></td>
+<tr class="row-odd"><td><p>ipfs</p></td>
+<td><p>Deploys IPFS nodes and an IPFS cluster for managing pinsets.</p></td>
 </tr>
-<tr class="row-even"><td><p>server</p></td>
-<td><p>For deployment environments or integrated testing. Includes the LFH connect application and supporting services.</p></td>
-</tr>
-<tr class="row-odd"><td><p>pi</p></td>
-<td><p>Similar to the server stack. Optimized for arm64/Raspberry Pi usage.</p></td>
+<tr class="row-even"><td><p>fhir</p></td>
+<td><p>Deploys the IBM Fhir Server.</p></td>
 </tr>
 </tbody>
 </table>
-<p>The dev profile is the “default” profile and is started if start-stack.sh is executed without arguments. The dev profile is intended for local development use:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># navigate to the compose configuration directory</span>
-<span class="n">cd</span> <span class="n">container</span><span class="o">-</span><span class="n">support</span><span class="o">/</span><span class="n">compose</span>
-<span class="c1"># execute the compose start script within the current shell</span>
-<span class="o">.</span> <span class="o">./</span><span class="n">start</span><span class="o">-</span><span class="n">stack</span><span class="o">.</span><span class="n">sh</span>
-<span class="c1"># review logs</span>
-<span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">logs</span> <span class="o">-</span><span class="n">f</span>
-<span class="c1"># return to the project root directory</span>
-<span class="n">cd</span> <span class="o">../../</span>
-<span class="c1"># launch LFH</span>
-<span class="o">./</span><span class="n">gradlew</span> <span class="n">run</span>
+<p><strong>NOTE::</strong> All <code class="docutils literal notranslate"><span class="pre">docker-compose</span></code> commands always deploy support services Kafka, Zookeeper &amp; NATS by default.</p>
+<p>Not specifying a profile name would lead to deploying Kafka, Zookeeper &amp; NATS which are the default support services for connect:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># navigate to the ``connect`` project directory</span>
+<span class="n">cd</span> <span class="o">./</span><span class="n">connect</span>
+<span class="c1"># run the docker-compose command with no profile specified</span>
+<span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">up</span> <span class="o">-</span><span class="n">d</span>
+<span class="c1"># Kafka, Zookeeper &amp; NATS should be deployed</span>
 </pre></div>
 </div>
-<p>The integration profile supports a full LFH stack with external systems (e.g. FHIR R4 Servers). The integration profile is launched using:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># navigate to the compose configuration directory</span>
-<span class="n">cd</span> <span class="n">container</span><span class="o">-</span><span class="n">support</span><span class="o">/</span><span class="n">compose</span>
-<span class="c1"># execute the compose start script within the current shell</span>
-<span class="o">.</span> <span class="o">./</span><span class="n">start</span><span class="o">-</span><span class="n">stack</span><span class="o">.</span><span class="n">sh</span> <span class="n">integration</span>
+<p>Deploying only the support services can come in handy in use-cases where connect is run external of the compose stack.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">deployment</span></code> profile supports spinning up connect application along with default support services:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># navigate to the ``connect`` project directory</span>
+<span class="n">cd</span> <span class="o">./</span><span class="n">connect</span>
+<span class="c1"># run the docker-compose command with ``deployment`` profile specified</span>
+<span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="o">--</span><span class="n">profile</span> <span class="n">deployment</span> <span class="n">up</span> <span class="o">-</span><span class="n">d</span>
+<span class="c1"># connect, Kafka, Zookeeper &amp; NATS should now be deployed</span>
 </pre></div>
 </div>
-<p>The “server” and “pi” profiles support a full LFH stack, which includes the LFH container. The example below launches the server profile:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># navigate to the compose configuration directory</span>
-<span class="n">cd</span> <span class="n">container</span><span class="o">-</span><span class="n">support</span><span class="o">/</span><span class="n">compose</span>
-<span class="c1"># execute the compose start script within the current shell</span>
-<span class="o">.</span> <span class="o">./</span><span class="n">start</span><span class="o">-</span><span class="n">stack</span><span class="o">.</span><span class="n">sh</span> <span class="n">server</span>
+<p>Using the <code class="docutils literal notranslate"><span class="pre">deployment</span></code> profile would be the out-of-the-box solution for most users of the compose stack</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">ipfs</span></code> profile deploys a 3 node IPFS peer and IPFS cluster in addition to the default support services. Using the <code class="docutils literal notranslate"><span class="pre">deployment</span></code> profile in addition to <code class="docutils literal notranslate"><span class="pre">ipfs</span></code> profile would ensure that connect, Kafka, Zookeeper, NATS and IPFS are deployed simultaneously. Note, the modular nature of docker-compose profiles would allow users to only deploy <code class="docutils literal notranslate"><span class="pre">ipfs</span></code> as an additional support service to an already <code class="docutils literal notranslate"><span class="pre">deployment</span></code> profile stack that is up and running:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># navigate to the ``connect`` project directory</span>
+<span class="n">cd</span> <span class="o">./</span><span class="n">connect</span>
+<span class="c1"># run the docker-compose command with ``deployment`` and ``ipfs`` profile specified</span>
+<span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="o">--</span><span class="n">profile</span> <span class="n">deployment</span> <span class="o">--</span><span class="n">profile</span> <span class="n">ipfs</span> <span class="n">up</span> <span class="o">-</span><span class="n">d</span>
+<span class="c1"># connect, Kafka, Zookeeper, NATS &amp; IPFS should now be deployed</span>
 </pre></div>
 </div>
-<p>When running the “pi” profile, you may need to increase the value of COMPOSE_HTTP_TIMEOUT:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># set the value of COMPOSE_HTTP_TIMEOUT</span>
-<span class="n">export</span> <span class="n">COMPOSE_HTTP_TIMEOUT</span><span class="o">=</span><span class="mi">180</span>
-<span class="c1"># execute the compose start script within the current shell</span>
-<span class="o">.</span> <span class="o">./</span><span class="n">start</span><span class="o">-</span><span class="n">stack</span><span class="o">.</span><span class="n">sh</span> <span class="n">pi</span>
+<p>The <code class="docutils literal notranslate"><span class="pre">fhir</span></code> profile allows deploying the <a class="reference external" href="https://ibm.github.io/FHIR/">IBM FHIR Server</a> in addition to other support services:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># navigate to the ``connect`` project directory</span>
+<span class="n">cd</span> <span class="o">./</span><span class="n">connect</span>
+<span class="c1"># run the docker-compose command with ``fhir`` profile specified</span>
+<span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="o">--</span><span class="n">profile</span> <span class="n">fhir</span> <span class="n">up</span> <span class="o">-</span><span class="n">d</span>
+<span class="c1"># chain together deployment &amp; fhir profiles</span>
+<span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="o">---</span><span class="n">profile</span> <span class="n">deployment</span> <span class="o">--</span><span class="n">profile</span> <span class="n">fhir</span> <span class="n">up</span> <span class="o">-</span><span class="n">d</span>
 </pre></div>
 </div>
-<p>Use standard docker-compose commands to interact with the stack and it’s services. Unset the <cite>COMPOSE_FILE</cite> variable following a <cite>docker-compose stop</cite> or <cite>docker-compose down -v</cite>:</p>
+<p>Use standard docker-compose commands to interact with the stack and it’s services. Stop containers leaving them intact for starting them back up again or tear down down deployments using profiles similarly as for when deploying them initially, as shown in the examples above:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># stops all containers leaving them intact</span>
 <span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">stop</span> <span class="c1"># containers may be removed with docker-compose down -v</span>
-<span class="c1"># unset the COMPOSE_FILE variable</span>
-<span class="n">unset</span> <span class="n">COMPOSE_FILE</span>
+<span class="c1"># tear down deployment of connect, Kafka, Zookeeper &amp; NATS</span>
+<span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="o">--</span><span class="n">profile</span> <span class="n">deployment</span> <span class="n">down</span>
+<span class="c1"># tear down ipfs &amp; fhir server (together or separately)</span>
+<span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="o">--</span><span class="n">profile</span> <span class="n">ipfs</span> <span class="o">--</span><span class="n">profile</span> <span class="n">fhir</span> <span class="n">down</span>
 </pre></div>
 </div>
 </div>
@@ -292,8 +281,8 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="openshift.html" class="btn btn-neutral float-right" title="OpenShift Container Platform" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="container.html" class="btn btn-neutral float-left" title="Container Support" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="container.html" class="btn btn-neutral float-right" title="Container Support" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../develop/develop.html" class="btn btn-neutral float-left" title="LinuxForHealth Connect Development" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

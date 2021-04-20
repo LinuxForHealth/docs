@@ -1,72 +1,120 @@
 Developer Setup
 ***************
 
-Overview
-========
-LinuxForHealth provides an opinionated implementation of `Camel Routing <https://camel.apache.org/manual/latest/routes.html>`_, focused
-on standard data and messaging formats. 
+Where to Contribute
+===================
+.. list-table::
+   :widths: 50 50
+   :header-rows: 1
 
-A LinuxForHealth data processing route consists of:
+   * - Resource Type
+     - Link
+   * - 🚨 Bug Reports
+     - `GitHub Bug List <https://github.com/LinuxForHealth/connect/labels/bug>`_
+   * - 🎁 Feature Requests & Ideas
+     - `GitHub Issues Tracker <https://github.com/LinuxForHealth/connect/issues>`_
+   * - ❔ Questions
+     - `LFH Slack Channel <https://ibm-watsonhealth.slack.com/archives/G01639WJEMA>`_
+   * - 🚙 Roadmap
+     - `Project Board <https://github.com/LinuxForHealth/connect/projects/1>`_
 
-* A consumer endpoint which receives inbound data
-* Optional "components" used to transform, filter, or route data
-* Error handling and auditing 
-* A Kafka based producer endpoint, used to store data messages
-* Additional optional producer endpoints to support "multi-cast" routes when needed
 
-Prerequisites
-==============
-* Java 1.8
-* `Gradle 6.x <https://gradle.org/>`_
-
-Getting Started 
+Getting Started
 ===============
-Clone and build the project::
+Required Software
+-----------------
+The LinuxForHealth connect development environment requires the following:
 
-    # clone the repo and confirm the build
-    git clone https://github.com/linuxforhealth/connect.git
+* `git <https://git-scm.com/>`_ for project version control
+* `mkcert <https://github.com/FiloSottile/mkcert>`_ for local trusted certificates
+* `Python 3.8 or higher <https://www.python.org/downloads/mac-osx/>`_ for runtime/coding support
+* `Docker Compose <https://docs.docker.com/compose/install/>`_ for a local container runtime
+
+For Windows 10 users, we suggest using `Windows Subsystem for Linux <https://docs.microsoft.com/en-us/windows/wsl/install-win10>`_
+
+Set Up A Local Environment
+--------------------------
+Clone the project and navigate to the root directory
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+::
+
+    git clone https://github.com/LinuxForHealth/connect
     cd connect
-    ./gradlew build
 
-The Test Summary is available within the project's build directory in *./build/reports/tests/test/index.html*
+Create a virtual environment
+""""""""""""""""""""""""""""
+::
 
-The Development Environment
-===========================
-The development environment provides additional systems and integration targets via a Docker Compose configuration, docker-compose.yml), and "profile" specific override files.
+    python3 -m venv venv
+    source venv/bin/activate
+    pip install --upgrade pip
 
-LFH Supporting Systems include:
+Install connect with dev and test dependencies
+""""""""""""""""""""""""""""""""""""""""""""""
+::
 
-* `Kafdrop <https://github.com/obsidiandynamics/kafdrop>`_ - A Kafka Cluster Viewer
-* `Kafka <https://kafka.apache.org/>`_ - For data storage
-* `Nats <https://nats.io/>`_ - For real time event streaming and messaging
+    pip install -e .[dev,test]
+    # note if using zsh shell the extra dependencies require quoting
+    # pip install -e ".[dev,test]"
 
-Use docker-compose and gradle to start the local development environment::
+Generate trusted local certs for connect and supporting services
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+::
 
-    # navigate to the compose configuration directory
-    cd container-support/compose
-    # execute the compose start script within the current shell
-    . ./start-stack.sh
-    # review logs
-    docker-compose logs -f
-    # return to the project root directory
-    cd ../../
-    # launch LFH
-    ./gradlew run
+    ./local-certs/install-certificates.sh
 
-The start-stack.sh script sets the Docker Compose `COMPOSE_FILE <https://docs.docker.com/compose/reference/envvars/#compose_file/>`_ . COMPOSE_FILE specifies the path to each of the configuration files for the current LFH stack profile.
-COMPOSE_FILE remains in scope with the current shell session.
+For more information on connect and HTTPS/TLS support, please refer to the `local cert readme <https://github.com/LinuxForHealth/connect/blob/main/local-certs/README.md>`_.
 
-To remove the local development environment::
+Start connect and supporting services
+"""""""""""""""""""""""""""""""""""""
+::
 
-    # remove all containers, networks, and volumes
-    docker-compose down -v
-    # remove current compose file paths
-    unset COMPOSE_FILE
+    docker-compose up -d
+    docker-compose ps
 
-For additional Docker Compose commands, please refer to the `Official Documentation <https://docs.docker.com/compose/reference/overview/>`_
+    APPLICATION_CERT_PATH=./local-certs \
+      UVICORN_RELOAD=True \
+      python connect/main.py
 
-To access Kafdrop, the Kafka Cluster View, browse to http://localhost:9000
+Browse to https://localhost:5000/docs to view the Open API documentation
 
-To list all available Gradle tasks::
+Docker Image
+------------
+The connect docker image is an "incubating" feature and is subject to change. The image is associated with the "deployment" profile to provide separation from core services.
 
-    ./gradlew tasks
+Build the image
+"""""""""""""""
+The connect image build integrates the application's x509 certificate (PEM encoded) into the image.
+
+The :code:`APPLICATION_CERT_PATH` build argument is used to specify the location of the certificate on the host machine. If the :code:`APPLICATION_CERT_PATH` build argument is not provided, a default value of ./local-certs/lfh.pem is used.
+
+Build the image with Docker CLI
+"""""""""""""""""""""""""""""""
+::
+
+    docker build --build-arg APPLICATION_BUILD_CERT_PATH=./local-certs/ -t linuxforhealth/connect:0.25.0 .
+
+Build the image with Docker-Compose
+"""""""""""""""""""""""""""""""""""
+The docker-compose command below parses the build context, arguments, and image tag from the docker-compose.yaml file.::
+
+    docker-compose build connect
+
+Run connect and Supporting Services
+"""""""""""""""""""""""""""""""""""
+::
+
+    docker-compose --profile deployment up -d
+
+Links and Resources
+===================
+.. list-table::
+   :widths: 40 60
+   :header-rows: 1
+
+   * - Resource Type
+     - Link
+   * - 📰 Documentation
+     - `LinuxForHealth Docs Site <https://linuxforhealth.github.io/docs/>`_
+   * - 📰 Documentation
+     - `IPFS <https://github.com/LinuxForHealth/connect/blob/main/IPFS.md>`_
