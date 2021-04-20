@@ -220,15 +220,12 @@
 <div class="section" id="linuxforhealth-connect">
 <h2>LinuxForHealth Connect<a class="headerlink" href="#linuxforhealth-connect" title="Permalink to this headline">¶</a></h2>
 <a class="reference internal image-reference" href="_images/LinuxForHealth-Connect.png"><img alt="LinuxForHealth" src="_images/LinuxForHealth-Connect.png" style="width: 600px;" /></a>
-<p>Each LFH node is comprised of the connect application, the ledger and data persistence for the LPR.
-* <cite>connect</cite> application
-* Ledger
-* LPR (Longitudinal Patient Record) datastore</p>
+<p>Each LFH node is comprised of the connect application, the ledger and data persistence for the LPR.</p>
 </div>
 <div class="section" id="linuxforhealth-workflow">
 <h2>LinuxForHealth Workflow<a class="headerlink" href="#linuxforhealth-workflow" title="Permalink to this headline">¶</a></h2>
 <a class="reference internal image-reference" href="_images/LinuxForHealthWorkflow1.png"><img alt="LinuxForHealth" src="_images/LinuxForHealthWorkflow1.png" style="width: 600px;" /></a>
-<p>LFH workflow consists of distinct steps for interfacing applications - these are described below:</p>
+<p>The LFH workflow consists of distinct steps for interfacing applications - these are described below:</p>
 <div class="section" id="parse">
 <h3>Parse<a class="headerlink" href="#parse" title="Permalink to this headline">¶</a></h3>
 <p>LinuxForHealth connect receives an inbound data message.</p>
@@ -257,6 +254,7 @@
 <div class="section" id="linuxforhealth-dialtone-example">
 <h2>LinuxForHealth Dialtone Example<a class="headerlink" href="#linuxforhealth-dialtone-example" title="Permalink to this headline">¶</a></h2>
 <a class="reference internal image-reference" href="_images/LinuxForHealth-DialTone.png"><img alt="LinuxForHealth" src="_images/LinuxForHealth-DialTone.png" style="width: 600px;" /></a>
+<p>This diagram shows the power of the LFH network where a transaction is submitted to a node and is then applied to the entire network, regardless of architecture or deployment, via the synchronized ledger.  In this example, a radiology image is sent to an imaging device running LFH, which the network applies to the other nodes - a Payer System running LFH on Z and a Provider System running on the Azure cloud.</p>
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Getting Started:</span></p>
 <ul>
