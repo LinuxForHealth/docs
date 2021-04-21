@@ -22,6 +22,7 @@ Example - Override Non-scalar Setting::
     # environment variable override
     KAFKA_BOOTSTRAP_SERVERS='["kafka:9092"]'
 
+Local/development environments may override settings using an `.env file <https://pipenv.pypa.io/en/latest/advanced/#automatic-loading-of-env>`_.
 
 Supported Properties
 ====================

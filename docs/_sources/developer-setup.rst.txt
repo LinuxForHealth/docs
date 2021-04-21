@@ -28,6 +28,7 @@ The LinuxForHealth connect development environment requires the following:
 * `git <https://git-scm.com/>`_ for project version control
 * `mkcert <https://github.com/FiloSottile/mkcert>`_ for local trusted certificates
 * `Python 3.8 or higher <https://www.python.org/downloads/mac-osx/>`_ for runtime/coding support
+* `Pipenv <https://pipenv.pypa.io>`_ for Python dependency management
 * `Docker Compose <https://docs.docker.com/compose/install/>`_ for a local container runtime
 
 For Windows 10 users, we suggest using `Windows Subsystem for Linux <https://docs.microsoft.com/en-us/windows/wsl/install-win10>`_
@@ -41,22 +42,26 @@ Clone the project and navigate to the root directory
     git clone https://github.com/LinuxForHealth/connect
     cd connect
 
-Create a virtual environment
-""""""""""""""""""""""""""""
+Confirm Python build tooling is installed
+"""""""""""""""""""""""""""""""""""""""""
 ::
 
-    python3 -m venv venv
-    source venv/bin/activate
-    pip install --upgrade pip
+    pip --version
+    pipenv --version
 
-Install connect with dev and test dependencies
+Install core and dev dependencies
 """"""""""""""""""""""""""""""""""""""""""""""
 ::
 
-    pip install -e .[dev,test]
-    # note if using zsh shell the extra dependencies require quoting
-    # pip install -e ".[dev,test]"
+    pip install --upgrade pip
+    pipenv sync
 
+Run tests
+"""""""""
+::
+
+    pipenv run pytest
+    
 Generate trusted local certs for connect and supporting services
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 ::
@@ -71,10 +76,8 @@ Start connect and supporting services
 
     docker-compose up -d
     docker-compose ps
+    pipenv run connect
 
-    APPLICATION_CERT_PATH=./local-certs \
-      UVICORN_RELOAD=True \
-      python connect/main.py
 
 Browse to https://localhost:5000/docs to view the Open API documentation
 

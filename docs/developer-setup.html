@@ -35,7 +35,6 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -100,8 +99,9 @@
 <li class="toctree-l3"><a class="reference internal" href="#required-software">Required Software</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#set-up-a-local-environment">Set Up A Local Environment</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#clone-the-project-and-navigate-to-the-root-directory">Clone the project and navigate to the root directory</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#create-a-virtual-environment">Create a virtual environment</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#install-connect-with-dev-and-test-dependencies">Install connect with dev and test dependencies</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#confirm-python-build-tooling-is-installed">Confirm Python build tooling is installed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#install-core-and-dev-dependencies">Install core and dev dependencies</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#run-tests">Run tests</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#generate-trusted-local-certs-for-connect-and-supporting-services">Generate trusted local certs for connect and supporting services</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#start-connect-and-supporting-services">Start connect and supporting services</a></li>
 </ul>
@@ -241,6 +241,7 @@
 <li><p><a class="reference external" href="https://git-scm.com/">git</a> for project version control</p></li>
 <li><p><a class="reference external" href="https://github.com/FiloSottile/mkcert">mkcert</a> for local trusted certificates</p></li>
 <li><p><a class="reference external" href="https://www.python.org/downloads/mac-osx/">Python 3.8 or higher</a> for runtime/coding support</p></li>
+<li><p><a class="reference external" href="https://pipenv.pypa.io">Pipenv</a> for Python dependency management</p></li>
 <li><p><a class="reference external" href="https://docs.docker.com/compose/install/">Docker Compose</a> for a local container runtime</p></li>
 </ul>
 <p>For Windows 10 users, we suggest using <a class="reference external" href="https://docs.microsoft.com/en-us/windows/wsl/install-win10">Windows Subsystem for Linux</a></p>
@@ -254,19 +255,23 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="create-a-virtual-environment">
-<h4>Create a virtual environment<a class="headerlink" href="#create-a-virtual-environment" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">venv</span> <span class="n">venv</span>
-<span class="n">source</span> <span class="n">venv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
-<span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">upgrade</span> <span class="n">pip</span>
+<div class="section" id="confirm-python-build-tooling-is-installed">
+<h4>Confirm Python build tooling is installed<a class="headerlink" href="#confirm-python-build-tooling-is-installed" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="o">--</span><span class="n">version</span>
+<span class="n">pipenv</span> <span class="o">--</span><span class="n">version</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="install-connect-with-dev-and-test-dependencies">
-<h4>Install connect with dev and test dependencies<a class="headerlink" href="#install-connect-with-dev-and-test-dependencies" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="o">.</span><span class="p">[</span><span class="n">dev</span><span class="p">,</span><span class="n">test</span><span class="p">]</span>
-<span class="c1"># note if using zsh shell the extra dependencies require quoting</span>
-<span class="c1"># pip install -e &quot;.[dev,test]&quot;</span>
+<div class="section" id="install-core-and-dev-dependencies">
+<h4>Install core and dev dependencies<a class="headerlink" href="#install-core-and-dev-dependencies" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">upgrade</span> <span class="n">pip</span>
+<span class="n">pipenv</span> <span class="n">sync</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="run-tests">
+<h4>Run tests<a class="headerlink" href="#run-tests" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pipenv</span> <span class="n">run</span> <span class="n">pytest</span>
 </pre></div>
 </div>
 </div>
@@ -281,10 +286,7 @@
 <h4>Start connect and supporting services<a class="headerlink" href="#start-connect-and-supporting-services" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">up</span> <span class="o">-</span><span class="n">d</span>
 <span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">ps</span>
-
-<span class="n">APPLICATION_CERT_PATH</span><span class="o">=./</span><span class="n">local</span><span class="o">-</span><span class="n">certs</span> \
-  <span class="n">UVICORN_RELOAD</span><span class="o">=</span><span class="kc">True</span> \
-  <span class="n">python</span> <span class="n">connect</span><span class="o">/</span><span class="n">main</span><span class="o">.</span><span class="n">py</span>
+<span class="n">pipenv</span> <span class="n">run</span> <span class="n">connect</span>
 </pre></div>
 </div>
 <p>Browse to <a class="reference external" href="https://localhost:5000/docs">https://localhost:5000/docs</a> to view the Open API documentation</p>
