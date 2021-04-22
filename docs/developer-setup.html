@@ -101,7 +101,12 @@
 <li class="toctree-l4"><a class="reference internal" href="#clone-the-project-and-navigate-to-the-root-directory">Clone the project and navigate to the root directory</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#confirm-python-build-tooling-is-installed">Confirm Python build tooling is installed</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#install-core-and-dev-dependencies">Install core and dev dependencies</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#install-git-pre-commit-hooks">Install git pre-commit hooks</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#run-tests">Run tests</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#black-code-formatting-integration">Black code formatting integration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#commit-output-no-python-source-committed">Commit Output - No Python Source Committed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#commit-output-python-source-is-correctly-formatted">Commit Output - Python Source is Correctly Formatted</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#commit-output-black-updates-python-source">Commit Output - Black Updates Python Source</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#generate-trusted-local-certs-for-connect-and-supporting-services">Generate trusted local certs for connect and supporting services</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#start-connect-and-supporting-services">Start connect and supporting services</a></li>
 </ul>
@@ -265,13 +270,51 @@
 <div class="section" id="install-core-and-dev-dependencies">
 <h4>Install core and dev dependencies<a class="headerlink" href="#install-core-and-dev-dependencies" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">upgrade</span> <span class="n">pip</span>
-<span class="n">pipenv</span> <span class="n">sync</span>
+<span class="n">pipenv</span> <span class="n">sync</span> <span class="o">--</span><span class="n">dev</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="install-git-pre-commit-hooks">
+<h4>Install git pre-commit hooks<a class="headerlink" href="#install-git-pre-commit-hooks" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pipenv</span> <span class="n">run</span> <span class="n">pre</span><span class="o">-</span><span class="n">commit</span> <span class="n">install</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="run-tests">
 <h4>Run tests<a class="headerlink" href="#run-tests" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pipenv</span> <span class="n">run</span> <span class="n">pytest</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="black-code-formatting-integration">
+<h4>Black code formatting integration<a class="headerlink" href="#black-code-formatting-integration" title="Permalink to this headline">¶</a></h4>
+<p>LinuxForHealth connect utilizes the <a class="reference external" href="https://black.readthedocs.io/en/stable/index.html">black library</a> to provide standard code formatting. The connect project registers black with a git pre-commit hook to ensure that code is formatted when it is committed to a developer’s local repository. The <a class="reference external" href="https://github.com/LinuxForHealth/connect/blob/main/pyproject.toml">pyproject.toml</a> and <a class="reference external" href="https://github.com/LinuxForHealth/connect/blob/main/.pre-commit-config.yaml">.pre-commit-config.yaml</a> are used to configure the integration.</p>
+</div>
+<div class="section" id="commit-output-no-python-source-committed">
+<h4>Commit Output - No Python Source Committed<a class="headerlink" href="#commit-output-no-python-source-committed" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">black</span><span class="o">................................................</span><span class="p">(</span><span class="n">no</span> <span class="n">files</span> <span class="n">to</span> <span class="n">check</span><span class="p">)</span><span class="n">Skipped</span>
+<span class="p">[</span><span class="n">black</span><span class="o">-</span><span class="n">formatter</span> <span class="mi">95</span><span class="n">bb1c6</span><span class="p">]</span> <span class="n">settings</span> <span class="n">black</span> <span class="n">version</span> <span class="n">to</span> <span class="n">latest</span> <span class="n">release</span>
+<span class="mi">1</span> <span class="n">file</span> <span class="n">changed</span><span class="p">,</span> <span class="mi">1</span> <span class="n">insertion</span><span class="p">(</span><span class="o">+</span><span class="p">),</span> <span class="mi">1</span> <span class="n">deletion</span><span class="p">(</span><span class="o">-</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="commit-output-python-source-is-correctly-formatted">
+<h4>Commit Output - Python Source is Correctly Formatted<a class="headerlink" href="#commit-output-python-source-is-correctly-formatted" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">black</span><span class="o">....................................................................</span><span class="n">Passed</span>
+<span class="p">[</span><span class="nb">format</span><span class="o">-</span><span class="n">test</span> <span class="n">c3e1b4a</span><span class="p">]</span> <span class="n">test</span> <span class="n">commit</span>
+<span class="mi">1</span> <span class="n">file</span> <span class="n">changed</span><span class="p">,</span> <span class="mi">1</span> <span class="n">insertion</span><span class="p">(</span><span class="o">+</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="commit-output-black-updates-python-source">
+<h4>Commit Output - Black Updates Python Source<a class="headerlink" href="#commit-output-black-updates-python-source" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>black....................................................................Failed
+- hook id: black
+- files were modified by this hook
+
+reformatted connect/routes/api.py
+All done! ✨ 🍰 ✨
+1 file reformatted.
 </pre></div>
 </div>
 </div>
