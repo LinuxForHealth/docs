@@ -54,14 +54,55 @@ Install core and dev dependencies
 ::
 
     pip install --upgrade pip
-    pipenv sync
+    pipenv sync --dev
+
+Install git pre-commit hooks
+""""""""""""""""""""""""""""""""""""""""""""""
+::
+
+    pipenv run pre-commit install
 
 Run tests
 """""""""
 ::
 
     pipenv run pytest
-    
+
+
+Black code formatting integration    
+"""""""""""""""""""""""""""""""""
+
+LinuxForHealth connect utilizes the `black library <https://black.readthedocs.io/en/stable/index.html>`_ to provide standard code formatting. The connect project registers black with a git pre-commit hook to ensure that code is formatted when it is committed to a developer's local repository. The `pyproject.toml <https://github.com/LinuxForHealth/connect/blob/main/pyproject.toml>`_ and `.pre-commit-config.yaml <https://github.com/LinuxForHealth/connect/blob/main/.pre-commit-config.yaml>`_ are used to configure the integration.
+
+Commit Output - No Python Source Committed
+""""""""""""""""""""""""""""""""""""""""""
+::
+
+    black................................................(no files to check)Skipped
+    [black-formatter 95bb1c6] settings black version to latest release
+    1 file changed, 1 insertion(+), 1 deletion(-)
+
+Commit Output - Python Source is Correctly Formatted
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+::
+
+    black....................................................................Passed
+    [format-test c3e1b4a] test commit
+    1 file changed, 1 insertion(+)
+
+Commit Output - Black Updates Python Source
+"""""""""""""""""""""""""""""""""""""""""""
+::
+
+    black....................................................................Failed
+    - hook id: black
+    - files were modified by this hook
+
+    reformatted connect/routes/api.py
+    All done! ✨ 🍰 ✨
+    1 file reformatted.
+
+
 Generate trusted local certs for connect and supporting services
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 ::
