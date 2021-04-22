@@ -44,6 +44,7 @@ Not specifying a profile name would lead to deploying Kafka, Zookeeper & NATS wh
     # run the docker-compose command with no profile specified
     docker-compose up -d
     # Kafka, Zookeeper & NATS should be deployed
+
 Deploying only the support services can come in handy in use-cases where connect is run external of the compose stack.
 
 
@@ -54,6 +55,7 @@ The ``deployment`` profile supports spinning up connect application along with d
     # run the docker-compose command with ``deployment`` profile specified
     docker-compose --profile deployment up -d
     # connect, Kafka, Zookeeper & NATS should now be deployed
+
 Using the ``deployment`` profile would be the out-of-the-box solution for most users of the compose stack
 
 

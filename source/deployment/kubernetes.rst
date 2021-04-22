@@ -7,7 +7,7 @@ We provide example kubernetes yaml files that enable the deployment of connect a
 
 Requirements
 ------------
-Deploying LFH connect on a Kubernetes cluster requires the following::
+Deploying LFH connect on a Kubernetes cluster requires the following:
 
 1. A working k8s cluster - check `Minikube <https://minikube.sigs.k8s.io/>`_ & Docker Desktop Kubernetes support.
 2. `mkcert <https://github.com/FiloSottile/mkcert>`_ for generating local trusted certificates.
@@ -20,6 +20,7 @@ Generate trusted local certs for connect and supporting services for your kubern
 
     # Run the ``install-certificates.sh`` script provided in ``connect/local-certs``
     ./local-certs/install-certificates.sh
+
 -------------------------------
 Create Configmaps for connect
 -------------------------------
