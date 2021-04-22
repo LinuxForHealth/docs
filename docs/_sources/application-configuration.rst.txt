@@ -98,5 +98,8 @@ Supported Properties
 
 Secured Communications
 ======================
-
 LinuxForHealth connect is configured for secure communications by default using TLS and x509 certificates. Outbound transactions from LinuxForHealth connect to external services are expected to be secured in a similar manner. Secure transmissions are supported within the `local development environment <developer-setup.html>`_ and `container image <../deployment/container.html>`_.
+
+LinuxForHealth also utilizes secure communications between LinuxForHealth nodes for data synchronization via `NATS messaging <https://nats.io/>`_. Both TLS and `NATS NKeys <https://docs.nats.io/nats-server/configuration/securing_nats/auth_intro/nkey_auth>`_ are used to secure NATS connections between LinuxForHealth nodes.
+
+Please see `Secured Communications <../develop/secured-communications.html>`_ and `Data Synchronization <../develop/data-synchronization.html>`_ for detailed information about configuring secured communications.

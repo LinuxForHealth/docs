@@ -24,9 +24,13 @@ Navigate to the LinuxForHealth connect Open API UI at https://127.0.0.1:5000/doc
 
 Optional Config
 ===============
-In addition to storing data in the LinuxForHealth LPR, the FHIR R4 route can be configured to send the FHIR resource to an external FHIR server.  To configure this feature, add your external FHIR server URL to config.py as follows and restart LinuxForHealth connect::
+In addition to storing data in the LinuxForHealth LPR, the FHIR R4 route can be configured to send the FHIR resource to an external FHIR server.  To configure this feature, add your external FHIR server URL to connect/config.py as follows and restart LinuxForHealth connect::
 
     fhir_r4_externalserver: str = 'https://user:password@localhost:9443/fhir-server/api/v4'
+
+If your external FHIR server uses self-signed certificates, you'll also need to set :code:`certificate_verify` in connect/config.py to False::
+
+    certificate_verify: bool = False
 
 Results
 =======
