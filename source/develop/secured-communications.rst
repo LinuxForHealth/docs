@@ -1,6 +1,6 @@
 Secured Communications
 **********************
-The following sections explain how to configure LinuxForHealth secured communications.  Out-of-the-box, no changes are needed for secured communication.  However, when developing for LinuxForHealth, you may encounter the common use cases below.
+The following sections explain how to configure LinuxForHealth secured communications.  Out-of-the-box, no changes are needed for secured communication.  However, when developing for LinuxForHealth, you may encounter these common use cases.
 
 Configure TLS to an External Server
 ===================================
