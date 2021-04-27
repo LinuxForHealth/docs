@@ -1,25 +1,34 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Developer Setup &mdash; Linux for Health  documentation</title>
   
 
   
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
+
   
+  
+
   
   
     <link rel="canonical" href="https://linuxforhealth.github.io/docs/developer-setup.html"/>
   
 
   
-  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -30,11 +39,6 @@
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="QuickStart" href="tutorials/quickstart.html" />
@@ -79,6 +83,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -96,9 +101,13 @@
 <li class="toctree-l4"><a class="reference internal" href="#clone-the-project-and-navigate-to-the-root-directory">Clone the project and navigate to the root directory</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#confirm-python-build-tooling-is-installed">Confirm Python build tooling is installed</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#install-core-and-dev-dependencies">Install core and dev dependencies</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#install-git-pre-commit-hooks">Install git pre-commit hooks</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#run-tests">Run tests</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#black-code-formatting-integration">Black code formatting integration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pipenv-scripts">Pipenv Scripts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#check-for-formatting-errors">Check for formatting errors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#format-code">Format code</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#git-pre-commit-hook-integration">Git pre-commit hook integration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#install-git-pre-commit-hooks-initial-setup">Install git pre-commit hooks (initial setup)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#commit-output-no-python-source-committed">Commit Output - No Python Source Committed</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#commit-output-python-source-is-correctly-formatted">Commit Output - Python Source is Correctly Formatted</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#commit-output-black-updates-python-source">Commit Output - Black Updates Python Source</a></li>
@@ -142,6 +151,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -176,18 +186,20 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="index.html">Docs</a> &raquo;</li>
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>Developer Setup</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="_sources/developer-setup.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -268,12 +280,6 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="install-git-pre-commit-hooks">
-<h4>Install git pre-commit hooks<a class="headerlink" href="#install-git-pre-commit-hooks" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pipenv</span> <span class="n">run</span> <span class="n">pre</span><span class="o">-</span><span class="n">commit</span> <span class="n">install</span>
-</pre></div>
-</div>
-</div>
 <div class="section" id="run-tests">
 <h4>Run tests<a class="headerlink" href="#run-tests" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pipenv</span> <span class="n">run</span> <span class="n">pytest</span>
@@ -282,7 +288,31 @@
 </div>
 <div class="section" id="black-code-formatting-integration">
 <h4>Black code formatting integration<a class="headerlink" href="#black-code-formatting-integration" title="Permalink to this headline">¶</a></h4>
-<p>LinuxForHealth connect utilizes the <a class="reference external" href="https://black.readthedocs.io/en/stable/index.html">black library</a> to provide standard code formatting. The connect project registers black with a git pre-commit hook to ensure that code is formatted when it is committed to a developer’s local repository. The <a class="reference external" href="https://github.com/LinuxForHealth/connect/blob/main/pyproject.toml">pyproject.toml</a> and <a class="reference external" href="https://github.com/LinuxForHealth/connect/blob/main/.pre-commit-config.yaml">.pre-commit-config.yaml</a> are used to configure the integration.</p>
+<p>LinuxForHealth connect utilizes the <a class="reference external" href="https://black.readthedocs.io/en/stable/index.html">black library</a> to provide standard code formatting. Code formatting and style are validated as part of the <a class="reference external" href="https://github.com/LinuxForHealth/connect/blob/main/.github/workflows/connect-ci.yml">LinuxForHealth connect ci process</a>. LinuxForHealth connect provides developers with an option of formatting using pipenv scripts, or a git pre-commit hook.</p>
+</div>
+<div class="section" id="pipenv-scripts">
+<h4>Pipenv Scripts<a class="headerlink" href="#pipenv-scripts" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="check-for-formatting-errors">
+<h4>Check for formatting errors<a class="headerlink" href="#check-for-formatting-errors" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pipenv</span> <span class="n">run</span> <span class="n">check</span><span class="o">-</span><span class="nb">format</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="format-code">
+<h4>Format code<a class="headerlink" href="#format-code" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pipenv</span> <span class="n">run</span> <span class="nb">format</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="git-pre-commit-hook-integration">
+<h4>Git pre-commit hook integration<a class="headerlink" href="#git-pre-commit-hook-integration" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="install-git-pre-commit-hooks-initial-setup">
+<h4>Install git pre-commit hooks (initial setup)<a class="headerlink" href="#install-git-pre-commit-hooks-initial-setup" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">run</span> <span class="n">pre</span><span class="o">-</span><span class="n">commit</span> <span class="n">install</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="commit-output-no-python-source-committed">
 <h4>Commit Output - No Python Source Committed<a class="headerlink" href="#commit-output-no-python-source-committed" title="Permalink to this headline">¶</a></h4>
@@ -387,26 +417,27 @@ All done! ✨ 🍰 ✨
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="tutorials/quickstart.html" class="btn btn-neutral float-right" title="QuickStart" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="index.html" class="btn btn-neutral float-left" title="What is LinuxForHealth?" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="tutorials/quickstart.html" class="btn btn-neutral float-right" title="QuickStart" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="What is LinuxForHealth?" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 
+        &#169; Copyright .
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
  
 <div class="footer">
     <p>
@@ -416,7 +447,6 @@ All done! ✨ 🍰 ✨
 
 
 </footer>
-
         </div>
       </div>
 
@@ -424,7 +454,6 @@ All done! ✨ 🍰 ✨
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

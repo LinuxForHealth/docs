@@ -56,12 +56,6 @@ Install core and dev dependencies
     pip install --upgrade pip
     pipenv sync --dev
 
-Install git pre-commit hooks
-""""""""""""""""""""""""""""""""""""""""""""""
-::
-
-    pipenv run pre-commit install
-
 Run tests
 """""""""
 ::
@@ -72,7 +66,33 @@ Run tests
 Black code formatting integration    
 """""""""""""""""""""""""""""""""
 
-LinuxForHealth connect utilizes the `black library <https://black.readthedocs.io/en/stable/index.html>`_ to provide standard code formatting. The connect project registers black with a git pre-commit hook to ensure that code is formatted when it is committed to a developer's local repository. The `pyproject.toml <https://github.com/LinuxForHealth/connect/blob/main/pyproject.toml>`_ and `.pre-commit-config.yaml <https://github.com/LinuxForHealth/connect/blob/main/.pre-commit-config.yaml>`_ are used to configure the integration.
+LinuxForHealth connect utilizes the `black library <https://black.readthedocs.io/en/stable/index.html>`_ to provide standard code formatting. Code formatting and style are validated as part of the `LinuxForHealth connect ci process <https://github.com/LinuxForHealth/connect/blob/main/.github/workflows/connect-ci.yml>`_. LinuxForHealth connect provides developers with an option of formatting using pipenv scripts, or a git pre-commit hook.
+
+Pipenv Scripts
+""""""""""""""
+
+Check for formatting errors
+"""""""""""""""""""""""""""
+::
+
+    pipenv run check-format
+
+Format code
+"""""""""""
+::
+
+    pipenv run format
+
+
+Git pre-commit hook integration
+"""""""""""""""""""""""""""""""
+
+Install git pre-commit hooks (initial setup)
+""""""""""""""""""""""""""""""""""""""""""""
+::
+
+    pip run pre-commit install
+
 
 Commit Output - No Python Source Committed
 """"""""""""""""""""""""""""""""""""""""""
