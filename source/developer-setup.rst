@@ -127,9 +127,9 @@ Generate trusted local certs for connect and supporting services
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 ::
 
-    ./local-certs/install-certificates.sh
+    ./local-config/install-certificates.sh
 
-For more information on connect and HTTPS/TLS support, please refer to the `local cert readme <https://github.com/LinuxForHealth/connect/blob/main/local-certs/README.md>`_.
+For more information on connect and HTTPS/TLS support, please refer to the `local cert readme <https://github.com/LinuxForHealth/connect/blob/main/local-config/README.md>`_.
 
 Start connect and supporting services
 """""""""""""""""""""""""""""""""""""
@@ -148,15 +148,16 @@ The connect docker image is an "incubating" feature and is subject to change. Th
 
 Build the image
 """""""""""""""
-The connect image build integrates the application's x509 certificate (PEM encoded) into the image.
+The connect image build integrates the application's x509 certificate (PEM encoded) and configurations into the image. In the local, or development environment, certificates and configuration are stored in the ./local-config/connect directory. Deployed environments may use separate directories for certificates and configuration.
 
-The :code:`APPLICATION_CERT_PATH` build argument is used to specify the location of the certificate on the host machine. If the :code:`APPLICATION_CERT_PATH` build argument is not provided, a default value of ./local-certs/lfh.pem is used.
 
 Build the image with Docker CLI
 """""""""""""""""""""""""""""""
 ::
 
-    docker build --build-arg APPLICATION_BUILD_CERT_PATH=./local-certs/ -t linuxforhealth/connect:0.25.0 .
+    docker build --build-arg CONNECT_CERT_PATH_BUILD_ARG=./local-config/connect \
+                 --build-arg CONNECT_CONFIG_PATH_BUILD_ARG=./local-config/connect \
+                 -t linuxforhealth/connect:0.42.0 .
 
 Build the image with Docker-Compose
 """""""""""""""""""""""""""""""""""

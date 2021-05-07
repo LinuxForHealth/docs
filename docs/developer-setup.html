@@ -344,10 +344,10 @@ All done! ✨ 🍰 ✨
 </div>
 <div class="section" id="generate-trusted-local-certs-for-connect-and-supporting-services">
 <h4>Generate trusted local certs for connect and supporting services<a class="headerlink" href="#generate-trusted-local-certs-for-connect-and-supporting-services" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">local</span><span class="o">-</span><span class="n">certs</span><span class="o">/</span><span class="n">install</span><span class="o">-</span><span class="n">certificates</span><span class="o">.</span><span class="n">sh</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">local</span><span class="o">-</span><span class="n">config</span><span class="o">/</span><span class="n">install</span><span class="o">-</span><span class="n">certificates</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
-<p>For more information on connect and HTTPS/TLS support, please refer to the <a class="reference external" href="https://github.com/LinuxForHealth/connect/blob/main/local-certs/README.md">local cert readme</a>.</p>
+<p>For more information on connect and HTTPS/TLS support, please refer to the <a class="reference external" href="https://github.com/LinuxForHealth/connect/blob/main/local-config/README.md">local cert readme</a>.</p>
 </div>
 <div class="section" id="start-connect-and-supporting-services">
 <h4>Start connect and supporting services<a class="headerlink" href="#start-connect-and-supporting-services" title="Permalink to this headline">¶</a></h4>
@@ -364,12 +364,13 @@ All done! ✨ 🍰 ✨
 <p>The connect docker image is an “incubating” feature and is subject to change. The image is associated with the “deployment” profile to provide separation from core services.</p>
 <div class="section" id="build-the-image">
 <h4>Build the image<a class="headerlink" href="#build-the-image" title="Permalink to this headline">¶</a></h4>
-<p>The connect image build integrates the application’s x509 certificate (PEM encoded) into the image.</p>
-<p>The <code class="code docutils literal notranslate"><span class="pre">APPLICATION_CERT_PATH</span></code> build argument is used to specify the location of the certificate on the host machine. If the <code class="code docutils literal notranslate"><span class="pre">APPLICATION_CERT_PATH</span></code> build argument is not provided, a default value of ./local-certs/lfh.pem is used.</p>
+<p>The connect image build integrates the application’s x509 certificate (PEM encoded) and configurations into the image. In the local, or development environment, certificates and configuration are stored in the ./local-config/connect directory. Deployed environments may use separate directories for certificates and configuration.</p>
 </div>
 <div class="section" id="build-the-image-with-docker-cli">
 <h4>Build the image with Docker CLI<a class="headerlink" href="#build-the-image-with-docker-cli" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">build</span> <span class="o">--</span><span class="n">build</span><span class="o">-</span><span class="n">arg</span> <span class="n">APPLICATION_BUILD_CERT_PATH</span><span class="o">=./</span><span class="n">local</span><span class="o">-</span><span class="n">certs</span><span class="o">/</span> <span class="o">-</span><span class="n">t</span> <span class="n">linuxforhealth</span><span class="o">/</span><span class="n">connect</span><span class="p">:</span><span class="mf">0.25</span><span class="o">.</span><span class="mi">0</span> <span class="o">.</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">build</span> <span class="o">--</span><span class="n">build</span><span class="o">-</span><span class="n">arg</span> <span class="n">CONNECT_CERT_PATH_BUILD_ARG</span><span class="o">=./</span><span class="n">local</span><span class="o">-</span><span class="n">config</span><span class="o">/</span><span class="n">connect</span> \
+             <span class="o">--</span><span class="n">build</span><span class="o">-</span><span class="n">arg</span> <span class="n">CONNECT_CONFIG_PATH_BUILD_ARG</span><span class="o">=./</span><span class="n">local</span><span class="o">-</span><span class="n">config</span><span class="o">/</span><span class="n">connect</span> \
+             <span class="o">-</span><span class="n">t</span> <span class="n">linuxforhealth</span><span class="o">/</span><span class="n">connect</span><span class="p">:</span><span class="mf">0.42</span><span class="o">.</span><span class="mi">0</span> <span class="o">.</span>
 </pre></div>
 </div>
 </div>

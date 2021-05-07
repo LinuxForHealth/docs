@@ -212,10 +212,10 @@ Configurations are defined within the config module.</p>
 <h2>Supported Properties<a class="headerlink" href="#supported-properties" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 28%" />
+<col style="width: 27%" />
 <col style="width: 8%" />
-<col style="width: 49%" />
-<col style="width: 15%" />
+<col style="width: 47%" />
+<col style="width: 18%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Property</p></th>
@@ -225,25 +225,85 @@ Configurations are defined within the config module.</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>application_cert_path</p></td>
+<tr class="row-even"><td><p>uvicorn_app</p></td>
 <td><p>String</p></td>
-<td><p>The path to the certificates used for the connect host/server</p></td>
-<td><p>./local-certs</p></td>
+<td><p>The fully qualified uvicorn app string</p></td>
+<td><p>‘connect.asgi:app’</p></td>
 </tr>
-<tr class="row-odd"><td><p>certificate_authority_path</p></td>
+<tr class="row-odd"><td><p>uvicorn_host</p></td>
+<td><p>String</p></td>
+<td><p>The uvicorn host name or ip address</p></td>
+<td><p>‘0.0.0.0’</p></td>
+</tr>
+<tr class="row-even"><td><p>uvicorn_port</p></td>
+<td><p>Integer</p></td>
+<td><p>The uvicorn listening port</p></td>
+<td><p>5000</p></td>
+</tr>
+<tr class="row-odd"><td><p>uvicorn_reload</p></td>
+<td><p>Boolean</p></td>
+<td><p>Indicates if hot debugging/reload is enabled</p></td>
+<td><p>False</p></td>
+</tr>
+<tr class="row-even"><td><p>certificate_authority_path</p></td>
 <td><p>String</p></td>
 <td><p>Path to the directory used to house additional or intermediate Certificate Authorities</p></td>
 <td><p>certifi package location</p></td>
 </tr>
-<tr class="row-even"><td><p>certificate_verify</p></td>
+<tr class="row-odd"><td><p>certificate_verify</p></td>
 <td><p>Boolean</p></td>
 <td><p>Indicates if x509 certificates are verified</p></td>
 <td><p>False</p></td>
 </tr>
+<tr class="row-even"><td><p>connect_ca_file</p></td>
+<td><p>String</p></td>
+<td><p>The path to the concatenated CA certificates in PEM format</p></td>
+<td><p>certifi package location</p></td>
+</tr>
+<tr class="row-odd"><td><p>connect_ca_path</p></td>
+<td><p>String</p></td>
+<td><p>The path to the directory containing PEM formatted certificates</p></td>
+<td><p>/usr/local/share/ca-certificates</p></td>
+</tr>
+<tr class="row-even"><td><p>connect_cert_name</p></td>
+<td><p>String</p></td>
+<td><p>The connect certificate file name</p></td>
+<td><p>lfh-connect.pem</p></td>
+</tr>
+<tr class="row-odd"><td><p>connect_cert_key_name</p></td>
+<td><p>String</p></td>
+<td><p>The connect certificate private key file name</p></td>
+<td><p>lfh-connect.key</p></td>
+</tr>
+<tr class="row-even"><td><p>connect_config_directory</p></td>
+<td><p>String</p></td>
+<td><p>The path to the connect application configuration directory</p></td>
+<td><p>/home/lfh/connect/config</p></td>
+</tr>
+<tr class="row-odd"><td><p>connect_lfh_id</p></td>
+<td><p>String</p></td>
+<td><p>The LinuxForHealth connect node identifier - unique within the “network”</p></td>
+<td><p>the machine host name</p></td>
+</tr>
+<tr class="row-even"><td><p>connect_logging_path</p></td>
+<td><p>String</p></td>
+<td><p>Path to logging.yaml file</p></td>
+<td><p>logging.yaml</p></td>
+</tr>
+<tr class="row-odd"><td><p>connect_external_fhir_server</p></td>
+<td><p>String</p></td>
+<td><p>External FHIR server URL</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>connect_rate_limit</p></td>
+<td><p>String</p></td>
+<td><p>Request rate limit per client</p></td>
+<td><p>5/second</p></td>
+</tr>
 <tr class="row-odd"><td><p>kafka_bootstrap_servers</p></td>
 <td><p>List</p></td>
 <td><p>List of Kafka broker/server locations</p></td>
-<td><p>[‘localhost:9094’]</p></td>
+<td><p>[‘kafka:9092’]</p></td>
 </tr>
 <tr class="row-even"><td><p>kafka_segments_purge_timeout</p></td>
 <td><p>Float</p></td>
@@ -308,7 +368,7 @@ Configurations are defined within the config module.</p>
 <tr class="row-even"><td><p>nats_servers</p></td>
 <td><p>List</p></td>
 <td><p>List of NATS servers</p></td>
-<td><p>[‘tls://localhost:4222’]</p></td>
+<td><p>[‘tls://nats-server:4222’]</p></td>
 </tr>
 <tr class="row-odd"><td><p>nats_sync_subscribers</p></td>
 <td><p>List</p></td>
@@ -324,66 +384,6 @@ Configurations are defined within the config module.</p>
 <td><p>Integer</p></td>
 <td><p>The maximum number of retry attempts if nats_allow_reconnect is enabled</p></td>
 <td><p>10</p></td>
-</tr>
-<tr class="row-even"><td><p>nats_rootCA_file</p></td>
-<td><p>String</p></td>
-<td><p>The path to the NATS root CA x509 file</p></td>
-<td><p>‘/rootCA.pem’</p></td>
-</tr>
-<tr class="row-odd"><td><p>nats_cert_file</p></td>
-<td><p>String</p></td>
-<td><p>Path to the NATS x509 file</p></td>
-<td><p>‘/nats-server.pem’</p></td>
-</tr>
-<tr class="row-even"><td><p>nats_key_file</p></td>
-<td><p>String</p></td>
-<td><p>Path to NATS private key (local use only)</p></td>
-<td><p>‘/nats-server.key’</p></td>
-</tr>
-<tr class="row-odd"><td><p>connect_cert</p></td>
-<td><p>String</p></td>
-<td><p>Path to connect server x509 file</p></td>
-<td><p>‘/lfh.pem’</p></td>
-</tr>
-<tr class="row-even"><td><p>connect_cert_key</p></td>
-<td><p>String</p></td>
-<td><p>Path to connect private key</p></td>
-<td><p>‘/lfh.key’</p></td>
-</tr>
-<tr class="row-odd"><td><p>lfh_id</p></td>
-<td><p>String</p></td>
-<td><p>The unique identifier for the LinuxForHealth node</p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p>logging_config_path</p></td>
-<td><p>String</p></td>
-<td><p>Path to logging.yaml file</p></td>
-<td><p>‘logging.yaml’</p></td>
-</tr>
-<tr class="row-odd"><td><p>uvicorn_app</p></td>
-<td><p>String</p></td>
-<td><p>The fully qualified uvicorn app string</p></td>
-<td><p>‘connect.asgi:app’</p></td>
-</tr>
-<tr class="row-even"><td><p>uvicorn_host</p></td>
-<td><p>String</p></td>
-<td><p>The uvicorn host name or ip address</p></td>
-<td><p>‘0.0.0.0’</p></td>
-</tr>
-<tr class="row-odd"><td><p>uvicorn_port</p></td>
-<td><p>Integer</p></td>
-<td><p>The uvicorn listening port</p></td>
-<td><p>5000</p></td>
-</tr>
-<tr class="row-even"><td><p>uvicorn_reload</p></td>
-<td><p>Boolean</p></td>
-<td><p>Indicates if hot debugging/reload is enabled</p></td>
-<td><p>False</p></td>
-</tr>
-<tr class="row-odd"><td><p>fhir_r4_externalserver</p></td>
-<td><p>String</p></td>
-<td><p>External FHIR server URL</p></td>
-<td></td>
 </tr>
 </tbody>
 </table>
