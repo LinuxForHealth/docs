@@ -1,5 +1,5 @@
-Testing LinuxForHealth
-**********************
+Testing
+*******
 The following sections explain how to unit test LinuxForHealth connect and load test the LinuxForHealth ecosystem.
 
 Required Software
