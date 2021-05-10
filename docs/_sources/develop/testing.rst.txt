@@ -4,7 +4,7 @@ The following sections explain how to unit test LinuxForHealth connect and load 
 
 Required Software
 =================
-Make sure you have the required software installed from `Developer Setup <../develop-setup.html>`_.  To run the load tests you'll also need to install `locust <https://locust.io/>`_::
+Make sure you have the required software installed from `Developer Setup <../developer-setup.html>`_.  To run the load tests you'll also need to install `locust <https://locust.io/>`_::
 
     pip install locust
 
@@ -19,7 +19,7 @@ Run Load Tests
 
 Example 1
 ---------
-To run the load tests, make sure you have a LinuxForHealth environment running (see `Developer Setup <../develop-setup.html>`_ for instructions), then run the load tests from the connect/load-test directory::
+To run the load tests, make sure you have a LinuxForHealth environment running (see `Developer Setup <../developer-setup.html>`_ for instructions), then run the load tests from the connect/load-test directory::
 
     cd load-test
     locust --host https://localhost:5000 --run-time 5m --users 500 --spawn-rate 20 --headless
