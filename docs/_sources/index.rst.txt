@@ -130,6 +130,7 @@ This diagram shows the power of the LFH network where a transaction is submitted
    develop/develop.rst
    develop/secured-communications.rst
    develop/data-synchronization.rst
+   develop/testing.rst
 
 .. toctree::
    :maxdepth: 3
