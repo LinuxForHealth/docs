@@ -6,7 +6,7 @@ LinuxForHealth is a distributed processing network operating system which allows
 
 The LinuxForHealth architecture builds on successive levels of industry standards, from AMD64, ARM64 and NVIDIA chip architectures to Docker and PodMan containers, supporting an extensible set of APIs accessible via multiple languages.
 
-.. image:: images/LinuxForHealthArch.png
+.. image:: images/LinuxForHealth_Arch.png
    :width: 600
    :alt: LinuxForHealth  
 
