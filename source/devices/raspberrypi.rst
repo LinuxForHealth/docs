@@ -10,21 +10,29 @@ Image and Run Your Raspberry Pi
 ===============================
 These instructions explain how to image and run a new Raspberry Pi (or one you want to re-image). If you have an already configured and running Raspberry Pi with an up-to-date 64-bit Pi OS, skip to the next section.
 
-1.  Download the Raspberry Pi imager for your laptop OS (ex: macOS):
-     | https://www.raspberrypi.org/downloads/
-     | This will allow you to image a micro SD card with the os image, since the os image is too big to copy.
-2.  Download the 64-bit Raspberry Pi OS .zip file:
-    https://downloads.raspberrypi.org/raspios_arm64/images/
-3.  Image your micro SD card.
-     | * Plug your micro SD reader into your laptop.
-     | * Run the Raspberry Pi imager.
-     | * Click "Choose OS", select "Use custom", then select the arm64 .zip file you just downloaded.
-     | * Click "Choose SD card" then select your micro SD card and click "Write".
-4.  Bring up your Raspberry Pi.
-     | * Connect all your peripherals to your Raspberry Pi - usb keyboard, mouse, hdmi display.
-     | * Insert your SD card in your Raspberry Pi and power up the pi.
-5.  Walk through the setup in the Raspberry Pi desktop when prompted, including network configuration.  Be sure to enable the ssh interface under Preferences->Raspberry Pi Configuration->Interfaces, then restart your Raspberry Pi.
-6.  On your Raspberry Pi desktop, open a command window and run ifconfig to find the Pi's IP address.  Make a note of this IP so you can ssh into the Pi, if desired.
+1. Download the Raspberry Pi imager for your laptop OS:
+    | https://www.raspberrypi.org/downloads/
+    | This will allow you to image a micro SD card with the os image, since the os image is too big to copy.
+
+2. Download the 64-bit Raspberry Pi OS -arm64.zip file:
+    | https://downloads.raspberrypi.org/raspios_arm64/images/
+    | Example: 2021-05-07-raspios-buster-arm64.zip
+
+3. Image your micro SD card
+
+   * Plug your micro SD reader into your laptop.
+   * Run the Raspberry Pi imager.
+   * Click "Choose OS", select "Use custom", then select the arm64 .zip file you just downloaded.
+   * Click "Choose SD card" then select your micro SD card and click "Write".
+
+4. Bring up your Raspberry Pi
+
+   * Connect all your peripherals to your Raspberry Pi - usb keyboard, mouse, hdmi display.
+   * Insert your SD card in your Raspberry Pi and power up the pi.
+
+5. Walk through the setup in the Raspberry Pi desktop when prompted, including network configuration.  Be sure to enable the ssh interface under Preferences->Raspberry Pi Configuration->Interfaces, then restart your Raspberry Pi.
+
+6. On your Raspberry Pi desktop, open a command window and run ifconfig to find the Pi's IP address.  Make a note of this IP so you can ssh into the Pi, if desired.
 
 Configure the Python Environment
 ================================
