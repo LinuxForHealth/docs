@@ -25,10 +25,12 @@ These instructions explain how to image and run a new Raspberry Pi (or one you w
    * Click "Choose OS", select "Use custom", then select the arm64 .zip file you just downloaded.
    * Click "Choose SD card" then select your micro SD card and click "Write".
 
+
 4. Bring up your Raspberry Pi
 
    * Connect all your peripherals to your Raspberry Pi - usb keyboard, mouse, hdmi display.
    * Insert your SD card in your Raspberry Pi and power up the pi.
+
 
 5. Walk through the setup in the Raspberry Pi desktop when prompted, including network configuration.  Be sure to enable the ssh interface under Preferences->Raspberry Pi Configuration->Interfaces, then restart your Raspberry Pi.
 
