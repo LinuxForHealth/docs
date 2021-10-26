@@ -10,9 +10,9 @@ Image and Run Your Raspberry Pi
 ===============================
 These instructions explain how to image and run a new Raspberry Pi (or one you want to re-image). If you have a running Raspberry Pi with an up-to-date 64-bit Pi OS, skip to the next section.
 
-1. Download the (Raspberry Pi imager)[https://www.raspberrypi.org/downloads/] for your computer's OS. This will allow you to image a micro SD card with the Raspberry Pi OS image, since the OS image is too big to copy.
+1. Download the `Raspberry Pi imager <https://www.raspberrypi.org/downloads/>`_ for your computer's OS. This will allow you to image a micro SD card with the Raspberry Pi OS image, since the OS image is too big to copy.
 
-2. Download the (64-bit Raspberry Pi OS -arm64.zip file)[https://downloads.raspberrypi.org/raspios_arm64/images]. Example: 2021-05-07-raspios-buster-arm64.zip
+2. Download the `64-bit Raspberry Pi OS -arm64.zip file <https://downloads.raspberrypi.org/raspios_arm64/images>`_. Example: 2021-05-07-raspios-buster-arm64.zip
 
 3. Image your micro SD card
 
