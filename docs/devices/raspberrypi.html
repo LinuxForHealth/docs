@@ -189,31 +189,17 @@
 <h1>Raspberry Pi<a class="headerlink" href="#raspberry-pi" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>LinuxForHealth is deployable to amd64, s390x and arm64 (aarch64) devices and may be built to support other chip architectures. These instructions explain how to bring up an arm64 Raspberry Pi device from scratch, straight out of the box, and were tested with a Raspberry Pi 3B+.  All steps are executed on the Raspberry Pi, with the exception of the first three steps to image the micro SD card.</p>
+<p>LinuxForHealth is deployable to amd64, s390x and arm64 (aarch64) devices and may be built to support other chip architectures. These instructions explain how to bring up an arm64 Raspberry Pi device from scratch and were tested with a Raspberry Pi 3B+.  All steps are executed on the Raspberry Pi, with the exception of the first three steps to image the Raspberry Pi micro SD card.</p>
 </div>
 <div class="section" id="image-and-run-your-raspberry-pi">
 <h2>Image and Run Your Raspberry Pi<a class="headerlink" href="#image-and-run-your-raspberry-pi" title="Permalink to this headline">¶</a></h2>
-<p>These instructions explain how to image and run a new Raspberry Pi (or one you want to re-image). If you have an already configured and running Raspberry Pi with an up-to-date 64-bit Pi OS, skip to the next section.</p>
-<ol class="arabic">
-<li><dl>
-<dt>Download the Raspberry Pi imager for your laptop OS:</dt><dd><div class="line-block">
-<div class="line"><a class="reference external" href="https://www.raspberrypi.org/downloads/">https://www.raspberrypi.org/downloads/</a></div>
-<div class="line">This will allow you to image a micro SD card with the os image, since the os image is too big to copy.</div>
-</div>
-</dd>
-</dl>
-</li>
-<li><dl>
-<dt>Download the 64-bit Raspberry Pi OS -arm64.zip file:</dt><dd><div class="line-block">
-<div class="line"><a class="reference external" href="https://downloads.raspberrypi.org/raspios_arm64/images/">https://downloads.raspberrypi.org/raspios_arm64/images/</a></div>
-<div class="line">Example: 2021-05-07-raspios-buster-arm64.zip</div>
-</div>
-</dd>
-</dl>
-</li>
+<p>These instructions explain how to image and run a new Raspberry Pi (or one you want to re-image). If you have a running Raspberry Pi with an up-to-date 64-bit Pi OS, skip to the next section.</p>
+<ol class="arabic simple">
+<li><p>Download the <a class="reference external" href="https://www.raspberrypi.org/downloads/">Raspberry Pi imager</a> for your computer’s OS. This will allow you to image a micro SD card with the Raspberry Pi OS image, since the OS image is too big to copy.</p></li>
+<li><p>Download the <a class="reference external" href="https://downloads.raspberrypi.org/raspios_arm64/images">64-bit Raspberry Pi OS -arm64.zip file</a>. Example: 2021-05-07-raspios-buster-arm64.zip</p></li>
 <li><p>Image your micro SD card</p>
 <ul class="simple">
-<li><p>Plug your micro SD reader into your laptop.</p></li>
+<li><p>Plug your micro SD reader into your computer.</p></li>
 <li><p>Run the Raspberry Pi imager.</p></li>
 <li><p>Click “Choose OS”, select “Use custom”, then select the arm64 .zip file you just downloaded.</p></li>
 <li><p>Click “Choose SD card” then select your micro SD card and click “Write”.</p></li>
@@ -222,11 +208,11 @@
 <li><p>Bring up your Raspberry Pi</p>
 <ul class="simple">
 <li><p>Connect all your peripherals to your Raspberry Pi - usb keyboard, mouse, hdmi display.</p></li>
-<li><p>Insert your SD card in your Raspberry Pi and power up the pi.</p></li>
+<li><p>Insert your micro SD card in your Raspberry Pi and power up the Pi.</p></li>
 </ul>
 </li>
 <li><p>Walk through the setup in the Raspberry Pi desktop when prompted, including network configuration.  Be sure to enable the ssh interface under Preferences-&gt;Raspberry Pi Configuration-&gt;Interfaces, then restart your Raspberry Pi.</p></li>
-<li><p>On your Raspberry Pi desktop, open a command window and run ifconfig to find the Pi’s IP address.  Make a note of this IP so you can ssh into the Pi, if desired.</p></li>
+<li><p>On your Raspberry Pi desktop, open a command window and run ifconfig to find the Pi’s IP address.  Make a note of this IP so you can ssh into the Pi.  The remaining steps can be done via ssh, if desired.</p></li>
 </ol>
 </div>
 <div class="section" id="configure-the-python-environment">
