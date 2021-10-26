@@ -4,37 +4,31 @@ Raspberry Pi
 Overview
 ========
 
-LinuxForHealth is deployable to amd64, s390x and arm64 (aarch64) devices and may be built to support other chip architectures. These instructions explain how to bring up an arm64 Raspberry Pi device from scratch, straight out of the box, and were tested with a Raspberry Pi 3B+.  All steps are executed on the Raspberry Pi, with the exception of the first three steps to image the micro SD card.
+LinuxForHealth is deployable to amd64, s390x and arm64 (aarch64) devices and may be built to support other chip architectures. These instructions explain how to bring up an arm64 Raspberry Pi device from scratch and were tested with a Raspberry Pi 3B+.  All steps are executed on the Raspberry Pi, with the exception of the first three steps to image the Raspberry Pi micro SD card.
 
 Image and Run Your Raspberry Pi
 ===============================
-These instructions explain how to image and run a new Raspberry Pi (or one you want to re-image). If you have an already configured and running Raspberry Pi with an up-to-date 64-bit Pi OS, skip to the next section.
+These instructions explain how to image and run a new Raspberry Pi (or one you want to re-image). If you have a running Raspberry Pi with an up-to-date 64-bit Pi OS, skip to the next section.
 
-1. Download the Raspberry Pi imager for your laptop OS:
-    | https://www.raspberrypi.org/downloads/
-    | This will allow you to image a micro SD card with the os image, since the os image is too big to copy.
+1. Download the (Raspberry Pi imager)[https://www.raspberrypi.org/downloads/] for your computer's OS. This will allow you to image a micro SD card with the Raspberry Pi OS image, since the OS image is too big to copy.
 
-2. Download the 64-bit Raspberry Pi OS -arm64.zip file:
-    | https://downloads.raspberrypi.org/raspios_arm64/images/
-    | Example: 2021-05-07-raspios-buster-arm64.zip
+2. Download the (64-bit Raspberry Pi OS -arm64.zip file)[https://downloads.raspberrypi.org/raspios_arm64/images]. Example: 2021-05-07-raspios-buster-arm64.zip
 
 3. Image your micro SD card
 
-   * Plug your micro SD reader into your laptop.
+   * Plug your micro SD reader into your computer.
    * Run the Raspberry Pi imager.
    * Click "Choose OS", select "Use custom", then select the arm64 .zip file you just downloaded.
    * Click "Choose SD card" then select your micro SD card and click "Write".
 
-
 4. Bring up your Raspberry Pi
 
    * Connect all your peripherals to your Raspberry Pi - usb keyboard, mouse, hdmi display.
-   * Insert your SD card in your Raspberry Pi and power up the pi.
-
+   * Insert your micro SD card in your Raspberry Pi and power up the Pi.
 
 5. Walk through the setup in the Raspberry Pi desktop when prompted, including network configuration.  Be sure to enable the ssh interface under Preferences->Raspberry Pi Configuration->Interfaces, then restart your Raspberry Pi.
 
-6. On your Raspberry Pi desktop, open a command window and run ifconfig to find the Pi's IP address.  Make a note of this IP so you can ssh into the Pi, if desired.
+6. On your Raspberry Pi desktop, open a command window and run ifconfig to find the Pi's IP address.  Make a note of this IP so you can ssh into the Pi.  The remaining steps can be done via ssh, if desired.
 
 Configure the Python Environment
 ================================
