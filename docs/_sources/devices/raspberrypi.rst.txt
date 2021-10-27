@@ -24,7 +24,7 @@ These instructions explain how to image and run a new Raspberry Pi (or one you w
 4. Bring up your Raspberry Pi
 
    * Connect all your peripherals to your Raspberry Pi - usb keyboard, mouse, hdmi display.
-   * Insert your micro SD card in your Raspberry Pi and power up the Pi.
+   * Insert your micro SD card in your Pi and power it up.
 
 5. Walk through the setup in the Raspberry Pi desktop when prompted, including network configuration.  Be sure to enable the ssh interface under Preferences->Raspberry Pi Configuration->Interfaces, then restart your Raspberry Pi.
 
@@ -39,7 +39,7 @@ Configure the Python Environment
       wget https://pascalroeleven.nl/deb-pascalroeleven.gpg
       sudo apt-key add deb-pascalroeleven.gpg
 
-   Edit /etc/apt/sources.list and add this repository::
+   Edit /etc/apt/sources.list (use sudo) and add this repository::
 
       deb http://deb.pascalroeleven.nl/python3.8 buster-backports main
 
@@ -50,22 +50,24 @@ Configure the Python Environment
 
 2. Upgrade pip::
 
-      pip install --upgrade pip
+      pip3 install --upgrade pip
 
-3. Add aliases to your .bashrc file to ensure the correct python and pip versions::
+3. Install pipenv::
+
+      pip3 install pipenv
+
+4. Add aliases to your .bashrc file to ensure the correct python and pip versions::
 
       alias python=python3.8
       alias python3=python3.8
       alias pip=pip3
 
+   Source the new .bashrc to start using the aliases::
+
+      source .bashrc
+
 Install Docker and docker-compose
 =================================
-Install docker and docker-compose on your Raspberry Pi, following these instructions:
-
-Upgrade the pi::
-
-   sudo apt-get update && sudo apt-get upgrade
-
 Install docker::
 
    curl -sSL https://get.docker.com | sh
@@ -77,43 +79,36 @@ Add the current user to the docker group, which allows you to run docker without
 Install docker-compose::
 
    sudo apt-get install libffi-dev libssl-dev
-   sudo pip install docker-compose
+   sudo pip3 install docker-compose
+
+Reboot for user group changes to take effect::
+
+   sudo reboot
 
 Build and Install librdkafka
 =================================
-Remove the downlevel version of librdkafka that is distributed with Pi OS::
-
-   sudo apt-get remove librdkafka-dev
-
-Clone and build librdkafka::
+Clone, build and install librdkafka::
 
    git clone https://github.com/edenhill/librdkafka.git
    cd librdkafka
    ./configure
    make
    sudo make install
-
-Replace the aarch64 version of librdkafka (not covered by the librdkafka `sudo make install` step)::
-
-   sudo cp /usr/local/lib/librdkafka.so.1 /usr/lib/aarch64-linux-gnu
-   sudo cp /usr/local/lib/librdkafka++.so.1 /usr/lib/aarch64-linux-gnu
+   sudo ldconfig
+   cd ..
 
 Configure and Run LinuxForHealth connect
 ========================================
-Install pipenv::
-
-   sudo apt install pipenv
-
-Clone LinuxForHealth::
+Clone LinuxForHealth connect::
 
    git clone https://github.com/LinuxForHealth/connect.git
 
-Create a connect virtual environment::
+Create a virtual environment::
 
    cd connect
    pipenv --python 3.8 sync --dev
 
-Add **KAFKA_HEAP_OPTS: "-Xmx256M"** memory restriction to kafka environment variables in connect/docker-compose.yml.  Example::
+Add **KAFKA_HEAP_OPTS: "-Xmx256M"** Raspberry Pi memory restriction to kafka environment variables in connect/docker-compose.yml.  Example::
 
    kafka:
      networks:
