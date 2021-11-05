@@ -144,4 +144,10 @@ This diagram shows the power of the LFH network where a transaction is submitted
    :maxdepth: 3
    :caption: Devices:
 
+   platforms/linuxone.rst
+
+.. toctree::
+   :maxdepth: 3
+   :caption: Devices:
+
    devices/raspberrypi.rst
