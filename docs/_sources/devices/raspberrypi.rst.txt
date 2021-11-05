@@ -133,3 +133,6 @@ Start connect::
 
    pipenv run connect
 
+Send a Message to LinuxForHealth
+================================
+Follow the `Quickstart steps <tutorials/quickstart.html#send-a-message-to-linuxforhealth>`_ to send a message to LinuxForHealth.  Be sure to use the IP of your device in the OpenAPI /docs URL.
