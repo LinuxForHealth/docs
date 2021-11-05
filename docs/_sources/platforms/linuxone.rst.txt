@@ -22,7 +22,7 @@ These instructions explain how to deploy a new LinuxONE VM in the IBM LinuxONE O
 
 3. Click "Create" and populate the fields.  Choose "General Purpose VM", provide a name for the VM, select the Ubuntu 20.04 image, select the LinuxONE flavor, and elect to import the public key (.pub) that you created in a previous step.
 
-.. image:: ../images/CreateLinuxONEVM.png
+.. image:: /images/CreateLinuxONEVM.png
    :width: 600
 
 4. Click "Create" and wait a few minutes for your VM to start.  Once started, note the IP address of your new VM.
@@ -100,4 +100,4 @@ Start connect::
 
 Send a Message to LinuxForHealth
 ================================
-Follow the `Quickstart steps <../tutorials/quickstart.html#send-a-message-to-linuxforhealth>`_ to send a message to LinuxForHealth.  Be sure to use the IP of your VM in the OpenAPI /docs URL.
+Follow the `Quickstart steps </tutorials/quickstart.html#send-a-message-to-linuxforhealth>`_ to send a message to LinuxForHealth.  Be sure to use the IP of your VM in the OpenAPI /docs URL.
