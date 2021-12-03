@@ -20,7 +20,7 @@ Details
 
 Calling the Route
 =================
-Navigate to the LinuxForHealth connect Open API UI at https://127.0.0.1:5000/docs and select :code:`POST /fhir/{resource_type}` to post a FHIR resource as discussed in `QuickStart <../tutorials/quickstart.rst>`_.  You may also use the tool of your choice, such as curl or Postman, to send data to LinuxForHealth connect.
+Navigate to the LinuxForHealth connect Open API UI at https://127.0.0.1:5000/docs and select :code:`POST /fhir/{resource_type}` to post a FHIR resource as discussed in `QuickStart <tutorials/quickstart.html>`_.  You may also use the tool of your choice, such as curl or Postman, to send data to LinuxForHealth connect.
 
 Optional Config
 ===============
@@ -34,4 +34,4 @@ If your external FHIR server uses self-signed certificates, you'll also need to 
 
 Results
 =======
-The FHIR resource you supplied is stored in Kafka as part of the LinuxForHealth LPR, viewable via the Open API UI :code:`GET /data` API.  Please see `QuickStart <../tutorials/quickstart.rst>`_ for instructions.
+The FHIR resource you supplied is stored in Kafka as part of the LinuxForHealth LPR, viewable via the Open API UI :code:`GET /data` API.  Please see `QuickStart <tutorials/quickstart.html>`_ for instructions.
