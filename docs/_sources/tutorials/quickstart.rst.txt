@@ -41,24 +41,26 @@ This posts a mock Patient resource to the LinuxForHealth FHIR R4 route.  Scroll 
     "store_date":"2021-04-07T21:08:45+00:00",
     "consuming_endpoint_url":"/fhir/Patient",
     "data":"eyJiaXJ0aERhdGUiOiAiMTk3NC0xMi0yNSIsICJnZW5kZXIiOiAibWFsZSIsICJpZGVudGlmaWVyIjogW3sic3lzdGVtIjogInVybjpvaWQ6MS4yLjM2LjE0Ni41OTUuMjE3LjAuMSIsICJ2YWx1ZSI6ICIxMjM0NSJ9XSwgIm5hbWUiOiBbeyJmYW1pbHkiOiAiRHVjayIsICJnaXZlbiI6IFsiRG9uYWxkIiwgIkQuIl19XSwgInJlc291cmNlVHlwZSI6ICJQYXRpZW50In0=",
-    "data_format":"PATIENT",
+    "data_format":"FHIR-R4",
     "status":"success",
-    "data_record_location":"PATIENT:0:17",
+    "data_record_location":"FHIR-R4:0:17",
     "target_endpoint_url":null,
     "elapsed_storage_time":0.087262,
     "transmit_date":null,"elapsed_transmit_time":null
     "elapsed_total_time":0.154136}
 
 
-The **data_record_location** value indicates the topic, partition and offset of the message in Kafka, shown above as :code:`PATIENT:0:17`.
+The **data_record_location** value indicates the topic, partition and offset of the message in Kafka, shown above as :code:`FHIR-R4:0:17`.
 
 View the Result in Kafka
 ------------------------
 On the same page in your browser, scroll up and select :code:`GET /data`, then click :code:`Try It Out`.
 
-Populate the fields with the data_record_location information returned in the previous FHIR R4 response:
+Populate the fields with the data_record_location information returned in the previous FHIR R4 response. Please note
+that the **partition** and **offset** field values below are based on the example above, and will differ from the actual
+values you received.
 
-In the **dataformat** field, type :code:`PATIENT`.
+In the **dataformat** field, type :code:`FHIR-R4`.
 
 In the **partition** field, type :code:`0`.
 
@@ -75,7 +77,7 @@ This performs a GET from kafka for the topic, partition and offset you provided.
       "store_date": "2021-04-07T21:08:45+00:00",
       "consuming_endpoint_url": "/fhir/Patient",
       "data": "eyJiaXJ0aERhdGUiOiAiMTk3NC0xMi0yNSIsICJnZW5kZXIiOiAibWFsZSIsICJpZGVudGlmaWVyIjogW3sic3lzdGVtIjogInVybjpvaWQ6MS4yLjM2LjE0Ni41OTUuMjE3LjAuMSIsICJ2YWx1ZSI6ICIxMjM0NSJ9XSwgIm5hbWUiOiBbeyJmYW1pbHkiOiAiRHVjayIsICJnaXZlbiI6IFsiRG9uYWxkIiwgIkQuIl19XSwgInJlc291cmNlVHlwZSI6ICJQYXRpZW50In0=",
-      "data_format": "PATIENT",
+      "data_format": "FHIR-R4",
       "status": null,
       "data_record_location": null,
       "target_endpoint_url": null,

@@ -1,74 +1,38 @@
-
-
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FHIR R4 &mdash; Linux for Health  documentation</title>
-  
-
-  
-  
-  
-  
+      <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
     <link rel="canonical" href="https://linuxforhealth.github.io/docs/routes/fhir-r4.html"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
-
-  
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+    <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="LinuxForHealth Connect Development" href="../develop/develop.html" />
     <link rel="prev" title="Message Structure" href="../message-structure.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: 0x4380B4" >
-          
-
-          
             <a href="../index.html" class="icon icon-home"> Linux for Health
-          
-
-          
           </a>
-
-          
-            
-            
               <div class="version">
                 master
               </div>
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -76,25 +40,15 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">Getting Started:</span></p>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../developer-setup.html">Developer Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/quickstart.html">QuickStart</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../application-configuration.html">Application Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../message-structure.html">Message Structure</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Routes:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Routes:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">FHIR R4</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#purpose">Purpose</a></li>
@@ -105,98 +59,60 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">Develop:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Develop:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../develop/develop.html">LinuxForHealth Connect Development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/secured-communications.html">Secured Communications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/data-synchronization.html">Data Synchronization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/testing.html">Testing</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Deployment:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Deployment:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../deployment/compose.html">Docker Compose Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../deployment/container.html">Container Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../deployment/kubernetes.html">Kubernetes Support</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Platforms:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Platforms:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../platforms/linuxone.html">LinuxONE</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Devices:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Devices:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../devices/raspberrypi.html">Raspberry Pi</a></li>
 </ul>
 
-            
-          
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: 0x4380B4" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">Linux for Health</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="../index.html">Docs</a> &raquo;</li>
-        
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
       <li>FHIR R4</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-            
             <a href="../_sources/routes/fhir-r4.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="fhir-r4">
-<h1>FHIR R4<a class="headerlink" href="#fhir-r4" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="purpose">
-<h2>Purpose<a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h2>
+             
+  <section id="fhir-r4">
+<h1>FHIR R4<a class="headerlink" href="#fhir-r4" title="Permalink to this heading"></a></h1>
+<section id="purpose">
+<h2>Purpose<a class="headerlink" href="#purpose" title="Permalink to this heading"></a></h2>
 <p>The LinuxForHealth connect FHIR R4 route allows you to post FHIR R4 data to connect and store that data as part of the LinuxForHealth Longitudinal Patient Record (LPR).  You can also optionally configure LinuxForHealth connect to send your FHIR R4 data to an external FHIR server.</p>
-</div>
-<div class="section" id="details">
-<h2>Details<a class="headerlink" href="#details" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="details">
+<h2>Details<a class="headerlink" href="#details" title="Permalink to this heading"></a></h2>
 <table class="colwidths-given docutils align-default">
 <colgroup>
 <col style="width: 30%" />
@@ -214,13 +130,13 @@
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="calling-the-route">
-<h2>Calling the Route<a class="headerlink" href="#calling-the-route" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="calling-the-route">
+<h2>Calling the Route<a class="headerlink" href="#calling-the-route" title="Permalink to this heading"></a></h2>
 <p>Navigate to the LinuxForHealth connect Open API UI at <a class="reference external" href="https://127.0.0.1:5000/docs">https://127.0.0.1:5000/docs</a> and select <code class="code docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/fhir/{resource_type}</span></code> to post a FHIR resource as discussed in <a class="reference external" href="../tutorials/quickstart.html">QuickStart</a>.  You may also use the tool of your choice, such as curl or Postman, to send data to LinuxForHealth connect.</p>
-</div>
-<div class="section" id="optional-config">
-<h2>Optional Config<a class="headerlink" href="#optional-config" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="optional-config">
+<h2>Optional Config<a class="headerlink" href="#optional-config" title="Permalink to this heading"></a></h2>
 <p>In addition to storing data in the LinuxForHealth LPR, the FHIR R4 route can be configured to send the FHIR resource to an external FHIR server.  To configure this feature, add your external FHIR server URL to connect/config.py as follows and restart LinuxForHealth connect:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fhir_r4_externalserver</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;https://user:password@localhost:9443/fhir-server/api/v4&#39;</span>
 </pre></div>
@@ -229,38 +145,31 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">certificate_verify</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="results">
-<h2>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="results">
+<h2>Results<a class="headerlink" href="#results" title="Permalink to this heading"></a></h2>
 <p>The FHIR resource you supplied is stored in Kafka as part of the LinuxForHealth LPR, viewable via the Open API UI <code class="code docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/data</span></code> API.  Please see <a class="reference external" href="../tutorials/quickstart.html">QuickStart</a> for instructions.</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
-           
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../develop/develop.html" class="btn btn-neutral float-right" title="LinuxForHealth Connect Development" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="../message-structure.html" class="btn btn-neutral float-left" title="Message Structure" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../message-structure.html" class="btn btn-neutral float-left" title="Message Structure" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../develop/develop.html" class="btn btn-neutral float-right" title="LinuxForHealth Connect Development" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &copy; Copyright 
-
-    </p>
+    <p>&#169; Copyright .</p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
  
 <div class="footer">
     <p>
@@ -270,26 +179,15 @@
 
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>
