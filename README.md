@@ -13,7 +13,10 @@ git clone https://github.com/linuxforhealth/docs
 
 2. To build the linuxforhealth.github.io site, first install `sphinx` and the `sphinx_rtd_theme` theme.
 ```
-pip install sphinx sphinx_rtd_theme
+python3 -m venv venv
+source venv/bin/activate
+python3 -m pip install --upgrade pip setuptools
+python3 -m pip install -r requirements.txt
 ```
 Note: Tested with Python 3.7.7 and `pyenv global 3.7.7`.
 
