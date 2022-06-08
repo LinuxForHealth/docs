@@ -1,8 +1,0 @@
-tutorials/quickstart.rst:10: [broken] ../developer-setup.html: 
-application-configuration.rst:102: [broken] developer-setup.html: 
-application-configuration.rst:102: [broken] ../deployment/container.html: 
-index.rst:24: [broken] ./developer-setup.html: 
-routes/fhir-r4.rst:15: [broken] https:/: Invalid URL 'https:/': No host supplied
-routes/fhir-r4.rst:17: [broken] https://127.0.0.1:5000/fhir/Patient: 405 Client Error: Method Not Allowed for url: https://127.0.0.1:5000/fhir/Patient
-developer-setup.rst:17: [redirected with Found] https://ibm-watsonhealth.slack.com/archives/G01639WJEMA to https://ibm.enterprise.slack.com/?redir=%2Fr-t14686226562%3Fredir%3D%252Farchives%252FG01639WJEMA
-developer-setup.rst:31: [redirected with Found] https://pipenv.pypa.io to https://pipenv.pypa.io/en/latest/
