@@ -1,74 +1,38 @@
-
-
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LinuxForHealth Connect Development &mdash; Linux for Health  documentation</title>
-  
-
-  
-  
-  
-  
+      <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
     <link rel="canonical" href="https://linuxforhealth.github.io/docs/develop/develop.html"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
-
-  
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+    <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Secured Communications" href="secured-communications.html" />
     <link rel="prev" title="FHIR R4" href="../routes/fhir-r4.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: 0x4380B4" >
-          
-
-          
             <a href="../index.html" class="icon icon-home"> Linux for Health
-          
-
-          
           </a>
-
-          
-            
-            
               <div class="version">
                 master
               </div>
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -76,29 +40,19 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">Getting Started:</span></p>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../developer-setup.html">Developer Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/quickstart.html">QuickStart</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../application-configuration.html">Application Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../message-structure.html">Message Structure</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Routes:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Routes:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../routes/fhir-r4.html">FHIR R4</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Develop:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Develop:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">LinuxForHealth Connect Development</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
@@ -111,87 +65,49 @@
 <li class="toctree-l1"><a class="reference internal" href="data-synchronization.html">Data Synchronization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Deployment:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Deployment:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../deployment/compose.html">Docker Compose Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../deployment/container.html">Container Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../deployment/kubernetes.html">Kubernetes Support</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Platforms:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Platforms:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../platforms/linuxone.html">LinuxONE</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Devices:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Devices:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../devices/raspberrypi.html">Raspberry Pi</a></li>
 </ul>
 
-            
-          
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: 0x4380B4" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">Linux for Health</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="../index.html">Docs</a> &raquo;</li>
-        
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
       <li>LinuxForHealth Connect Development</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-            
             <a href="../_sources/develop/develop.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="linuxforhealth-connect-development">
-<h1>LinuxForHealth Connect Development<a class="headerlink" href="#linuxforhealth-connect-development" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+             
+  <section id="linuxforhealth-connect-development">
+<h1>LinuxForHealth Connect Development<a class="headerlink" href="#linuxforhealth-connect-development" title="Permalink to this heading"></a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h2>
 <p>LinuxForHealth Connect serves as the entry point to the LinuxForHealth platform. LinuxForHealth supports standard health-care formats including:</p>
 <ul class="simple">
 <li><p>ASC X12</p></li>
@@ -201,9 +117,9 @@
 <li><p>HL7 2.X</p></li>
 </ul>
 <p>LinuxForHealth Connect consumes inbound data messages using <strong>routes</strong>. Routes are used to encapsulate a standard workflow process. The route is used to capture data within the LinuxForHealth data store prior to its transmission to an external service. This allows LinuxForHealth to integrate within an organization’s existing data flows and provide value downstream with an aggregated data store.</p>
-</div>
-<div class="section" id="linuxforhealth-routes">
-<h2>LinuxForHealth Routes<a class="headerlink" href="#linuxforhealth-routes" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="linuxforhealth-routes">
+<h2>LinuxForHealth Routes<a class="headerlink" href="#linuxforhealth-routes" title="Permalink to this heading"></a></h2>
 <p>LinuxForHealth routes process data messages using a standard workflow process. Routes are implemented as <a class="reference external" href="https://fastapi.tiangolo.com">FastAPI</a> endpoints and can support data exchanges using HTTP, REST, and Websockets.</p>
 <p>FastAPI endpoints typically use <a class="reference external" href="https://pydantic-docs.helpmanual.io">Pydantic</a> models to support API requests and responses. LinuxForHealth routes prefer 3rd party libraries to support standard healthcare formats, since the message types within these formats are not generally encapsulated witihn a single model.</p>
 <p>LinuxForHealth developers are encouraged to review the following tutorials to become familar with the FastAPI and Pydantic frameworks:</p>
@@ -212,9 +128,9 @@
 <li><p><a class="reference external" href="https://fastapi.tiangolo.com/tutorial/">FastAPI Tutorial</a></p></li>
 <li><p><a class="reference external" href="https://fastapi.tiangolo.com/advanced/">Fast API Advanced Tutorial</a></p></li>
 </ul>
-</div>
-<div class="section" id="standard-workflow-implementation">
-<h2>Standard Workflow Implementation<a class="headerlink" href="#standard-workflow-implementation" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="standard-workflow-implementation">
+<h2>Standard Workflow Implementation<a class="headerlink" href="#standard-workflow-implementation" title="Permalink to this heading"></a></h2>
 <p>The standard workflow process provides default implementations for “general” workflow steps which are not specific to the inbound data format. For example, persist is a “general” workflow step which saves inbound data to the LinuxForHealth data store. The validate step is workflow specific since it requires parsing the inbound data format.</p>
 <p>The table below lists each standard workflow step and notes which steps are “data format-specific”.</p>
 <a class="reference internal image-reference" href="../_images/LinuxForHealthWorkflow.png"><img alt="LinuxForHealth" src="../_images/LinuxForHealthWorkflow.png" style="width: 600px;" /></a>
@@ -262,9 +178,9 @@
 </tbody>
 </table>
 <p>The LinuxForHealth standard workflow is implemented within the  <a class="reference external" href="https://github.com/LinuxForHealth/connect/blob/main/connect/workflows/core.py#L54">CoreWorkflow class</a>. As noted above, the CoreWorkflow class provides implementations for data persistence, transmission, synchronization, and error handling. The CoreWorkflow is extended, or sub-classed, to support specific data formats such as ASC X12, C-CDA, DICOM, FHIR R4, and HL7. The <a class="reference external" href="https://github.com/LinuxForHealth/connect/blob/main/connect/workflows/fhir.py#L14">FHIR R4 Workflow class</a> is an example of a format specific implementation.</p>
-</div>
-<div class="section" id="implementing-a-new-route">
-<h2>Implementing A New Route<a class="headerlink" href="#implementing-a-new-route" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="implementing-a-new-route">
+<h2>Implementing A New Route<a class="headerlink" href="#implementing-a-new-route" title="Permalink to this heading"></a></h2>
 <p>A LinuxForHealth route supports a single data format. The route may support multiple versions of the format if the versions are handled appropriately in the workflow’s validation and transform steps.</p>
 <p>Data formats are best supported by external libraries which support the breadth of a data format specification with parsing, modeling, and validation services. In other words, data modeling code should not be checked into the LinuxForHealth <cite>connect</cite> project.</p>
 <p>Complete the following steps to add a new route:</p>
@@ -291,34 +207,27 @@
 <li><p>Register the routes within the LinuxForHealth <a class="reference external" href="https://github.com/LinuxForHealth/connect/blob/main/connect/routes/api.py">api module</a></p></li>
 </ol>
 <p>When the routes are complete, the endpoints will be available in the <a class="reference external" href="https://localhost:5000/docs">OpenAPI UI</a></p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
-           
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="secured-communications.html" class="btn btn-neutral float-right" title="Secured Communications" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="../routes/fhir-r4.html" class="btn btn-neutral float-left" title="FHIR R4" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../routes/fhir-r4.html" class="btn btn-neutral float-left" title="FHIR R4" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="secured-communications.html" class="btn btn-neutral float-right" title="Secured Communications" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &copy; Copyright 
-
-    </p>
+    <p>&#169; Copyright .</p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
  
 <div class="footer">
     <p>
@@ -328,26 +237,15 @@
 
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>
