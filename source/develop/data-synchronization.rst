@@ -60,10 +60,10 @@ In the connect log for node you did not send the message to (the node with the :
     2021-04-21 20:41:18,972 - connect.clients.nats - TRACE - nats_sync_event_handler: stored msg in kafka topic LFH_SYNC at LFH_SYNC:0:0
     2021-04-21 20:41:18,974 - connect.workflows.core - INFO - Running CoreWorkflow, message={<the message you submitted>}
     2021-04-21 20:41:18,978 - connect.workflows.core - TRACE - CoreWorkflow: incoming message type = <class 'dict'>
-    2021-04-21 20:41:20,500 - connect.clients.kafka - TRACE - Produced record to topic FHIR-R4_PATIENT partition [0] @ offset 0
-    2021-04-21 20:41:20,501 - connect.workflows.core - TRACE -  CoreWorkflow persist: stored resource location = FHIR-R4_PATIENT:0:0
+    2021-04-21 20:41:20,500 - connect.clients.kafka - TRACE - Produced record to topic FHIR-R4 partition [0] @ offset 0
+    2021-04-21 20:41:20,501 - connect.workflows.core - TRACE -  CoreWorkflow persist: stored resource location = FHIR-R4:0:0
     2021-04-21 20:41:20,507 - connect.clients.nats - TRACE - nats_sync_event_handler: replayed nats sync message, data record location = FHIR-R4_PATIENT:0:0
 
-In this case, the FHIR message was processed into the LPR data store, at topic:partition:offset FHIR-R4_PATIENT:0:0.
+In this case, the FHIR message was processed into the LPR data store, at topic:partition:offset FHIR-R4:0:0.
 
 This is a simple test of one-way data synchronization, but the configuration can be extended so that every LinuxForHealth node synchronizes data to every other LinuxForHealth node.
